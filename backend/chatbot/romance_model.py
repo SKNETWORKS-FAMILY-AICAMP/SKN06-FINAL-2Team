@@ -11,9 +11,7 @@ import logging
 import json
 
 load_dotenv()
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
+# logging.basicConfig(level=# logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 # 사용자별 메모리 저장 딕셔너리
 user_memory_dict = {}
@@ -32,70 +30,65 @@ llm = ChatOpenAI(model_name=MODEL_NAME, temperature=0)
 parser = StrOutputParser()
 
 
-import logging
-
-
 def search_vector_store(query, collection_name):
     """vector store에서 검색하는 공통 함수"""
-    logging.info(
-        f"search_vector_store called with query: {query}, collection_name: {collection_name}"
-    )
+    # logging.info(f"search_vector_store called with query: {query}, collection_name: {collection_name}")
 
     try:
         PERSIST_DIRECTORY = r"data\vector_store"
         EMBEDDING_MODEL_NAME = "text-embedding-3-small"
 
-        logging.info("Initializing embedding model...")
+        # logging.info("Initializing embedding model...")
         embedding_model = OpenAIEmbeddings(model=EMBEDDING_MODEL_NAME)
 
-        logging.info("Connecting to vector store...")
+        # logging.info("Connecting to vector store...")
         vector_store = Chroma(
             persist_directory=f"{PERSIST_DIRECTORY}\\{collection_name}",
             collection_name=collection_name,
             embedding_function=embedding_model,
         )
-        logging.info(f"Collection count: {vector_store._collection.count()}")
-        logging.info("Initializing retriever...")
+        # logging.info(f"Collection count: {vector_store._collection.count()}")
+        # logging.info("Initializing retriever...")
         retriever = vector_store.as_retriever(
             search_type="mmr",
             search_kwargs={"k": 5, "fetch_k": 5, "lambda_mult": 0.2},
         )
 
-        logging.info("Invoking retriever...")
+        # logging.info("Invoking retriever...")
         results_retriever = retriever.invoke(query)
-        logging.info(f"Retriever results: {results_retriever}")
+        # logging.info(f"Retriever results: {results_retriever}")
 
         if not results_retriever:
-            logging.warning("No results found.")
+            # logging.warning("No results found.")
             return "검색 결과가 없습니다."
         else:
             titles = [result.page_content for result in results_retriever]
-            logging.info(f"Final search results: {titles}")
+            # logging.info(f"Final search results: {titles}")
             return titles
 
     except Exception as e:
-        logging.error(f"Error in search_vector_store: {e}", exc_info=True)
+        # logging.error(f"Error in search_vector_store: {e}", exc_info=True)
         return "검색 중 오류가 발생했습니다."
 
 
 def search_webtoon(query):
     """vector store에서 웹툰을 검색하는 tool"""
-    logging.info(f"search_webtoon called with query: {query}")
+    # logging.info(f"search_webtoon called with query: {query}")
     result = search_vector_store(query, "webtoon_romance")
-    logging.info(f"search_webtoon result: {result}")
+    # logging.info(f"search_webtoon result: {result}")
     return result
 
 
 def search_webnovel(query):
     """vector store에서 웹소설을 검색하는 tool"""
-    logging.info(f"search_webnovel called with query: {query}")
+    # logging.info(f"search_webnovel called with query: {query}")
     result = search_vector_store(query, "webnovel_romance")
-    logging.info(f"search_webnovel result: {result}")
+    # logging.info(f"search_webnovel result: {result}")
     return result
 
 
 def intent(question, history):
-    logging.info(f"intent called with question: {question}, history: {history}")
+    # logging.info(f"intent called with question: {question}, history: {history}")
     intent_prompt = ChatPromptTemplate.from_messages(
         [
             (
@@ -133,12 +126,12 @@ def intent(question, history):
     )
     intent_chain = intent_prompt | llm | parser
     result = intent_chain.invoke({"question": question, "history": history})
-    logging.info(f"intent result: {result}")
+    # logging.info(f"intent result: {result}")
     return result
 
 
 def require(question):
-    logging.info(f"require called with question: {question}")
+    # logging.info(f"require called with question: {question}")
     type_genre_prompt = ChatPromptTemplate.from_messages(
         [
             (
@@ -194,12 +187,12 @@ def require(question):
 
     type_genre_chain = type_genre_prompt | llm
     result = json.loads(type_genre_chain.invoke(question).content)
-    logging.info(f"require result: {result}")
+    # logging.info(f"require result: {result}")
     return result
 
 
 def search(question, requirement):
-    logging.info(f"search called with question: {question}, requirement: {requirement}")
+    # logging.info(f"search called with question: {question}, requirement: {requirement}")
     search_prompt = ChatPromptTemplate.from_messages(
         [
             (
@@ -243,12 +236,12 @@ def search(question, requirement):
 
     search_chain = search_prompt | llm | route
     result = search_chain.invoke({"question": question, "requirement": requirement})
-    logging.info(f"search result: {result}")
+    # logging.info(f"search result: {result}")
     return result
 
 
 def chatbot(question, session_id=None):
-    logging.info(f"chatbot called with question: {question}")
+    # logging.info(f"chatbot called with question: {question}")
     memory = get_user_memory(session_id)  # 세션 ID로 메모리 가져오기
     past_messages = memory.load_memory_variables({})["history"]
     total_prompt = ChatPromptTemplate.from_messages(
@@ -319,14 +312,14 @@ def chatbot(question, session_id=None):
         {"question": question, "context": context, "history": past_messages}
     )
     memory.save_context({"input": question}, {"output": response})
-    logging.info(f"chatbot response: {response}")
+    # logging.info(f"chatbot response: {response}")
     return response
 
 
 if __name__ == "__main__":
-    logging.info("Chatbot started.")
+    # logging.info("Chatbot started.")
     session_id = uuid4()
-    logging.info(f"session_id: {session_id}")
+    # logging.info(f"session_id: {session_id}")
     while True:
         question = input("Question: ")
         if question == "대화 종료":
