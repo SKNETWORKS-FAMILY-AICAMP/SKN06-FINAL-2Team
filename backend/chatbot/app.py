@@ -1,7 +1,7 @@
 import streamlit as st
 from uuid import uuid4
 
-from romance_model import get_user_memory,search_vector_store,search_webtoon,search_webnovel,intent,require,search,chatbot  # chatbot.py에서 함수 가져오기
+from romance_model import chatbot  # chatbot.py에서 함수 가져오기
 
 # Streamlit UI 설정
 st.set_page_config(page_title="Pixary", page_icon="🤖")
@@ -10,8 +10,7 @@ st.title("Pixary")
 # 사이드바 선택 버튼 추가
 st.sidebar.title("옵션 선택")
 option = st.sidebar.radio(
-    "하나를 선택하세요:",
-    ("기본 모델", "북부대공", "집착광공", "정파", "폭군")
+    "하나를 선택하세요:", ("기본 모델", "북부대공", "집착광공", "정파", "폭군")
 )
 st.sidebar.write(f"선택한 옵션: {option}")
 
@@ -50,4 +49,3 @@ if option == "집착광공":
         # 챗봇 메시지 출력
         with st.chat_message("assistant", avatar=BOT_AVATAR):
             st.markdown(response)
-
