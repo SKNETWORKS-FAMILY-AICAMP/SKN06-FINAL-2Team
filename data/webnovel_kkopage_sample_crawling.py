@@ -142,7 +142,9 @@ def crawling_detail(url):
         update_days_element = "-"
     else:
         if status_element == "매일 연재":
-            update_days_element = "월, 화, 수, 목, 금, 토, 일"
+            update_days_element = (
+                "월요일, 화요일, 수요일, 목요일, 금요일, 토요일, 일요일"
+            )
         elif status_element == "연재":
             update_days_element = "-"
         elif re.search(status_pattern_1, status_element):
@@ -212,7 +214,7 @@ def crawling_detail(url):
         description_element = driver.find_element(By.XPATH, description_selector).text
     except:
         description_element = "-"
-    webnovel["synopsys"] = description_element
+    webnovel["synopsis"] = description_element
 
     try:
         keywords_selector = r"#__next > div > div.flex.w-full.grow.flex-col.px-122pxr > div.flex.h-full.flex-1.flex-col > div > div.mb-28pxr.ml-4px.flex.w-632pxr.flex-col.overflow-hidden.rounded-12pxr > div.flex.flex-1.flex-col > div > div > div:nth-child(2) > div.flex.w-full.flex-col.items-center.overflow-hidden > div"
