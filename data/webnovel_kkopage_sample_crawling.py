@@ -134,7 +134,10 @@ def crawling_detail(url):
     status_pattern_1 = r"(?P<days>[가-힣]) 연재"
     status_pattern_2 = r"(?P<days>[가-힣]), (?P<days2>[가-힣]) 연재"
     status_pattern_3 = r"(?P<days>[가-힣]), (?P<days2>[가-힣]), (?P<days3>[가-힣]) 연재"
-    status_pattern_4 = r"(?P<days>[가-힣])~(?P<days2>[가-힣]) 연재"
+    status_pattern_4 = r"(?P<days>[가-힣]), (?P<days2>[가-힣]), (?P<days3>[가-힣]), (?P<days4>[가-힣]) 연재"
+    status_pattern_5 = r"(?P<days>[가-힣]), (?P<days2>[가-힣]), (?P<days3>[가-힣]), (?P<days4>[가-힣]), (?P<days5>[가-힣]) 연재"
+    status_pattern_6 = r"(?P<days>[가-힣]), (?P<days2>[가-힣]), (?P<days3>[가-힣]), (?P<days4>[가-힣]), (?P<days5>[가-힣]), (?P<days6>[가-힣]) 연재"
+    status_pattern_7 = r"(?P<days>[가-힣])~(?P<days2>[가-힣]) 연재"
 
     if status_element == "완결":
         update_days_element = "-"
@@ -168,8 +171,47 @@ def crawling_detail(url):
                 + "요일"
             )
         elif re.search(status_pattern_4, status_element):
-            idx1 = re.search(status_pattern_4, status_element).group("days")
-            idx2 = re.search(status_pattern_4, status_element).group("days2")
+            update_days_element = (
+                re.search(status_pattern_4, status_element).group("days")
+                + "요일, "
+                + re.search(status_pattern_4, status_element).group("days2")
+                + "요일, "
+                + re.search(status_pattern_4, status_element).group("days3")
+                + "요일"
+                + re.search(status_pattern_4, status_element).group("days4")
+                + "요일"
+            )
+        elif re.search(status_pattern_5, status_element):
+            update_days_element = (
+                re.search(status_pattern_4, status_element).group("days")
+                + "요일, "
+                + re.search(status_pattern_4, status_element).group("days2")
+                + "요일, "
+                + re.search(status_pattern_4, status_element).group("days3")
+                + "요일"
+                + re.search(status_pattern_4, status_element).group("days4")
+                + "요일"
+                + re.search(status_pattern_4, status_element).group("days5")
+                + "요일"
+            )
+        elif re.search(status_pattern_6, status_element):
+            update_days_element = (
+                re.search(status_pattern_4, status_element).group("days")
+                + "요일, "
+                + re.search(status_pattern_4, status_element).group("days2")
+                + "요일, "
+                + re.search(status_pattern_4, status_element).group("days3")
+                + "요일"
+                + re.search(status_pattern_4, status_element).group("days4")
+                + "요일"
+                + re.search(status_pattern_4, status_element).group("days5")
+                + "요일"
+                + re.search(status_pattern_4, status_element).group("days6")
+                + "요일"
+            )
+        elif re.search(status_pattern_7, status_element):
+            idx1 = re.search(status_pattern_7, status_element).group("days")
+            idx2 = re.search(status_pattern_7, status_element).group("days2")
             update_days_element = "".join(day[day.index(idx1) : day.index(idx2) + 1])
         status_element = "연재"
     webnovel["status"] = status_element
@@ -222,6 +264,7 @@ def crawling_detail(url):
         keywords_element = driver.find_element(By.CSS_SELECTOR, keywords_selector).text
         keywords_element = keywords_element.replace("#", "")
         keywords_element = keywords_element.split("\n")
+        keywords_element = ", ".join(keywords_element)
     except:
         keywords_element = "-"
     webnovel["keywords"] = keywords_element
