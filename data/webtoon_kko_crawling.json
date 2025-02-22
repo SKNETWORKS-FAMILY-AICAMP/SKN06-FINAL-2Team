@@ -58826,5 +58826,27 @@
         "price": "기다리면 무료",
         "episode": 60,
         "url": "https://webtoon.kakao.com/content/괴물-황녀님/3392?tab=profile"
+    },
+    {
+        "id": 1196,
+        "type": "웹툰",
+        "platform": "카카오웹툰",
+        "title": "50픽셀 데이즈",
+        "status": "완결",
+        "update_days": "-",
+        "thumbnail": "-",
+        "genre": "드라마",
+        "views": 21537000,
+        "rating": "-",
+        "likes": 112000,
+        "synopsis": "게임을 만드는 청춘들의 일상, 성장, 좌충우돌 로맨스 코미디",
+        "keywords": "따뜻한, 설레는, 드라마, 성공성장물",
+        "author": "함서연",
+        "illustrator": "구슬",
+        "original": "-",
+        "age_rating": "전체 이용가",
+        "price": "기다리면 무료",
+        "episode": 39,
+        "url": "https://webtoon.kakao.com/content/50px/1196?tab=profile"
     }
 ]
