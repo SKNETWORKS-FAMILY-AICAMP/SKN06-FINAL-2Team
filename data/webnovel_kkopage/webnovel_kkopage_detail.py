@@ -5,7 +5,7 @@ import logging
 import pickle
 import json
 
-driver = kakao_login(visible=False)
+driver = kakao_login(visible=False, second=True)
 
 genre_names = [
     # "fantasy",
@@ -26,14 +26,15 @@ for genre in genre_names:
     logging.info(f"{genre} 디테일 크롤링 시작")
 
     webnovels = []
-    for link in total_link:
+    webnovel = None
+    for link in total_link[:5]:
         try:
             webnovel = crawling_detail(link, driver)
             logging.info(f"{webnovel["title"]} 크롤링 완료")
+            if webnovel["url"] in ranking_link:
+                webnovel["ranking"] = ranking_link.index(webnovel["url"]) + 1
         except Exception as e:
             logging.error(f"{link} 크롤링을 완료하지 못했습니다.\n{e}", exc_info=True)
-        if webnovel["url"] in ranking_link:
-            webnovel["ranking"] = ranking_link.index(webnovel["url"]) + 1
         webnovels.append(webnovel)
 
     driver.quit()

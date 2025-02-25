@@ -9,7 +9,7 @@ import time
 import os
 
 
-def kakao_login(visible):
+def kakao_login(visible, second):
     load_dotenv()
     kakao_id = os.getenv("KAKAO_ID")
     kakao_pw = os.getenv("KAKAO_PWD")
@@ -41,18 +41,21 @@ def kakao_login(visible):
     login_selector = r"#mainContent > div > div > form > div.confirm_btn > button.btn_g.highlight.submit"
     driver.find_element(By.CSS_SELECTOR, login_selector).click()
 
-    # 카카오 2차 인증 대기
-    time.sleep(10)
-    try:
-        continue_selector = r"#mArticle > div > div.wrap_btn > form > button"
-        driver.find_element(By.CSS_SELECTOR, continue_selector).click()
-        time.sleep(2)
-        if driver.current_url == "https://page.kakao.com/":
-            logging.info("2차 인증 완료")
-        else:
-            logging.error("2차 인증 오류")
+    if second == True:
+        # 카카오 2차 인증 대기
+        time.sleep(10)
+        try:
+            continue_selector = r"#mArticle > div > div.wrap_btn > form > button"
+            driver.find_element(By.CSS_SELECTOR, continue_selector).click()
+            time.sleep(2)
+            if driver.current_url == "https://page.kakao.com/":
+                logging.info("2차 인증 완료")
+            else:
+                logging.error("2차 인증 오류")
+                driver.quit()
+        except Exception as e:
+            logging.error(f"2차 인증 오류: {e}", exc_info=True)
             driver.quit()
-    except Exception as e:
-        logging.error(f"2차 인증 오류: {e}", exc_info=True)
-        driver.quit()
+    else:
+        pass
     return driver
