@@ -4,17 +4,18 @@ from module.login import kakao_login
 import logging
 import pickle
 import json
+import os
 
 driver = kakao_login(visible=False, second=True)
 
 genre_names = [
-    # "fantasy",
-    # "modern_fantasy",
+    "fantasy",
+    "modern_fantasy",
     "romance",
-    # "romance_fantasy",
-    # "martial_arts",
-    # "bl",
-    # "drama",
+    "romance_fantasy",
+    "martial_arts",
+    "bl",
+    "drama",
 ]
 
 
@@ -27,7 +28,7 @@ for genre in genre_names:
 
     webnovels = []
     webnovel = None
-    for link in total_link[:5]:
+    for link in total_link:
         try:
             webnovel = crawling_detail(link, driver)
             logging.info(f"{webnovel["title"]} 크롤링 완료")
@@ -79,14 +80,19 @@ for genre in genre_names:
                 error_log.append(novel["url"])
             else:
                 pass
-    error_log = list(set(error_log))
+    error_log = set(error_log)
+    error_log = list(error_log)
 
     if len(error_log) == 0:
         logging.info("오류 없음")
     else:
+        if not os.path.exists("error"):
+            os.mkdir("error")
         with open(f"error\error_log_{genre}.json", "w", encoding="utf-8") as f:
             json.dump(error_log, f, indent=4, ensure_ascii=False)
 
+    if not os.path.exists("detail"):
+        os.mkdir("detail")
     with open(f"detail\{genre}.json", "w", encoding="utf-8") as f:
         json.dump(webnovels, f, indent=4, ensure_ascii=False)
     logging.info("저장 완료")

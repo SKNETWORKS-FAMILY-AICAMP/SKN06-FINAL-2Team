@@ -4,6 +4,7 @@ from module.login import kakao_login
 import logging
 import pickle
 import time
+import os
 
 driver = kakao_login()
 
@@ -51,6 +52,10 @@ genre_list = [
     "drama",
 ]
 
+if not os.path.exists("ranking_ids"):
+    os.mkdir("ranking_ids")
+if not os.path.exists("total_links"):
+    os.mkdir("total_links")
 
 for genre_name, ranking_url, total_url in zip(
     genre_list, RANKING_URL_ids, TOTAL_URL_ids
