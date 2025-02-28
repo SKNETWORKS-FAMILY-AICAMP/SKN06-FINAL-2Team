@@ -6,6 +6,12 @@ import pickle
 import json
 import os
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    force=True,
+)
+
 driver = kakao_login(visible=False, second=True)
 
 genre_names = [
@@ -40,18 +46,18 @@ for genre in genre_names:
 
     driver.quit()
 
-    error_log = []
+    error_log = {}
     for novel in webnovels:
         for key, value in novel.items():
             if key == "title" and value == "-":
                 logging.info(f"{novel["title"]}, title")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             elif key == "synopsis" and value == "-":
                 logging.info(f"{novel["title"]}, synopsis")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             elif key == "status" and value == "-":
                 logging.info(f"{novel["title"]}, status")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             elif key == "age_rating" and value not in [
                 "전체 이용가",
                 "12세 이용가",
@@ -59,29 +65,27 @@ for genre in genre_names:
                 "19세 이용가",
             ]:
                 logging.info(f"{novel["title"]}, age_rating, {value}")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             elif key == "price" and value == "-":
                 logging.info(f"{novel["title"]}, price")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             elif key == "thumbnail" and value == "-":
                 logging.info(f"{novel["title"]}, thumbnail")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             elif key == "ganre" and value == "-":
                 logging.info(f"{novel["title"]}, ganre")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             elif key == "view" and value == "-":
                 logging.info(f"{novel["title"]}, view")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             elif key == "author" and value == "-":
                 logging.info(f"{novel["title"]}, author")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             elif key == "episode" and value == "-":
                 logging.info(f"{novel["title"]}, episode")
-                error_log.append(novel["url"])
+                error_log[total_link.index(novel["url"])] = novel["url"]
             else:
                 pass
-    error_log = set(error_log)
-    error_log = list(error_log)
 
     if len(error_log) == 0:
         logging.info("오류 없음")

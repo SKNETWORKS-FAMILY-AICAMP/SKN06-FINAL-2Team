@@ -6,10 +6,15 @@ import pickle
 import time
 import os
 
-driver = kakao_login()
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    force=True,
+)
+
+driver = kakao_login(visible=False, second=True)
 
 # id 추출 2025.02.24
-# 둘 중에 하나 선택할 예정
 # 월간 장르별 TOP 300
 RANKING_URL_ids = [
     "https://page.kakao.com/landing/ranking/11/86?ranking_type=monthly",  # 판타지
@@ -20,16 +25,6 @@ RANKING_URL_ids = [
     "https://page.kakao.com/landing/ranking/11/123?ranking_type=monthly",  # BL
     "https://page.kakao.com/landing/ranking/11/125?ranking_type=monthly",  # 드라마
 ]
-# # 주간 장르별 TOP 300
-# RANKING_URL_ids = [
-#     "https://page.kakao.com/landing/ranking/11/86?ranking_type=weekly",  # 판타지
-#     "https://page.kakao.com/landing/ranking/11/120?ranking_type=weekly",  # 현판
-#     "https://page.kakao.com/landing/ranking/11/89?ranking_type=weekly",  # 로맨스
-#     "https://page.kakao.com/landing/ranking/11/117?ranking_type=weekly",  # 로판
-#     "https://page.kakao.com/landing/ranking/11/87?ranking_type=weekly",  # 무협
-#     "https://page.kakao.com/landing/ranking/11/123?ranking_type=weekly",  # BL
-#     "https://page.kakao.com/landing/ranking/11/125?ranking_type=weekly",  # 드라마
-# ]
 
 # 전체 장르
 TOTAL_URL_ids = [
