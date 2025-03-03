@@ -1,7 +1,67 @@
 import pymysql
+from pathlib import Path
 
-WSGI_APPLICATION = "config.wsgi.application"
+## 기본 설정
+# 개발 모드
+DEBUG = True
 
+# 허용되는 호스트 도메인 주소
+ALLOWED_HOSTS = ["*"]
+
+# 디렉토리 경로 설정
+BASE_DIR = Path(__file__).resolve().parent.parent 
+
+# Apps
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django_bootstrap5",
+    "account",
+    "basic_chatbot",
+    "romance_chatbot",
+    "rofan_chatbot",
+    "hero_chatbot",
+    "historical_chatbot",
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Root urls
+ROOT_URLCONF = 'config.urls'
+
+# Templates
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
+
+# wsgi
+WSGI_APPLICATION = 'config.wsgi.application'
+
+# DataBases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
@@ -16,12 +76,41 @@ DATABASES = {
     }
 }
 
+# password validation
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
+]
 
-# Internationalization
+# 언어/시간 설정
 LANGUAGE_CODE = "ko-kr"
 
 TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
+
+# Static
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# Default primary key field type
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+## 추가 설정
+# 브라우저 종료 시 세션 만료 (자동 로그아웃)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# 로그인 해야 실행할 수 있는 View를 호출
+LOGIN_URL = "/account/login"
