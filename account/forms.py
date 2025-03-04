@@ -77,6 +77,15 @@ class SignUpForm(UserCreationForm):
         if not (re.search(r'[a-z]', password) and re.search(r'[0-9]', password) and re.search(r'[!@#$%^&*(),.?":{}|<>]', password)):
             raise forms.ValidationError("비밀번호 형식을 다시 확인해주세요.")
         return password
+    
+    # 비밀번호 확인
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2:
+            if password1 != password2:
+                raise forms.ValidationError("비밀번호가 일치하지 않습니다.")
+        return password2
 
     # 나이 형식 제한
     ## 조건
@@ -163,6 +172,15 @@ class EditInformationForm(UserChangeForm):
         if not (re.search(r'[a-z]', password) and re.search(r'[0-9]', password) and re.search(r'[!@#$%^&*(),.?":{}|<>]', password)):
             raise forms.ValidationError("비밀번호 형식을 다시 확인해주세요.")
         return password
+    
+    # 비밀번호 확인
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2:
+            if password1 != password2:
+                raise forms.ValidationError("비밀번호가 일치하지 않습니다.")
+        return password2
 
     # 나이 형식 제한
     ## 조건

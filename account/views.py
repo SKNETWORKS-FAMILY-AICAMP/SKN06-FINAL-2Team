@@ -28,10 +28,25 @@ def user_login(request):
     if request.method == "GET":
         return render(request, "account/login.html", {"form": AuthenticationForm()})
     elif request.method == "POST":
-        username = request.POST.get("username")
+        username_or_email = request.POST.get("user_id")  # 아이디 또는 이메일
         password = request.POST.get("password")
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
+        
+        # 이메일인지 닉네임인지 구분하여 처리
+        user = None
+
+        # 이메일
+        if "@" in username_or_email:  
+            try:
+                user = User.objects.get(email=username_or_email)
+                username = user.username
+            except User.DoesNotExist:
+                user = None
+        # 닉네임
+        else:
+            user = User.objects.filter(username=username_or_email).first()
+
+        # 비밀번호 확인
+        if user is not None and authenticate(request, username=username, password=password):
             login(request, user)
             if request.GET.get("next"):
                 return redirect(request.GET.get("next"))
@@ -43,7 +58,7 @@ def user_login(request):
                 "account/login.html",
                 {
                     "form": AuthenticationForm(),
-                    "error_msg": "아이디나 비밀번호를 다시 확인해주세요.",
+                    "error_msg": "유효하지 않은 계정입니다.",
                 },
             )
 
@@ -52,13 +67,13 @@ def user_login(request):
 def user_logout(request):
     print("logout")
     logout(request)
-    return redirect(reverse("chat"))
+    return redirect(reverse("basic_chatbot_na"))
 
 # 사용자 정보 조회
 @login_required
 def user_detail(request):
     object = User.objects.get(pk=request.user.pk)
-    return render(request, "account/detail.html", {"user": object})
+    return render(request, "account/account_inforamtion.html", {"user": object})
 
 # 사용자 비밀번호 변경
 @login_required
@@ -101,4 +116,4 @@ def user_update(request):
 def user_delete(request):
     request.user.delete()
     logout(request)
-    return redirect(reverse("chat"))
+    return redirect(reverse("basic_chatbot_na"))
