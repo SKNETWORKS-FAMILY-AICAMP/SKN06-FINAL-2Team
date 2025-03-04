@@ -8,7 +8,7 @@ from .models import User
 from .forms import SignUpForm, EditInformationForm
 
 
-# 사용자 가입
+# 회원 가입
 def user_signup(request):
     if request.method == "GET":
         return render(
@@ -23,7 +23,7 @@ def user_signup(request):
         else:
             return render(request, "account/signup.html", {"form": form})
 
-# 사용자 로그인
+# 로그인
 def user_login(request):
     if request.method == "GET":
         return render(request, "account/login.html", {"form": AuthenticationForm()})
@@ -62,40 +62,20 @@ def user_login(request):
                 },
             )
 
-# 사용자 로그아웃
+# 로그아웃
 @login_required
 def user_logout(request):
     print("logout")
     logout(request)
     return redirect(reverse("basic_chatbot_na"))
 
-# 사용자 정보 조회
+# 회원 정보 조회
 @login_required
 def user_detail(request):
     object = User.objects.get(pk=request.user.pk)
     return render(request, "account/account_inforamtion.html", {"user": object})
 
-# 사용자 비밀번호 변경
-@login_required
-def pwd_change(request):
-    http_method = request.method
-    if http_method == "GET":
-        form = PasswordChangeForm(user=request.user)
-        return render(request, "account/pwd_change.html", {"form": form})
-    elif http_method == "POST":
-        form = PasswordChangeForm(user=request.user, data=request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)
-            return redirect(reverse("account:detail"))
-        else:
-            return render(
-                request,
-                "account/pwd_change.html",
-                {"form": form, "error_msg": "유효하지 않은 비밀번호입니다."},
-            )
-
-# 사용자 정보 수정
+# 회원 정보 수정
 @login_required
 def user_update(request):
     if request.method == "GET":
@@ -105,13 +85,27 @@ def user_update(request):
     elif request.method == "POST":
         object = User.objects.get(pk=request.user.pk)
         form = EditInformationForm(request.POST, request.FILES, instance=object)
+        
+        # 현재 비밀번호 확인
+        current_password = request.POST.get("password")
+        if authenticate(request, username=request.user.username, password=current_password) is None:
+            form.add_error("password", "현재 비밀번호가 일치하지 않습니다.")
+        
         if form.is_valid():
-            form.save()
+            # 비밀번호 수정 처리
+            if form.cleaned_data.get("password1"):
+                user = form.save(commit=False)
+                user.set_password(form.cleaned_data["password1"])  # 비밀번호 변경
+                user.save()
+                update_session_auth_hash(request, user)  # 세션 갱신
+            else:
+                form.save()  # 비밀번호가 변경되지 않으면 다른 정보만 저장
+
             return redirect(reverse("account:detail"))
         else:
             return render(request, "account/update.html", {"form": form})
 
-# 사용자 탈퇴
+# 회원 탈퇴
 @login_required
 def user_delete(request):
     request.user.delete()
