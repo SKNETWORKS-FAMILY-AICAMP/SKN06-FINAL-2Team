@@ -18,8 +18,9 @@
         "url": "https://page.kakao.com/content/66065996",
         "episode": 118,
         "comments": 189,
-        "first_episode": "2025.02.13.",
-        "ranking": 1
+        "first_episode": "2025.02.13",
+        "ranking": 1,
+        "score": 0.8152614290173616
     },
     {
         "id": 66025845,
@@ -40,8 +41,9 @@
         "url": "https://page.kakao.com/content/66025845",
         "episode": 24,
         "comments": 2,
-        "first_episode": "2025.02.06.",
-        "ranking": 95
+        "first_episode": "2025.02.06",
+        "ranking": 95,
+        "score": 0.4731887150492771
     },
     {
         "id": 66017833,
@@ -62,8 +64,9 @@
         "url": "https://page.kakao.com/content/66017833",
         "episode": 110,
         "comments": 46,
-        "first_episode": "2025.02.04.",
-        "ranking": 27
+        "first_episode": "2025.02.04",
+        "ranking": 27,
+        "score": 0.6740271932433831
     },
     {
         "id": 65974425,
@@ -84,8 +87,9 @@
         "url": "https://page.kakao.com/content/65974425",
         "episode": 9,
         "comments": 0,
-        "first_episode": "2025.02.03.",
-        "ranking": 161
+        "first_episode": "2025.02.03",
+        "ranking": 161,
+        "score": 0.34306099771228393
     },
     {
         "id": 65844438,
@@ -106,8 +110,9 @@
         "url": "https://page.kakao.com/content/65844438",
         "episode": 1,
         "comments": 0,
-        "first_episode": "2025.01.10.",
-        "ranking": 281
+        "first_episode": "2025.01.10",
+        "ranking": 281,
+        "score": 0.07787907383274643
     },
     {
         "id": 65878533,
@@ -128,8 +133,9 @@
         "url": "https://page.kakao.com/content/65878533",
         "episode": 137,
         "comments": 0,
-        "first_episode": "2025.01.11.",
-        "ranking": 230
+        "first_episode": "2025.01.11",
+        "ranking": 230,
+        "score": 0.29158990129585566
     },
     {
         "id": 65694190,
@@ -150,8 +156,9 @@
         "url": "https://page.kakao.com/content/65694190",
         "episode": 158,
         "comments": 26,
-        "first_episode": "2025.01.06.",
-        "ranking": 62
+        "first_episode": "2025.01.06",
+        "ranking": 62,
+        "score": 0.6224344941182622
     },
     {
         "id": 65693796,
@@ -172,8 +179,9 @@
         "url": "https://page.kakao.com/content/65693796",
         "episode": 123,
         "comments": 2,
-        "first_episode": "2025.01.06.",
-        "ranking": 175
+        "first_episode": "2025.01.06",
+        "ranking": 175,
+        "score": 0.397312395800215
     },
     {
         "id": 65828074,
@@ -194,8 +202,9 @@
         "url": "https://page.kakao.com/content/65828074",
         "episode": 6,
         "comments": 0,
-        "first_episode": "2025.01.02.",
-        "ranking": 199
+        "first_episode": "2025.01.02",
+        "ranking": 199,
+        "score": 0.3080926740365795
     },
     {
         "id": 65826794,
@@ -216,8 +225,9 @@
         "url": "https://page.kakao.com/content/65826794",
         "episode": 7,
         "comments": 0,
-        "first_episode": "2025.01.02.",
-        "ranking": 178
+        "first_episode": "2025.01.02",
+        "ranking": 178,
+        "score": 0.33025636717820084
     },
     {
         "id": 65802472,
@@ -238,8 +248,9 @@
         "url": "https://page.kakao.com/content/65802472",
         "episode": 180,
         "comments": 2,
-        "first_episode": "2024.12.30.",
-        "ranking": 86
+        "first_episode": "2024.12.30",
+        "ranking": 86,
+        "score": 0.5416101486145045
     },
     {
         "id": 65796496,
@@ -260,8 +271,9 @@
         "url": "https://page.kakao.com/content/65796496",
         "episode": 30,
         "comments": 0,
-        "first_episode": "2024.12.30.",
-        "ranking": 222
+        "first_episode": "2024.12.30",
+        "ranking": 222,
+        "score": 0.24353439092551118
     },
     {
         "id": 65401874,
@@ -282,8 +294,9 @@
         "url": "https://page.kakao.com/content/65401874",
         "episode": 7,
         "comments": 0,
-        "first_episode": "2024.12.05.",
-        "ranking": 231
+        "first_episode": "2024.12.05",
+        "ranking": 231,
+        "score": 0.2609034128285166
     },
     {
         "id": 65401524,
@@ -304,8 +317,9 @@
         "url": "https://page.kakao.com/content/65401524",
         "episode": 4,
         "comments": 0,
-        "first_episode": "2024.12.05.",
-        "ranking": 138
+        "first_episode": "2024.12.05",
+        "ranking": 138,
+        "score": 0.3176575021990421
     },
     {
         "id": 65463287,
@@ -326,8 +340,9 @@
         "url": "https://page.kakao.com/content/65463287",
         "episode": 157,
         "comments": 47,
-        "first_episode": "2024.11.11.",
-        "ranking": 6
+        "first_episode": "2024.11.11",
+        "ranking": 6,
+        "score": 0.7707858600648201
     },
     {
         "id": 65330026,
@@ -348,8 +363,9 @@
         "url": "https://page.kakao.com/content/65330026",
         "episode": 2,
         "comments": 0,
-        "first_episode": "2024.10.22.",
-        "ranking": 282
+        "first_episode": "2024.10.22",
+        "ranking": 282,
+        "score": 0.07660834765882787
     },
     {
         "id": 65259458,
@@ -370,8 +386,9 @@
         "url": "https://page.kakao.com/content/65259458",
         "episode": 8,
         "comments": 0,
-        "first_episode": "2024.10.18.",
-        "ranking": 245
+        "first_episode": "2024.10.18",
+        "ranking": 245,
+        "score": 0.25252091373639707
     },
     {
         "id": 65235631,
@@ -392,8 +409,9 @@
         "url": "https://page.kakao.com/content/65235631",
         "episode": 24,
         "comments": 108,
-        "first_episode": "2024.10.17.",
-        "ranking": 85
+        "first_episode": "2024.10.17",
+        "ranking": 85,
+        "score": 0.6636980582636571
     },
     {
         "id": 65278118,
@@ -414,8 +432,9 @@
         "url": "https://page.kakao.com/content/65278118",
         "episode": 184,
         "comments": 815,
-        "first_episode": "2024.10.16.",
-        "ranking": 8
+        "first_episode": "2024.10.16",
+        "ranking": 8,
+        "score": 0.8464598793832794
     },
     {
         "id": 64817543,
@@ -436,8 +455,9 @@
         "url": "https://page.kakao.com/content/64817543",
         "episode": 7,
         "comments": 0,
-        "first_episode": "2024.09.23.",
-        "ranking": 267
+        "first_episode": "2024.09.23",
+        "ranking": 267,
+        "score": 0.2217921781889981
     },
     {
         "id": 64913844,
@@ -458,8 +478,9 @@
         "url": "https://page.kakao.com/content/64913844",
         "episode": 140,
         "comments": 75,
-        "first_episode": "2024.08.20.",
-        "ranking": 19
+        "first_episode": "2024.08.20",
+        "ranking": 19,
+        "score": 0.7479366617716686
     },
     {
         "id": 64860188,
@@ -480,8 +501,9 @@
         "url": "https://page.kakao.com/content/64860188",
         "episode": 11,
         "comments": 0,
-        "first_episode": "2024.08.10.",
-        "ranking": 197
+        "first_episode": "2024.08.10",
+        "ranking": 197,
+        "score": 0.33324399168121993
     },
     {
         "id": 64808150,
@@ -502,8 +524,9 @@
         "url": "https://page.kakao.com/content/64808150",
         "episode": 5,
         "comments": 0,
-        "first_episode": "2024.08.09.",
-        "ranking": 127
+        "first_episode": "2024.08.09",
+        "ranking": 127,
+        "score": 0.4163780011464094
     },
     {
         "id": 64808139,
@@ -524,8 +547,9 @@
         "url": "https://page.kakao.com/content/64808139",
         "episode": 5,
         "comments": 0,
-        "first_episode": "2024.08.09.",
-        "ranking": 81
+        "first_episode": "2024.08.09",
+        "ranking": 81,
+        "score": 0.5164111311420498
     },
     {
         "id": 64824131,
@@ -546,8 +570,9 @@
         "url": "https://page.kakao.com/content/64824131",
         "episode": 162,
         "comments": 45,
-        "first_episode": "2024.08.08.",
-        "ranking": 112
+        "first_episode": "2024.08.08",
+        "ranking": 112,
+        "score": 0.6155229795481444
     },
     {
         "id": 64607797,
@@ -568,8 +593,9 @@
         "url": "https://page.kakao.com/content/64607797",
         "episode": 8,
         "comments": 0,
-        "first_episode": "2024.08.06.",
-        "ranking": 38
+        "first_episode": "2024.08.06",
+        "ranking": 38,
+        "score": 0.5781489892793019
     },
     {
         "id": 64780196,
@@ -590,8 +616,9 @@
         "url": "https://page.kakao.com/content/64780196",
         "episode": 3,
         "comments": 0,
-        "first_episode": "2024.08.02.",
-        "ranking": 132
+        "first_episode": "2024.08.02",
+        "ranking": 132,
+        "score": 0.39514906771178565
     },
     {
         "id": 64387862,
@@ -612,8 +639,9 @@
         "url": "https://page.kakao.com/content/64387862",
         "episode": 1,
         "comments": 0,
-        "first_episode": "2024.07.25.",
-        "ranking": 134
+        "first_episode": "2024.07.25",
+        "ranking": 134,
+        "score": 0.38398835121140945
     },
     {
         "id": 64389712,
@@ -634,8 +662,9 @@
         "url": "https://page.kakao.com/content/64389712",
         "episode": 150,
         "comments": 611,
-        "first_episode": "2024.06.19.",
-        "ranking": 16
+        "first_episode": "2024.06.19",
+        "ranking": 16,
+        "score": 0.8594448988042067
     },
     {
         "id": 64432242,
@@ -656,8 +685,9 @@
         "url": "https://page.kakao.com/content/64432242",
         "episode": 10,
         "comments": 0,
-        "first_episode": "2024.06.19.",
-        "ranking": 137
+        "first_episode": "2024.06.19",
+        "ranking": 137,
+        "score": 0.41081054761014574
     },
     {
         "id": 63060548,
@@ -678,8 +708,9 @@
         "url": "https://page.kakao.com/content/63060548",
         "episode": 5,
         "comments": 0,
-        "first_episode": "2024.06.17.",
-        "ranking": 283
+        "first_episode": "2024.06.17",
+        "ranking": 283,
+        "score": 0.17988479466358903
     },
     {
         "id": 64314826,
@@ -700,8 +731,9 @@
         "url": "https://page.kakao.com/content/64314826",
         "episode": 201,
         "comments": 121,
-        "first_episode": "2024.06.10.",
-        "ranking": 44
+        "first_episode": "2024.06.10",
+        "ranking": 44,
+        "score": 0.7430866015887415
     },
     {
         "id": 64047748,
@@ -722,8 +754,9 @@
         "url": "https://page.kakao.com/content/64047748",
         "episode": 99,
         "comments": 201,
-        "first_episode": "2024.05.09.",
-        "ranking": 84
+        "first_episode": "2024.05.09",
+        "ranking": 84,
+        "score": 0.7181767265335031
     },
     {
         "id": 63544206,
@@ -744,8 +777,9 @@
         "url": "https://page.kakao.com/content/63544206",
         "episode": 231,
         "comments": 7,
-        "first_episode": "2024.04.22.",
-        "ranking": 66
+        "first_episode": "2024.04.22",
+        "ranking": 66,
+        "score": 0.5781147954317281
     },
     {
         "id": 64028265,
@@ -766,8 +800,9 @@
         "url": "https://page.kakao.com/content/64028265",
         "episode": 5,
         "comments": 0,
-        "first_episode": "2024.04.19.",
-        "ranking": 284
+        "first_episode": "2024.04.19",
+        "ranking": 284,
+        "score": 0.1963482210938578
     },
     {
         "id": 64027767,
@@ -788,8 +823,9 @@
         "url": "https://page.kakao.com/content/64027767",
         "episode": 2,
         "comments": 0,
-        "first_episode": "2024.04.19.",
-        "ranking": 136
+        "first_episode": "2024.04.19",
+        "ranking": 136,
+        "score": 0.3604572392801952
     },
     {
         "id": 63986952,
@@ -810,8 +846,9 @@
         "url": "https://page.kakao.com/content/63986952",
         "episode": 3,
         "comments": 0,
-        "first_episode": "2024.04.15.",
-        "ranking": 285
+        "first_episode": "2024.04.15",
+        "ranking": 285,
+        "score": 0.20540771743496897
     },
     {
         "id": 63987012,
@@ -832,8 +869,9 @@
         "url": "https://page.kakao.com/content/63987012",
         "episode": 2,
         "comments": 0,
-        "first_episode": "2024.04.15.",
-        "ranking": 128
+        "first_episode": "2024.04.15",
+        "ranking": 128,
+        "score": 0.4084847147457653
     },
     {
         "id": 63865634,
@@ -854,8 +892,9 @@
         "url": "https://page.kakao.com/content/63865634",
         "episode": 250,
         "comments": 955,
-        "first_episode": "2024.04.04.",
-        "ranking": 37
+        "first_episode": "2024.04.04",
+        "ranking": 37,
+        "score": 0.8268595535593741
     },
     {
         "id": 63756571,
@@ -876,8 +915,9 @@
         "url": "https://page.kakao.com/content/63756571",
         "episode": 11,
         "comments": 0,
-        "first_episode": "2024.03.20.",
-        "ranking": 214
+        "first_episode": "2024.03.20",
+        "ranking": 214,
+        "score": 0.35458181327414484
     },
     {
         "id": 63650484,
@@ -898,8 +938,9 @@
         "url": "https://page.kakao.com/content/63650484",
         "episode": 92,
         "comments": 405,
-        "first_episode": "2024.03.07.",
-        "ranking": 94
+        "first_episode": "2024.03.07",
+        "ranking": 94,
+        "score": 0.7259801588600192
     },
     {
         "id": 63576956,
@@ -920,8 +961,9 @@
         "url": "https://page.kakao.com/content/63576956",
         "episode": 32,
         "comments": 4,
-        "first_episode": "2024.02.22.",
-        "ranking": 255
+        "first_episode": "2024.02.22",
+        "ranking": 255,
+        "score": 0.3272087133100566
     },
     {
         "id": 63207883,
@@ -942,8 +984,9 @@
         "url": "https://page.kakao.com/content/63207883",
         "episode": 80,
         "comments": 257,
-        "first_episode": "2024.02.21.",
-        "ranking": 59
+        "first_episode": "2024.02.21",
+        "ranking": 59,
+        "score": 0.7687682357440361
     },
     {
         "id": 63601053,
@@ -964,8 +1007,9 @@
         "url": "https://page.kakao.com/content/63601053",
         "episode": 31,
         "comments": 127,
-        "first_episode": "2024.02.15.",
-        "ranking": 47
+        "first_episode": "2024.02.15",
+        "ranking": 47,
+        "score": 0.7371706224335371
     },
     {
         "id": 63563215,
@@ -986,8 +1030,9 @@
         "url": "https://page.kakao.com/content/63563215",
         "episode": 57,
         "comments": 0,
-        "first_episode": "2024.02.14.",
-        "ranking": 139
+        "first_episode": "2024.02.14",
+        "ranking": 139,
+        "score": 0.3913356503091238
     },
     {
         "id": 63562991,
@@ -1008,8 +1053,9 @@
         "url": "https://page.kakao.com/content/63562991",
         "episode": 3,
         "comments": 0,
-        "first_episode": "2024.02.13.",
-        "ranking": 286
+        "first_episode": "2024.02.13",
+        "ranking": 286,
+        "score": 0.15221415659079518
     },
     {
         "id": 63522191,
@@ -1030,8 +1076,9 @@
         "url": "https://page.kakao.com/content/63522191",
         "episode": 381,
         "comments": 1991,
-        "first_episode": "2024.02.07.",
-        "ranking": 0
+        "first_episode": "2024.02.07",
+        "ranking": 0,
+        "score": 0.9303807887145694
     },
     {
         "id": 63577590,
@@ -1052,8 +1099,9 @@
         "url": "https://page.kakao.com/content/63577590",
         "episode": 151,
         "comments": 423,
-        "first_episode": "2024.02.04.",
-        "ranking": 31
+        "first_episode": "2024.02.04",
+        "ranking": 31,
+        "score": 0.7944384588208557
     },
     {
         "id": 63429951,
@@ -1074,8 +1122,9 @@
         "url": "https://page.kakao.com/content/63429951",
         "episode": 214,
         "comments": 612,
-        "first_episode": "2024.01.18.",
-        "ranking": 42
+        "first_episode": "2024.01.18",
+        "ranking": 42,
+        "score": 0.8137383108113155
     },
     {
         "id": 63377273,
@@ -1096,8 +1145,9 @@
         "url": "https://page.kakao.com/content/63377273",
         "episode": 532,
         "comments": 1852,
-        "first_episode": "2024.01.11.",
-        "ranking": 3
+        "first_episode": "2024.01.11",
+        "ranking": 3,
+        "score": 0.917105557578584
     },
     {
         "id": 63332792,
@@ -1118,8 +1168,9 @@
         "url": "https://page.kakao.com/content/63332792",
         "episode": 120,
         "comments": 138,
-        "first_episode": "2023.12.28.",
-        "ranking": 101
+        "first_episode": "2023.12.28",
+        "ranking": 101,
+        "score": 0.6228820515606401
     },
     {
         "id": 63267172,
@@ -1140,8 +1191,9 @@
         "url": "https://page.kakao.com/content/63267172",
         "episode": 277,
         "comments": 566,
-        "first_episode": "2023.12.18.",
-        "ranking": 29
+        "first_episode": "2023.12.18",
+        "ranking": 29,
+        "score": 0.8073897139877518
     },
     {
         "id": 63218856,
@@ -1162,8 +1214,9 @@
         "url": "https://page.kakao.com/content/63218856",
         "episode": 228,
         "comments": 590,
-        "first_episode": "2023.12.18.",
-        "ranking": 26
+        "first_episode": "2023.12.18",
+        "ranking": 26,
+        "score": 0.8014934748584679
     },
     {
         "id": 63212212,
@@ -1184,8 +1237,9 @@
         "url": "https://page.kakao.com/content/63212212",
         "episode": 70,
         "comments": 4,
-        "first_episode": "2023.12.12.",
-        "ranking": 193
+        "first_episode": "2023.12.12",
+        "ranking": 193,
+        "score": 0.4419496155342332
     },
     {
         "id": 63173706,
@@ -1206,8 +1260,9 @@
         "url": "https://page.kakao.com/content/63173706",
         "episode": 243,
         "comments": 559,
-        "first_episode": "2023.12.04.",
-        "ranking": 23
+        "first_episode": "2023.12.04",
+        "ranking": 23,
+        "score": 0.841234952480894
     },
     {
         "id": 63091837,
@@ -1228,8 +1283,9 @@
         "url": "https://page.kakao.com/content/63091837",
         "episode": 31,
         "comments": 130,
-        "first_episode": "2023.11.19.",
-        "ranking": 88
+        "first_episode": "2023.11.19",
+        "ranking": 88,
+        "score": 0.6969382336293645
     },
     {
         "id": 63034640,
@@ -1250,8 +1306,9 @@
         "url": "https://page.kakao.com/content/63034640",
         "episode": 75,
         "comments": 196,
-        "first_episode": "2023.11.15.",
-        "ranking": 104
+        "first_episode": "2023.11.15",
+        "ranking": 104,
+        "score": 0.7022868243269141
     },
     {
         "id": 62969483,
@@ -1272,8 +1329,9 @@
         "url": "https://page.kakao.com/content/62969483",
         "episode": 245,
         "comments": 324,
-        "first_episode": "2023.11.14.",
-        "ranking": 40
+        "first_episode": "2023.11.14",
+        "ranking": 40,
+        "score": 0.7723715688595204
     },
     {
         "id": 62611470,
@@ -1294,8 +1352,9 @@
         "url": "https://page.kakao.com/content/62611470",
         "episode": 115,
         "comments": 34,
-        "first_episode": "2023.10.26.",
-        "ranking": 109
+        "first_episode": "2023.10.26",
+        "ranking": 109,
+        "score": 0.5988660710000114
     },
     {
         "id": 62842552,
@@ -1316,8 +1375,9 @@
         "url": "https://page.kakao.com/content/62842552",
         "episode": 133,
         "comments": 285,
-        "first_episode": "2023.10.12.",
-        "ranking": 39
+        "first_episode": "2023.10.12",
+        "ranking": 39,
+        "score": 0.7910103341398965
     },
     {
         "id": 62533251,
@@ -1338,8 +1398,9 @@
         "url": "https://page.kakao.com/content/62533251",
         "episode": 333,
         "comments": 71,
-        "first_episode": "2023.10.12.",
-        "ranking": 153
+        "first_episode": "2023.10.12",
+        "ranking": 153,
+        "score": 0.5890546019383132
     },
     {
         "id": 62716697,
@@ -1360,8 +1421,9 @@
         "url": "https://page.kakao.com/content/62716697",
         "episode": 274,
         "comments": 1986,
-        "first_episode": "2023.09.30.",
-        "ranking": 33
+        "first_episode": "2023.09.30",
+        "ranking": 33,
+        "score": 0.8677698465463116
     },
     {
         "id": 62721005,
@@ -1382,8 +1444,9 @@
         "url": "https://page.kakao.com/content/62721005",
         "episode": 106,
         "comments": 335,
-        "first_episode": "2023.09.27.",
-        "ranking": 46
+        "first_episode": "2023.09.27",
+        "ranking": 46,
+        "score": 0.7974016032043463
     },
     {
         "id": 62717381,
@@ -1404,8 +1467,9 @@
         "url": "https://page.kakao.com/content/62717381",
         "episode": 1,
         "comments": 0,
-        "first_episode": "2023.09.15.",
-        "ranking": 287
+        "first_episode": "2023.09.15",
+        "ranking": 287,
+        "score": 0.07025471691588395
     },
     {
         "id": 62717238,
@@ -1426,8 +1490,9 @@
         "url": "https://page.kakao.com/content/62717238",
         "episode": 1,
         "comments": 0,
-        "first_episode": "2023.09.15.",
-        "ranking": 288
+        "first_episode": "2023.09.15",
+        "ranking": 288,
+        "score": 0.10795623097336438
     },
     {
         "id": 62533244,
@@ -1448,8 +1513,9 @@
         "url": "https://page.kakao.com/content/62533244",
         "episode": 200,
         "comments": 1126,
-        "first_episode": "2023.08.31.",
-        "ranking": 25
+        "first_episode": "2023.08.31",
+        "ranking": 25,
+        "score": 0.8623163770191098
     },
     {
         "id": 62216930,
@@ -1470,8 +1536,9 @@
         "url": "https://page.kakao.com/content/62216930",
         "episode": 117,
         "comments": 521,
-        "first_episode": "2023.07.31.",
-        "ranking": 56
+        "first_episode": "2023.07.31",
+        "ranking": 56,
+        "score": 0.8053029910907606
     },
     {
         "id": 62308149,
@@ -1492,8 +1559,9 @@
         "url": "https://page.kakao.com/content/62308149",
         "episode": 206,
         "comments": 428,
-        "first_episode": "2023.07.24.",
-        "ranking": 146
+        "first_episode": "2023.07.24",
+        "ranking": 146,
+        "score": 0.6684537253975232
     },
     {
         "id": 62111254,
@@ -1514,8 +1582,9 @@
         "url": "https://page.kakao.com/content/62111254",
         "episode": 33,
         "comments": 168,
-        "first_episode": "2023.07.06.",
-        "ranking": 142
+        "first_episode": "2023.07.06",
+        "ranking": 142,
+        "score": 0.6215369024848861
     },
     {
         "id": 62150764,
@@ -1536,8 +1605,9 @@
         "url": "https://page.kakao.com/content/62150764",
         "episode": 166,
         "comments": 37,
-        "first_episode": "2023.07.03.",
-        "ranking": 120
+        "first_episode": "2023.07.03",
+        "ranking": 120,
+        "score": 0.6021802186376061
     },
     {
         "id": 61651480,
@@ -1558,8 +1628,9 @@
         "url": "https://page.kakao.com/content/61651480",
         "episode": 126,
         "comments": 591,
-        "first_episode": "2023.06.30.",
-        "ranking": 145
+        "first_episode": "2023.06.30",
+        "ranking": 145,
+        "score": 0.6722704549258709
     },
     {
         "id": 62046440,
@@ -1580,8 +1651,9 @@
         "url": "https://page.kakao.com/content/62046440",
         "episode": 243,
         "comments": 853,
-        "first_episode": "2023.06.22.",
-        "ranking": 58
+        "first_episode": "2023.06.22",
+        "ranking": 58,
+        "score": 0.797920740277619
     },
     {
         "id": 62053309,
@@ -1602,8 +1674,9 @@
         "url": "https://page.kakao.com/content/62053309",
         "episode": 53,
         "comments": 26,
-        "first_episode": "2023.06.13.",
-        "ranking": 159
+        "first_episode": "2023.06.13",
+        "ranking": 159,
+        "score": 0.5426180860099794
     },
     {
         "id": 62052557,
@@ -1624,8 +1697,9 @@
         "url": "https://page.kakao.com/content/62052557",
         "episode": 76,
         "comments": 60,
-        "first_episode": "2023.06.13.",
-        "ranking": 169
+        "first_episode": "2023.06.13",
+        "ranking": 169,
+        "score": 0.5468874046204024
     },
     {
         "id": 62052711,
@@ -1646,8 +1720,9 @@
         "url": "https://page.kakao.com/content/62052711",
         "episode": 63,
         "comments": 65,
-        "first_episode": "2023.06.13.",
-        "ranking": 110
+        "first_episode": "2023.06.13",
+        "ranking": 110,
+        "score": 0.6256269515326777
     },
     {
         "id": 62047134,
@@ -1668,8 +1743,9 @@
         "url": "https://page.kakao.com/content/62047134",
         "episode": 60,
         "comments": 143,
-        "first_episode": "2023.06.13.",
-        "ranking": 51
+        "first_episode": "2023.06.13",
+        "ranking": 51,
+        "score": 0.7373553596885096
     },
     {
         "id": 61951418,
@@ -1690,8 +1766,9 @@
         "url": "https://page.kakao.com/content/61951418",
         "episode": 162,
         "comments": 424,
-        "first_episode": "2023.06.08.",
-        "ranking": 149
+        "first_episode": "2023.06.08",
+        "ranking": 149,
+        "score": 0.6660766212024096
     },
     {
         "id": 61958013,
@@ -1712,8 +1789,9 @@
         "url": "https://page.kakao.com/content/61958013",
         "episode": 213,
         "comments": 1601,
-        "first_episode": "2023.05.31.",
-        "ranking": 21
+        "first_episode": "2023.05.31",
+        "ranking": 21,
+        "score": 0.8893588880345019
     },
     {
         "id": 61732174,
@@ -1734,8 +1812,9 @@
         "url": "https://page.kakao.com/content/61732174",
         "episode": 175,
         "comments": 1,
-        "first_episode": "2023.04.27.",
-        "ranking": 133
+        "first_episode": "2023.04.27",
+        "ranking": 133,
+        "score": 0.4854044675699512
     },
     {
         "id": 61572764,
@@ -1756,8 +1835,9 @@
         "url": "https://page.kakao.com/content/61572764",
         "episode": 109,
         "comments": 422,
-        "first_episode": "2023.03.31.",
-        "ranking": 90
+        "first_episode": "2023.03.31",
+        "ranking": 90,
+        "score": 0.7415748830627569
     },
     {
         "id": 61323129,
@@ -1778,8 +1858,9 @@
         "url": "https://page.kakao.com/content/61323129",
         "episode": 60,
         "comments": 216,
-        "first_episode": "2023.03.24.",
-        "ranking": 170
+        "first_episode": "2023.03.24",
+        "ranking": 170,
+        "score": 0.6053726911232573
     },
     {
         "id": 61448089,
@@ -1800,8 +1881,9 @@
         "url": "https://page.kakao.com/content/61448089",
         "episode": 107,
         "comments": 18,
-        "first_episode": "2023.03.10.",
-        "ranking": 126
+        "first_episode": "2023.03.10",
+        "ranking": 126,
+        "score": 0.48648536722388674
     },
     {
         "id": 61431753,
@@ -1822,8 +1904,9 @@
         "url": "https://page.kakao.com/content/61431753",
         "episode": 100,
         "comments": 5,
-        "first_episode": "2023.03.10.",
-        "ranking": 246
+        "first_episode": "2023.03.10",
+        "ranking": 246,
+        "score": 0.35837844600622726
     },
     {
         "id": 61431870,
@@ -1844,8 +1927,9 @@
         "url": "https://page.kakao.com/content/61431870",
         "episode": 100,
         "comments": 1,
-        "first_episode": "2023.03.10.",
-        "ranking": 268
+        "first_episode": "2023.03.10",
+        "ranking": 268,
+        "score": 0.3094922133023177
     },
     {
         "id": 61431460,
@@ -1866,8 +1950,9 @@
         "url": "https://page.kakao.com/content/61431460",
         "episode": 158,
         "comments": 17,
-        "first_episode": "2023.03.10.",
-        "ranking": 204
+        "first_episode": "2023.03.10",
+        "ranking": 204,
+        "score": 0.4430654593046537
     },
     {
         "id": 61347937,
@@ -1888,8 +1973,9 @@
         "url": "https://page.kakao.com/content/61347937",
         "episode": 106,
         "comments": 603,
-        "first_episode": "2023.02.28.",
-        "ranking": 75
+        "first_episode": "2023.02.28",
+        "ranking": 75,
+        "score": 0.7617258326842855
     },
     {
         "id": 61060106,
@@ -1910,8 +1996,9 @@
         "url": "https://page.kakao.com/content/61060106",
         "episode": 195,
         "comments": 26,
-        "first_episode": "2023.02.24.",
-        "ranking": 198
+        "first_episode": "2023.02.24",
+        "ranking": 198,
+        "score": 0.4762763446736035
     },
     {
         "id": 61266383,
@@ -1932,8 +2019,9 @@
         "url": "https://page.kakao.com/content/61266383",
         "episode": 11,
         "comments": 0,
-        "first_episode": "2023.02.10.",
-        "ranking": 131
+        "first_episode": "2023.02.10",
+        "ranking": 131,
+        "score": 0.43038487808541176
     },
     {
         "id": 61181669,
@@ -1954,8 +2042,9 @@
         "url": "https://page.kakao.com/content/61181669",
         "episode": 74,
         "comments": 35,
-        "first_episode": "2023.02.09.",
-        "ranking": 232
+        "first_episode": "2023.02.09",
+        "ranking": 232,
+        "score": 0.44112824217947916
     },
     {
         "id": 61118719,
@@ -1976,8 +2065,9 @@
         "url": "https://page.kakao.com/content/61118719",
         "episode": 131,
         "comments": 252,
-        "first_episode": "2023.01.31.",
-        "ranking": 71
+        "first_episode": "2023.01.31",
+        "ranking": 71,
+        "score": 0.7390083034187984
     },
     {
         "id": 60931367,
@@ -1998,8 +2088,9 @@
         "url": "https://page.kakao.com/content/60931367",
         "episode": 110,
         "comments": 259,
-        "first_episode": "2022.12.30.",
-        "ranking": 150
+        "first_episode": "2022.12.30",
+        "ranking": 150,
+        "score": 0.6537457267205042
     },
     {
         "id": 60911075,
@@ -2020,8 +2111,9 @@
         "url": "https://page.kakao.com/content/60911075",
         "episode": 187,
         "comments": 56,
-        "first_episode": "2022.12.26.",
-        "ranking": 165
+        "first_episode": "2022.12.26",
+        "ranking": 165,
+        "score": 0.5118367837654696
     },
     {
         "id": 60828355,
@@ -2042,8 +2134,9 @@
         "url": "https://page.kakao.com/content/60828355",
         "episode": 123,
         "comments": 60,
-        "first_episode": "2022.12.23.",
-        "ranking": 157
+        "first_episode": "2022.12.23",
+        "ranking": 157,
+        "score": 0.4905941580498681
     },
     {
         "id": 60844399,
@@ -2064,8 +2157,9 @@
         "url": "https://page.kakao.com/content/60844399",
         "episode": 6,
         "comments": 0,
-        "first_episode": "2022.12.22.",
-        "ranking": 240
+        "first_episode": "2022.12.22",
+        "ranking": 240,
+        "score": 0.272643916854181
     },
     {
         "id": 60650916,
@@ -2086,8 +2180,9 @@
         "url": "https://page.kakao.com/content/60650916",
         "episode": 73,
         "comments": 592,
-        "first_episode": "2022.11.17.",
-        "ranking": 80
+        "first_episode": "2022.11.17",
+        "ranking": 80,
+        "score": 0.7275399637466871
     },
     {
         "id": 60524628,
@@ -2108,8 +2203,9 @@
         "url": "https://page.kakao.com/content/60524628",
         "episode": 88,
         "comments": 659,
-        "first_episode": "2022.11.01.",
-        "ranking": 176
+        "first_episode": "2022.11.01",
+        "ranking": 176,
+        "score": 0.6144648166897061
     },
     {
         "id": 60415816,
@@ -2130,8 +2226,9 @@
         "url": "https://page.kakao.com/content/60415816",
         "episode": 101,
         "comments": 601,
-        "first_episode": "2022.10.21.",
-        "ranking": 187
+        "first_episode": "2022.10.21",
+        "ranking": 187,
+        "score": 0.5859352862440476
     },
     {
         "id": 60449447,
@@ -2152,8 +2249,9 @@
         "url": "https://page.kakao.com/content/60449447",
         "episode": 180,
         "comments": 326,
-        "first_episode": "2022.10.15.",
-        "ranking": 166
+        "first_episode": "2022.10.15",
+        "ranking": 166,
+        "score": 0.6034936805035795
     },
     {
         "id": 59033550,
@@ -2174,8 +2272,9 @@
         "url": "https://page.kakao.com/content/59033550",
         "episode": 144,
         "comments": 25,
-        "first_episode": "2022.10.01.",
-        "ranking": 269
+        "first_episode": "2022.10.01",
+        "ranking": 269,
+        "score": 0.3497865220884797
     },
     {
         "id": 60267598,
@@ -2196,8 +2295,9 @@
         "url": "https://page.kakao.com/content/60267598",
         "episode": 275,
         "comments": 521,
-        "first_episode": "2022.09.30.",
-        "ranking": 70
+        "first_episode": "2022.09.30",
+        "ranking": 70,
+        "score": 0.7662996301507355
     },
     {
         "id": 60260752,
@@ -2218,8 +2318,9 @@
         "url": "https://page.kakao.com/content/60260752",
         "episode": 23,
         "comments": 530,
-        "first_episode": "2022.09.16.",
-        "ranking": 200
+        "first_episode": "2022.09.16",
+        "ranking": 200,
+        "score": 0.5667508125419273
     },
     {
         "id": 60106754,
@@ -2240,8 +2341,9 @@
         "url": "https://page.kakao.com/content/60106754",
         "episode": 218,
         "comments": 178,
-        "first_episode": "2022.09.16.",
-        "ranking": 205
+        "first_episode": "2022.09.16",
+        "ranking": 205,
+        "score": 0.5058171502235287
     },
     {
         "id": 60194905,
@@ -2262,8 +2364,9 @@
         "url": "https://page.kakao.com/content/60194905",
         "episode": 260,
         "comments": 3713,
-        "first_episode": "2022.09.08.",
-        "ranking": 35
+        "first_episode": "2022.09.08",
+        "ranking": 35,
+        "score": 0.9059234009155785
     },
     {
         "id": 60106743,
@@ -2284,8 +2387,9 @@
         "url": "https://page.kakao.com/content/60106743",
         "episode": 101,
         "comments": 18,
-        "first_episode": "2022.09.05.",
-        "ranking": 215
+        "first_episode": "2022.09.05",
+        "ranking": 215,
+        "score": 0.44063630615370336
     },
     {
         "id": 60147476,
@@ -2306,8 +2410,9 @@
         "url": "https://page.kakao.com/content/60147476",
         "episode": 38,
         "comments": 32,
-        "first_episode": "2022.08.31.",
-        "ranking": 60
+        "first_episode": "2022.08.31",
+        "ranking": 60,
+        "score": 0.7037822785832233
     },
     {
         "id": 60100687,
@@ -2328,8 +2433,9 @@
         "url": "https://page.kakao.com/content/60100687",
         "episode": 921,
         "comments": 5179,
-        "first_episode": "2022.08.31.",
-        "ranking": 2
+        "first_episode": "2022.08.31",
+        "ranking": 2,
+        "score": 0.9550544346881243
     },
     {
         "id": 60101545,
@@ -2350,8 +2456,9 @@
         "url": "https://page.kakao.com/content/60101545",
         "episode": 30,
         "comments": 333,
-        "first_episode": "2022.08.26.",
-        "ranking": 216
+        "first_episode": "2022.08.26",
+        "ranking": 216,
+        "score": 0.514113953256142
     },
     {
         "id": 60025652,
@@ -2372,8 +2479,9 @@
         "url": "https://page.kakao.com/content/60025652",
         "episode": 424,
         "comments": 1021,
-        "first_episode": "2022.08.25.",
-        "ranking": 11
+        "first_episode": "2022.08.25",
+        "ranking": 11,
+        "score": 0.8543314971464269
     },
     {
         "id": 59844586,
@@ -2394,8 +2502,9 @@
         "url": "https://page.kakao.com/content/59844586",
         "episode": 105,
         "comments": 47,
-        "first_episode": "2022.08.16.",
-        "ranking": 236
+        "first_episode": "2022.08.16",
+        "ranking": 236,
+        "score": 0.44359461165733516
     },
     {
         "id": 59977336,
@@ -2416,8 +2525,9 @@
         "url": "https://page.kakao.com/content/59977336",
         "episode": 101,
         "comments": 478,
-        "first_episode": "2022.08.12.",
-        "ranking": 102
+        "first_episode": "2022.08.12",
+        "ranking": 102,
+        "score": 0.7084010193611389
     },
     {
         "id": 59955077,
@@ -2438,8 +2548,9 @@
         "url": "https://page.kakao.com/content/59955077",
         "episode": 110,
         "comments": 345,
-        "first_episode": "2022.08.08.",
-        "ranking": 162
+        "first_episode": "2022.08.08",
+        "ranking": 162,
+        "score": 0.5702072421434133
     },
     {
         "id": 59890360,
@@ -2460,8 +2571,9 @@
         "url": "https://page.kakao.com/content/59890360",
         "episode": 25,
         "comments": 472,
-        "first_episode": "2022.07.31.",
-        "ranking": 183
+        "first_episode": "2022.07.31",
+        "ranking": 183,
+        "score": 0.5934008348904801
     },
     {
         "id": 59902942,
@@ -2482,8 +2594,9 @@
         "url": "https://page.kakao.com/content/59902942",
         "episode": 100,
         "comments": 575,
-        "first_episode": "2022.07.28.",
-        "ranking": 87
+        "first_episode": "2022.07.28",
+        "ranking": 87,
+        "score": 0.7420267040184068
     },
     {
         "id": 59803151,
@@ -2504,8 +2617,9 @@
         "url": "https://page.kakao.com/content/59803151",
         "episode": 150,
         "comments": 14,
-        "first_episode": "2022.07.22.",
-        "ranking": 129
+        "first_episode": "2022.07.22",
+        "ranking": 129,
+        "score": 0.5175903426196322
     },
     {
         "id": 59713957,
@@ -2526,8 +2640,9 @@
         "url": "https://page.kakao.com/content/59713957",
         "episode": 110,
         "comments": 1112,
-        "first_episode": "2022.07.07.",
-        "ranking": 188
+        "first_episode": "2022.07.07",
+        "ranking": 188,
+        "score": 0.6278713612228525
     },
     {
         "id": 59713601,
@@ -2548,8 +2663,9 @@
         "url": "https://page.kakao.com/content/59713601",
         "episode": 100,
         "comments": 303,
-        "first_episode": "2022.07.04.",
-        "ranking": 206
+        "first_episode": "2022.07.04",
+        "ranking": 206,
+        "score": 0.5225954390846406
     },
     {
         "id": 59600357,
@@ -2570,8 +2686,9 @@
         "url": "https://page.kakao.com/content/59600357",
         "episode": 71,
         "comments": 667,
-        "first_episode": "2022.06.30.",
-        "ranking": 20
+        "first_episode": "2022.06.30",
+        "ranking": 20,
+        "score": 0.8448674167752401
     },
     {
         "id": 59669013,
@@ -2592,8 +2709,9 @@
         "url": "https://page.kakao.com/content/59669013",
         "episode": 83,
         "comments": 1058,
-        "first_episode": "2022.06.24.",
-        "ranking": 36
+        "first_episode": "2022.06.24",
+        "ranking": 36,
+        "score": 0.8277425727009466
     },
     {
         "id": 59685088,
@@ -2614,8 +2732,9 @@
         "url": "https://page.kakao.com/content/59685088",
         "episode": 3,
         "comments": 5,
-        "first_episode": "2022.06.24.",
-        "ranking": 125
+        "first_episode": "2022.06.24",
+        "ranking": 125,
+        "score": 0.49558904938855725
     },
     {
         "id": 59392207,
@@ -2636,8 +2755,9 @@
         "url": "https://page.kakao.com/content/59392207",
         "episode": 151,
         "comments": 907,
-        "first_episode": "2022.06.16.",
-        "ranking": 207
+        "first_episode": "2022.06.16",
+        "ranking": 207,
+        "score": 0.6038792922542132
     },
     {
         "id": 59584520,
@@ -2658,8 +2778,9 @@
         "url": "https://page.kakao.com/content/59584520",
         "episode": 50,
         "comments": 1227,
-        "first_episode": "2022.06.10.",
-        "ranking": 100
+        "first_episode": "2022.06.10",
+        "ranking": 100,
+        "score": 0.7572352583281928
     },
     {
         "id": 59593693,
@@ -2680,8 +2801,9 @@
         "url": "https://page.kakao.com/content/59593693",
         "episode": 3,
         "comments": 3,
-        "first_episode": "2022.06.10.",
-        "ranking": 270
+        "first_episode": "2022.06.10",
+        "ranking": 270,
+        "score": 0.3010603722509355
     },
     {
         "id": 59540235,
@@ -2702,8 +2824,9 @@
         "url": "https://page.kakao.com/content/59540235",
         "episode": 143,
         "comments": 34,
-        "first_episode": "2022.06.08.",
-        "ranking": 237
+        "first_episode": "2022.06.08",
+        "ranking": 237,
+        "score": 0.40608171791438374
     },
     {
         "id": 59408564,
@@ -2724,8 +2847,9 @@
         "url": "https://page.kakao.com/content/59408564",
         "episode": 104,
         "comments": 602,
-        "first_episode": "2022.06.03.",
-        "ranking": 160
+        "first_episode": "2022.06.03",
+        "ranking": 160,
+        "score": 0.5826399596669415
     },
     {
         "id": 59464585,
@@ -2746,8 +2870,9 @@
         "url": "https://page.kakao.com/content/59464585",
         "episode": 121,
         "comments": 2478,
-        "first_episode": "2022.05.31.",
-        "ranking": 43
+        "first_episode": "2022.05.31",
+        "ranking": 43,
+        "score": 0.8680551105899857
     },
     {
         "id": 59459306,
@@ -2768,8 +2893,9 @@
         "url": "https://page.kakao.com/content/59459306",
         "episode": 42,
         "comments": 1034,
-        "first_episode": "2022.05.26.",
-        "ranking": 208
+        "first_episode": "2022.05.26",
+        "ranking": 208,
+        "score": 0.5738763447384478
     },
     {
         "id": 59064545,
@@ -2790,8 +2916,9 @@
         "url": "https://page.kakao.com/content/59064545",
         "episode": 100,
         "comments": 3,
-        "first_episode": "2022.05.25.",
-        "ranking": 247
+        "first_episode": "2022.05.25",
+        "ranking": 247,
+        "score": 0.33202514677980954
     },
     {
         "id": 59435728,
@@ -2812,8 +2939,9 @@
         "url": "https://page.kakao.com/content/59435728",
         "episode": 164,
         "comments": 849,
-        "first_episode": "2022.05.19.",
-        "ranking": 82
+        "first_episode": "2022.05.19",
+        "ranking": 82,
+        "score": 0.7605073284687918
     },
     {
         "id": 59433668,
@@ -2834,8 +2962,9 @@
         "url": "https://page.kakao.com/content/59433668",
         "episode": 2,
         "comments": 2,
-        "first_episode": "2022.05.18.",
-        "ranking": 256
+        "first_episode": "2022.05.18",
+        "ranking": 256,
+        "score": 0.2986388892191263
     },
     {
         "id": 59393920,
@@ -2856,8 +2985,9 @@
         "url": "https://page.kakao.com/content/59393920",
         "episode": 122,
         "comments": 1038,
-        "first_episode": "2022.05.12.",
-        "ranking": 79
+        "first_episode": "2022.05.12",
+        "ranking": 79,
+        "score": 0.7846301011461151
     },
     {
         "id": 59313435,
@@ -2878,8 +3008,9 @@
         "url": "https://page.kakao.com/content/59313435",
         "episode": 102,
         "comments": 956,
-        "first_episode": "2022.05.11.",
-        "ranking": 167
+        "first_episode": "2022.05.11",
+        "ranking": 167,
+        "score": 0.6503170722666121
     },
     {
         "id": 58965383,
@@ -2900,8 +3031,9 @@
         "url": "https://page.kakao.com/content/58965383",
         "episode": 102,
         "comments": 4,
-        "first_episode": "2022.05.09.",
-        "ranking": 257
+        "first_episode": "2022.05.09",
+        "ranking": 257,
+        "score": 0.3341446297305964
     },
     {
         "id": 59302670,
@@ -2922,8 +3054,9 @@
         "url": "https://page.kakao.com/content/59302670",
         "episode": 26,
         "comments": 135,
-        "first_episode": "2022.04.30.",
-        "ranking": 152
+        "first_episode": "2022.04.30",
+        "ranking": 152,
+        "score": 0.6168274164035503
     },
     {
         "id": 59289844,
@@ -2944,8 +3077,9 @@
         "url": "https://page.kakao.com/content/59289844",
         "episode": 630,
         "comments": 6204,
-        "first_episode": "2022.04.30.",
-        "ranking": 5
+        "first_episode": "2022.04.30",
+        "ranking": 5,
+        "score": 0.9614306853295019
     },
     {
         "id": 59270618,
@@ -2966,8 +3100,9 @@
         "url": "https://page.kakao.com/content/59270618",
         "episode": 64,
         "comments": 1801,
-        "first_episode": "2022.04.22.",
-        "ranking": 76
+        "first_episode": "2022.04.22",
+        "ranking": 76,
+        "score": 0.789143555664418
     },
     {
         "id": 59049305,
@@ -2988,8 +3123,9 @@
         "url": "https://page.kakao.com/content/59049305",
         "episode": 140,
         "comments": 28,
-        "first_episode": "2022.04.08.",
-        "ranking": 271
+        "first_episode": "2022.04.08",
+        "ranking": 271,
+        "score": 0.35672253856176084
     },
     {
         "id": 59060497,
@@ -3010,8 +3146,9 @@
         "url": "https://page.kakao.com/content/59060497",
         "episode": 122,
         "comments": 842,
-        "first_episode": "2022.04.04.",
-        "ranking": 156
+        "first_episode": "2022.04.04",
+        "ranking": 156,
+        "score": 0.6197931601319315
     },
     {
         "id": 59032972,
@@ -3032,8 +3169,9 @@
         "url": "https://page.kakao.com/content/59032972",
         "episode": 103,
         "comments": 1392,
-        "first_episode": "2022.03.31.",
-        "ranking": 106
+        "first_episode": "2022.03.31",
+        "ranking": 106,
+        "score": 0.7459344828078697
     },
     {
         "id": 59044826,
@@ -3054,8 +3192,9 @@
         "url": "https://page.kakao.com/content/59044826",
         "episode": 127,
         "comments": 4,
-        "first_episode": "2022.03.25.",
-        "ranking": 248
+        "first_episode": "2022.03.25",
+        "ranking": 248,
+        "score": 0.32793490674526626
     },
     {
         "id": 59062553,
@@ -3076,8 +3215,9 @@
         "url": "https://page.kakao.com/content/59062553",
         "episode": 174,
         "comments": 2085,
-        "first_episode": "2022.03.24.",
-        "ranking": 72
+        "first_episode": "2022.03.24",
+        "ranking": 72,
+        "score": 0.8035933484851431
     },
     {
         "id": 59040991,
@@ -3098,8 +3238,9 @@
         "url": "https://page.kakao.com/content/59040991",
         "episode": 60,
         "comments": 642,
-        "first_episode": "2022.03.19.",
-        "ranking": 184
+        "first_episode": "2022.03.19",
+        "ranking": 184,
+        "score": 0.549853472443676
     },
     {
         "id": 58933131,
@@ -3120,8 +3261,9 @@
         "url": "https://page.kakao.com/content/58933131",
         "episode": 126,
         "comments": 5481,
-        "first_episode": "2022.03.11.",
-        "ranking": 50
+        "first_episode": "2022.03.11",
+        "ranking": 50,
+        "score": 0.8594912881944073
     },
     {
         "id": 58966180,
@@ -3142,8 +3284,9 @@
         "url": "https://page.kakao.com/content/58966180",
         "episode": 44,
         "comments": 953,
-        "first_episode": "2022.03.10.",
-        "ranking": 258
+        "first_episode": "2022.03.10",
+        "ranking": 258,
+        "score": 0.5093930308931722
     },
     {
         "id": 58963412,
@@ -3164,8 +3307,9 @@
         "url": "https://page.kakao.com/content/58963412",
         "episode": 4,
         "comments": 0,
-        "first_episode": "2022.03.07.",
-        "ranking": 289
+        "first_episode": "2022.03.07",
+        "ranking": 289,
+        "score": 0.16237430666980587
     },
     {
         "id": 58920545,
@@ -3186,8 +3330,9 @@
         "url": "https://page.kakao.com/content/58920545",
         "episode": 101,
         "comments": 3,
-        "first_episode": "2022.03.04.",
-        "ranking": 290
+        "first_episode": "2022.03.04",
+        "ranking": 290,
+        "score": 0.26881630399390677
     },
     {
         "id": 58845381,
@@ -3208,8 +3353,9 @@
         "url": "https://page.kakao.com/content/58845381",
         "episode": 161,
         "comments": 891,
-        "first_episode": "2022.02.28.",
-        "ranking": 111
+        "first_episode": "2022.02.28",
+        "ranking": 111,
+        "score": 0.7175554340915276
     },
     {
         "id": 58875916,
@@ -3230,8 +3376,9 @@
         "url": "https://page.kakao.com/content/58875916",
         "episode": 160,
         "comments": 40,
-        "first_episode": "2022.02.28.",
-        "ranking": 223
+        "first_episode": "2022.02.28",
+        "ranking": 223,
+        "score": 0.4396018936630271
     },
     {
         "id": 58882090,
@@ -3252,8 +3399,9 @@
         "url": "https://page.kakao.com/content/58882090",
         "episode": 100,
         "comments": 1168,
-        "first_episode": "2022.02.24.",
-        "ranking": 151
+        "first_episode": "2022.02.24",
+        "ranking": 151,
+        "score": 0.6767339748940544
     },
     {
         "id": 58799498,
@@ -3274,8 +3422,9 @@
         "url": "https://page.kakao.com/content/58799498",
         "episode": 98,
         "comments": 977,
-        "first_episode": "2022.02.11.",
-        "ranking": 217
+        "first_episode": "2022.02.11",
+        "ranking": 217,
+        "score": 0.5927419671982204
     },
     {
         "id": 58734453,
@@ -3296,8 +3445,9 @@
         "url": "https://page.kakao.com/content/58734453",
         "episode": 169,
         "comments": 15,
-        "first_episode": "2022.02.03.",
-        "ranking": 249
+        "first_episode": "2022.02.03",
+        "ranking": 249,
+        "score": 0.3804550213262228
     },
     {
         "id": 58730845,
@@ -3318,8 +3468,9 @@
         "url": "https://page.kakao.com/content/58730845",
         "episode": 4,
         "comments": 1,
-        "first_episode": "2022.01.31.",
-        "ranking": 272
+        "first_episode": "2022.01.31",
+        "ranking": 272,
+        "score": 0.2849806376985079
     },
     {
         "id": 58726294,
@@ -3340,8 +3491,9 @@
         "url": "https://page.kakao.com/content/58726294",
         "episode": 134,
         "comments": 1768,
-        "first_episode": "2022.01.31.",
-        "ranking": 179
+        "first_episode": "2022.01.31",
+        "ranking": 179,
+        "score": 0.6589376552156013
     },
     {
         "id": 58737959,
@@ -3362,8 +3514,9 @@
         "url": "https://page.kakao.com/content/58737959",
         "episode": 31,
         "comments": 328,
-        "first_episode": "2022.01.28.",
-        "ranking": 201
+        "first_episode": "2022.01.28",
+        "ranking": 201,
+        "score": 0.566290132485952
     },
     {
         "id": 58734145,
@@ -3384,8 +3537,9 @@
         "url": "https://page.kakao.com/content/58734145",
         "episode": 100,
         "comments": 661,
-        "first_episode": "2022.01.28.",
-        "ranking": 218
+        "first_episode": "2022.01.28",
+        "ranking": 218,
+        "score": 0.5273355905713047
     },
     {
         "id": 58671052,
@@ -3406,8 +3560,9 @@
         "url": "https://page.kakao.com/content/58671052",
         "episode": 30,
         "comments": 754,
-        "first_episode": "2022.01.21.",
-        "ranking": 163
+        "first_episode": "2022.01.21",
+        "ranking": 163,
+        "score": 0.5930405382564935
     },
     {
         "id": 58570655,
@@ -3428,8 +3583,9 @@
         "url": "https://page.kakao.com/content/58570655",
         "episode": 100,
         "comments": 3,
-        "first_episode": "2022.01.07.",
-        "ranking": 130
+        "first_episode": "2022.01.07",
+        "ranking": 130,
+        "score": 0.5139789265091376
     },
     {
         "id": 58570685,
@@ -3450,8 +3606,9 @@
         "url": "https://page.kakao.com/content/58570685",
         "episode": 178,
         "comments": 1879,
-        "first_episode": "2022.01.07.",
-        "ranking": 92
+        "first_episode": "2022.01.07",
+        "ranking": 92,
+        "score": 0.7820873653369099
     },
     {
         "id": 58523177,
@@ -3472,8 +3629,9 @@
         "url": "https://page.kakao.com/content/58523177",
         "episode": 3,
         "comments": 0,
-        "first_episode": "2021.12.31.",
-        "ranking": 273
+        "first_episode": "2021.12.31",
+        "ranking": 273,
+        "score": 0.24504043063520559
     },
     {
         "id": 58502543,
@@ -3494,8 +3652,9 @@
         "url": "https://page.kakao.com/content/58502543",
         "episode": 69,
         "comments": 735,
-        "first_episode": "2021.12.31.",
-        "ranking": 241
+        "first_episode": "2021.12.31",
+        "ranking": 241,
+        "score": 0.5552367833422084
     },
     {
         "id": 58463053,
@@ -3516,8 +3675,9 @@
         "url": "https://page.kakao.com/content/58463053",
         "episode": 3,
         "comments": 0,
-        "first_episode": "2021.12.31.",
-        "ranking": 274
+        "first_episode": "2021.12.31",
+        "ranking": 274,
+        "score": 0.21613778895242786
     },
     {
         "id": 58523174,
@@ -3538,8 +3698,9 @@
         "url": "https://page.kakao.com/content/58523174",
         "episode": 6,
         "comments": 14,
-        "first_episode": "2021.12.24.",
-        "ranking": 291
+        "first_episode": "2021.12.24",
+        "ranking": 291,
+        "score": 0.3124798006971683
     },
     {
         "id": 58504742,
@@ -3560,8 +3721,9 @@
         "url": "https://page.kakao.com/content/58504742",
         "episode": 112,
         "comments": 1486,
-        "first_episode": "2021.12.24.",
-        "ranking": 123
+        "first_episode": "2021.12.24",
+        "ranking": 123,
+        "score": 0.7290851936085705
     },
     {
         "id": 58371648,
@@ -3582,8 +3744,9 @@
         "url": "https://page.kakao.com/content/58371648",
         "episode": 17,
         "comments": 7,
-        "first_episode": "2021.12.21.",
-        "ranking": 275
+        "first_episode": "2021.12.21",
+        "ranking": 275,
+        "score": 0.31839048022330735
     },
     {
         "id": 58471040,
@@ -3604,8 +3767,9 @@
         "url": "https://page.kakao.com/content/58471040",
         "episode": 115,
         "comments": 1107,
-        "first_episode": "2021.12.17.",
-        "ranking": 61
+        "first_episode": "2021.12.17",
+        "ranking": 61,
+        "score": 0.7929347940339533
     },
     {
         "id": 58436334,
@@ -3626,8 +3790,9 @@
         "url": "https://page.kakao.com/content/58436334",
         "episode": 110,
         "comments": 318,
-        "first_episode": "2021.12.17.",
-        "ranking": 171
+        "first_episode": "2021.12.17",
+        "ranking": 171,
+        "score": 0.5852785589205585
     },
     {
         "id": 58406809,
@@ -3648,8 +3813,9 @@
         "url": "https://page.kakao.com/content/58406809",
         "episode": 47,
         "comments": 9,
-        "first_episode": "2021.12.10.",
-        "ranking": 250
+        "first_episode": "2021.12.10",
+        "ranking": 250,
+        "score": 0.3532056090939675
     },
     {
         "id": 58364879,
@@ -3670,8 +3836,9 @@
         "url": "https://page.kakao.com/content/58364879",
         "episode": 76,
         "comments": 674,
-        "first_episode": "2021.11.26.",
-        "ranking": 276
+        "first_episode": "2021.11.26",
+        "ranking": 276,
+        "score": 0.45591646998355767
     },
     {
         "id": 58323495,
@@ -3692,8 +3859,9 @@
         "url": "https://page.kakao.com/content/58323495",
         "episode": 80,
         "comments": 1,
-        "first_episode": "2021.11.23.",
-        "ranking": 251
+        "first_episode": "2021.11.23",
+        "ranking": 251,
+        "score": 0.3268058599391082
     },
     {
         "id": 58297332,
@@ -3714,8 +3882,9 @@
         "url": "https://page.kakao.com/content/58297332",
         "episode": 100,
         "comments": 15,
-        "first_episode": "2021.11.19.",
-        "ranking": 135
+        "first_episode": "2021.11.19",
+        "ranking": 135,
+        "score": 0.5337411238637956
     },
     {
         "id": 57683392,
@@ -3736,8 +3905,9 @@
         "url": "https://page.kakao.com/content/57683392",
         "episode": 40,
         "comments": 352,
-        "first_episode": "2021.11.11.",
-        "ranking": 121
+        "first_episode": "2021.11.11",
+        "ranking": 121,
+        "score": 0.6251100237252533
     },
     {
         "id": 58211053,
@@ -3758,8 +3928,9 @@
         "url": "https://page.kakao.com/content/58211053",
         "episode": 2,
         "comments": 0,
-        "first_episode": "2021.11.09.",
-        "ranking": 259
+        "first_episode": "2021.11.09",
+        "ranking": 259,
+        "score": 0.21965630849891443
     },
     {
         "id": 58182166,
@@ -3780,8 +3951,9 @@
         "url": "https://page.kakao.com/content/58182166",
         "episode": 45,
         "comments": 361,
-        "first_episode": "2021.11.09.",
-        "ranking": 219
+        "first_episode": "2021.11.09",
+        "ranking": 219,
+        "score": 0.5025879951100247
     },
     {
         "id": 58070706,
@@ -3802,8 +3974,9 @@
         "url": "https://page.kakao.com/content/58070706",
         "episode": 109,
         "comments": 419,
-        "first_episode": "2021.11.02.",
-        "ranking": 242
+        "first_episode": "2021.11.02",
+        "ranking": 242,
+        "score": 0.4836366465749237
     },
     {
         "id": 58121331,
@@ -3824,8 +3997,9 @@
         "url": "https://page.kakao.com/content/58121331",
         "episode": 86,
         "comments": 745,
-        "first_episode": "2021.10.31.",
-        "ranking": 181
+        "first_episode": "2021.10.31",
+        "ranking": 181,
+        "score": 0.6154537367186809
     },
     {
         "id": 58150475,
@@ -3846,8 +4020,9 @@
         "url": "https://page.kakao.com/content/58150475",
         "episode": 121,
         "comments": 1069,
-        "first_episode": "2021.10.29.",
-        "ranking": 233
+        "first_episode": "2021.10.29",
+        "ranking": 233,
+        "score": 0.5809076190204329
     },
     {
         "id": 58146303,
@@ -3868,8 +4043,9 @@
         "url": "https://page.kakao.com/content/58146303",
         "episode": 44,
         "comments": 558,
-        "first_episode": "2021.10.26.",
-        "ranking": 172
+        "first_episode": "2021.10.26",
+        "ranking": 172,
+        "score": 0.5986600137723485
     },
     {
         "id": 58090099,
@@ -3890,8 +4066,9 @@
         "url": "https://page.kakao.com/content/58090099",
         "episode": 499,
         "comments": 4,
-        "first_episode": "2021.10.22.",
-        "ranking": 89
+        "first_episode": "2021.10.22",
+        "ranking": 89,
+        "score": 0.6157464065649502
     },
     {
         "id": 58084530,
@@ -3912,8 +4089,9 @@
         "url": "https://page.kakao.com/content/58084530",
         "episode": 98,
         "comments": 134,
-        "first_episode": "2021.10.21.",
-        "ranking": 141
+        "first_episode": "2021.10.21",
+        "ranking": 141,
+        "score": 0.5708301631653899
     },
     {
         "id": 58054844,
@@ -3934,8 +4112,9 @@
         "url": "https://page.kakao.com/content/58054844",
         "episode": 75,
         "comments": 648,
-        "first_episode": "2021.10.20.",
-        "ranking": 209
+        "first_episode": "2021.10.20",
+        "ranking": 209,
+        "score": 0.5615992031485589
     },
     {
         "id": 57925483,
@@ -3956,8 +4135,9 @@
         "url": "https://page.kakao.com/content/57925483",
         "episode": 456,
         "comments": 5813,
-        "first_episode": "2021.09.30.",
-        "ranking": 17
+        "first_episode": "2021.09.30",
+        "ranking": 17,
+        "score": 0.9327666560100364
     },
     {
         "id": 57930415,
@@ -3978,8 +4158,9 @@
         "url": "https://page.kakao.com/content/57930415",
         "episode": 19,
         "comments": 98,
-        "first_episode": "2021.09.30.",
-        "ranking": 224
+        "first_episode": "2021.09.30",
+        "ranking": 224,
+        "score": 0.5112180658451726
     },
     {
         "id": 57910175,
@@ -4000,8 +4181,9 @@
         "url": "https://page.kakao.com/content/57910175",
         "episode": 100,
         "comments": 10,
-        "first_episode": "2021.09.27.",
-        "ranking": 238
+        "first_episode": "2021.09.27",
+        "ranking": 238,
+        "score": 0.3939268577453911
     },
     {
         "id": 57905809,
@@ -4022,8 +4204,9 @@
         "url": "https://page.kakao.com/content/57905809",
         "episode": 114,
         "comments": 9,
-        "first_episode": "2021.09.24.",
-        "ranking": 292
+        "first_episode": "2021.09.24",
+        "ranking": 292,
+        "score": 0.10756775644783784
     },
     {
         "id": 57900386,
@@ -4044,8 +4227,9 @@
         "url": "https://page.kakao.com/content/57900386",
         "episode": 123,
         "comments": 35,
-        "first_episode": "2021.09.24.",
-        "ranking": 173
+        "first_episode": "2021.09.24",
+        "ranking": 173,
+        "score": 0.5069023446730488
     },
     {
         "id": 57921383,
@@ -4066,8 +4250,9 @@
         "url": "https://page.kakao.com/content/57921383",
         "episode": 32,
         "comments": 449,
-        "first_episode": "2021.09.24.",
-        "ranking": 185
+        "first_episode": "2021.09.24",
+        "ranking": 185,
+        "score": 0.583116060383339
     },
     {
         "id": 57734886,
@@ -4088,8 +4273,9 @@
         "url": "https://page.kakao.com/content/57734886",
         "episode": 35,
         "comments": 433,
-        "first_episode": "2021.09.06.",
-        "ranking": 225
+        "first_episode": "2021.09.06",
+        "ranking": 225,
+        "score": 0.5287929764059691
     },
     {
         "id": 57762103,
@@ -4110,8 +4296,9 @@
         "url": "https://page.kakao.com/content/57762103",
         "episode": 5,
         "comments": 4,
-        "first_episode": "2021.08.31.",
-        "ranking": 260
+        "first_episode": "2021.08.31",
+        "ranking": 260,
+        "score": 0.327321467556943
     },
     {
         "id": 57730628,
@@ -4132,8 +4319,9 @@
         "url": "https://page.kakao.com/content/57730628",
         "episode": 100,
         "comments": 2565,
-        "first_episode": "2021.08.31.",
-        "ranking": 158
+        "first_episode": "2021.08.31",
+        "ranking": 158,
+        "score": 0.7190311503483008
     },
     {
         "id": 57727840,
@@ -4154,8 +4342,9 @@
         "url": "https://page.kakao.com/content/57727840",
         "episode": 107,
         "comments": 408,
-        "first_episode": "2021.08.27.",
-        "ranking": 202
+        "first_episode": "2021.08.27",
+        "ranking": 202,
+        "score": 0.5496248140616371
     },
     {
         "id": 57290305,
@@ -4176,8 +4365,9 @@
         "url": "https://page.kakao.com/content/57290305",
         "episode": 15,
         "comments": 117,
-        "first_episode": "2021.08.04.",
-        "ranking": 243
+        "first_episode": "2021.08.04",
+        "ranking": 243,
+        "score": 0.4176549657987245
     },
     {
         "id": 57591571,
@@ -4198,8 +4388,9 @@
         "url": "https://page.kakao.com/content/57591571",
         "episode": 4,
         "comments": 11,
-        "first_episode": "2021.07.31.",
-        "ranking": 124
+        "first_episode": "2021.07.31",
+        "ranking": 124,
+        "score": 0.5105751568184557
     },
     {
         "id": 57542618,
@@ -4220,8 +4411,9 @@
         "url": "https://page.kakao.com/content/57542618",
         "episode": 106,
         "comments": 5811,
-        "first_episode": "2021.07.31.",
-        "ranking": 83
+        "first_episode": "2021.07.31",
+        "ranking": 83,
+        "score": 0.8485661701901461
     },
     {
         "id": 57177274,
@@ -4242,8 +4434,9 @@
         "url": "https://page.kakao.com/content/57177274",
         "episode": 105,
         "comments": 378,
-        "first_episode": "2021.06.11.",
-        "ranking": 78
+        "first_episode": "2021.06.11",
+        "ranking": 78,
+        "score": 0.7194724762779795
     },
     {
         "id": 56996772,
@@ -4264,8 +4457,9 @@
         "url": "https://page.kakao.com/content/56996772",
         "episode": 80,
         "comments": 1947,
-        "first_episode": "2021.05.31.",
-        "ranking": 48
+        "first_episode": "2021.05.31",
+        "ranking": 48,
+        "score": 0.8344825091046126
     },
     {
         "id": 56993610,
@@ -4286,8 +4480,9 @@
         "url": "https://page.kakao.com/content/56993610",
         "episode": 100,
         "comments": 1,
-        "first_episode": "2021.05.31.",
-        "ranking": 261
+        "first_episode": "2021.05.31",
+        "ranking": 261,
+        "score": 0.29506859440537775
     },
     {
         "id": 57162046,
@@ -4308,8 +4503,9 @@
         "url": "https://page.kakao.com/content/57162046",
         "episode": 94,
         "comments": 1272,
-        "first_episode": "2021.05.27.",
-        "ranking": 210
+        "first_episode": "2021.05.27",
+        "ranking": 210,
+        "score": 0.6159271594411343
     },
     {
         "id": 57102911,
@@ -4330,8 +4526,9 @@
         "url": "https://page.kakao.com/content/57102911",
         "episode": 79,
         "comments": 304,
-        "first_episode": "2021.05.24.",
-        "ranking": 189
+        "first_episode": "2021.05.24",
+        "ranking": 189,
+        "score": 0.5668305659751937
     },
     {
         "id": 57063458,
@@ -4352,8 +4549,9 @@
         "url": "https://page.kakao.com/content/57063458",
         "episode": 80,
         "comments": 1563,
-        "first_episode": "2021.05.13.",
-        "ranking": 55
+        "first_episode": "2021.05.13",
+        "ranking": 55,
+        "score": 0.8166366382426833
     },
     {
         "id": 56354483,
@@ -4374,8 +4572,9 @@
         "url": "https://page.kakao.com/content/56354483",
         "episode": 33,
         "comments": 3,
-        "first_episode": "2021.05.06.",
-        "ranking": 117
+        "first_episode": "2021.05.06",
+        "ranking": 117,
+        "score": 0.5864482686805881
     },
     {
         "id": 56989856,
@@ -4396,8 +4595,9 @@
         "url": "https://page.kakao.com/content/56989856",
         "episode": 86,
         "comments": 344,
-        "first_episode": "2021.05.03.",
-        "ranking": 190
+        "first_episode": "2021.05.03",
+        "ranking": 190,
+        "score": 0.603649821925181
     },
     {
         "id": 57011159,
@@ -4418,8 +4618,9 @@
         "url": "https://page.kakao.com/content/57011159",
         "episode": 11,
         "comments": 30,
-        "first_episode": "2021.04.30.",
-        "ranking": 211
+        "first_episode": "2021.04.30",
+        "ranking": 211,
+        "score": 0.4982194111353354
     },
     {
         "id": 56987151,
@@ -4440,8 +4641,9 @@
         "url": "https://page.kakao.com/content/56987151",
         "episode": 250,
         "comments": 5050,
-        "first_episode": "2021.04.30.",
-        "ranking": 24
+        "first_episode": "2021.04.30",
+        "ranking": 24,
+        "score": 0.9296879274068678
     },
     {
         "id": 57027311,
@@ -4462,8 +4664,9 @@
         "url": "https://page.kakao.com/content/57027311",
         "episode": 88,
         "comments": 21,
-        "first_episode": "2021.04.30.",
-        "ranking": 119
+        "first_episode": "2021.04.30",
+        "ranking": 119,
+        "score": 0.5495153586422873
     },
     {
         "id": 56759214,
@@ -4484,8 +4687,9 @@
         "url": "https://page.kakao.com/content/56759214",
         "episode": 126,
         "comments": 4481,
-        "first_episode": "2021.04.09.",
-        "ranking": 65
+        "first_episode": "2021.04.09",
+        "ranking": 65,
+        "score": 0.8618325180358396
     },
     {
         "id": 56835554,
@@ -4506,8 +4710,9 @@
         "url": "https://page.kakao.com/content/56835554",
         "episode": 2,
         "comments": 3,
-        "first_episode": "2021.04.03.",
-        "ranking": 252
+        "first_episode": "2021.04.03",
+        "ranking": 252,
+        "score": 0.30468691646257084
     },
     {
         "id": 56834753,
@@ -4528,8 +4733,9 @@
         "url": "https://page.kakao.com/content/56834753",
         "episode": 45,
         "comments": 1667,
-        "first_episode": "2021.07.26.",
-        "ranking": 97
+        "first_episode": "2021.07.26",
+        "ranking": 97,
+        "score": 0.772155108046493
     },
     {
         "id": 56813908,
@@ -4550,8 +4756,9 @@
         "url": "https://page.kakao.com/content/56813908",
         "episode": 148,
         "comments": 3482,
-        "first_episode": "2021.03.31.",
-        "ranking": 54
+        "first_episode": "2021.03.31",
+        "ranking": 54,
+        "score": 0.8693568969342893
     },
     {
         "id": 56599372,
@@ -4572,8 +4779,9 @@
         "url": "https://page.kakao.com/content/56599372",
         "episode": 54,
         "comments": 972,
-        "first_episode": "2021.03.12.",
-        "ranking": 105
+        "first_episode": "2021.03.12",
+        "ranking": 105,
+        "score": 0.7181102635238115
     },
     {
         "id": 56686948,
@@ -4594,8 +4802,9 @@
         "url": "https://page.kakao.com/content/56686948",
         "episode": 25,
         "comments": 14,
-        "first_episode": "2021.03.12.",
-        "ranking": 239
+        "first_episode": "2021.03.12",
+        "ranking": 239,
+        "score": 0.317840325533727
     },
     {
         "id": 56590393,
@@ -4616,8 +4825,9 @@
         "url": "https://page.kakao.com/content/56590393",
         "episode": 124,
         "comments": 3330,
-        "first_episode": "2021.03.05.",
-        "ranking": 68
+        "first_episode": "2021.03.05",
+        "ranking": 68,
+        "score": 0.8467037314706614
     },
     {
         "id": 56639681,
@@ -4638,8 +4848,9 @@
         "url": "https://page.kakao.com/content/56639681",
         "episode": 2,
         "comments": 1,
-        "first_episode": "2021.02.28.",
-        "ranking": 293
+        "first_episode": "2021.02.28",
+        "ranking": 293,
+        "score": 0.1673635828966718
     },
     {
         "id": 56639679,
@@ -4660,8 +4871,9 @@
         "url": "https://page.kakao.com/content/56639679",
         "episode": 58,
         "comments": 2139,
-        "first_episode": "2021.12.08.",
-        "ranking": 180
+        "first_episode": "2021.12.08",
+        "ranking": 180,
+        "score": 0.6675577983124757
     },
     {
         "id": 56627717,
@@ -4682,8 +4894,9 @@
         "url": "https://page.kakao.com/content/56627717",
         "episode": 2,
         "comments": 1,
-        "first_episode": "2021.02.24.",
-        "ranking": 294
+        "first_episode": "2021.02.24",
+        "ranking": 294,
+        "score": 0.24085329813280323
     },
     {
         "id": 56627687,
@@ -4704,8 +4917,9 @@
         "url": "https://page.kakao.com/content/56627687",
         "episode": 11,
         "comments": 85,
-        "first_episode": "2021.02.24.",
-        "ranking": 277
+        "first_episode": "2021.02.24",
+        "ranking": 277,
+        "score": 0.42810070439624903
     },
     {
         "id": 56617750,
@@ -4726,8 +4940,9 @@
         "url": "https://page.kakao.com/content/56617750",
         "episode": 2,
         "comments": 1,
-        "first_episode": "2021.02.22.",
-        "ranking": 295
+        "first_episode": "2021.02.22",
+        "ranking": 295,
+        "score": 0.2171180183242999
     },
     {
         "id": 56591148,
@@ -4748,8 +4963,9 @@
         "url": "https://page.kakao.com/content/56591148",
         "episode": 10,
         "comments": 447,
-        "first_episode": "2021.02.22.",
-        "ranking": 262
+        "first_episode": "2021.02.22",
+        "ranking": 262,
+        "score": 0.47636154084935023
     },
     {
         "id": 56444704,
@@ -4770,8 +4986,9 @@
         "url": "https://page.kakao.com/content/56444704",
         "episode": 38,
         "comments": 2425,
-        "first_episode": "2021.01.31.",
-        "ranking": 154
+        "first_episode": "2021.01.31",
+        "ranking": 154,
+        "score": 0.708860355417505
     },
     {
         "id": 56459679,
@@ -4792,8 +5009,9 @@
         "url": "https://page.kakao.com/content/56459679",
         "episode": 2,
         "comments": 3,
-        "first_episode": "2021.01.31.",
-        "ranking": 278
+        "first_episode": "2021.01.31",
+        "ranking": 278,
+        "score": 0.26306399427922234
     },
     {
         "id": 56381318,
@@ -4814,8 +5032,9 @@
         "url": "https://page.kakao.com/content/56381318",
         "episode": 2,
         "comments": 2,
-        "first_episode": "2021.01.13.",
-        "ranking": 296
+        "first_episode": "2021.01.13",
+        "ranking": 296,
+        "score": 0.25298534868310074
     },
     {
         "id": 56272945,
@@ -4836,8 +5055,9 @@
         "url": "https://page.kakao.com/content/56272945",
         "episode": 30,
         "comments": 2070,
-        "first_episode": "2020.12.31.",
-        "ranking": 147
+        "first_episode": "2020.12.31",
+        "ranking": 147,
+        "score": 0.6959901178945894
     },
     {
         "id": 56138442,
@@ -4858,8 +5078,9 @@
         "url": "https://page.kakao.com/content/56138442",
         "episode": 30,
         "comments": 461,
-        "first_episode": "2020.12.04.",
-        "ranking": 177
+        "first_episode": "2020.12.04",
+        "ranking": 177,
+        "score": 0.6049637754427266
     },
     {
         "id": 56012657,
@@ -4880,8 +5101,9 @@
         "url": "https://page.kakao.com/content/56012657",
         "episode": 449,
         "comments": 3738,
-        "first_episode": "2020.11.27.",
-        "ranking": 18
+        "first_episode": "2020.11.27",
+        "ranking": 18,
+        "score": 0.9164931907276799
     },
     {
         "id": 55805478,
@@ -4902,8 +5124,9 @@
         "url": "https://page.kakao.com/content/55805478",
         "episode": 56,
         "comments": 5,
-        "first_episode": "2020.10.25.",
-        "ranking": 186
+        "first_episode": "2020.10.25",
+        "ranking": 186,
+        "score": 0.46974658729059693
     },
     {
         "id": 55885682,
@@ -4924,8 +5147,9 @@
         "url": "https://page.kakao.com/content/55885682",
         "episode": 5,
         "comments": 0,
-        "first_episode": "2020.10.24.",
-        "ranking": 253
+        "first_episode": "2020.10.24",
+        "ranking": 253,
+        "score": 0.30653172018982366
     },
     {
         "id": 55752047,
@@ -4946,8 +5170,9 @@
         "url": "https://page.kakao.com/content/55752047",
         "episode": 82,
         "comments": 1560,
-        "first_episode": "2020.09.30.",
-        "ranking": 74
+        "first_episode": "2020.09.30",
+        "ranking": 74,
+        "score": 0.8137694118893405
     },
     {
         "id": 55570706,
@@ -4968,8 +5193,9 @@
         "url": "https://page.kakao.com/content/55570706",
         "episode": 124,
         "comments": 3717,
-        "first_episode": "2020.08.28.",
-        "ranking": 168
+        "first_episode": "2020.08.28",
+        "ranking": 168,
+        "score": 0.7178853217844912
     },
     {
         "id": 55532929,
@@ -4990,8 +5216,9 @@
         "url": "https://page.kakao.com/content/55532929",
         "episode": 40,
         "comments": 456,
-        "first_episode": "2020.08.25.",
-        "ranking": 226
+        "first_episode": "2020.08.25",
+        "ranking": 226,
+        "score": 0.4933075448279056
     },
     {
         "id": 55321019,
@@ -5012,8 +5239,9 @@
         "url": "https://page.kakao.com/content/55321019",
         "episode": 159,
         "comments": 1546,
-        "first_episode": "2020.07.16.",
-        "ranking": 14
+        "first_episode": "2020.07.16",
+        "ranking": 14,
+        "score": 0.8759538071843068
     },
     {
         "id": 55179278,
@@ -5034,8 +5262,9 @@
         "url": "https://page.kakao.com/content/55179278",
         "episode": 125,
         "comments": 237,
-        "first_episode": "2020.07.13.",
-        "ranking": 91
+        "first_episode": "2020.07.13",
+        "ranking": 91,
+        "score": 0.70908407005428
     },
     {
         "id": 55169813,
@@ -5056,8 +5285,9 @@
         "url": "https://page.kakao.com/content/55169813",
         "episode": 237,
         "comments": 4314,
-        "first_episode": "2020.06.30.",
-        "ranking": 4
+        "first_episode": "2020.06.30",
+        "ranking": 4,
+        "score": 0.9477622861812284
     },
     {
         "id": 55102097,
@@ -5078,8 +5308,9 @@
         "url": "https://page.kakao.com/content/55102097",
         "episode": 2,
         "comments": 2,
-        "first_episode": "2020.06.05.",
-        "ranking": 194
+        "first_episode": "2020.06.05",
+        "ranking": 194,
+        "score": 0.42251723431583144
     },
     {
         "id": 54974747,
@@ -5100,8 +5331,9 @@
         "url": "https://page.kakao.com/content/54974747",
         "episode": 2,
         "comments": 0,
-        "first_episode": "2020.05.27.",
-        "ranking": 279
+        "first_episode": "2020.05.27",
+        "ranking": 279,
+        "score": 0.2631070421611601
     },
     {
         "id": 54974840,
@@ -5122,8 +5354,9 @@
         "url": "https://page.kakao.com/content/54974840",
         "episode": 3,
         "comments": 2,
-        "first_episode": "2020.05.27.",
-        "ranking": 263
+        "first_episode": "2020.05.27",
+        "ranking": 263,
+        "score": 0.3101463400144261
     },
     {
         "id": 54987119,
@@ -5144,8 +5377,9 @@
         "url": "https://page.kakao.com/content/54987119",
         "episode": 3,
         "comments": 4,
-        "first_episode": "2020.05.27.",
-        "ranking": 116
+        "first_episode": "2020.05.27",
+        "ranking": 116,
+        "score": 0.5125360070343815
     },
     {
         "id": 55015879,
@@ -5166,8 +5400,9 @@
         "url": "https://page.kakao.com/content/55015879",
         "episode": 3,
         "comments": 22,
-        "first_episode": "2020.05.22.",
-        "ranking": 264
+        "first_episode": "2020.05.22",
+        "ranking": 264,
+        "score": 0.36532065143813036
     },
     {
         "id": 55004944,
@@ -5188,8 +5423,9 @@
         "url": "https://page.kakao.com/content/55004944",
         "episode": 84,
         "comments": 1192,
-        "first_episode": "2020.06.26.",
-        "ranking": 212
+        "first_episode": "2020.06.26",
+        "ranking": 212,
+        "score": 0.6176194132602529
     },
     {
         "id": 54892420,
@@ -5210,8 +5446,9 @@
         "url": "https://page.kakao.com/content/54892420",
         "episode": 24,
         "comments": 117,
-        "first_episode": "2020.04.29.",
-        "ranking": 113
+        "first_episode": "2020.04.29",
+        "ranking": 113,
+        "score": 0.6686869275671586
     },
     {
         "id": 54878595,
@@ -5232,8 +5469,9 @@
         "url": "https://page.kakao.com/content/54878595",
         "episode": 3,
         "comments": 7,
-        "first_episode": "2020.04.29.",
-        "ranking": 234
+        "first_episode": "2020.04.29",
+        "ranking": 234,
+        "score": 0.3940938774329577
     },
     {
         "id": 54878598,
@@ -5254,8 +5492,9 @@
         "url": "https://page.kakao.com/content/54878598",
         "episode": 2,
         "comments": 5,
-        "first_episode": "2020.04.29.",
-        "ranking": 297
+        "first_episode": "2020.04.29",
+        "ranking": 297,
+        "score": 0.3099553238800134
     },
     {
         "id": 54891933,
@@ -5276,8 +5515,9 @@
         "url": "https://page.kakao.com/content/54891933",
         "episode": 575,
         "comments": 13000,
-        "first_episode": "2020.04.29.",
-        "ranking": 9
+        "first_episode": "2020.04.29",
+        "ranking": 9,
+        "score": 0.9915345504729054
     },
     {
         "id": 54878576,
@@ -5298,8 +5538,9 @@
         "url": "https://page.kakao.com/content/54878576",
         "episode": 2,
         "comments": 2,
-        "first_episode": "2020.04.24.",
-        "ranking": 298
+        "first_episode": "2020.04.24",
+        "ranking": 298,
+        "score": 0.12228481129108812
     },
     {
         "id": 54864526,
@@ -5320,8 +5561,9 @@
         "url": "https://page.kakao.com/content/54864526",
         "episode": 3,
         "comments": 10,
-        "first_episode": "2020.04.22.",
-        "ranking": 299
+        "first_episode": "2020.04.22",
+        "ranking": 299,
+        "score": 0.2839220273890124
     },
     {
         "id": 54862155,
@@ -5342,7 +5584,8 @@
         "url": "https://page.kakao.com/content/54862155",
         "episode": 2,
         "comments": 0,
-        "first_episode": "2020.04.22."
+        "first_episode": "2020.04.22",
+        "score": 0.1985128858362519
     },
     {
         "id": 54862153,
@@ -5363,8 +5606,9 @@
         "url": "https://page.kakao.com/content/54862153",
         "episode": 3,
         "comments": 2,
-        "first_episode": "2020.04.22.",
-        "ranking": 265
+        "first_episode": "2020.04.22",
+        "ranking": 265,
+        "score": 0.0
     },
     {
         "id": 54862254,
@@ -5385,7 +5629,8 @@
         "url": "https://page.kakao.com/content/54862254",
         "episode": 2,
         "comments": 0,
-        "first_episode": "2020.04.22."
+        "first_episode": "2020.04.22",
+        "score": 0.18902946590340813
     },
     {
         "id": 54862172,
@@ -5406,8 +5651,9 @@
         "url": "https://page.kakao.com/content/54862172",
         "episode": 5,
         "comments": 0,
-        "first_episode": "2020.04.22.",
-        "ranking": 266
+        "first_episode": "2020.04.22",
+        "ranking": 266,
+        "score": 0.2524383571799354
     },
     {
         "id": 54862110,
@@ -5428,8 +5674,9 @@
         "url": "https://page.kakao.com/content/54862110",
         "episode": 6,
         "comments": 3,
-        "first_episode": "2020.04.22.",
-        "ranking": 280
+        "first_episode": "2020.04.22",
+        "ranking": 280,
+        "score": 0.28949463136177267
     },
     {
         "id": 54802936,
@@ -5450,8 +5697,9 @@
         "url": "https://page.kakao.com/content/54802936",
         "episode": 89,
         "comments": 399,
-        "first_episode": "2020.04.14.",
-        "ranking": 191
+        "first_episode": "2020.04.14",
+        "ranking": 191,
+        "score": 0.54709378303003
     },
     {
         "id": 54718749,
@@ -5472,8 +5720,9 @@
         "url": "https://page.kakao.com/content/54718749",
         "episode": 75,
         "comments": 1497,
-        "first_episode": "2022.01.27.",
-        "ranking": 103
+        "first_episode": "2022.01.27",
+        "ranking": 103,
+        "score": 0.7537068558505441
     },
     {
         "id": 54177901,
@@ -5494,8 +5743,9 @@
         "url": "https://page.kakao.com/content/54177901",
         "episode": 74,
         "comments": 24,
-        "first_episode": "2020.01.02.",
-        "ranking": 244
+        "first_episode": "2020.01.02",
+        "ranking": 244,
+        "score": 0.419413342321565
     },
     {
         "id": 53993213,
@@ -5516,8 +5766,9 @@
         "url": "https://page.kakao.com/content/53993213",
         "episode": 153,
         "comments": 286,
-        "first_episode": "2019.12.19.",
-        "ranking": 107
+        "first_episode": "2019.12.19",
+        "ranking": 107,
+        "score": 0.6972386514839342
     },
     {
         "id": 53753920,
@@ -5538,8 +5789,9 @@
         "url": "https://page.kakao.com/content/53753920",
         "episode": 66,
         "comments": 186,
-        "first_episode": "2019.10.03.",
-        "ranking": 122
+        "first_episode": "2019.10.03",
+        "ranking": 122,
+        "score": 0.6050627644587885
     },
     {
         "id": 53430916,
@@ -5560,8 +5812,9 @@
         "url": "https://page.kakao.com/content/53430916",
         "episode": 79,
         "comments": 1075,
-        "first_episode": "2020.05.27.",
-        "ranking": 99
+        "first_episode": "2020.05.27",
+        "ranking": 99,
+        "score": 0.7644726967296304
     },
     {
         "id": 53295663,
@@ -5582,8 +5835,9 @@
         "url": "https://page.kakao.com/content/53295663",
         "episode": 654,
         "comments": 3379,
-        "first_episode": "2019.07.11.",
-        "ranking": 69
+        "first_episode": "2019.07.11",
+        "ranking": 69,
+        "score": 0.8318941142902185
     },
     {
         "id": 53042923,
@@ -5604,8 +5858,9 @@
         "url": "https://page.kakao.com/content/53042923",
         "episode": 195,
         "comments": 6160,
-        "first_episode": "2019.06.01.",
-        "ranking": 41
+        "first_episode": "2019.06.01",
+        "ranking": 41,
+        "score": 0.897455940328383
     },
     {
         "id": 52819126,
@@ -5626,8 +5881,9 @@
         "url": "https://page.kakao.com/content/52819126",
         "episode": 47,
         "comments": 1696,
-        "first_episode": "2021.11.11.",
-        "ranking": 98
+        "first_episode": "2021.11.11",
+        "ranking": 98,
+        "score": 0.778767366133735
     },
     {
         "id": 52666079,
@@ -5648,8 +5904,9 @@
         "url": "https://page.kakao.com/content/52666079",
         "episode": 28,
         "comments": 3621,
-        "first_episode": "2020.05.27.",
-        "ranking": 220
+        "first_episode": "2020.05.27",
+        "ranking": 220,
+        "score": 0.5882456919889048
     },
     {
         "id": 52473668,
@@ -5670,8 +5927,9 @@
         "url": "https://page.kakao.com/content/52473668",
         "episode": 143,
         "comments": 19000,
-        "first_episode": "2020.05.27.",
-        "ranking": 57
+        "first_episode": "2020.05.27",
+        "ranking": 57,
+        "score": 0.897720358446722
     },
     {
         "id": 52383876,
@@ -5692,8 +5950,9 @@
         "url": "https://page.kakao.com/content/52383876",
         "episode": 140,
         "comments": 14000,
-        "first_episode": "2019.02.01.",
-        "ranking": 49
+        "first_episode": "2019.02.01",
+        "ranking": 49,
+        "score": 0.8744695677004614
     },
     {
         "id": 52383215,
@@ -5714,8 +5973,9 @@
         "url": "https://page.kakao.com/content/52383215",
         "episode": 76,
         "comments": 20000,
-        "first_episode": "2019.01.29.",
-        "ranking": 67
+        "first_episode": "2019.01.29",
+        "ranking": 67,
+        "score": 0.8744963919670653
     },
     {
         "id": 51139050,
@@ -5736,8 +5996,9 @@
         "url": "https://page.kakao.com/content/51139050",
         "episode": 156,
         "comments": 4083,
-        "first_episode": "2018.04.30.",
-        "ranking": 52
+        "first_episode": "2018.04.30",
+        "ranking": 52,
+        "score": 0.8487155642575097
     },
     {
         "id": 50963278,
@@ -5758,8 +6019,9 @@
         "url": "https://page.kakao.com/content/50963278",
         "episode": 40,
         "comments": 6434,
-        "first_episode": "2022.06.27.",
-        "ranking": 143
+        "first_episode": "2022.06.27",
+        "ranking": 143,
+        "score": 0.7716285361679952
     },
     {
         "id": 50849933,
@@ -5780,8 +6042,9 @@
         "url": "https://page.kakao.com/content/50849933",
         "episode": 957,
         "comments": 22000,
-        "first_episode": "2018.02.14.",
-        "ranking": 13
+        "first_episode": "2018.02.14",
+        "ranking": 13,
+        "score": 0.9897270139854722
     },
     {
         "id": 50715819,
@@ -5802,8 +6065,9 @@
         "url": "https://page.kakao.com/content/50715819",
         "episode": 639,
         "comments": 2111,
-        "first_episode": "2018.01.22.",
-        "ranking": 28
+        "first_episode": "2018.01.22",
+        "ranking": 28,
+        "score": 0.8666764080042026
     },
     {
         "id": 50491366,
@@ -5824,8 +6088,9 @@
         "url": "https://page.kakao.com/content/50491366",
         "episode": 65,
         "comments": 5919,
-        "first_episode": "2018.03.20.",
-        "ranking": 140
+        "first_episode": "2018.03.20",
+        "ranking": 140,
+        "score": 0.7724786478362898
     },
     {
         "id": 50324024,
@@ -5846,8 +6111,9 @@
         "url": "https://page.kakao.com/content/50324024",
         "episode": 105,
         "comments": 1238,
-        "first_episode": "2019.03.11.",
-        "ranking": 63
+        "first_episode": "2019.03.11",
+        "ranking": 63,
+        "score": 0.8131703609184681
     },
     {
         "id": 50345266,
@@ -5868,8 +6134,9 @@
         "url": "https://page.kakao.com/content/50345266",
         "episode": 1080,
         "comments": 17000,
-        "first_episode": "2017.09.29.",
-        "ranking": 15
+        "first_episode": "2017.09.29",
+        "ranking": 15,
+        "score": 0.9793364833507813
     },
     {
         "id": 50099531,
@@ -5890,8 +6157,9 @@
         "url": "https://page.kakao.com/content/50099531",
         "episode": 106,
         "comments": 33,
-        "first_episode": "2017.07.28.",
-        "ranking": 93
+        "first_episode": "2017.07.28",
+        "ranking": 93,
+        "score": 0.6680856038792692
     },
     {
         "id": 50092475,
@@ -5912,8 +6180,9 @@
         "url": "https://page.kakao.com/content/50092475",
         "episode": 100,
         "comments": 16,
-        "first_episode": "2017.07.28.",
-        "ranking": 115
+        "first_episode": "2017.07.28",
+        "ranking": 115,
+        "score": 0.5542004437597442
     },
     {
         "id": 50068679,
@@ -5934,8 +6203,9 @@
         "url": "https://page.kakao.com/content/50068679",
         "episode": 95,
         "comments": 16,
-        "first_episode": "2017.07.17.",
-        "ranking": 174
+        "first_episode": "2017.07.17",
+        "ranking": 174,
+        "score": 0.5317511447486907
     },
     {
         "id": 50052673,
@@ -5956,8 +6226,9 @@
         "url": "https://page.kakao.com/content/50052673",
         "episode": 55,
         "comments": 13,
-        "first_episode": "2017.07.17.",
-        "ranking": 195
+        "first_episode": "2017.07.17",
+        "ranking": 195,
+        "score": 0.5073638179319596
     },
     {
         "id": 50028851,
@@ -5978,8 +6249,9 @@
         "url": "https://page.kakao.com/content/50028851",
         "episode": 203,
         "comments": 264,
-        "first_episode": "2017.07.10.",
-        "ranking": 144
+        "first_episode": "2017.07.10",
+        "ranking": 144,
+        "score": 0.682547298036902
     },
     {
         "id": 50036142,
@@ -6000,8 +6272,9 @@
         "url": "https://page.kakao.com/content/50036142",
         "episode": 84,
         "comments": 104,
-        "first_episode": "2017.07.10.",
-        "ranking": 96
+        "first_episode": "2017.07.10",
+        "ranking": 96,
+        "score": 0.6875741208913692
     },
     {
         "id": 50037962,
@@ -6022,8 +6295,9 @@
         "url": "https://page.kakao.com/content/50037962",
         "episode": 161,
         "comments": 156,
-        "first_episode": "2017.07.10.",
-        "ranking": 73
+        "first_episode": "2017.07.10",
+        "ranking": 73,
+        "score": 0.7286425615473457
     },
     {
         "id": 49954931,
@@ -6044,8 +6318,9 @@
         "url": "https://page.kakao.com/content/49954931",
         "episode": 112,
         "comments": 1226,
-        "first_episode": "2017.06.25.",
-        "ranking": 148
+        "first_episode": "2017.06.25",
+        "ranking": 148,
+        "score": 0.7105370452094885
     },
     {
         "id": 49866901,
@@ -6066,8 +6341,9 @@
         "url": "https://page.kakao.com/content/49866901",
         "episode": 25,
         "comments": 706,
-        "first_episode": "2017.06.04.",
-        "ranking": 235
+        "first_episode": "2017.06.04",
+        "ranking": 235,
+        "score": 0.5653918018554295
     },
     {
         "id": 49815890,
@@ -6088,8 +6364,9 @@
         "url": "https://page.kakao.com/content/49815890",
         "episode": 38,
         "comments": 1637,
-        "first_episode": "2017.05.14.",
-        "ranking": 227
+        "first_episode": "2017.05.14",
+        "ranking": 227,
+        "score": 0.6092607521770309
     },
     {
         "id": 48932403,
@@ -6110,8 +6387,9 @@
         "url": "https://page.kakao.com/content/48932403",
         "episode": 60,
         "comments": 58,
-        "first_episode": "2016.12.14.",
-        "ranking": 108
+        "first_episode": "2016.12.14",
+        "ranking": 108,
+        "score": 0.6560844850059271
     },
     {
         "id": 49222285,
@@ -6132,8 +6410,9 @@
         "url": "https://page.kakao.com/content/49222285",
         "episode": 91,
         "comments": 1274,
-        "first_episode": "2016.11.30.",
-        "ranking": 118
+        "first_episode": "2016.11.30",
+        "ranking": 118,
+        "score": 0.7493441491511899
     },
     {
         "id": 49065781,
@@ -6154,8 +6433,9 @@
         "url": "https://page.kakao.com/content/49065781",
         "episode": 95,
         "comments": 266,
-        "first_episode": "2016.10.17.",
-        "ranking": 45
+        "first_episode": "2016.10.17",
+        "ranking": 45,
+        "score": 0.8148591159312165
     },
     {
         "id": 48986285,
@@ -6176,8 +6456,9 @@
         "url": "https://page.kakao.com/content/48986285",
         "episode": 80,
         "comments": 1076,
-        "first_episode": "2016.09.22.",
-        "ranking": 196
+        "first_episode": "2016.09.22",
+        "ranking": 196,
+        "score": 0.614902600119096
     },
     {
         "id": 48877997,
@@ -6198,8 +6479,9 @@
         "url": "https://page.kakao.com/content/48877997",
         "episode": 288,
         "comments": 8311,
-        "first_episode": "2016.08.31.",
-        "ranking": 10
+        "first_episode": "2016.08.31",
+        "ranking": 10,
+        "score": 0.9858755218287136
     },
     {
         "id": 48810782,
@@ -6220,8 +6502,9 @@
         "url": "https://page.kakao.com/content/48810782",
         "episode": 147,
         "comments": 6102,
-        "first_episode": "2016.07.29.",
-        "ranking": 77
+        "first_episode": "2016.07.29",
+        "ranking": 77,
+        "score": 0.871576067877188
     },
     {
         "id": 48582613,
@@ -6242,8 +6525,9 @@
         "url": "https://page.kakao.com/content/48582613",
         "episode": 319,
         "comments": 16000,
-        "first_episode": "2016.05.24.",
-        "ranking": 32
+        "first_episode": "2016.05.24",
+        "ranking": 32,
+        "score": 0.9702254498426026
     },
     {
         "id": 48539882,
@@ -6264,8 +6548,9 @@
         "url": "https://page.kakao.com/content/48539882",
         "episode": 134,
         "comments": 128,
-        "first_episode": "2016.05.04.",
-        "ranking": 164
+        "first_episode": "2016.05.04",
+        "ranking": 164,
+        "score": 0.6166978164412473
     },
     {
         "id": 48524677,
@@ -6286,8 +6571,9 @@
         "url": "https://page.kakao.com/content/48524677",
         "episode": 560,
         "comments": 27,
-        "first_episode": "2016.05.02.",
-        "ranking": 203
+        "first_episode": "2016.05.02",
+        "ranking": 203,
+        "score": 0.5379949555763486
     },
     {
         "id": 48472583,
@@ -6308,8 +6594,9 @@
         "url": "https://page.kakao.com/content/48472583",
         "episode": 440,
         "comments": 28,
-        "first_episode": "2016.04.16.",
-        "ranking": 192
+        "first_episode": "2016.04.16",
+        "ranking": 192,
+        "score": 0.5552588513041272
     },
     {
         "id": 48430806,
@@ -6330,8 +6617,9 @@
         "url": "https://page.kakao.com/content/48430806",
         "episode": 590,
         "comments": 547,
-        "first_episode": "2016.04.01.",
-        "ranking": 182
+        "first_episode": "2016.04.01",
+        "ranking": 182,
+        "score": 0.6491336269116331
     },
     {
         "id": 48412045,
@@ -6352,8 +6640,9 @@
         "url": "https://page.kakao.com/content/48412045",
         "episode": 474,
         "comments": 2870,
-        "first_episode": "2016.03.31.",
-        "ranking": 34
+        "first_episode": "2016.03.31",
+        "ranking": 34,
+        "score": 0.9143519480787369
     },
     {
         "id": 48117620,
@@ -6374,8 +6663,9 @@
         "url": "https://page.kakao.com/content/48117620",
         "episode": 503,
         "comments": 13000,
-        "first_episode": "2016.01.04.",
-        "ranking": 12
+        "first_episode": "2016.01.04",
+        "ranking": 12,
+        "score": 1.0
     },
     {
         "id": 47769199,
@@ -6396,8 +6686,9 @@
         "url": "https://page.kakao.com/content/47769199",
         "episode": 30,
         "comments": 17,
-        "first_episode": "2015.09.02.",
-        "ranking": 221
+        "first_episode": "2015.09.02",
+        "ranking": 221,
+        "score": 0.4768813376374706
     },
     {
         "id": 47643643,
@@ -6418,8 +6709,9 @@
         "url": "https://page.kakao.com/content/47643643",
         "episode": 27,
         "comments": 278,
-        "first_episode": "2015.07.23.",
-        "ranking": 53
+        "first_episode": "2015.07.23",
+        "ranking": 53,
+        "score": 0.7828053370964106
     },
     {
         "id": 47578780,
@@ -6440,8 +6732,9 @@
         "url": "https://page.kakao.com/content/47578780",
         "episode": 60,
         "comments": 318,
-        "first_episode": "2015.06.30.",
-        "ranking": 213
+        "first_episode": "2015.06.30",
+        "ranking": 213,
+        "score": 0.5948665422002966
     },
     {
         "id": 47567601,
@@ -6462,8 +6755,9 @@
         "url": "https://page.kakao.com/content/47567601",
         "episode": 40,
         "comments": 22,
-        "first_episode": "2015.06.29.",
-        "ranking": 254
+        "first_episode": "2015.06.29",
+        "ranking": 254,
+        "score": 0.43197055623104447
     },
     {
         "id": 47379665,
@@ -6484,8 +6778,9 @@
         "url": "https://page.kakao.com/content/47379665",
         "episode": 205,
         "comments": 5351,
-        "first_episode": "2015.04.24.",
-        "ranking": 30
+        "first_episode": "2015.04.24",
+        "ranking": 30,
+        "score": 0.9394087360200025
     },
     {
         "id": 47316473,
@@ -6506,8 +6801,9 @@
         "url": "https://page.kakao.com/content/47316473",
         "episode": 208,
         "comments": 444,
-        "first_episode": "2015.04.15.",
-        "ranking": 155
+        "first_episode": "2015.04.15",
+        "ranking": 155,
+        "score": 0.6834262241348101
     },
     {
         "id": 47301971,
@@ -6528,8 +6824,9 @@
         "url": "https://page.kakao.com/content/47301971",
         "episode": 125,
         "comments": 590,
-        "first_episode": "2015.03.31.",
-        "ranking": 64
+        "first_episode": "2015.03.31",
+        "ranking": 64,
+        "score": 0.8177345881502348
     },
     {
         "id": 47283921,
@@ -6550,8 +6847,9 @@
         "url": "https://page.kakao.com/content/47283921",
         "episode": 360,
         "comments": 943,
-        "first_episode": "2015.03.23.",
-        "ranking": 22
+        "first_episode": "2015.03.23",
+        "ranking": 22,
+        "score": 0.9015478349059807
     },
     {
         "id": 46505624,
@@ -6572,8 +6870,9 @@
         "url": "https://page.kakao.com/content/46505624",
         "episode": 300,
         "comments": 471,
-        "first_episode": "2014.03.11.",
-        "ranking": 114
+        "first_episode": "2014.03.11",
+        "ranking": 114,
+        "score": 0.6817200665308176
     },
     {
         "id": 46441358,
@@ -6594,8 +6893,9 @@
         "url": "https://page.kakao.com/content/46441358",
         "episode": 150,
         "comments": 18,
-        "first_episode": "2014.01.29.",
-        "ranking": 228
+        "first_episode": "2014.01.29",
+        "ranking": 228,
+        "score": 0.44378762428720914
     },
     {
         "id": 46422484,
@@ -6616,8 +6916,9 @@
         "url": "https://page.kakao.com/content/46422484",
         "episode": 400,
         "comments": 934,
-        "first_episode": "2014.01.22.",
-        "ranking": 229
+        "first_episode": "2014.01.22",
+        "ranking": 229,
+        "score": 0.5937718119646318
     },
     {
         "id": 46416207,
@@ -6638,7 +6939,8 @@
         "url": "https://page.kakao.com/content/46416207",
         "episode": 450,
         "comments": 7330,
-        "first_episode": "2014.01.08.",
-        "ranking": 7
+        "first_episode": "2014.01.08",
+        "ranking": 7,
+        "score": 0.9768706455455938
     }
 ]
