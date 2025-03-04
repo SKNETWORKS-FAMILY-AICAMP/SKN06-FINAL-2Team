@@ -5,24 +5,23 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 
 from .models import User
-from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .forms import SignUpForm, EditInformationForm
 
 
 # 사용자 가입
-def user_create(request):
+def user_signup(request):
     if request.method == "GET":
         return render(
-            request, "account/create.html", {"form": CustomUserCreationForm()}
+            request, "account/signup.html", {"form": SignUpForm()}
         )
     elif request.method == "POST":
-        form = CustomUserCreationForm(request.POST, request.FILES)
+        form = SignUpForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect(reverse("chat"))
+            return redirect(reverse("basic_chatbot"))
         else:
-            return render(request, "account/create.html", {"form": form})
-
+            return render(request, "account/signup.html", {"form": form})
 
 # 사용자 로그인
 def user_login(request):
@@ -37,7 +36,7 @@ def user_login(request):
             if request.GET.get("next"):
                 return redirect(request.GET.get("next"))
             else:
-                return redirect(reverse("chat"))
+                return redirect(reverse("basic_chatbot"))
         else:
             return render(
                 request,
@@ -48,7 +47,6 @@ def user_login(request):
                 },
             )
 
-
 # 사용자 로그아웃
 @login_required
 def user_logout(request):
@@ -56,13 +54,11 @@ def user_logout(request):
     logout(request)
     return redirect(reverse("chat"))
 
-
 # 사용자 정보 조회
 @login_required
 def user_detail(request):
     object = User.objects.get(pk=request.user.pk)
     return render(request, "account/detail.html", {"user": object})
-
 
 # 사용자 비밀번호 변경
 @login_required
@@ -84,23 +80,21 @@ def pwd_change(request):
                 {"form": form, "error_msg": "유효하지 않은 비밀번호입니다."},
             )
 
-
 # 사용자 정보 수정
 @login_required
 def user_update(request):
     if request.method == "GET":
         object = User.objects.get(pk=request.user.pk)
-        form = CustomUserChangeForm(instance=object)
+        form = EditInformationForm(instance=object)
         return render(request, "account/update.html", {"form": form})
     elif request.method == "POST":
         object = User.objects.get(pk=request.user.pk)
-        form = CustomUserChangeForm(request.POST, request.FILES, instance=object)
+        form = EditInformationForm(request.POST, request.FILES, instance=object)
         if form.is_valid():
             form.save()
             return redirect(reverse("account:detail"))
         else:
             return render(request, "account/update.html", {"form": form})
-
 
 # 사용자 탈퇴
 @login_required
