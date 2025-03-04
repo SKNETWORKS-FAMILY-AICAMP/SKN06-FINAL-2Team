@@ -5,6 +5,9 @@ from pathlib import Path
 # 개발 모드
 DEBUG = True
 
+# secret key
+SECRET_KEY = 'h99x_#9)bw)beotdxobhq-g)0=@hk5kccd%!g3+!l88zt+vlz%'
+
 # 허용되는 호스트 도메인 주소
 ALLOWED_HOSTS = ["*"]
 
