@@ -27,18 +27,18 @@ conn = pymysql.connect(
 cursor = conn.cursor()
 
 genre_list = [
-    "bl",
-    "drama",
     "fantasy",
-    "martial_arts",
-    "modern_fantasy",
+    "drama",
     "romance",
-    "romance_fantasy",
+    "rofan",
+    "historical",
+    "action",
+    "bl"
 ]  # 장르 더 있으면 추가
 
 for genre in genre_list:
     # 본인 데이터 있는 경로(data부터 시작/본인 폴더/장르명 전까지 파일명)
-    file_path = "data/webnovel_kkopage/detail/webnovel_kkopage_"
+    file_path = "data/webtoon_kkopage/"
 
     # JSON 파일 불러오기
     with open(
@@ -51,8 +51,8 @@ for genre in genre_list:
     # 데이터 삽입 SQL
     insert_sql = """
     INSERT INTO contents (
-        id, type, platform, title, status, update_days, thumbnail, genre, views, rating, likes, 
-        synopsis, keywords, author, illustrator, original, age_rating, price, url, episode, comments, first_episode,
+        id, type, platform, title, status, update_days, thumbnail, genre, views, rating, 
+        synopsis, keywords, author, illustrator, original, age_rating, price, url, episode, comments_count, recent_commnets_count,
         score
     ) VALUES (
         %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
