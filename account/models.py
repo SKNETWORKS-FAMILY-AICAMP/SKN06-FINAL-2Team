@@ -24,15 +24,21 @@ class User(AbstractUser):
         verbose_name="생년월일",
         null=False
     )
+    real_age= models.IntegerField(
+        verbose_name="만 나이",
+        blank=True
+    ) 
     gender = models.CharField(
         verbose_name="성별",
         max_length=30,  
         null=False
     )
 
-    def real_age(self):
+    def calculate_age(self):
         today = date.today()
         return today.year - self.birthday.year - ((today.month, today.day) < (self.birthday.month, self.birthday.day))
 
-    def __str__(self):
-        return f"이름: {self.name}, 나이:만 {self.real_age()}세, 성별:{self.gender}"
+    def save(self, *args, **kwargs):
+        self.real_age = self.calculate_age()  
+        super().save(*args, **kwargs)
+

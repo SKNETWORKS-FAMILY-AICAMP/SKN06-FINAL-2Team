@@ -70,7 +70,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME' : 'pixary', # DB Name
         'USER' : 'pixary', # DB User
-        'PASSWORD' : '!dnfl2xlavkdlxld*', # Password
+        'PASSWORD' : '!9dnfl2xlavkdlxld*', # Password
         'HOST': 'pixary.cpa86cw6csn1.ap-northeast-2.rds.amazonaws.com', # 생성한 데이터베이스 엔드포인트
         'PORT': '3306', 
         'OPTIONS':{
