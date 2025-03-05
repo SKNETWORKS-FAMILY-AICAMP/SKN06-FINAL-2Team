@@ -52,10 +52,10 @@ for genre in genre_list:
     insert_sql = """
     INSERT INTO contents (
         id, type, platform, title, status, update_days, thumbnail, genre, views, rating, likes,
-        synopsis, keywords, author, illustrator, original, age_rating, price, url, episode, comments,
+        synopsis, keywords, author, illustrator, original, age_rating, price, url, episode, comments, first_episode,
         score, recent_comments_count
     ) VALUES (
-        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s
+        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s
     )
     """
 
@@ -88,6 +88,7 @@ for genre in genre_list:
                 row.get("url"),
                 row.get("episode"),
                 row.get("comments"),
+                row.get("first_episode"),
                 row.get("score"),
                 row.get("recent_comments_count"),
             ),
