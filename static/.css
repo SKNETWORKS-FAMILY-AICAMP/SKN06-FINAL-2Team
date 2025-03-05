@@ -1,0 +1,54 @@
+/* 전체 화면을 100%로 설정하여 중앙 정렬이 가능하도록 함 */
+html, body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    margin: 0;
+}
+
+/* 로그인 컨테이너를 중앙에 배치 */
+.login-container {
+    width: 350px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* 밑줄 디자인 */
+.underline {
+    width: 50px;
+    height: 3px;
+    background-color: #00a059;
+    margin: 10px auto;
+}
+
+/* 입력 필드 스타일 */
+.input-box {
+    height: 50px;
+    font-size: 16px;
+}
+
+/* 로그인 버튼 스타일 */
+.login-btn {
+    width: 100%;
+    background-color: #00a059;
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #00804a;
+}
+
+/* 회원가입 링크 스타일 */
+.text-muted {
+    font-size: 0.9em;
+}

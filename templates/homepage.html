@@ -21,23 +21,35 @@
         /* 왼쪽 5/3 영역 (남색 배경) */
         .left-section {
             width: 60%;
-            background-color: navy;
+            background-color: rgb(0, 0, 70);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 40px;
+            overflow: hidden;
         }
 
-        /* 랜덤 추천 문구 스타일 */
+        /* 문구 스타일 */
         .quotes {
             color: white;
             font-size: 20px;
             font-weight: bold;
             text-align: center;
             max-width: 80%;
+            min-height: 120px;
         }
 
-        /* 텍스트 색상 변경 */
+        /* 애니메이션 텍스트 */
+        .quote {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid white; /* 커서 효과 */
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* 글자 색상 */
         .blue-text { color: lightblue; }
         .red-text { color: #ff5757; }
         .green-text { color: #6dd56d; }
@@ -59,16 +71,17 @@
             margin-bottom: 20px;
         }
 
+        /* 버튼을 가로 정렬하는 컨테이너 */
         .button-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            gap: 15px; /* 버튼 사이 간격 */
+            margin-bottom: 10px;
         }
 
         .btn {
-            width: 180px;
+            width: 120px;
             padding: 12px;
-            margin: 10px;
             border: none;
             border-radius: 25px;
             font-size: 16px;
@@ -78,12 +91,12 @@
         }
 
         .btn-login {
-            background-color: #ff4081;
+            background-color: #81009b;
             color: white;
         }
 
         .btn-signup {
-            background-color: #ff0066;
+            background-color: #81009b;
             color: white;
         }
 
@@ -97,6 +110,8 @@
             text-decoration: none;
             font-size: 14px;
             cursor: pointer;
+            display: block;
+            text-align: center;
         }
 
         .guest-link:hover {
@@ -112,25 +127,65 @@
     </style>
 </head>
 <body>
-    <!-- 왼쪽 추천 웹툰 문구 -->
+    <!-- 왼쪽 추천 웹툰 문구 (타이핑 애니메이션 적용) -->
     <div class="left-section">
         <div class="quotes">
-            <p class="blue-text">"이 몸이 직접 고른 웹툰이다. 감히 거절할 생각은 하지 마!"</p>
-            <p class="red-text">"영애, 북부의 혹독한 추위에도 불꽃처럼 타오르는 이 이야기 한 번 살펴보시겠습니까?"</p>
-            <p class="green-text">"왜, 첫사랑이 나오는 웹소설을 찾는다고요? ...하아, 왜 하필 첫사랑이죠?"</p>
-            <p class="pink-text">"우리, 얘기를 좀 해야 할 것 같은데. 오늘 저녁 어떨까요?"</p>
+            <span class="quote blue-text" id="quote"></span>
         </div>
     </div>
 
     <!-- 오른쪽 버튼 섹션 -->
     <div class="right-section">
         <h2>시작하기</h2>
+        
+        <!-- 버튼을 가로 정렬 -->
         <div class="button-container">
             <a href="/account/login/" class="btn btn-login">로그인</a>
             <a href="/account/signup/" class="btn btn-signup">회원 가입</a>
-            <a href="/basic_chatbot_na/" class="guest-link">비회원 이용</a>
         </div>
+
+        <a href="/basic_chatbot_na/" class="guest-link">비회원 이용</a>
         <div class="footer">PIXARY</div>
     </div>
+
+    <!-- 타이핑 애니메이션 JavaScript -->
+    <script>
+        const quotes = [
+            '"이 몸이 직접 고른 웹툰이다. 감히 거절할 생각은 하지 마!"',
+            '"영애, 북부의 혹독한 추위에도 불꽃처럼 타오르는 이 이야기 한 번 살펴보시겠습니까?"',
+            '"첫사랑이 나오는 웹소설을 찾는다고요? ...하아, 왜 하필 첫사랑이죠?"',
+            '"강자가 법이요, 힘이 정의다. 약자가 무슨 말을 보태겠느냐?"',
+            '"우리, 할 얘기가 있지 않아요? 오늘 저녁 어때요."'
+        ];
+
+        let currentQuoteIndex = 0;
+        let quoteElement = document.getElementById("quote");
+        let text = "";
+        let charIndex = 0;
+        let typingSpeed = 50; // 타이핑 속도 (밀리초)
+
+        function typeText() {
+            if (charIndex < text.length) {
+                quoteElement.innerHTML += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, typingSpeed);
+            } else {
+                setTimeout(nextQuote, 2000); // 2초 대기 후 다음 문구 출력
+            }
+        }
+
+        function nextQuote() {
+            quoteElement.innerHTML = ""; // 이전 문구 삭제
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length; // 다음 문구로 변경
+            text = quotes[currentQuoteIndex]; // 새 문구 가져오기
+            charIndex = 0;
+            typeText();
+        }
+
+        // 첫 번째 문장 시작
+        text = quotes[currentQuoteIndex];
+        typeText();
+    </script>
+
 </body>
 </html>
