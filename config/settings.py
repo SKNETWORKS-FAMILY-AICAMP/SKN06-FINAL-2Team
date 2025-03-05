@@ -103,7 +103,7 @@ TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
-USE_TZ = False
+USE_TZ = True
 
 # Static
 STATIC_URL = "/static/"
@@ -118,3 +118,4 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # 로그인 해야 실행할 수 있는 View를 호출
 LOGIN_URL = "/account/login"
+AUTH_USER_MODEL = 'account.User'  # 'account'는 해당 앱 이름
