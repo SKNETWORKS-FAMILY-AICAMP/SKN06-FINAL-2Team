@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIXARY - 웹툰 추천</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+        /* 왼쪽 5/3 영역 (남색 배경) */
+        .left-section {
+            width: 60%;
+            background-color: navy;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        /* 랜덤 추천 문구 스타일 */
+        .quotes {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        /* 텍스트 색상 변경 */
+        .blue-text { color: lightblue; }
+        .red-text { color: #ff5757; }
+        .green-text { color: #6dd56d; }
+        .pink-text { color: #ff66b2; }
+
+        /* 오른쪽 5/2 영역 (버튼 배치) */
+        .right-section {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn {
+            width: 180px;
+            padding: 12px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .btn-login {
+            background-color: #ff4081;
+            color: white;
+        }
+
+        .btn-signup {
+            background-color: #ff0066;
+            color: white;
+        }
+
+        .btn-login:hover, .btn-signup:hover {
+            opacity: 0.8;
+        }
+
+        .guest-link {
+            margin-top: 10px;
+            color: gray;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .guest-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- 왼쪽 추천 웹툰 문구 -->
+    <div class="left-section">
+        <div class="quotes">
+            <p class="blue-text">"이 몸이 직접 고른 웹툰이다. 감히 거절할 생각은 하지 마!"</p>
+            <p class="red-text">"영애, 북부의 혹독한 추위에도 불꽃처럼 타오르는 이 이야기 한 번 살펴보시겠습니까?"</p>
+            <p class="green-text">"왜, 첫사랑이 나오는 웹소설을 찾는다고요? ...하아, 왜 하필 첫사랑이죠?"</p>
+            <p class="pink-text">"우리, 얘기를 좀 해야 할 것 같은데. 오늘 저녁 어떨까요?"</p>
+        </div>
+    </div>
+
+    <!-- 오른쪽 버튼 섹션 -->
+    <div class="right-section">
+        <h2>시작하기</h2>
+        <div class="button-container">
+            <a href="/account/login/" class="btn btn-login">로그인</a>
+            <a href="/account/signup/" class="btn btn-signup">회원 가입</a>
+            <a href="/basic_chatbot_na/" class="guest-link">비회원 이용</a>
+        </div>
+        <div class="footer">PIXARY</div>
+    </div>
+</body>
+</html>

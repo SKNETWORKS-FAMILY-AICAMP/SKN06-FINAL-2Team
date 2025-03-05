@@ -7,9 +7,9 @@ urlpatterns = [
     path('signup/', views.user_signup, name='signup'),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
-    path('detail/', views.user_detail, name='detail'),
-    path('update/', views.user_update, name='update'),
+    path('user_information/', views.user_information, name='user_information'),
+    path('edit_information/', views.edit_information, name='edit_information'),
+    path('edit_pwd/', views.edit_pwd, name='edit_pwd'),
     path('delete/', views.user_delete, name='delete'),
-    path("", TemplateView.as_view(template_name="signup.html"), name="home"),  # account/ 요청 시 실행할 뷰 함수
 ]
 
