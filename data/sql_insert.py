@@ -51,11 +51,11 @@ for genre in genre_list:
     # 데이터 삽입 SQL
     insert_sql = """
     INSERT INTO contents (
-        id, type, platform, title, status, update_days, thumbnail, genre, views, rating, 
-        synopsis, keywords, author, illustrator, original, age_rating, price, url, episode, comments_count, recent_comments_count,
-        score
+        id, type, platform, title, status, update_days, thumbnail, genre, views, rating, likes,
+        synopsis, keywords, author, illustrator, original, age_rating, price, url, episode, comments,
+        score, recent_comments_count
     ) VALUES (
-        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s
     )
     """
 
@@ -77,6 +77,7 @@ for genre in genre_list:
                 row.get("genre"),
                 row.get("views"),
                 row.get("rating"),
+                row.get("likes"),
                 row.get("synopsis"),
                 row.get("keywords"),
                 row.get("author"),
@@ -86,9 +87,9 @@ for genre in genre_list:
                 row.get("price"),
                 row.get("url"),
                 row.get("episode"),
-                row.get("comments_count"),
-                row.get("recent_comments_count"),
+                row.get("comments"),
                 row.get("score"),
+                row.get("recent_comments_count"),
             ),
         )
 
