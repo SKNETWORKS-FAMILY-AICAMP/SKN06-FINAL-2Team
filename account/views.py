@@ -71,39 +71,45 @@ def user_logout(request):
 
 # 회원 정보 조회
 @login_required
-def user_detail(request):
+def user_information(request):
     object = User.objects.get(pk=request.user.pk)
-    return render(request, "account/account_inforamtion.html", {"user": object})
+    return render(request, "account/user_inforamtion.html", {"user": object})
 
 # 회원 정보 수정
 @login_required
-def user_update(request):
+def edit_information(request):
     if request.method == "GET":
         object = User.objects.get(pk=request.user.pk)
         form = EditInformationForm(instance=object)
-        return render(request, "account/update.html", {"form": form})
+        return render(request, "account/edit_information.html", {"form": form})
     elif request.method == "POST":
         object = User.objects.get(pk=request.user.pk)
         form = EditInformationForm(request.POST, request.FILES, instance=object)
-        
-        # 현재 비밀번호 확인
-        current_password = request.POST.get("password")
-        if authenticate(request, username=request.user.username, password=current_password) is None:
-            form.add_error("password", "현재 비밀번호가 일치하지 않습니다.")
-        
         if form.is_valid():
-            # 비밀번호 수정 처리
-            if form.cleaned_data.get("password1"):
-                user = form.save(commit=False)
-                user.set_password(form.cleaned_data["password1"])  # 비밀번호 변경
-                user.save()
-                update_session_auth_hash(request, user)  # 세션 갱신
-            else:
-                form.save()  # 비밀번호가 변경되지 않으면 다른 정보만 저장
-
+            form.save()
             return redirect(reverse("account:detail"))
         else:
-            return render(request, "account/update.html", {"form": form})
+            return render(request, "account/edit_information.html", {"form": form})
+
+# 비밀번호 변경
+@login_required
+def edit_pwd(request):
+    http_method = request.method
+    if http_method == "GET":
+        form = PasswordChangeForm(user=request.user)
+        return render(request, "account/edit_pwd.html", {"form": form})
+    elif http_method == "POST":
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            return redirect(reverse("account:detail"))
+        else:
+            return render(
+                request,
+                "account/edit_pwd.html",
+                {"form": form, "error_msg": "유효하지 않은 비밀번호입니다."},
+            )
 
 # 회원 탈퇴
 @login_required
