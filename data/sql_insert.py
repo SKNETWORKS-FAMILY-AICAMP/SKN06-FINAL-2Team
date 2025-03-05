@@ -38,7 +38,7 @@ genre_list = [
 
 for genre in genre_list:
     # 본인 데이터 있는 경로(data부터 시작/본인 폴더/장르명 전까지 파일명)
-    file_path = "data/webtoon_kkopage/"
+    file_path = "webtoon_kkopage/webtoon_kkopage_"
 
     # JSON 파일 불러오기
     with open(
@@ -52,7 +52,7 @@ for genre in genre_list:
     insert_sql = """
     INSERT INTO contents (
         id, type, platform, title, status, update_days, thumbnail, genre, views, rating, 
-        synopsis, keywords, author, illustrator, original, age_rating, price, url, episode, comments_count, recent_commnets_count,
+        synopsis, keywords, author, illustrator, original, age_rating, price, url, episode, comments_count, recent_comments_count,
         score
     ) VALUES (
         %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
@@ -75,9 +75,8 @@ for genre in genre_list:
                 row.get("update_days"),
                 row.get("thumbnail"),
                 row.get("genre"),
-                row.get("views", 0),
+                row.get("views"),
                 row.get("rating"),
-                row.get("likes", 0),
                 row.get("synopsis"),
                 row.get("keywords"),
                 row.get("author"),
@@ -86,10 +85,10 @@ for genre in genre_list:
                 row.get("age_rating"),
                 row.get("price"),
                 row.get("url"),
-                row.get("episode", 0),
-                row.get("comments", 0),
-                row.get("first_episode"),
-                row.get("score", 0),
+                row.get("episode"),
+                row.get("comments_count"),
+                row.get("recent_comments_count"),
+                row.get("score"),
             ),
         )
 
