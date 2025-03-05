@@ -13,7 +13,8 @@ class User(AbstractUser):
     username = models.CharField(
         verbose_name="닉네임",
         max_length=30,
-        null=False  
+        null=False,
+        unique=True  
     )
     email = models.CharField(
         verbose_name="이메일",
