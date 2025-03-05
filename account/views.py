@@ -28,11 +28,12 @@ def user_login(request):
     if request.method == "GET":
         return render(request, "account/login.html", {"form": AuthenticationForm()})
     elif request.method == "POST":
-        username_or_email = request.POST.get("user_id")  # 아이디 또는 이메일
+        username_or_email = request.POST.get("username_or_email")  # 아이디 또는 이메일
         password = request.POST.get("password")
         
         # 이메일인지 닉네임인지 구분하여 처리
-        user = None
+        # user = None
+        # username_or_email =None
 
         # 이메일
         if "@" in username_or_email:  
@@ -40,25 +41,28 @@ def user_login(request):
                 user = User.objects.get(email=username_or_email)
                 username = user.username
             except User.DoesNotExist:
-                user = None
+                username = None
         # 닉네임
         else:
-            user = User.objects.filter(username=username_or_email).first()
+            username = username_or_email
 
-        # 비밀번호 확인
-        if user is not None and authenticate(request, username=username, password=password):
-            login(request, user)
-            if request.GET.get("next"):
-                return redirect(request.GET.get("next"))
-            else:
-                return redirect(reverse("basic_chatbot"))
+
+
+        # 비밀번호 인증
+        if username:
+            user = authenticate(request, username=username, password=password)
+
+            return render(
+            request, "chatbot/basic_chatbot.html"
+        )
+
         else:
             return render(
                 request,
                 "account/login.html",
                 {
                     "form": AuthenticationForm(),
-                    "error_msg": "유효하지 않은 계정입니다.",
+                    "error_msg": "아이디나 비밀번호를 다시 확인해주세요.",
                 },
             )
 

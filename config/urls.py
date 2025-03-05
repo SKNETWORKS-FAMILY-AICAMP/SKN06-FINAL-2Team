@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 urlpatterns = [
     path("account/", include("account.urls")),
-    path("", TemplateView.as_view(template_name="homepage.html"), name="home"),
+    path("", TemplateView.as_view(template_name="framework/homepage.html"), name="home"),
 
 ]
 

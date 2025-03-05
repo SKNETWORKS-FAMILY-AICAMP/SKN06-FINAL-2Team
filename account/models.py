@@ -5,6 +5,8 @@ from datetime import date
 # User 모델
 class User(AbstractUser):
     # Field 정의 - table 컬럼
+
+
     name = models.CharField(
         verbose_name="이름",
         max_length=30,
