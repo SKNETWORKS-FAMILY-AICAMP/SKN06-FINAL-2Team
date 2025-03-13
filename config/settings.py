@@ -107,7 +107,7 @@ USE_TZ = False
 # Static
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # OpenAI API 키 불러오기
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
