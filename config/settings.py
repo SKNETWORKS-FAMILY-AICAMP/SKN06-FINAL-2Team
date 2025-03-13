@@ -8,7 +8,7 @@ load_dotenv()
 
 ## 기본 설정
 # 개발 모드
-DEBUG = False
+DEBUG = True
 
 # secret key
 SECRET_KEY = "h99x_#9)bw)beotdxobhq-g)0=@hk5kccd%!g3+!l88zt+vlz%"
@@ -120,4 +120,4 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # 로그인 해야 실행할 수 있는 View를 호출
 LOGIN_URL = "/account/login"
-AUTH_USER_MODEL = "account.User"  
+AUTH_USER_MODEL = "account.User"  # 'account'는 해당 앱 이름

@@ -1,0 +1,17 @@
+{% block title %} 회원가입 {% endblock title %}
+{% load django_bootstrap5 %}
+
+{% block contents %}
+<div class="container" >
+    <form method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="mt-3">
+            <div class="mt-3 mb-3">
+                <button type="submit" class="btn btn-primary">가입</button>
+                <button type="reset" class="btn btn-primary">초기화</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock contents %}

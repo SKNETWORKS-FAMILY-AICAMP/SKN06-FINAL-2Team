@@ -1,0 +1,170 @@
+html, body {
+    width: 100%;
+    height: 100vh; /* 전체 화면 고정 */
+    display: flex;
+}
+
+
+
+/* 밑줄 디자인 */
+.underline {
+    width: 50px;
+    height: 3px;
+    background-color: #00a059;
+    margin: 10px auto;
+}
+
+/* 입력 필드 스타일 */
+.input-box {
+    height: 50px;
+    font-size: 16px;
+}
+
+
+/* 회원가입 링크 스타일 */
+.text-muted {
+    font-size: 0.9em;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.user-info a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.user-info a:hover {
+    color: #0056b3;
+}
+
+/* 공통 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f8f8f8;
+}
+
+/* 왼쪽 5/3 영역 (남색 배경) */
+.left-section {
+    width: 60%;
+    background-color: rgb(0, 0, 70);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    overflow: hidden;
+}
+
+/* 문구 스타일 */
+.quotes {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 80%;
+    min-height: 120px;
+}
+
+/* 애니메이션 텍스트 */
+.quote {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid white; /* 커서 효과 */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 글자 색상 */
+.blue-text { color: lightblue; }
+.red-text { color: #ff5757; }
+.green-text { color: #6dd56d; }
+.pink-text { color: #ff66b2; }
+
+/* 오른쪽 5/2 영역 (버튼 배치) */
+.right-section {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 버튼을 가로 정렬하는 컨테이너 */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 2px; /* 버튼 사이 간격 */
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 120px;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-login {
+    background-color: #81009b;
+    color: white;
+}
+
+.btn-signup {
+    background-color: #81009b;
+    color: white;
+}
+
+.btn-login:hover, .btn-signup:hover {
+    opacity: 0.8;
+}
+
+.guest-link {
+    margin-top: 10px;
+    color: gray;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+}
+
+.guest-link:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 14px;
+    color: gray;
+}

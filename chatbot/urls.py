@@ -9,6 +9,7 @@ urlpatterns = [
     path("romance_chatbot/", views.romance_chatbot_view, name="romance_chatbot"),
     path("rofan_chatbot/", views.rofan_chatbot_view, name="rofan_chatbot"),
     path("fantasy_chatbot/", views.fantasy_chatbot_view, name="fantasy_chatbot"),
-    path("historical_chatbot/", views.historical_chatbot_view, name="historical_chatbot"
+    path(
+        "historical_chatbot/", views.historical_chatbot_view, name="historical_chatbot"
     ),
 ]

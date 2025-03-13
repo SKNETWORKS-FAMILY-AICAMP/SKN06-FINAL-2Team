@@ -1,0 +1,45 @@
+{% load django_bootstrap5 %}
+
+{% block contents %}
+<div class="d-flex justify-content-center align-items-center vh-100"> <!-- 화면 중앙 배치 -->
+    <div class="container text-center" style="max-width: 400px; width: 100%;">
+        <h1 class="fw-bold">로그인</h1>
+        <div style="width: 50px; height: 3px; background-color: #81009b; margin: 10px auto;"></div>
+
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <input type="text" name="username_or_email" class="form-control" style="height: 50px;" 
+                        placeholder="아이디" required 
+                        oninvalid="this.setCustomValidity('아이디를 입력해주세요.')" 
+                        oninput="this.setCustomValidity('')">
+            </div>
+
+            <div class="mb-3">
+                <input type="password" name="password" class="form-control" style="height: 50px;" 
+                        placeholder="비밀번호" required 
+                        oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" 
+                        oninput="this.setCustomValidity('')">
+            </div>
+
+            <button type="submit" class="btn w-100 text-white" style="background-color: #81009b; height: 50px;">로그인</button>
+
+            <p class="text-muted mt-3" style="font-size: 0.8em;">
+                아직 회원이 아니신가요? <a href="{% url 'account:signup' %}" class="text-danger fw-bold" style="font-size: 0.85em;">회원가입</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+<!-- 아이디 또는 비밀번호가 틀린 경우 팝업 -->
+{% if error_msg %}
+<script>
+    window.onload = function() {
+        alert("존재하지 않는 계정입니다.");
+    };
+</script>
+{% endif %}
+
+{% endblock contents %}
+

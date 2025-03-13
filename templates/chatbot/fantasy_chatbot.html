@@ -1,0 +1,303 @@
+{% extends "framework/framework.html" %}
+{% load static %}
+{% block title %}fantasy 챗봇_회원{% endblock title %}
+{% block content %}
+{% load static %}
+<head>
+    <style>
+        /* 🔹 모달 스타일 */
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 🔹 텍스트 오버레이 */
+        .modal-text {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            color: white;
+            padding: 0px;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1.2s ease-out forwards;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(-64px);
+            }
+        }
+
+        /* 🔹 채팅 시작 버튼 */
+        .start-chat-btn {
+            width: 100%;
+            padding: 20px;
+            font-size: 20px;
+            background-color: #5e5f5f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .start-chat-btn:hover {
+            background-color: #079bfd;
+        }
+
+
+        
+
+        .chat-message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .ai-message {
+            justify-content: flex-start;
+        }
+
+        .message-text {
+            padding: 12px;
+            border-radius: 12px;
+            max-width: 70%;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .user-text {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .ai-text {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .ai-message .profile-pic {
+            align-self: flex-start;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            background: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .input-container input {
+            flex-grow: 1;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .input-container button {
+            padding: 12px 15px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 8px;
+            border-radius: 8px;
+        }
+
+        .input-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 🔹 채팅 영역 컨테이너 */
+        .chat-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* 🔹 채팅 컨테이너 스타일 */
+        .chat-container {
+            width: 100%;
+            max-width: 900px;
+            height: 70vh;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 🔹 채팅 박스 (메시지 영역) */
+        .chat-box {
+            flex-grow: 1;
+            padding: 15px;
+            height: calc(100% - 95px); /* 🔹 높이 자동 조정 */
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px; /* 🔹 위아래 간격 조정 */
+            background-color: #f8f8f8;
+            scroll-behavior: smooth;
+        }
+        
+        /* 🔹 오른쪽 이미지 영역 */
+        .image-container {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e3e3e3;
+            border-radius: 10px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>판타지 챗봇</h1>
+
+    <!-- 🔹 프롤로그 모달 -->
+    <div id="prologue-modal" class="modal">
+        <div class="modal-content">
+            <img src="{% static 'img/fantasy/playing_harp.png' %}" alt="fantasy AI Prologue">
+            
+            <!-- 🔹 텍스트 영역 -->
+            <div class="modal-text">
+                <h2>열쇠 너머의 세계</h2>
+                <p>어둡고 고요한 도서관, 촛불만이 희미하게 깜빡이고 있다.</p>
+                <p>당신은 어딘가에서 아름다운 음악소리가 들려오는 것을 느낀다. </p>
+                <p>무언가에 이끌리듯, 당신은 도서관 깊숙이 숨겨진 곳으로 향했다.</p>
+                <p>그곳엔 커다란 낡은 문이 있었다. 문을 조심스레 열자, 그 너머로 전혀 다른 공간이 드러났다. 빛나는 안개가 서린 숲, 공중에 떠도는 작은 마법의 불빛, 그리고 풀잎을 흔드는 달빛. </p>
+                <p>당신이 발을 들이자, 문이 사라졌다. 당신은 당황했지만 앞으로 나아갔다. 숲 한가운데—긴 은빛 머리카락을 가진 아름다운 엘프 하나가 하프를 연주하고 있었다.</p>
+                <p>그녀는 당신을 바라보며 미소 짓는다.</p>
+                <p>“드디어, 너와 마주하게 되었군.”</p>
+            </div>
+            <!-- 🔹 버튼을 모달 내부 하단으로 이동 -->
+            <div class="button-container">
+                <button class="start-chat-btn" id="start-chat-btn">대화를 시작합니다</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔹 채팅과 이미지 컨테이너를 감싸는 래퍼 추가 -->
+    <div class="chat-wrapper">
+        <div id="chat-container" class="chat-container">
+            <div id="chat-box" class="chat-box"></div>
+            <div class="input-container">
+                <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
+                <button onclick="askChatbot()">전송</button>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="/static/img/fantasy/elf_profile.png" alt="설명 이미지">
+        </div>
+    </div>
+
+    <script>
+        function startChat() {
+            let modal = document.getElementById("prologue-modal");
+            let chatContainer = document.getElementById("chat-container");
+
+            if (modal && chatContainer) {
+                modal.style.display = "none";  // 모달 숨김
+                chatContainer.style.display = "block";  // 채팅창 표시
+
+                // 🔹 채팅창 위치로 스크롤 이동 (부드러운 효과)
+                setTimeout(() => {
+                    chatContainer.scrollIntoView({ behavior: 'smooth' });
+                }, 200);
+            } else {
+                console.error("모달 또는 채팅창 요소를 찾을 수 없습니다.");
+            }
+        }
+
+        document.getElementById("start-chat-btn").addEventListener("click", startChat);
+        function askChatbot() {
+            const question = document.getElementById("question").value;
+            if (!question.trim()) return;
+
+            const chatBox = document.getElementById("chat-box");
+
+            const userMessage = `<div class="chat-message user-message">
+                <span class="message-text user-text">${question}</span>
+                <img src="/static/img/fantasy/user_fantasy.png" alt="User" class="profile-pic">
+            </div>`;
+            chatBox.innerHTML += userMessage;
+            document.getElementById("question").value = "";
+
+            fetch(`?question=${encodeURIComponent(question)}`)
+                .then(response => response.text())
+                .then(data => {
+                    const aiMessage = `<div class="chat-message ai-message">
+                        <img src="/static/img/fantasy/elf_profile.png" alt="AI" class="profile-pic">
+                        <span class="message-text ai-text">${data}</span>
+                    </div>`;
+                    chatBox.innerHTML += aiMessage;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                })
+                .catch(error => console.error("오류 발생:", error));
+        }
+    </script>
+</body>
+{% endblock content %}

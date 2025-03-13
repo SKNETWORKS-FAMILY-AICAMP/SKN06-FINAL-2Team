@@ -1,0 +1,161 @@
+
+{% extends "framework/framework.html" %}
+
+{% block title %} 기본 챗봇_회원{% endblock title %}
+{% load static %}
+
+{% block content %}
+<head>
+    <style>
+        .chat-container {
+            width: 70%;  
+            max-width: 900px; 
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 600px;  /* 🔹 최소 높이 조정 */
+            max-height: 80vh;   /* 🔹 최대 높이 지정 */
+            position: relative;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            height: calc(100% - 80px); /* 🔹 높이 자동 조정 */
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-bottom: 80px; 
+        }
+
+        .chat-message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .ai-message {
+            justify-content: flex-start;
+        }
+
+        .message-text {
+            padding: 12px;
+            border-radius: 12px;
+            max-width: 70%;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .user-text {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .ai-text {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .ai-message .profile-pic {
+            align-self: flex-start;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            background: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .input-container input {
+            flex-grow: 1;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .input-container button {
+            padding: 12px 15px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 8px;
+            border-radius: 8px;
+        }
+
+        .input-container button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+    <script>
+        function askChatbot() {
+            const question = document.getElementById("question").value;
+            if (!question.trim()) return;
+
+            const chatBox = document.getElementById("chat-box");
+
+            // 사용자 메시지 추가
+            const userMessage = `<div class="chat-message user-message">
+                <span class="message-text user-text">${question}</span>
+                <img src="{{ profile_image_url }}" alt="User" class="profile-pic">
+            </div>`;
+            chatBox.innerHTML += userMessage;
+            document.getElementById("question").value = "";
+
+            // 챗봇 응답 가져오기
+            fetch(`?question=${encodeURIComponent(question)}`)
+                .then(response => response.text())
+                .then(data => {
+                    // aiMessage에 들어오는 링크가 있으면 target="_blank"를 추가
+                    const aiMessageContent = data.replace(
+                        /<a /g,
+                        '<a target="_blank" rel="noopener noreferrer" '
+                    );
+
+                    const aiMessage = `<div class="chat-message ai-message">
+                        <img src="{% static 'img/romance/ai_profile.png' %}" alt="AI" class="profile-pic">
+                        <span class="message-text ai-text">${aiMessageContent}</span>
+                    </div>`;
+                    chatBox.innerHTML += aiMessage;
+                    chatBox.scrollTop = chatBox.scrollHeight; // 🚀 스크롤을 자동으로 아래로 이동
+                })
+                .catch(error => console.error("오류 발생:", error));
+        }
+    </script>
+
+</head>
+<body>
+    <h1>기본 챗봇</h1>
+    <div class="chat-container">
+        <div id="chat-box" class="chat-box"></div>
+        <div class="input-container">
+            <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
+            <button onclick="askChatbot()">전송</button>
+        </div>
+    </div>
+</body>
+{% endblock content %}

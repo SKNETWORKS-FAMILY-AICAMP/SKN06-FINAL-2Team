@@ -1,0 +1,302 @@
+{% extends "framework/framework.html" %}
+{% load static %}
+{% block title %}historical 챗봇_회원{% endblock title %}
+{% block content %}
+{% load static %}
+<head>
+    <style>
+        /* 🔹 모달 스타일 */
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.78);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            width:80%;
+            max-width: 650px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 🔹 텍스트 */
+        .modal-text {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            color: white;
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.2;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 2s ease-out forwards;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(-64px);
+            }
+        }
+
+        /* 🔹 채팅 시작 버튼 */
+        .start-chat-btn {
+            width: 100%;
+            padding: 20px;
+            font-size: 20px;
+            background-color: #5e5f5f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .start-chat-btn:hover {
+            background-color: #079bfd;
+        }
+
+        /* 🔹 채팅 컨테이너 스타일 */
+        .chat-container {
+            width: 100%;
+            max-width: 900px;
+            height: 70vh;
+            margin: auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 🔹 채팅 박스 (메시지 영역) */
+        .chat-box {
+            flex-grow: 1;
+            padding: 15px;
+            height: calc(100% - 95px); /* 🔹 높이 자동 조정 */
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px; /* 🔹 위아래 간격 조정 */
+            background-color: #f8f8f8;
+            scroll-behavior: smooth;
+        }
+
+        /* 🔹 채팅 메시지 공통 스타일 */
+        .chat-message {
+            display: flex;
+            align-items: flex-end;
+            max-width: 75%;
+        }
+
+        /* 🔹 사용자 메시지 (오른쪽 정렬) */
+        .user-message {
+            align-self: flex-end;
+            text-align: right;
+        }
+
+        /* 🔹 AI 메시지 (왼쪽 정렬) */
+        .ai-message {
+            align-self: flex-start;
+            text-align: left;
+        }
+
+        /* 🔹 말풍선 스타일 */
+        .message-text {
+            padding: 12px 16px;
+            border-radius: 12px;
+            max-width: 100%;
+            font-size: 15px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .user-text {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .ai-text {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        /* 🔹 프로필 이미지 */
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        /* 🔹 입력창 컨테이너 */
+        .input-container {
+            display: flex;
+            padding: 12px;
+            border-top: 1px solid #ddd;
+            background: white;
+            position: relative;
+        }
+
+        .input-container input {
+            flex-grow: 1;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .input-container button {
+            padding: 12px 18px;
+            font-size: 14px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .input-container button:hover {
+            background: #0056b3;
+        }
+
+    </style>
+</head>
+
+<h1 style="text-align: center;">무협 챗봇</h1>
+
+<!-- 🔹 프롤로그 모달 -->
+<div id="prologue-modal" class="modal">
+    <div class="modal-content">
+        <!-- 이미지 여러개 변경시 아래 코드 수정 -->
+        <img id="modal-img" src="{% static 'img/historical/historical_ai_prologue_01.png' %}" alt="Historical AI Prologue"> 
+
+        <!-- 🔹 텍스트 영역 -->
+        <div class="modal-text">
+            <h2>강호의 연호</h2>
+            <p>겨울의 끝 무렵, 어스름이 깔린 하늘이 창밖으로 보인다.</p>
+            <p>살랑거리는 바람이 문풍지를 스치며 속삭이는 듯하다.</p>
+            <p>봄바람인가? 창문 너머 불어온 바람이 연호의 머리칼을 흩트려 놓는다.</p>
+            <p>...</p>  
+            <p>김이 피어오르는 찻잔 속에 그의 푸른 눈동자가 비추었다.</p>
+            <p>바람소리와 함께 문 밖의 인기척을 느낀 연호는 고개를 들어 당신을 바라보았다.</p>
+            <p>“어서 오시오.” 그의 목소리가 낮게 울린다. “그대는 무엇을 원하시오?”</p>
+            <p>그의 눈빛은 당신을 꿰뚫어 보는 듯하지만 차분했다.</p>
+            <p>그를 바라보는 순간, 당신은 마치 무림의 깊은 산중에 홀로 서 있는 듯한 느낌을 받게 되었다.</p>
+            <p>당신이 무엇을 찾고 있는지 이미 알고 있는 것 같은 표정을 지었다.</p>
+            <p>...</p>  
+            <p>“강호에는 수많은 이야기가 있다오.” 그는 말을 이어간다.</p>
+            <p>“그대가 원하는 것이 무엇인지 말해주시오.</p>
+            <p>나는 그대에게 이야기를 들려줄 준비가 되어 있소.”</p> 
+            <p>연호는 당신에게 차를 한 잔 들기를 청하였다.</p>
+        </div>
+        <!-- 🔹 버튼을 모달 내부 하단으로 이동 -->
+        <div class="button-container">
+            <button class="start-chat-btn" id="start-chat-btn">대화를 시작합니다</button>
+        </div>
+    </div>
+</div>
+
+<!-- 🔹 채팅창 -->
+<div id="chat-container" class="chat-container">
+    <div id="chat-box" class="chat-box"></div>
+    <div class="input-container">
+        <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
+        <button onclick="askChatbot()">전송</button>
+    </div>
+</div>
+
+<script>
+    function startChat() {
+        let modal = document.getElementById("prologue-modal");
+        let chatContainer = document.getElementById("chat-container");
+
+        if (modal && chatContainer) {
+            modal.style.display = "none";
+            chatContainer.style.display = "block";
+            setTimeout(() => {
+                chatContainer.scrollIntoView({ behavior: 'smooth' });
+            }, 200);
+        } else {
+            console.error("모달 또는 채팅창 요소를 찾을 수 없습니다.");
+        }
+    }
+
+    document.getElementById("start-chat-btn").addEventListener("click", startChat);
+    function askChatbot() {
+        const question = document.getElementById("question").value;
+        if (!question.trim()) return;
+
+        const chatBox = document.getElementById("chat-box");
+
+        // 사용자 메시지 추가
+        const userMessage = `<div class="chat-message user-message">
+            <span class="message-text user-text">${question}</span>
+            <img src="/static/img/historical/historical_user.png" alt="User" class="profile-pic">
+        </div>`;
+        chatBox.innerHTML += userMessage;
+        document.getElementById("question").value = "";
+
+        // 챗봇 응답 가져오기
+        fetch(`?question=${encodeURIComponent(question)}`)
+            .then(response => response.text())
+            .then(data => {
+                const aiMessage = `<div class="chat-message ai-message">
+                    <img src="/static/img/historical/historical_ai.jpg" alt="AI" class="profile-pic">
+                    <span class="message-text ai-text">${data}</span>
+                </div>`;
+                chatBox.innerHTML += aiMessage;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => console.error("오류 발생:", error));
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // 프롤로그 이미지 추가할 리스트(이미지 배열)
+        let images = [
+            "{% static 'img/historical/historical_ai_prologue_01.png' %}",
+            "{% static 'img/historical/historical_ai_prologue_02.png' %}",
+            "{% static 'img/historical/historical_ai_prologue_03.png' %}",
+            "{% static 'img/historical/historical_ai_prologue_04.png' %}"
+        ];
+
+        let index = 0; // 현재 이미지 인덱스
+        const modalImage = document.querySelector("#prologue-modal img");
+
+        function changeImage() {
+            index = (index + 1) % images.length;
+            modalImage.src = images[index];
+        }
+
+        // 5초마다 이미지 변경
+        setInterval(changeImage, 5000);
+    });
+
+</script>
+
+{% endblock content %}

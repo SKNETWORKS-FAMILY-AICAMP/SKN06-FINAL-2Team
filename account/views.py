@@ -13,12 +13,11 @@ from .preset_preference import analyze_user_preference
 
 logger = logging.getLogger(__name__)
 
+
 # 회원 가입
 def user_signup(request):
     if request.method == "GET":
-        return render(
-            request, "account/signup.html", {"form": SignUpForm()}
-        )
+        return render(request, "account/signup.html", {"form": SignUpForm()})
     elif request.method == "POST":
         form = SignUpForm(request.POST, request.FILES)
         if form.is_valid():
@@ -28,6 +27,7 @@ def user_signup(request):
         else:
             return render(request, "account/signup.html", {"form": form})
 
+
 # 로그인
 def user_login(request):
     if request.method == "GET":
@@ -35,13 +35,13 @@ def user_login(request):
     elif request.method == "POST":
         username_or_email = request.POST.get("username_or_email")  # 아이디 또는 이메일
         password = request.POST.get("password")
-        
+
         # 이메일인지 닉네임인지 구분하여 처리
         # user = None
         # username_or_email =None
 
         # 이메일
-        if "@" in username_or_email:  
+        if "@" in username_or_email:
             try:
                 user = User.objects.get(email=username_or_email)
                 username = user.username
@@ -56,7 +56,7 @@ def user_login(request):
         # 비밀번호 인증
         if user is not None:
             login(request, user)
-            logger.info(f"로그인 성공: {user.username}") 
+            logger.info(f"로그인 성공: {user.username}")
             return redirect("chatbot:basic_chatbot")
 
         else:
@@ -69,13 +69,13 @@ def user_login(request):
                 },
             )
 
+
 # 로그아웃
 @login_required
 def user_logout(request):
     print("logout")
     logout(request)
     return redirect("chatbot:basic_chatbot_na")
-    
 
 
 # 회원 정보 조회
@@ -83,6 +83,7 @@ def user_logout(request):
 def user_information(request):
     object = User.objects.get(pk=request.user.pk)
     return render(request, "account/user_information.html", {"user": object})
+
 
 # 회원 정보 수정
 @login_required
@@ -99,6 +100,7 @@ def edit_information(request):
             return redirect(reverse("account:detail"))
         else:
             return render(request, "account/edit_information.html", {"form": form})
+
 
 # 비밀번호 변경
 @login_required
@@ -120,6 +122,7 @@ def edit_pwd(request):
                 {"form": form, "error_msg": "유효하지 않은 비밀번호입니다."},
             )
 
+
 # 회원 탈퇴
 @login_required
 def user_delete(request):
@@ -127,45 +130,52 @@ def user_delete(request):
     logout(request)
     return redirect(reverse("basic_chatbot_na"))
 
-# # 최초 취향 분석
-# def preset_preference(request):
-#     if request.method == "GET":
-#         with connection.cursor() as cursor:
-#             cursor.execute("SELECT id, thumbnail FROM preset_preference_contents")
-#             contents = cursor.fetchall()
 
-#         # 딕셔너리 리스트로 변환
-#         works = [{"id": work[0], "thumbnail": work[1]} for work in contents]
+# 최초 취향 분석
+def preset_preference(request):
+    if request.method == "GET":
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT id, title, thumbnail FROM preset_preference_contents"
+            )
+            contents = cursor.fetchall()
 
-#         return render(request, "account/preset_preference.html", {"works": works})
+        # 딕셔너리 리스트로 변환
+        works = [
+            {"id": work[0], "title": work[1], "thumbnail": work[2]} for work in contents
+        ]
 
-#     elif request.method == "POST":
-#         if not request.user.is_authenticated:  # 로그인 여부 
-#             return JsonResponse({"error": "로그인이 필요합니다."}, status=401)
+        return render(request, "account/preset_preference.html", {"works": works})
 
-#         selected_works = request.POST.getlist("works")
+    elif request.method == "POST":
+        if not request.user.is_authenticated:  # 로그인 여부
+            return JsonResponse({"error": "로그인이 필요합니다."}, status=401)
 
-#         if not selected_works:
-#             return JsonResponse({"error": "작품을 선택해주세요."}, status=400)
+        selected_works = request.POST.getlist("works")
 
-#         # 현재 로그인한 회원의 ID 가져오기
-#         account_id = request.user.id
-#         logger.debug(f"사용자 ID {account_id}님이 선호하는 작품을 선택 중입니다.")
+        if not selected_works:
+            return JsonResponse({"error": "작품을 선택해주세요."}, status=400)
 
-#         if not isinstance(account_id, int):  # 정수형이 아니면 변환
-#             account_id = int(account_id)
+        # 현재 로그인한 회원의 ID 가져오기
+        account_id = request.user.id
+        logger.debug(f"사용자 ID {account_id}님이 선호하는 작품을 선택 중입니다.")
 
-#         # 'persona_type' 분석
-#         persona_data = analyze_user_preference(selected_works)
+        if not isinstance(account_id, int):  # 정수형이 아니면 변환
+            account_id = int(account_id)
 
-#         if not persona_data:
-#             return JsonResponse({"error": "사용자 분석에 실패했습니다."}, status=500)
+        # 'persona_type' 분석
+        persona_data = analyze_user_preference(selected_works)
 
-#         # `preset_preference_account` 테이블에 데이터 저장
-#         with connection.cursor() as cursor:
-#             cursor.execute(
-#                 "INSERT INTO preset_preference_account (account_id, persona_type) VALUES (%s, %s)",
-#                 [account_id, persona_data]  
-#             )
+        if not persona_data:
+            return JsonResponse({"error": "사용자 분석에 실패했습니다."}, status=500)
 
-#         return JsonResponse({"message": "저장 완료", "redirect": "/chatbot/basic_chatbot/"})
+        # `preset_preference_account` 테이블에 데이터 저장
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "INSERT INTO preset_preference_account (account_id, persona_type) VALUES (%s, %s)",
+                [account_id, persona_data],
+            )
+
+        return JsonResponse(
+            {"message": "저장 완료", "redirect": "/chatbot/basic_chatbot/"}
+        )
