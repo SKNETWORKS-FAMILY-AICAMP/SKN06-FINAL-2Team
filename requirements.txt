@@ -205,7 +205,6 @@ pyparsing==3.2.0
 pypdf==5.1.0
 PyPika==0.48.9
 pyproject_hooks==1.2.0
-pyreadline3==0.0.0
 pysbd==0.3.4
 PySocks==1.7.1
 python-crontab==3.2.0
