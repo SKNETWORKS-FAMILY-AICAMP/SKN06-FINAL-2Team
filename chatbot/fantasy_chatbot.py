@@ -1,13 +1,17 @@
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain.agents import AgentExecutor, create_tool_calling_agent
-from langchain_core.tools.retriever import create_retriever_tool
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from textwrap import dedent
-from langchain.tools import Tool
+from .vector_store import (
+    selfquery_tool,
+    fantasy_vector_store,
+    fantasy_metadata_field_info,
+)
 import logging
-from .vector_store import selfquery_tool
+from account.models import Preset
+from wishlist.models import RecommendedWork
 
 
 logging.basicConfig(level=logging.INFO)
@@ -27,13 +31,33 @@ def get_user_memory(session_id):
 
 
 # Tool 설정
-fantasy_tool = selfquery_tool("판타지", "fantasy")
-mofan_tool = selfquery_tool("현판", "modern_fantasy")
-school_fantasy_tool = selfquery_tool("학원/판타지", "school_fantasy")
-fantasy_drama_tool = selfquery_tool("판타지 드라마", "fatasy_drama")
+fantasy_tool = selfquery_tool(
+    fantasy_vector_store, fantasy_metadata_field_info, "fantasy"
+)
+
 
 # 로맨스 챗봇의 로직
 def process_fantasy_chatbot_request(question, session_id, user):
+    user_info = f"사용자의 이름은 '{user.name[-2:]}'이고, {user.real_age}세 {user.gender}입니다."
+    # 유저의 취향(persona_type) 불러오기
+    try:
+        preset = Preset.objects.get(account_id=user)
+        user_preference = preset.persona_type
+    except Preset.DoesNotExist:
+        user_preference = "사용자의 취향 정보가 등록되지 않았습니다."
+    # 유저의 추천작 리스트 불러오기
+    try:
+        recommended_works = RecommendedWork.objects.filter(account_user_id=user)
+        user_recommended_works = [
+            f"{work.content_id}"
+            for work in recommended_works
+            if work.recommended_model == "fantasy"
+        ]
+    except RecommendedWork.DoesNotExist:
+        user_recommended_works = "사용자의 추천 작품 정보가 등록되지 않았습니다."
+    logging.info(f"유저정보: {user_info}")
+    logging.info(f"유저 취향 정보: {user_preference}")
+    logging.info(f"유저의 기존 추천작 정보: {user_recommended_works}")
     total_prompt = ChatPromptTemplate.from_messages(
         [
             (
@@ -61,7 +85,7 @@ def process_fantasy_chatbot_request(question, session_id, user):
                     "genre": 작품의 장르(당신은 로맨스와 BL만 검색할 수 있습니다.)
                     "status": 작품의 연재 상태("연재", "완결", "휴재")
                     "update_days": 작품의 연재일("월요일", "월요일, 화요일" 등)
-                    "age_rating": 작품의 연령 제한("전체 연령가", "19세 연령가" 등)
+                    "age_rating": 작품의 연령 제한("전체 이용가", "19세 이용가" 등)
                     "original": 작품의 원작 제목
                     "author": 작품의 작가
                     "episode": 작품의 총 회차 수
@@ -92,7 +116,26 @@ def process_fantasy_chatbot_request(question, session_id, user):
             (
                 "ai",
                 dedent(
-                    """
+                    f"""
+                <user_information>
+                {user_info}
+                사용자의 이름을 인식하고 부르십시오.
+                사용자의 나이에 맞는 연령제한으로 추천하십시오.
+                    - 전체 이용가: 모든 나이 가능
+                    - 12세 이용가: 12세 이상
+                    - 15세 이용가: 15세 이상
+                    - 19세 이용가: 19세 이상
+                </user_information>
+                
+                <user_preference>
+                {user_preference}
+                </user_preference>
+                
+                <user_recommended_works>
+                다음은 유저가 추천받은 작품들입니다. 이 작품은 제외하고 추천하십시오.
+                {user_recommended_works}
+                </user_recommended_works>
+                
                 <recommand>
                 만일 사용자가 추천을 원하는 경우 니피아는 tools에서 검색한 결과를 바탕으로 최대 3개의 작품을 추천합니다.'
                 사용자가 장르를 선택하지 않는다면 **판타지 장르**를 검색해서 추천합니다.
@@ -135,7 +178,7 @@ def process_fantasy_chatbot_request(question, session_id, user):
         ]
     )
 
-    tools = [fantasy_tool, mofan_tool, school_fantasy_tool, fantasy_drama_tool]
+    tools = [fantasy_tool]
     agent = create_tool_calling_agent(llm, tools, total_prompt)
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 

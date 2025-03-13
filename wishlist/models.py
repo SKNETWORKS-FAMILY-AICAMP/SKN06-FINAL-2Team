@@ -12,3 +12,14 @@ class RecommendedWork(models.Model):
 
     def __str__(self):
         return f"{self.account_user.username} - {self.content_id} ({self.recommended_model})"
+
+
+class UserPreference(models.Model):
+    account = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True
+    )
+    basic_preference = models.TextField(null=True, blank=True)
+    romance_preference = models.TextField(null=True, blank=True)
+    rofan_preference = models.TextField(null=True, blank=True)
+    fantasy_preference = models.TextField(null=True, blank=True)
+    historical_preference = models.TextField(null=True, blank=True)

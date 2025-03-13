@@ -7,14 +7,15 @@ from langchain.tools import Tool
 import logging
 
 logging.basicConfig(level=logging.INFO)
+embedding_function = HuggingFaceEmbeddings(model_name="BAAI/bge-m3")
 
 
-def load_vector_store(genre, PERSIST_DIRECTORY):
+def load_vector_store(GENRE, PERSIST_DIRECTORY):
     # 벡터스토어 설정
     vector_store = Chroma(
         persist_directory=PERSIST_DIRECTORY,
-        collection_name=genre,
-        embedding_function=HuggingFaceEmbeddings(model_name="BAAI/bge-m3"), # 임베딩 바뀔 수 있음
+        collection_name=GENRE,
+        embedding_function=embedding_function,
     )
 
     metadata_field_info = [
@@ -24,7 +25,7 @@ def load_vector_store(genre, PERSIST_DIRECTORY):
         ),
         AttributeInfo(
             name="platform",
-            description="작품의 연재처 (카카오페이지, 네이버 웹툰, 카카오웹툰, 네이버 시리즈)",
+            description="작품의 연재처 (카카오페이지, 네이버웹툰, 카카오웹툰, 네이버시리즈)",
             type="string",
         ),
         AttributeInfo(
@@ -61,20 +62,46 @@ def load_vector_store(genre, PERSIST_DIRECTORY):
             name="price",
             description="작품의 가격",
             type="string",
-        )
+        ),
     ]
     return vector_store, metadata_field_info
 
 
-def selfquery_tool(genre, PERSIST_DIRECTORY):
+action_vector_store, action_metadata_field_info = load_vector_store(
+    "action", "data/vector_store/action"
+)
+cartoon_vector_store, cartoon_metadata_field_info = load_vector_store(
+    "cartoon", "data/vector_store/cartoon"
+)
+drama_vector_store, drama_metadata_field_info = load_vector_store(
+    "drama", "data/vector_store/drama"
+)
+fantasy_vector_store, fantasy_metadata_field_info = load_vector_store(
+    "fantasy", "data/vector_store/fantasy"
+)
+historical_vector_store, historical_metadata_field_info = load_vector_store(
+    "historical", "data/vector_store/historical"
+)
+horror_vector_store, horror_metadata_field_info = load_vector_store(
+    "horror", "data/vector_store/horror"
+)
+rofan_vector_store, rofan_metadata_field_info = load_vector_store(
+    "rofan", "data/vector_store/rofan"
+)
+romance_vector_store, romance_metadata_field_info = load_vector_store(
+    "romance", "data/vector_store/romance"
+)
+
+
+def selfquery_tool(vector_store, metadata_field_info, tool_name):
     """
-    SelfQueryRetriever 기반의 Tool을 생성
-    :param genre: 장르 (예: '로맨스', '판타지', 'BL')
-    :param PERSIST_DIRECTORY: Vector Store의 위치
+    특정 장르에 대한 SelfQueryRetriever 기반의 Tool을 생성
+    :param vector_store: Chroma VectorStore
+    :param genre: 필터링할 장르 (예: '로맨스', '판타지', 'BL')
+    :param tool_name: Tool의 이름
     :return: LangChain Tool
     """
     llm = ChatOpenAI(model_name="gpt-4o", temperature=0)
-    vector_store, metadata_field_info = load_vector_store(genre, PERSIST_DIRECTORY)
     retriever = SelfQueryRetriever.from_llm(
         llm=llm,
         vectorstore=vector_store,
@@ -84,7 +111,7 @@ def selfquery_tool(genre, PERSIST_DIRECTORY):
         search_kwargs={"k": 10},  # 상위 10개 검색
     )
 
-    def search_and_format(query):
+    def search(query):
         """
         검색 수행 후 메타데이터를 포함한 결과 반환
         """
@@ -95,7 +122,7 @@ def selfquery_tool(genre, PERSIST_DIRECTORY):
         return "\n\n".join(result.page_content for result in results)
 
     return Tool(
-        name=f"{genre}_retriever_tool",
-        func=search_and_format,
-        description=f"Use this tool to search {genre}.",
+        name=f"{tool_name}_retriever_tool",
+        func=search,
+        description=f"Use this tool to search {tool_name}.",
     )

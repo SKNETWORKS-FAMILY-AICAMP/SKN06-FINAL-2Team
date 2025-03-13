@@ -5,7 +5,13 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from textwrap import dedent
 import logging
-from .vector_store import selfquery_tool
+from .vector_store import (
+    selfquery_tool,
+    romance_vector_store,
+    romance_metadata_field_info,
+)
+from account.models import Preset
+from wishlist.models import RecommendedWork
 
 logging.basicConfig(level=logging.INFO)
 
@@ -24,18 +30,33 @@ def get_user_memory(session_id):
 
 
 # Tool 설정
-romance_webnovel_tool = selfquery_tool(
-    "romance", "data/vector_store/romance"
-)
-romance_webtoon_tool = selfquery_tool(
-    "bl", "data/vector_store/bl"
+romance_tool = selfquery_tool(
+    romance_vector_store, romance_metadata_field_info, "romance"
 )
 
 
 # 로맨스 챗봇의 로직
 def process_romance_chatbot_request(question, session_id, user):
     user_info = f"사용자의 이름은 '{user.name[-2:]}'이고, {user.real_age}세 {user.gender}입니다."
+    # 유저의 취향(persona_type) 불러오기
+    try:
+        preset = Preset.objects.get(account_id=user)
+        user_preference = preset.persona_type
+    except Preset.DoesNotExist:
+        user_preference = "사용자의 취향 정보가 등록되지 않았습니다."
+    # 유저의 추천작 리스트 불러오기
+    try:
+        recommended_works = RecommendedWork.objects.filter(account_user_id=user)
+        user_recommended_works = [
+            f"{work.content_id}"
+            for work in recommended_works
+            if work.recommended_model == "romance"
+        ]
+    except RecommendedWork.DoesNotExist:
+        user_recommended_works = "사용자의 추천 작품 정보가 등록되지 않았습니다."
     logging.info(f"유저정보: {user_info}")
+    logging.info(f"유저 취향 정보: {user_preference}")
+    logging.info(f"유저의 기존 추천작 정보: {user_recommended_works}")
     total_prompt = ChatPromptTemplate.from_messages(
         [
             (
@@ -93,25 +114,31 @@ def process_romance_chatbot_request(question, session_id, user):
                     - 19세 이용가: 19세 이상
                 </user_information>
                 
+                <user_preference>
+                {user_preference}
+                </user_preference>
+                
+                <user_recommended_works>
+                다음은 유저가 추천받은 작품들입니다. 이 작품은 제외하고 추천하십시오.
+                {user_recommended_works}
+                </user_recommended_works>
+                
                 <search>
-                당신에게 주어진 tool은 romance_bl_tool, romance_tool, bl_tool입니다.
+                당신에게 주어진 tool은 romance_bl_tool입니다.
                 사용자의 요구사항에 가장 맞는 검색어 필터를 문자열로 생성하여 검색하십시오.
-                - 각각 로맨스와 BL / 로맨스 / BL을 검색하는 tool이며 검색어를 생성할 때 이에 맞는 장르를 필터로 적용하십시오.
+                - 로맨스와 BL을 검색하는 tool이며 검색어를 생성할 때 이에 맞는 장르를 필터로 적용하십시오.
                 - 그 외에 사용자의 요구사항에 맞는 필터를 생성하여 검색하십시오.
-                - "인기 많은", "인기", "유명" 등과 같이 인기와 관련된 키워드가 들어오면 score가 0.7 **이상**인 작품만 추천하십시오.
+                - "인기 많은", "인기", "유명" 등과 같이 인기와 관련된 키워드가 들어오면 score가 0.8 **이상**인 작품만 추천하십시오.
                 - 필터로 검색할 수 있는 항목은 다음과 같습니다.
                     "title": 작품의 제목
                     "type": 작품의 타입(웹툰/웹소설)
-                    "platform": 작품의 연재처(네이버 시리즈, 카카오웹툰, 네이버 웹툰, 카카오페이지)
+                    "platform": 작품의 연재처(네이버시리즈, 카카오웹툰, 네이버웹툰, 카카오페이지)
                     "genre": 작품의 장르(당신은 로맨스와 BL만 검색할 수 있습니다.)
                     "status": 작품의 연재 상태("연재", "완결", "휴재")
                     "update_days": 작품의 연재일("월요일", "월요일, 화요일" 등)
-                    "age_rating": 작품의 연령 제한("전체 연령가", "19세 연령가" 등)
-                    "original": 작품의 원작 제목
+                    "age_rating": 작품의 연령 제한("전체 이용가", "19세 이용가" 등)
                     "author": 작품의 작가
-                    "episode": 작품의 총 회차 수
                     "score": 작품의 인기도
-                    "page_content": 작품의 시놉시스와 키워드를 합친 문자열
                 </search>
                 
                 
@@ -157,7 +184,7 @@ def process_romance_chatbot_request(question, session_id, user):
         ]
     )
 
-    tools = [romance_tool, bl_tool]
+    tools = [romance_tool]
     agent = create_tool_calling_agent(llm, tools, total_prompt)
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 

@@ -7,7 +7,7 @@ from django.db import connection
 from django.http import JsonResponse
 
 import logging
-from .models import User
+from .models import User, Preset
 from .forms import SignUpForm, EditInformationForm
 from .preset_preference import analyze_user_preference
 
@@ -151,30 +151,22 @@ def preset_preference(request):
         if not request.user.is_authenticated:  # 로그인 여부
             return JsonResponse({"error": "로그인이 필요합니다."}, status=401)
 
+        user = request.user  # 로그인한 사용자
         selected_works = request.POST.getlist("works")
 
         if not selected_works:
             return JsonResponse({"error": "작품을 선택해주세요."}, status=400)
 
-        # 현재 로그인한 회원의 ID 가져오기
-        account_id = request.user.id
-        logger.debug(f"사용자 ID {account_id}님이 선호하는 작품을 선택 중입니다.")
+        # 사용자 취향 분석 (임의 로직 - 실제 분석 로직을 대체해야 함)
+        persona_text = analyze_user_preference(selected_works)
 
-        if not isinstance(account_id, int):  # 정수형이 아니면 변환
-            account_id = int(account_id)
-
-        # 'persona_type' 분석
-        persona_data = analyze_user_preference(selected_works)
-
-        if not persona_data:
+        if not persona_text:
             return JsonResponse({"error": "사용자 분석에 실패했습니다."}, status=500)
 
-        # `preset_preference_account` 테이블에 데이터 저장
-        with connection.cursor() as cursor:
-            cursor.execute(
-                "INSERT INTO preset_preference_account (account_id, persona_type) VALUES (%s, %s)",
-                [account_id, persona_data],
-            )
+        # `Preset` 모델에 저장 (문장 형태)
+        preset, created = Preset.objects.update_or_create(
+            account_id=user, defaults={"persona_type": persona_text}
+        )
 
         return JsonResponse(
             {"message": "저장 완료", "redirect": "/chatbot/basic_chatbot/"}
