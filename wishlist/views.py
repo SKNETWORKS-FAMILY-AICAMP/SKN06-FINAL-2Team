@@ -138,7 +138,7 @@ def analyze_and_store_user_preferences(request):
                 model_preferences[model] = "분석되지 않음"
 
     UserPreference.objects.update_or_create(
-        account_user=user,
+        account_id=user,
         defaults={
             "basic_preference": model_preferences.get("basic", "분석 결과 없음"),
             "romance_preference": model_preferences.get("romance", "분석 결과 없음"),
