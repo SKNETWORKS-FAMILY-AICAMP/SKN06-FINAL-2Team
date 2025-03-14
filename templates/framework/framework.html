@@ -95,21 +95,13 @@
                 <div class="carousel-container" id="carouselContainer" data-bs-ride="carousel">   
                     <button class="carousel-btn prev-btn">&lt;</button>
                     <div class="carousel" data-bs-interval="3000">
-                        <img src="{% static 'img/historical/historical_ai_prologue_01.png' %}" alt="무협1">
-                        <img src="{% static 'img/historical/historical_ai_prologue_02.png' %}" alt="무협2">
-                        <img src="{% static 'img/historical/historical_ai_prologue_03.png' %}" alt="무협3">
-                        <img src="{% static 'img/historical/historical_ai_prologue_04.png' %}" alt="무협4">
-                        <img src="{% static 'img/fantasy/angry.png' %}" alt="판타지1">
-                        <img src="{% static 'img/fantasy/cold.png' %}" alt="판타지2">
-                        <img src="{% static 'img/fantasy/shy.png' %}" alt="판타지3">
-                        <img src="{% static 'img/fantasy/shy2.png' %}" alt="판타지4">
-                        <img src="{% static 'img/fantasy/smile.png' %}" alt="판타지5">
-                        <img src="{% static 'img/fantasy/supershy.png' %}" alt="판타지6">
-                        <img src="{% static 'img/fantasy/surprized.png' %}" alt="판타지7">
-                        <img src="{% static 'img/rofan/ai_profile.png' %}" alt="로판1">
-                        <img src="{% static 'img/rofan/ai_prologue.png' %}" alt="로판2">
-                        <img src="{% static 'img/romance/prologue.png' %}" alt="로맨스1">
-                        <img src="{% static 'img/romance/ai_profile.png' %}" alt="로맨스2">
+                        {% for work in recommendations %}
+                            <a href="{{work.url}}">
+                                <img src="{{ work.thumbnail }}" alt="{{ work.title }}">
+                            </a>
+                        {% empty %}
+                            <p>최근 추천된 작품이 없습니다.</p>
+                        {% endfor %}
                     </div>
                     <button class="carousel-btn next-btn">&gt;</button> 
                 </div>
