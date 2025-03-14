@@ -84,23 +84,21 @@ def user_information(request):
     object = User.objects.get(pk=request.user.pk)
     return render(request, "account/user_information.html", {"user": object})
 
-
 # 회원 정보 수정
-@login_required
+# @login_required
 def edit_information(request):
-    if request.method == "GET":
-        object = User.objects.get(pk=request.user.pk)
-        form = EditInformationForm(instance=object)
-        return render(request, "account/edit_information.html", {"form": form})
-    elif request.method == "POST":
-        object = User.objects.get(pk=request.user.pk)
-        form = EditInformationForm(request.POST, request.FILES, instance=object)
+    if request.method == "POST":
+        form = EditInformationForm(request.POST, instance=request.user)
         if form.is_valid():
+            # 이메일과 아이디는 기존 값 유지
+            form.instance.email = request.user.email
+            form.instance.username = request.user.username 
             form.save()
-            return redirect(reverse("account:detail"))
-        else:
-            return render(request, "account/edit_information.html", {"form": form})
+            return redirect("account:user_information")
+    else:
+        form = EditInformationForm(instance=request.user)
 
+    return render(request, "account/edit_information.html", {"form": form})
 
 # 비밀번호 변경
 @login_required
