@@ -340,3 +340,8 @@ h2 {
     font-size: 30px;
     background-color: white;
 }
+.no-style-link {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}

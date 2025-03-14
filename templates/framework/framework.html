@@ -94,10 +94,11 @@
             <section class="recommendation-section">
                 <div class="carousel-container" id="carouselContainer" data-bs-ride="carousel">   
                     <button class="carousel-btn prev-btn">&lt;</button>
-                    <div class="carousel" data-bs-interval="3000">
+                    <div class="carousel">
                         {% for work in recommendations %}
-                            <a href="{{work.url}}">
+                            <a class="no-style-link" href="{{work.url}}" target="_blank" rel="noopener noreferrer">
                                 <img src="{{ work.thumbnail }}" alt="{{ work.title }}">
+                                {{ work.title }}
                             </a>
                         {% empty %}
                             <p>최근 추천된 작품이 없습니다.</p>
