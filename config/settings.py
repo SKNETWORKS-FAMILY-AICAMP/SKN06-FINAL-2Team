@@ -8,7 +8,7 @@ load_dotenv()
 
 ## 기본 설정
 # 개발 모드
-DEBUG = True
+DEBUG = False
 
 # secret key
 SECRET_KEY = "h99x_#9)bw)beotdxobhq-g)0=@hk5kccd%!g3+!l88zt+vlz%"
