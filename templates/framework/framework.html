@@ -5,85 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static '.css'%}">
     <title>{% block title %}Chatbot{% endblock title %}</title>
     <style>
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #ddd;
-        }
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .chat-layout {
-            display: flex;
-            flex-direction: row;
-            height: calc(100vh - 60px);
-        }
-        .sidebar {
-            width: 15%; /* 🔹 사이드바 크기 조정 */
-            padding: 10px 10px 10px 15px;
-            background-color: #ffffff;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: auto; /* 🔹 화면에 맞춰 자동 조절 */
-            gap: 2px
-        }
-        .container {
-            flex-grow: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-        /* 🔹 챗봇 선택 카드 스타일 */
-        .bot-card {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-start;
-            background-color: white;
-            border: 2px solid #81009b;
-            border-radius: 12px;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: #81009b;
-            font-size: 16px; /* 🔹 글자 크기 조정 */
-            font-weight: bold;
-            width: 150px; /* 🔹 크기 조정 */
-            height: 90px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
-            gap: 12px;
-        }
-        .bot-card:hover {
-            background-color: #81009b;
-            color: white;
-            transform: scale(1.05);
-        }
-        .bot-image {
-            width: 90px; /* 🔹 이미지 크기 조정 */
-            height: 90px;
-            border-radius: 12px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        .bot-card:hover .bot-image {
-            transform: scale(1.1);
-        }
+
     </style>
 </head>
 <body>
-
-    <!-- 🔹 네비게이션 바 -->
     <header>
         <nav class="navbar">
             <div class="user-info">
@@ -97,9 +25,7 @@
             </div>
         </nav>
     </header>
-    <!-- 🔹 챗봇 선택 버튼 + 채팅창 가로 정렬 -->
     <div class="chat-layout">
-        <!-- 🔹 챗봇 선택 버튼 영역 -->
         <div class="sidebar">
             <div class="button-container">
                 <a href="/chatbot/basic_chatbot/" class="bot-card">
@@ -163,12 +89,40 @@
             
         </div>
 
-        <!-- 🔹 개별 페이지에서 채울 블록 -->
-        <div class="container">
-            
-            {% block content %}{% endblock content %}
+        <div class="main">
+            {% if user.is_authenticated %}
+            <section class="recommendation-section">
+                <div class="carousel-container" id="carouselContainer" data-bs-ride="carousel">   
+                    <button class="carousel-btn prev-btn">&lt;</button>
+                    <div class="carousel" data-bs-interval="3000">
+                        <img src="{% static 'img/historical/historical_ai_prologue_01.png' %}" alt="무협1">
+                        <img src="{% static 'img/historical/historical_ai_prologue_02.png' %}" alt="무협2">
+                        <img src="{% static 'img/historical/historical_ai_prologue_03.png' %}" alt="무협3">
+                        <img src="{% static 'img/historical/historical_ai_prologue_04.png' %}" alt="무협4">
+                        <img src="{% static 'img/fantasy/angry.png' %}" alt="판타지1">
+                        <img src="{% static 'img/fantasy/cold.png' %}" alt="판타지2">
+                        <img src="{% static 'img/fantasy/shy.png' %}" alt="판타지3">
+                        <img src="{% static 'img/fantasy/shy2.png' %}" alt="판타지4">
+                        <img src="{% static 'img/fantasy/smile.png' %}" alt="판타지5">
+                        <img src="{% static 'img/fantasy/supershy.png' %}" alt="판타지6">
+                        <img src="{% static 'img/fantasy/surprized.png' %}" alt="판타지7">
+                        <img src="{% static 'img/rofan/ai_profile.png' %}" alt="로판1">
+                        <img src="{% static 'img/rofan/ai_prologue.png' %}" alt="로판2">
+                        <img src="{% static 'img/romance/prologue.png' %}" alt="로맨스1">
+                        <img src="{% static 'img/romance/ai_profile.png' %}" alt="로맨스2">
+                    </div>
+                    <button class="carousel-btn next-btn">&gt;</button> 
+                </div>
+            </section>
+                <div id="toggleCarouselBtn" class="toggle-btn">▽</div>
+            {% else %}
+                <div id="toggleCarouselBtn" class="toggle-btn" onclick="alert('로그인을 해주세용')">▽</div>
+            {% endif %}
+            <div class="container">
+                {% block content %}{% endblock content %}
+            </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="{% static 'js/framework.js' %}"></script>
 </body>
 </html>
