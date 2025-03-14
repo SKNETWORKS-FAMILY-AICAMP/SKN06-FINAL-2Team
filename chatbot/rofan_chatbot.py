@@ -146,6 +146,9 @@ def process_rofan_chatbot_request(question, session_id, user):
                     - 12세 이용가: 12세 이상
                     - 15세 이용가: 15세 이상
                     - 19세 이용가: 19세 이상
+                    사용자의 성별에 맞는 호칭을 사용하십시오.
+                    - 성별이 남자라면 OO백작
+                    - 성별이 여자라면 OO영애
                 </user_information>
                 
                 <user_preference>
