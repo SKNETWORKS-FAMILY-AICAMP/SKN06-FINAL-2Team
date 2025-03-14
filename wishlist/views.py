@@ -6,6 +6,8 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import HttpResponseBadRequest
 from .models import RecommendedWork, Contents, UserPreference
+from django.utils import timezone
+from datetime import timedelta
 
 logger = logging.getLogger(__name__)
 openai.api_key = settings.OPENAI_API_KEY
@@ -51,10 +53,11 @@ def analyze_and_store_user_preferences(request):
     user_id = user.id
     logger.info(f"사용자 {user_id}의 선호도 분석 시작.")
 
+    one_year_ago = timezone.now() - timedelta(days=365)
     recommendations = RecommendedWork.objects.filter(
         account_user=user,
         feedback__isnull=False,
-        recommended_date__gte="NOW() - INTERVAL 1 YEAR",
+        recommended_date__gte=one_year_ago,
     ).values("content_id", "recommended_model", "feedback")
 
     if not recommendations.exists():
@@ -78,11 +81,11 @@ def analyze_and_store_user_preferences(request):
         logger.warning("해당 모델에 유효한 피드백이 없습니다.")
         return JsonResponse({"error": "유효한 피드백이 없습니다."}, status=400)
 
-    contents = Contents.objects.filter(content_id__in=content_ids).values(
-        "content_id", "type", "platform", "genre", "keywords", "synopsis"
+    contents = Contents.objects.filter(id__in=content_ids).values(
+        "id", "type", "platform", "genre", "keywords", "synopsis"
     )
 
-    content_data = {c["content_id"]: c for c in contents}
+    content_data = {c["id"]: c for c in contents}
 
     model_preferences = {}
     for model, rec_list in grouped_data.items():
