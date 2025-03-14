@@ -11,7 +11,7 @@ from .vector_store import (
     romance_metadata_field_info,
 )
 from account.models import Preset
-from wishlist.models import RecommendedWork
+from wishlist.models import RecommendedWork, Contents
 
 logging.basicConfig(level=logging.INFO)
 
@@ -46,14 +46,17 @@ def process_romance_chatbot_request(question, session_id, user):
         user_preference = "사용자의 취향 정보가 등록되지 않았습니다."
     # 유저의 추천작 리스트 불러오기
     try:
-        recommended_works = RecommendedWork.objects.filter(account_user_id=user)
-        user_recommended_works = [
-            f"{work.content_id}"
-            for work in recommended_works
-            if work.recommended_model == "romance"
-        ]
+        recommended_works = RecommendedWork.objects.filter(
+            account_user=user, recommended_model="romance"
+        ).values_list("content_id", flat=True)
+
+        user_recommended_works = Contents.objects.filter(
+            id__in=recommended_works
+        ).values_list("title", flat=True)
+
     except RecommendedWork.DoesNotExist:
-        user_recommended_works = "사용자의 추천 작품 정보가 등록되지 않았습니다."
+        user_recommended_works = ["사용자의 추천 작품 정보가 등록되지 않았습니다."]
+
     logging.info(f"유저정보: {user_info}")
     logging.info(f"유저 취향 정보: {user_preference}")
     logging.info(f"유저의 기존 추천작 정보: {user_recommended_works}")
@@ -167,7 +170,7 @@ def process_romance_chatbot_request(question, session_id, user):
                     - URL
 
                 - 위 요소를 활용해서 목록화하십시오
-                    - 제목, 작품 소개, 썸네일, URL : 필수
+                    - 제목, 플랫폼, 작품 소개, 썸네일, URL : 필수
                     - 나머지 요소는 사용자의 요구사항에 해당되는 요소를 사용하십시오.
                 - 추천하는 순서는 인기도가 높은 순서대로 추천하십시오.
                 

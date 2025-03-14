@@ -8,7 +8,7 @@ load_dotenv()
 
 ## 기본 설정
 # 개발 모드
-DEBUG = False
+DEBUG = True
 
 # secret key
 SECRET_KEY = "h99x_#9)bw)beotdxobhq-g)0=@hk5kccd%!g3+!l88zt+vlz%"
@@ -107,7 +107,7 @@ USE_TZ = False
 # Static
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # OpenAI API 키 불러오기
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
