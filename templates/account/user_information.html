@@ -9,28 +9,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-
         .profile-table {
             width: 100%;
-            border-collapse: collapse; /* 🔹 테이블 간격 제거 */
+            border-collapse: collapse;
         }
         .profile-table td {
             padding: 12px 10px;
-            border-bottom: 1px solid #e5e7eb; /* 🔹 각 행 아래 연한 회색 선 */
+            border-bottom: 1px solid #e5e7eb;
         }
         .profile-table tr:last-child td {
-            border-bottom: none; /* 🔹 마지막 줄에는 선 제거 */
+            border-bottom: none;
         }
         .profile-label {
-            font-weight: 600; /* 🔹 강조 (Bold 효과) */
-            color: #374151; /* 🔹 어두운 회색 톤 */
-            width: 150px; /* 🔹 라벨 너비 일정하게 */
+            font-weight: 600;
+            color: #374151;
+            width: 150px;
         }
         .profile-table td:last-child {
-            text-align: right; /* 🔹 값들을 오른쪽 정렬 */
+            text-align: left;
         }
         .active-link {
-            background-color: #D9D9D9; /* 🔹 회색 배경 */
+            background-color: #D9D9D9;
             font-weight: bold;
             border-radius: 5px;
         }
@@ -56,7 +55,7 @@
                     </li>
                     <li class="py-2 px-4 hover:bg-gray-200 rounded flex items-center">
                         <img src="{% static 'img/icon/book_icon.png' %}" alt="Book Icon" class="w-5 h-5 mr-2">
-                        <a href="{% url 'wishlist:main' %}">추천작 리스트</a>
+                        <a href="{% url 'wishlist:main' %}"">추천작 리스트</a>
                         <img src="{% static 'img/icon/arrow.png' %}" alt="Arrow Icon" class="w-4 h-4 ml-auto">
                     </li>
                     <form action="{% url 'account:logout' %}" method="POST" class="w-full">
@@ -78,7 +77,7 @@
                 <h1 class="text-2xl text-center font-semibold mt-2">{{ user.username }}님의 회원정보</h1>
             </div>
 
-            <!-- 🔹 프로필 정보 테이블 (깔끔한 스타일) -->
+            <!-- 🔹 회원정보 테이블 (보기 전용) -->
             <div class="mt-6">
                 <table class="profile-table">
                     <tr>
@@ -86,16 +85,16 @@
                         <td>{{ user.email }}</td>
                     </tr>
                     <tr>
-                        <td class="profile-label">닉네임</td>
+                        <td class="profile-label">아이디</td>
                         <td>{{ user.username }}</td>
                     </tr>
                     <tr>
-                        <td class="profile-label">이름</td>
+                        <td class="profile-label">닉네임</td>
                         <td>{{ user.name }}</td>
                     </tr>
                     <tr>
                         <td class="profile-label">생년월일</td>
-                        <td>{{ user.birthday }}</td>
+                        <td>{{ user.birthday|date:'Y-m-d' }}</td>
                     </tr>
                     <tr>
                         <td class="profile-label">성별</td>
@@ -105,7 +104,9 @@
             </div>
 
             <div class="text-center mt-6">
-                <button class="bg-blue-500 text-white px-6 py-2 rounded">수정</button>
+                <a href="{% url 'account:edit_information' %}" class="bg-blue-500 text-white px-6 py-2 rounded inline-block">
+                    수정
+                </a>
             </div>
         </main>
     </div>
