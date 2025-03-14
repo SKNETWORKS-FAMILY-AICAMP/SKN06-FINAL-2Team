@@ -15,7 +15,31 @@ logging.basicConfig(level=logging.INFO)
 
 
 def basic_chatbot_na_view(request):
-    return render(request, "chatbot/basic_chatbot_na.html")
+    question = request.GET.get("question", "").strip()
+    session_id = request.session.get("session_id")
+    if not session_id:
+        request.session.create()
+        session_id = request.session.session_key
+        request.session["session_id"] = session_id
+    logging.info(f"session_id: {session_id}")
+
+    if not question:
+        profile_image_url = "/static/img/romance/default_user.png"
+        return render(
+            request,
+            "chatbot/basic_chatbot_na.html",
+            {"profile_image_url": profile_image_url},
+        )
+
+    response = process_basic_chatbot_request(question, session_id, request.user)
+    for step in response:
+        logging.info(step)
+    final_output = step["output"]
+    recommended_titles = extract_title_platform_pairs(final_output)
+    if recommended_titles:
+        logging.info(recommended_titles)
+        save_recommended_works(request.user, recommended_titles, "basic")
+    return HttpResponse(markdown2.markdown(final_output))
 
 
 @login_required
