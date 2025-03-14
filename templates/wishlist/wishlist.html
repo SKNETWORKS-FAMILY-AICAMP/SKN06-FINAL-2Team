@@ -67,14 +67,30 @@
     .rating input:checked ~ .star {
         color: gold;
     }
-
-    .delete-checkbox {
+    .overlay-button {
         position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 20px;
-        height: 20px;
+        top: 10px;  
+        right: 10px;  
+        width: 30px; 
+        height: 30px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
+        z-index: 10; 
+        transition: opacity 0.3s ease-in-out;
+    }
+    .overlay-icon {
+        width: 20px;  
+        height: 20px;
+        opacity: 0.85;
+    }
+    .overlay-button:hover {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
     }
 </style>
 
@@ -84,7 +100,10 @@
         <div class="wishlist-grid">
             {% for recommendation in recommendations %}
             <div class="wishlist-item">
-                <input type="checkbox" name="delete_{{ recommendation.work_id }}" class="delete-checkbox" {% if recommendation.deleted %}checked{% endif %}>
+                <div class="overlay-button" onclick="toggleDelete('{{ recommendation.work_id }}', this)">
+                    <img src="{% static 'img/icon/bin.png' %}" class="overlay-icon" alt="삭제">
+                </div>
+                <input type="hidden" name="delete_{{ recommendation.work_id }}" id="delete_status_{{ recommendation.work_id }}" value="{% if recommendation.deleted %}1{% else %}0{% endif %}">
                 <img class="thumbnail" src="{{ recommendation.thumbnail }}" alt="{{ recommendation.title }}">
                 <div class="title">{{ recommendation.title }}</div>
                 <div class="rating">
@@ -94,6 +113,18 @@
                     {% endfor %}
                 </div>
             </div>
+            <script>
+                function toggleDelete(workId, button) {
+                    const deleteStatus = document.getElementById(`delete_status_${workId}`);
+                    if (deleteStatus.value === "0") {
+                        deleteStatus.value = "1";
+                        button.classList.add("active"); 
+                    } else {
+                        deleteStatus.value = "0";
+                        button.classList.remove("active");
+                    }
+                }
+            </script>
             {% endfor %}
         </div>
         <button class="btn btn-success" type="submit">저장</button>
