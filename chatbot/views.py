@@ -87,7 +87,7 @@ def rofan_chatbot_view(request):
     logging.info(f"session_id: {session_id}")
 
     if not question:
-        profile_image_url = "/static/img/romance_user.png"
+        profile_image_url = "/static/img/rofan/user_profile.png"
         return render(
             request,
             "chatbot/rofan_chatbot.html",

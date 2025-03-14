@@ -7,7 +7,7 @@ from django.db import connection
 from django.http import JsonResponse
 
 import logging
-from .models import User, Preset
+from .models import User, PresetContents, Preset
 from .forms import SignUpForm, EditInformationForm
 from .preset_preference import analyze_user_preference
 
@@ -131,40 +131,30 @@ def user_delete(request):
     return redirect(reverse("basic_chatbot_na"))
 
 
-# 최초 취향 분석
 def preset_preference(request):
     if request.method == "GET":
-        with connection.cursor() as cursor:
-            cursor.execute(
-                "SELECT id, title, thumbnail FROM preset_preference_contents"
-            )
-            contents = cursor.fetchall()
+        contents = PresetContents.objects.values("id", "title", "thumbnail")
 
-        # 딕셔너리 리스트로 변환
-        works = [
-            {"id": work[0], "title": work[1], "thumbnail": work[2]} for work in contents
-        ]
+        works = list(contents)
 
         return render(request, "account/preset_preference.html", {"works": works})
 
     elif request.method == "POST":
-        if not request.user.is_authenticated:  # 로그인 여부
+        if not request.user.is_authenticated:
             return JsonResponse({"error": "로그인이 필요합니다."}, status=401)
 
-        user = request.user  # 로그인한 사용자
+        user = request.user  # 현재 로그인한 사용자
         selected_works = request.POST.getlist("works")
 
         if not selected_works:
             return JsonResponse({"error": "작품을 선택해주세요."}, status=400)
 
-        # 사용자 취향 분석 (임의 로직 - 실제 분석 로직을 대체해야 함)
         persona_text = analyze_user_preference(selected_works)
 
         if not persona_text:
             return JsonResponse({"error": "사용자 분석에 실패했습니다."}, status=500)
 
-        # `Preset` 모델에 저장 (문장 형태)
-        preset, created = Preset.objects.update_or_create(
+        Preset.objects.update_or_create(
             account_id=user, defaults={"persona_type": persona_text}
         )
 

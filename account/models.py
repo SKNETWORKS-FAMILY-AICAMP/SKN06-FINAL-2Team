@@ -34,3 +34,18 @@ class Preset(models.Model):
         User, on_delete=models.CASCADE, related_name="presets", db_column="account_id"
     )
     persona_type = models.TextField(verbose_name="사용자 취향 설명")
+
+
+class PresetContents(models.Model):
+    content_id = models.BigIntegerField(primary_key=True, verbose_name="콘텐츠 ID")
+    title = models.CharField(max_length=255, verbose_name="제목")
+    type = models.CharField(
+        max_length=20,
+        choices=[("웹툰", "웹툰"), ("웹소설", "웹소설")],
+        verbose_name="타입",
+    )
+    platform = models.CharField(max_length=50, verbose_name="플랫폼")
+    genre = models.CharField(max_length=50, verbose_name="장르")
+    keywords = models.TextField(verbose_name="키워드")
+    synopsis = models.TextField(verbose_name="시놉시스")
+    thumbnail = models.URLField(verbose_name="썸네일 URL")
