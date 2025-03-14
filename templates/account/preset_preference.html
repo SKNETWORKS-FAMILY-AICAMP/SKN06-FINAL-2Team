@@ -9,7 +9,7 @@
     <div class="grid-container">
         {% for work in works %}
             <label class="grid-item">
-                <input type="checkbox" name="works" value="{{ work.id }}">
+                <input type="checkbox" name="works" value="{{ work.content_id}}">
                 <img src="{{ work.thumbnail }}" alt="작품 이미지">
                 {{work.title}}
             </label>
@@ -21,20 +21,39 @@
 <script>
     document.getElementById("preference-form").onsubmit = function(event) {
         event.preventDefault();
-        let formData = new FormData(this);
+
+        let selectedWorks = [...document.querySelectorAll("input[name='works']:checked")]
+            .map(input => input.value.trim())
+            .filter(value => value !== "");
+
+        if (selectedWorks.length === 0) {
+            alert("최소한 하나의 작품을 선택해주세요!");
+            return;
+        }
+
+        let formData = new FormData();
+        selectedWorks.forEach(work => formData.append("works", work));
 
         fetch("{% url 'account:preset_preference' %}", {
             method: "POST",
             body: formData,
+            headers: {
+                "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
+            }
         })
         .then(response => response.json())
         .then(data => {
+            console.log("서버 응답:", data);
             if (data.redirect) {
                 window.location.href = data.redirect;
+            } else if (data.error) {
+                alert(data.error);
             }
         })
         .catch(error => console.error("Error:", error));
     };
+
+
 </script>
 
 <style>

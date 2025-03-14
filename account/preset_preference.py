@@ -1,6 +1,7 @@
 import logging
 import openai
 from django.conf import settings
+from sympy import content
 from .models import PresetContents
 
 # OpenAI API 키 설정
@@ -14,9 +15,9 @@ def analyze_user_preference(selected_work_ids):
     사용자가 선택한 작품들의 정보를 분석하여 'persona_type'을 생성 (ORM 사용)
     """
 
-    selected_works = PresetContents.objects.filter(id__in=selected_work_ids).values(
-        "title", "type", "platform", "genre", "keywords", "synopsis"
-    )
+    selected_works = PresetContents.objects.filter(
+        content_id__in=selected_work_ids
+    ).values("title", "type", "platform", "genre", "keywords", "synopsis")
 
     if not selected_works:
         logger.warning("선택된 작품이 없습니다.")

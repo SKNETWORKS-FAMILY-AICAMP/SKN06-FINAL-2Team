@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
-from django.db import connection
 from django.http import JsonResponse
 
 import logging
@@ -84,6 +83,7 @@ def user_information(request):
     object = User.objects.get(pk=request.user.pk)
     return render(request, "account/user_information.html", {"user": object})
 
+
 # 회원 정보 수정
 # @login_required
 def edit_information(request):
@@ -92,13 +92,14 @@ def edit_information(request):
         if form.is_valid():
             # 이메일과 아이디는 기존 값 유지
             form.instance.email = request.user.email
-            form.instance.username = request.user.username 
+            form.instance.username = request.user.username
             form.save()
             return redirect("account:user_information")
     else:
         form = EditInformationForm(instance=request.user)
 
     return render(request, "account/edit_information.html", {"form": form})
+
 
 # 비밀번호 변경
 @login_required
@@ -131,31 +132,47 @@ def user_delete(request):
 
 def preset_preference(request):
     if request.method == "GET":
-        contents = PresetContents.objects.values("id", "title", "thumbnail")
-
+        contents = PresetContents.objects.values("content_id", "title", "thumbnail")
         works = list(contents)
-
         return render(request, "account/preset_preference.html", {"works": works})
 
     elif request.method == "POST":
         if not request.user.is_authenticated:
             return JsonResponse({"error": "로그인이 필요합니다."}, status=401)
 
-        user = request.user  # 현재 로그인한 사용자
+        user = request.user
         selected_works = request.POST.getlist("works")
+
+        # 빈 값 필터링
+        selected_works = [work.strip() for work in selected_works if work.strip()]
 
         if not selected_works:
             return JsonResponse({"error": "작품을 선택해주세요."}, status=400)
 
-        persona_text = analyze_user_preference(selected_works)
+        try:
+            # content_id를 정수로 변환 가능한 값만 필터링
+            selected_works = [int(work) for work in selected_works if work.isdigit()]
 
-        if not persona_text:
-            return JsonResponse({"error": "사용자 분석에 실패했습니다."}, status=500)
+            if not selected_works:
+                return JsonResponse({"error": "올바른 작품 ID가 없습니다."}, status=400)
 
-        Preset.objects.update_or_create(
-            account_id=user, defaults={"persona_type": persona_text}
-        )
+            persona_text = analyze_user_preference(selected_works)
 
-        return JsonResponse(
-            {"message": "저장 완료", "redirect": "/chatbot/basic_chatbot/"}
-        )
+            if not persona_text:
+                return JsonResponse(
+                    {"error": "사용자 분석에 실패했습니다."}, status=500
+                )
+
+            Preset.objects.update_or_create(
+                account_id=user, defaults={"persona_type": persona_text}
+            )
+
+            return JsonResponse(
+                {"message": "저장 완료", "redirect": "/chatbot/basic_chatbot/"}
+            )
+
+        except ValueError as e:
+            logging.error(f"ValueError 발생: {e}")
+            return JsonResponse(
+                {"error": "유효하지 않은 작품 ID가 포함되어 있습니다."}, status=400
+            )
