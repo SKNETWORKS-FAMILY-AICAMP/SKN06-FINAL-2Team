@@ -125,6 +125,9 @@ class EditInformationForm(UserChangeForm):
 
         widgets = {
             "birthday": forms.DateInput(attrs={"type": "date"}),
+            "email": forms.TextInput(attrs={"readonly": "readonly", "class": "bg-gray-200"}),
+            "username": forms.TextInput(attrs={"readonly": "readonly", "class": "bg-gray-200"}), 
+            
         }
 
     # 이름 형식 제한 
