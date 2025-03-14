@@ -56,7 +56,7 @@
                     </li>
                     <li class="py-2 px-4 hover:bg-gray-200 rounded flex items-center">
                         <img src="{% static 'img/icon/book_icon.png' %}" alt="Book Icon" class="w-5 h-5 mr-2">
-                        <a href="#">추천작 리스트</a>
+                        <a href="{% url 'wishlist:main' %}">추천작 리스트</a>
                         <img src="{% static 'img/icon/arrow.png' %}" alt="Arrow Icon" class="w-4 h-4 ml-auto">
                     </li>
                     <form action="{% url 'account:logout' %}" method="POST" class="w-full">
