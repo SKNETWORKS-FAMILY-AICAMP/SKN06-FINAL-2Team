@@ -5,6 +5,9 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from textwrap import dedent
 import logging
+import json
+from account.models import Preset
+from wishlist.models import RecommendedWork, Contents
 from .vector_store import (
     selfquery_tool,
     action_vector_store,
@@ -24,9 +27,6 @@ from .vector_store import (
     romance_vector_store,
     romance_metadata_field_info,
 )
-import json
-from account.models import Preset
-from wishlist.models import RecommendedWork, Contents
 
 logging.basicConfig(level=logging.INFO)
 
@@ -37,54 +37,42 @@ llm = ChatOpenAI(model_name=MODEL_NAME, temperature=0)
 # 사용자별 메모리 저장
 user_memory_dict = {}
 
-
 def get_user_memory(session_id):
     if session_id not in user_memory_dict:
         user_memory_dict[session_id] = ChatMessageHistory()
     return user_memory_dict[session_id]
 
-
 # Tool 설정
 action_tool = selfquery_tool(action_vector_store, action_metadata_field_info, "action")
-cartoon_tool = selfquery_tool(
-    cartoon_vector_store, cartoon_metadata_field_info, "cartoon"
-)
+cartoon_tool = selfquery_tool(cartoon_vector_store, cartoon_metadata_field_info, "cartoon")
 drama_tool = selfquery_tool(drama_vector_store, drama_metadata_field_info, "drama")
-fantasy_tool = selfquery_tool(
-    fantasy_vector_store, fantasy_metadata_field_info, "fantasy"
-)
-historical_tool = selfquery_tool(
-    historical_vector_store, historical_metadata_field_info, "historical"
-)
+fantasy_tool = selfquery_tool(fantasy_vector_store, fantasy_metadata_field_info, "fantasy")
+historical_tool = selfquery_tool(historical_vector_store, historical_metadata_field_info, "historical")
 horror_tool = selfquery_tool(horror_vector_store, horror_metadata_field_info, "horror")
 rofan_tool = selfquery_tool(rofan_vector_store, rofan_metadata_field_info, "rofan")
-romance_tool = selfquery_tool(
-    romance_vector_store, romance_metadata_field_info, "romance"
-)
+romance_tool = selfquery_tool(romance_vector_store, romance_metadata_field_info, "romance")
 
 
-# **1. 사용자의 의도를 분석하는 프롬프트**
-query_intent_prompt = ChatPromptTemplate.from_messages(
-    [
-        (
-            "system",
-            dedent(
-                """
-        <role>
-        사용자의 질문을 보고 추천을 원하는지, 특정한 질문을 하는지, 아니면 일반 대화인지 판단하십시오.
-        또한 사용자가 언급한 장르를 분석하여 적절한 장르를 분류하십시오.
-        </role>
+# 사용자의 의도를 분석하는 프롬프트
+# query_intent_prompt = ChatPromptTemplate.from_messages(
+#     [
+#         (
+#             "system",
+#             dedent(
+#                 """
+#                 사용자 메세지의 의도를 다음과 같이 분석하세요.
+                
 
-        <output_format>
-        {{"query_intent": 추천 (recommend), 질문 (question), 기타 (other) 중 하나
-        "genre": 사용자가 원하는 장르}}
-        </output_format>
-    """
-            ),
-        ),
-        ("human", "{input}"),
-    ]
-)
+#                 <output_format>
+#                 {{"query_intent": 추천 (recommend), 질문 (question), 기타 (other) 중 하나
+#                 "genre": 사용자가 원하는 장르}}
+#                 </output_format>
+#         """
+#             ),
+#         ),
+#         ("human", "{input}"),
+#     ]
+# )
 
 
 def process_basic_chatbot_request(question, session_id, user):
@@ -190,20 +178,19 @@ def process_basic_chatbot_request(question, session_id, user):
     )
 
     # 1. 사용자의 의도 분석
-    intent_response = llm.invoke(query_intent_prompt.format(input=question))
+    # intent_response = llm.invoke(query_intent_prompt.format(input=question))
 
     # content를 추출
-    intent_text = intent_response.content  # AIMessage의 content를 추출
-    try:
-        intent_data = json.loads(intent_text)  # JSON 변환
-    except json.JSONDecodeError:
-        # LLM이 JSON이 아닌 일반 텍스트를 반환했을 경우 기본값 설정
-        intent_data = {"query_intent": "other", "genre": "모두"}
+    # intent_text = intent_response.content  # AIMessage의 content를 추출
+    # try:
+    #     intent_data = json.loads(intent_text)  # JSON 변환
+    # except json.JSONDecodeError:
+    #     # LLM이 JSON이 아닌 일반 텍스트를 반환했을 경우 기본값 설정
+    #     intent_data = {"query_intent": "other", "genre": "모두"}
 
-    query_intent = intent_data.get("query_intent", "other")  # 기본값: "other"
-    genre = intent_data.get("genre", "모두")  # 기본값: 로맨스
+    # query_intent = intent_data.get("query_intent", "other")  # 기본값: "other"
+    # genre = intent_data.get("genre", "모두")  # 기본값: 모두
 
-    # 2. 최도균 응답 생성
     tools = [
         action_tool,
         cartoon_tool,
@@ -214,6 +201,7 @@ def process_basic_chatbot_request(question, session_id, user):
         rofan_tool,
         romance_tool,
     ]
+
     agent = create_tool_calling_agent(llm, tools, total_prompt)
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 
@@ -225,8 +213,13 @@ def process_basic_chatbot_request(question, session_id, user):
     )
 
     response = agent_with_chat_history.stream(
-        {"input": question, "query_intent": query_intent, "genre": genre},
+        {"input": question,},
         config={"configurable": {"session_id": session_id}},
     )
+
+    # response = agent_with_chat_history.stream(
+    #     {"input": question, "query_intent": query_intent, "genre": genre},
+    #     config={"configurable": {"session_id": session_id}},
+    # )
 
     return response
