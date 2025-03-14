@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}마이페이지{% endblock title %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+  <!-- (1) 토글 버튼: 화면 왼쪽 상단에 고정 -->
+  <button
+    id="sidebarToggle"
+    class="fixed top-4 left-4 z-50 p-2 bg-gray-800 text-white rounded"
+  >
+    열기
+  </button>
+
+  <!-- (2) 사이드바: 처음엔 숨긴 상태 (-translate-x-full) -->
+  <!-- p-6 transform ... pt-14 로 공백이 들어가야 함 -->
+  <aside
+    id="sidebar"
+    class="fixed top-0 left-0 h-full w-64 bg-gray-100 border-r p-6 transform -translate-x-full transition-transform duration-300 pt-14"
+  >
+    <div class="text-left">
+      <h2 class="mt-2 text-lg font-semibold">{{ user.username }}</h2>
+      <p class="text-sm text-gray-500">{{ user.email }}</p>
+    </div>
+    <nav class="mt-6">
+      <ul>
+        <li class="py-2 px-4 rounded bg-gray-300 font-bold flex items-center">
+          <a href="{% url 'account:user_information' %}">회원정보</a>
+        </li>
+        <li class="py-2 px-4 hover:bg-gray-200 rounded flex items-center">
+          <a href="{% url 'wishlist:main' %}">추천작 리스트</a>
+        </li>
+        <form action="{% url 'account:logout' %}" method="POST" class="w-full">
+          {% csrf_token %}
+          <button
+            type="submit"
+            class="w-full text-left py-2 px-4 flex items-center text-red-500 hover:bg-gray-200 rounded"
+          >
+            로그아웃
+          </button>
+        </form>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- (3) 메인 컨텐츠 영역 -->
+  <div class="w-full min-h-screen">
+    <section class="p-6">
+      {% block content %}
+      {% endblock content %}
+    </section>
+  </div>
+
+  <!-- (4) 토글 로직 -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('sidebarToggle');
+
+    let isOpen = false;
+
+    // 사이드바 열기
+    function openSidebar() {
+      sidebar.classList.remove('-translate-x-full');
+      toggleBtn.textContent = '닫기';
+      isOpen = true;
+      localStorage.setItem('sidebarOpen', 'true');
+    }
+
+    // 사이드바 닫기
+    function closeSidebar() {
+      sidebar.classList.add('-translate-x-full');
+      toggleBtn.textContent = '열기';
+      isOpen = false;
+      localStorage.setItem('sidebarOpen', 'false');
+    }
+
+    // 페이지 로드 시, localStorage를 확인해서 사이드바 상태 복원
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedState = localStorage.getItem('sidebarOpen');
+      if (savedState === 'true') {
+        openSidebar();
+      } else {
+        closeSidebar();
+      }
+    });
+
+    // 버튼을 클릭하면 열림/닫힘을 토글
+    toggleBtn.addEventListener('click', () => {
+      if (isOpen) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+  </script>
+</body>
+</html>
