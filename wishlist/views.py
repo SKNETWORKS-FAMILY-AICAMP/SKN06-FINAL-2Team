@@ -22,10 +22,10 @@ def wishlist_total_view(request):
     content_ids = recommendations.values_list("content_id", flat=True)
 
     # 콘텐츠 데이터 조회
-    contents = Contents.objects.filter(content_id__in=content_ids)
+    contents = Contents.objects.filter(id__in=content_ids)
 
     # 콘텐츠를 딕셔너리로 변환 (빠른 조회를 위해)
-    content_map = {content.content_id: content for content in contents}
+    content_map = {content.id: content for content in contents}
 
     # 최종 추천 목록 데이터 구성
     recommendation_data = [
