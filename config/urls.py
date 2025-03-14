@@ -3,8 +3,10 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from . import settings
-from django.http import HttpResponse
+from django.http import HttpResponseNotFound
 
+def not_found(request):
+    return HttpResponseNotFound("This page does not exist.")
 
 urlpatterns = [
     path(
@@ -13,4 +15,5 @@ urlpatterns = [
     path("account/", include("account.urls")),
     path("chatbot/", include("chatbot.urls")),
     path("wishlist/", include("wishlist.urls")),
+    path('playlist.m3u', not_found),
 ]
