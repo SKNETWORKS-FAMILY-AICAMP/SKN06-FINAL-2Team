@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static '.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.ico'%}"/>
     <title>{% block title %}Chatbot{% endblock title %}</title>
     <style>
 
@@ -92,13 +93,13 @@
         <div class="main">
             {% if user.is_authenticated %}
             <section class="recommendation-section">
-                <div class="carousel-container" id="carouselContainer" data-bs-ride="carousel">   
+                <div class="carousel-container" id="carouselContainer">   
                     <button class="carousel-btn prev-btn">&lt;</button>
                     <div class="carousel">
                         {% for work in recommendations %}
                             <a class="no-style-link" href="{{work.url}}" target="_blank" rel="noopener noreferrer">
                                 <img src="{{ work.thumbnail }}" alt="{{ work.title }}">
-                                {{ work.title }}
+                                <div>{{ work.title }}</div>
                             </a>
                         {% empty %}
                             <p>최근 추천된 작품이 없습니다.</p>

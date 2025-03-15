@@ -1,3 +1,4 @@
+
 /* 홈화면 CSS */
 /* 밑줄 디자인 */
 .underline {
@@ -206,9 +207,9 @@ h2 {
 }
 .sidebar {
     position: fixed;
-    top: 55px;
+    top: 50px;
     width: 15%;
-    padding: 10px 10px 10px 10px;
+    padding: 5px 10px 10px 10px;
     background-color: #ffffff;
     text-align: center;
     display: flex;
@@ -216,7 +217,7 @@ h2 {
     align-items: center;
     justify-content: center;
     overflow: auto;
-    gap: 2px
+    gap: 1px
 }
 .bot-card {
     display: flex;
@@ -227,7 +228,7 @@ h2 {
     border: 2px solid #81009b;
     border-radius: 12px;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     text-decoration: none;
     color: #81009b;
     font-size: 16px;
@@ -254,26 +255,27 @@ h2 {
     transform: scale(1.1);
 }
 .main {
+    position: relative;
+    top: 35px;
+    left: 245px;
+    width: 1183px;
+    height: 643px;
     flex-direction: row;
 }
 .container {
     position: relative;
-    left: 250px;
-    width: 90%;
+    width: 100%;
+    padding: 2px 2px 2px 2px;
 }
 .recommendation-section {
-    margin-left: 260px;
-    margin-top: 30px;
     flex-grow: 1;
-    width: 90%;
+    width: 80%;
     max-width: 1050px;
     position: relative;
     display: flex;
     flex-direction: column;
+    left: 100px;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    height: 0px;
     overflow: hidden;
     transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
@@ -283,24 +285,26 @@ h2 {
     overflow: hidden;
 }
 .carousel-container {
+    position: relative;
     width: 100%;
     max-width: 1040px;
-    height: auto;
+    padding: 0;
     overflow: hidden;
-    margin: 0 auto;
-    position: relative;
     display: flex;
     flex-direction: column;
 }
 .carousel {
+    position: relative;
+    left: 57px;
+    flex-direction: row;
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
 .carousel img {
-    width: 200px;
-    height: 250px;
+    width: 150px;
+    height: 225px;
     border-radius: 5px;
-    margin-right: 10px;
+    margin-right: 20px;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -332,16 +336,23 @@ h2 {
 }
 .toggle-btn {
     position: relative;
-    left: 60%;
+    left: 50%;
     bottom: -1px;
     cursor: pointer;
-    height: 20px;
+    height: 1px;
     width: 30px;
     font-size: 30px;
-    background-color: white;
+    line-height: 12px;
+    z-index: 100;
 }
 .no-style-link {
     color: black;
     text-decoration: none;
     text-align: center;
+}
+.no-style-link div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 150px;
 }

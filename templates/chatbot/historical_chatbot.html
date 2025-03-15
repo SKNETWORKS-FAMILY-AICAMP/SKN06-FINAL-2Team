@@ -4,6 +4,8 @@
 {% block content %}
 {% load static %}
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chatbot.css'%}">
+    <script type="text/javascript" src="{% static 'js/chatbot.js' %}"></script>
     <style>
         /* 🔹 모달 스타일 */
         .modal {
@@ -231,71 +233,12 @@
 </div>
 
 <script>
-    function startChat() {
-        let modal = document.getElementById("prologue-modal");
-        let chatContainer = document.getElementById("chat-container");
-
-        if (modal && chatContainer) {
-            modal.style.display = "none";
-            chatContainer.style.display = "block";
-            setTimeout(() => {
-                chatContainer.scrollIntoView({ behavior: 'smooth' });
-            }, 200);
-        } else {
-            console.error("모달 또는 채팅창 요소를 찾을 수 없습니다.");
-        }
-    }
-
-    document.getElementById("start-chat-btn").addEventListener("click", startChat);
-    function askChatbot() {
-        const question = document.getElementById("question").value;
-        if (!question.trim()) return;
-
-        const chatBox = document.getElementById("chat-box");
-
-        // 사용자 메시지 추가
-        const userMessage = `<div class="chat-message user-message">
-            <span class="message-text user-text">${question}</span>
-            <img src="/static/img/historical/historical_user.png" alt="User" class="profile-pic">
-        </div>`;
-        chatBox.innerHTML += userMessage;
-        document.getElementById("question").value = "";
-
-        // 챗봇 응답 가져오기
-        fetch(`?question=${encodeURIComponent(question)}`)
-            .then(response => response.text())
-            .then(data => {
-                const aiMessage = `<div class="chat-message ai-message">
-                    <img src="/static/img/historical/historical_ai.jpg" alt="AI" class="profile-pic">
-                    <span class="message-text ai-text">${data}</span>
-                </div>`;
-                chatBox.innerHTML += aiMessage;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            })
-            .catch(error => console.error("오류 발생:", error));
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        // 프롤로그 이미지 추가할 리스트(이미지 배열)
-        let images = [
+    let images = [
             "{% static 'img/historical/historical_ai_prologue_01.png' %}",
             "{% static 'img/historical/historical_ai_prologue_02.png' %}",
             "{% static 'img/historical/historical_ai_prologue_03.png' %}",
             "{% static 'img/historical/historical_ai_prologue_04.png' %}"
         ];
-
-        let index = 0; // 현재 이미지 인덱스
-        const modalImage = document.querySelector("#prologue-modal img");
-
-        function changeImage() {
-            index = (index + 1) % images.length;
-            modalImage.src = images[index];
-        }
-
-        // 5초마다 이미지 변경
-        setInterval(changeImage, 3000);
-    });
-
 </script>
 
 {% endblock content %}

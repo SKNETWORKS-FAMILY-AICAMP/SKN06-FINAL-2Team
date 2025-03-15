@@ -15,7 +15,6 @@ function scrollPrev() {
         carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
     }
 }
-setInterval(scrollNext, 500);
 
 // 움직이기
 document.addEventListener("DOMContentLoaded", function () {
@@ -23,12 +22,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const prevBtn = document.querySelector(".prev-btn");
     const nextBtn = document.querySelector(".next-btn");
 
+    
     let index = 0;
     const totalImages = images.length;
-    const imgWidth = images[0].offsetWidth + 10;
+    if (totalImages === 0) {
+        return;
+    }
+
+    const imgWidth = images[0].offsetWidth + 20;
 
     nextBtn.addEventListener("click", function () {
-        if (index < totalImages - 5) {
+        if (index < totalImages - 6) {
+            index++;
+            carousel.style.transform = `translateX(-${index * imgWidth}px)`;
+        }
+        else if (index === totalImages - 6) { // 마지막 이동 시 30px 추가
             index++;
             carousel.style.transform = `translateX(-${index * imgWidth}px)`;
         }
@@ -42,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 // 버튼
 document.addEventListener("DOMContentLoaded", function () {
     const carouselContainer = document.querySelector(".recommendation-section");
@@ -51,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleBtn.addEventListener("click", function () {
         if (carouselContainer.style.height === "0px") {
-            carouselContainer.style.height = "300px";
-            carouselContainer.style.padding = "5px 0px 0px 5px";
+            carouselContainer.style.height = "265px";
+            carouselContainer.style.padding = "10px 0px 0px 0px";
         } else {
             carouselContainer.style.height = "0px";
             carouselContainer.style.padding = "0";

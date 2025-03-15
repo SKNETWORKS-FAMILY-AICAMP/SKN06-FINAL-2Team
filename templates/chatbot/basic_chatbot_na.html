@@ -6,6 +6,8 @@
 
 {% block content %}
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chatbot.css'%}">
+    <script type="text/javascript" src="{% static 'js/chatbot.js' %}"></script>
     <style>
         .chat-container {
             width: 70%;  
@@ -111,42 +113,6 @@
         }
 
     </style>
-    <script>
-        function askChatbot() {
-            const question = document.getElementById("question").value;
-            if (!question.trim()) return;
-
-            const chatBox = document.getElementById("chat-box");
-
-            // 사용자 메시지 추가
-            const userMessage = `<div class="chat-message user-message">
-                <span class="message-text user-text">${question}</span>
-                <img src="{{ profile_image_url }}" alt="User" class="profile-pic">
-            </div>`;
-            chatBox.innerHTML += userMessage;
-            document.getElementById("question").value = "";
-
-            // 챗봇 응답 가져오기
-            fetch(`?question=${encodeURIComponent(question)}`)
-                .then(response => response.text())
-                .then(data => {
-                    // aiMessage에 들어오는 링크가 있으면 target="_blank"를 추가
-                    const aiMessageContent = data.replace(
-                        /<a /g,
-                        '<a target="_blank" rel="noopener noreferrer" '
-                    );
-
-                    const aiMessage = `<div class="chat-message ai-message">
-                        <img src="{% static 'img/romance/ai_profile.png' %}" alt="AI" class="profile-pic">
-                        <span class="message-text ai-text">${aiMessageContent}</span>
-                    </div>`;
-                    chatBox.innerHTML += aiMessage;
-                    chatBox.scrollTop = chatBox.scrollHeight; // 🚀 스크롤을 자동으로 아래로 이동
-                })
-                .catch(error => console.error("오류 발생:", error));
-        }
-    </script>
-
 </head>
 <body>
     <h1>기본 챗봇(비회원)</h1>
