@@ -131,7 +131,6 @@ def process_romance_chatbot_request(question, session_id, user):
                 사용자의 요구사항에 가장 맞는 검색어 필터를 문자열로 생성하여 검색하십시오.
                 - 로맨스와 BL을 검색하는 tool이며 검색어를 생성할 때 이에 맞는 장르를 필터로 적용하십시오.
                 - 그 외에 사용자의 요구사항에 맞는 필터를 생성하여 검색하십시오.
-                - "인기 많은", "인기", "유명" 등과 같이 인기와 관련된 키워드가 들어오면 score가 0.8 **이상**인 작품만 추천하십시오.
                 - 필터로 검색할 수 있는 항목은 다음과 같습니다.
                     "title": 작품의 제목
                     "type": 작품의 타입(웹툰/웹소설)
@@ -141,7 +140,6 @@ def process_romance_chatbot_request(question, session_id, user):
                     "update_days": 작품의 연재일("월요일", "월요일, 화요일" 등)
                     "age_rating": 작품의 연령 제한("전체 이용가", "19세 이용가" 등)
                     "author": 작품의 작가
-                    "score": 작품의 인기도
                 </search>
                 
                 

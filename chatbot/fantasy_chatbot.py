@@ -48,7 +48,7 @@ def process_fantasy_chatbot_request(question, session_id, user):
     # 유저의 추천작 리스트 불러오기
     try:
         recommended_works = RecommendedWork.objects.filter(
-            account_user=user, recommended_model="romance"
+            account_user=user, recommended_model="fantasy"
         ).values_list("content_id", flat=True)
 
         user_recommended_works = Contents.objects.filter(
