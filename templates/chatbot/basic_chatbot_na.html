@@ -116,7 +116,10 @@
 </head>
 <body>
     <h1>기본 챗봇(비회원)</h1>
-    <div class="chat-container">
+    <div id="chat-container" 
+    class="chat-container" 
+    data-user-profile="{% static 'img/romance_user.png' %}" 
+    data-ai-profile="{% static 'img/romance/ai_profile.png' %}">
         <div id="chat-box" class="chat-box"></div>
         <div class="input-container">
             <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
