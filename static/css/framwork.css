@@ -1,0 +1,166 @@
+/* framework */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.chat-layout {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 60px);
+    background-color: black;
+    border: 1px solid black;
+}
+.sidebar {
+    position: fixed;
+    top: 55px;
+    width: 15%;
+    padding: 10px 10px 10px 10px;
+    background-color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    gap: 2px
+}
+.bot-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: white;
+    border: 2px solid #81009b;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #81009b;
+    font-size: 16px;
+    font-weight: bold;
+    width: 150px;
+    height: 90px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    gap: 12px;
+}
+.bot-card:hover {
+    background-color: #81009b;
+    color: white;
+    transform: scale(1.05);
+}
+.bot-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.bot-card:hover .bot-image {
+    transform: scale(1.1);
+}
+.main {
+    flex-direction: row;
+}
+.container {
+    position: relative;
+    left: 250px;
+    width: 90%;
+}
+.recommendation-section {
+    margin-left: 260px;
+    margin-top: 30px;
+    flex-grow: 1;
+    width: 90%;
+    max-width: 1050px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+.recommendation-section.collapsed {
+    height: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+.carousel-container {
+    width: 100%;
+    max-width: 1040px;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.carousel img {
+    width: 200px;
+    height: 250px;
+    border-radius: 5px;
+    margin-right: 10px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.carousel img:hover {
+    transform: scale(1.05);
+}
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 100;
+}
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.prev-btn {
+    left: 0;
+}
+.next-btn {
+    right: 0;
+}
+.toggle-btn {
+    position: relative;
+    left: 60%;
+    bottom: -1px;
+    cursor: pointer;
+    height: 20px;
+    width: 30px;
+    font-size: 30px;
+    background-color: white;
+}
+.no-style-link {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
