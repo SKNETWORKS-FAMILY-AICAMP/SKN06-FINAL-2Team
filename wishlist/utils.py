@@ -1,4 +1,4 @@
-from .models import RecommendedWork
+from .models import Contents, RecommendedWork
 import re
 import logging
 
@@ -10,22 +10,18 @@ def extract_title_platform_pairs(response_text):
     - return: 추천된 작품 제목-플랫폼 쌍 리스트
     """
     # 정규 표현식을 사용하여 제목과 플랫폼 추출
-    title_pattern = r"\d+\.\s*\*\*([^*]+)\*\*"  # "1. **제목**" 형식의 작품명 추출
-    platform_pattern = (
-        r"\*?\*?플랫폼\*?\*?:\*?\*?\s*([가-힣]+\s?[가-힣]+)"  # 플랫폼 추출
-    )
+    title_pattern = r"\d+\.\s*\*\*([^*]+)\*\*"
+    platform_pattern = r"\*?\*?플랫폼\*?\*?:\*?\*?\s*([가-힣]+\s?[가-힣]+)"
+    type_pattern = r"\*?\*?타입\*?\*?:\*?\*?\s*([가-힣]+\s?[가-힣]+)"
 
     titles = re.findall(title_pattern, response_text)
     platforms = re.findall(platform_pattern, response_text)
+    types = re.findall(type_pattern, response_text)
 
     # 제목-플랫폼 쌍으로 묶기
-    title_platform_pairs = list(zip(titles, platforms))
+    title_platform_pairs = list(zip(titles, platforms, types))
     logging.info(f"title_platform_pairs: {title_platform_pairs}")
     return title_platform_pairs
-
-
-import logging
-from .models import Contents, RecommendedWork
 
 
 def save_recommended_works(user, title_platform_pairs, model_name):
@@ -42,6 +38,7 @@ def save_recommended_works(user, title_platform_pairs, model_name):
     content_objects = Contents.objects.filter(
         title__in=[pair[0] for pair in title_platform_pairs],  # title 리스트
         platform__in=[pair[1] for pair in title_platform_pairs],  # platform 리스트
+        type__in=[pair[2] for pair in title_platform_pairs],
     ).values("id")
 
     content_ids = [content["id"] for content in content_objects]
