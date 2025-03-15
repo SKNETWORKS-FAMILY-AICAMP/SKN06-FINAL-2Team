@@ -1,35 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIXARY - 웹툰 추천</title>
-    <link rel="stylesheet" href="static/css/.css">
-    <link rel="icon" type="image/png" href="static/img/favicon.ico"/>
+    <title>PIXARY</title>
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <script defer src="{% static 'js/homepage.js' %}"></script>
 </head>
-
-<body class="homepage">
-    <!-- 왼쪽 추천 웹툰 문구 (타이핑 애니메이션 적용) -->
-    <div class="left-section">
-        <div class="quotes">
-            <span class="quote blue-text" id="quote"></span>
-        </div>
-    </div>
-
-    <!-- 오른쪽 버튼 섹션 -->
-    <div class="right-section">
-        <h2>시작하기</h2>
-        
-        <!-- 버튼을 가로 정렬 -->
-        <div class="button-container">
-            <a href="/account/login/" class="btn btn-login">로그인</a>
-            <a href="/account/signup/" class="btn btn-signup">회원 가입</a>
+<body>
+    <div class="container">
+        <!-- 왼쪽 애니메이션 영역 -->
+        <div class="left-section">
+            <div class="content-wrapper">
+                <img id="image" src="{% static 'img/homepage/homepage_character_1.png' %}" alt="웹툰 추천">
+                <div class="text-box">
+                    <p id="typing-text" class="typing-text"></p>
+                    <span class="cursor">|</span>
+                </div>
+            </div>
         </div>
 
-        <a href="chatbot/basic_chatbot_na/" class="guest-link">비회원 이용</a>
-        <div class="footer">PIXARY</div>
+        <!-- 오른쪽 로그인 영역 -->
+        <div class="right-section">
+            <h1 class="start-title">시작하기</h1>
+            <div class="button-container">
+                <a href="{% url 'account:login' %}" class="btn btn-login">로그인</a>
+                <a href="{% url 'account:signup' %}" class="btn btn-signup">회원가입</a>
+            </div>
+            <a href="{% url 'chatbot:basic_chatbot_na' %}" class="guest-text">비회원 이용</a>
+            <p class="brand-text">PIXARY</p>
+        </div>
     </div>
-
-    <script src="static/js/.js"></script>
 </body>
 </html>

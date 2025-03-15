@@ -1,0 +1,154 @@
+/* 전체 페이지 설정 (스크롤 방지) */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+    overflow: hidden; /* 스크롤 방지 */
+}
+
+/* 컨테이너 설정 */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* 왼쪽 영역 (남색 배경) */
+.left-section {
+    width: 60%;
+    background-color: rgb(0, 0, 70);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 40px;
+}
+
+/* 텍스트 & 이미지 컨테이너 */
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    width: 100%;
+    max-width: 900px;
+}
+
+
+/* 기본 이미지 크기 */
+#image {
+    width: 45%;
+    max-width: 350px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out, left 0.5s ease-in-out, right 0.5s ease-in-out;
+}
+
+/* 왼쪽 아래 모서리 배치 */
+.left-position {
+    left: 0;
+    right: auto;
+}
+
+/* 오른쪽 아래 모서리 배치 */
+.right-position {
+    right: 0;
+    left: auto;
+}
+
+
+/* 타이핑 텍스트 & 커서 컨테이너 */
+.text-box {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap; 
+    width: 100%;
+    /* max-width: 450px; /* 타이핑 공간 확장 */
+}
+
+/* 타이핑 애니메이션 텍스트 */
+.typing-text {
+    font-size: 1.2rem; 
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    word-wrap: break-word;
+    display: inline-block;
+    max-width: 100%;
+}
+
+
+/* 커서 (글자 끝에 따라가게 설정) */
+.cursor {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    animation: blink 0.7s infinite;
+}
+
+/* 커서 깜빡임 애니메이션 */
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* 오른쪽 영역 */
+.right-section {
+    width: 40%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* "시작하기" 제목 */
+.start-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 60px; /* 위로 이동 */
+}
+
+/* 로그인/회원가입 버튼 컨테이너 */
+.button-container {
+    display: flex;
+    gap: 20px; /* 버튼 간격 증가 */
+}
+
+/* 버튼 스타일 */
+.btn {
+    background-color: #7350F2;
+    color: white;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+    width: 100px; /* 버튼 가로폭 줄이기 */
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #5A3ECF;
+}
+
+/* 비회원 이용 (밑줄 추가) */
+.guest-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: gray;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* PIXARY 브랜드 텍스트 */
+.brand-text {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1rem;
+    color: gray;
+}
