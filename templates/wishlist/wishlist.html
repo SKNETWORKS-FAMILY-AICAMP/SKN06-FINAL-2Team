@@ -76,6 +76,46 @@
         height: 20px;
         cursor: pointer;
     }
+    /* 기존 스타일 유지하면서 페이지네이션 추가 */
+    .pagination-container {
+        display: flex;
+        justify-content: center; /* 중앙 정렬 */
+        align-items: center;
+        margin-top: 20px; /* 추천작과 간격 조절 */
+    }
+
+    .pagination {
+        list-style: none;
+        display: flex;
+        gap: 10px; /* 버튼 사이 간격 */
+        padding: 0;
+    }
+
+    .pagination li {
+        display: inline-block;
+    }
+
+    .pagination a {
+        text-decoration: none;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #333;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .pagination a:hover {
+        background-color: #f0f0f0;
+    }
+
+    .pagination .current-page {
+        font-weight: bold;
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+    }
 </style>
 
 <div class="wishlist-container">
@@ -99,5 +139,33 @@
         <button class="btn btn-success" type="submit">저장</button>
     </form>
 </div>
+<!-- 페이지네이션 영역 (하단) -->
+{% if recommendations.has_other_pages %}
+<!-- 페이지네이션을 추천 목록 바로 아래 배치 -->
+<div class="pagination-container">
+    <ul class="pagination">
+        {% if recommendations.has_previous %}
+        <li>
+            <a href="?page={{ recommendations.previous_page_number }}">이전</a>
+        </li>
+        {% endif %}
 
+        {% for num in recommendations.paginator.page_range %}
+        {% if recommendations.number == num %}
+        <li class="current-page">{{ num }}</li>
+        {% else %}
+        <li>
+            <a href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if recommendations.has_next %}
+        <li>
+            <a href="?page={{ recommendations.next_page_number }}">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
 {% endblock content %}

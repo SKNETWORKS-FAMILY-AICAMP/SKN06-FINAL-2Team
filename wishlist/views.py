@@ -8,6 +8,8 @@ from django.http import HttpResponseBadRequest
 from .models import RecommendedWork, Contents, UserPreference
 from django.utils import timezone
 from datetime import timedelta
+from django.core.paginator import Paginator
+from django.shortcuts import render
 
 logger = logging.getLogger(__name__)
 openai.api_key = settings.OPENAI_API_KEY
@@ -18,7 +20,7 @@ def wishlist_total_view(request):
     # 현재 로그인한 사용자의 추천 목록 가져오기 (추천일이 있는 항목만)
     recommendations = RecommendedWork.objects.filter(
         account_user=request.user, recommended_date__isnull=False
-    ).select_related("account_user")
+    ).select_related("account_user").order_by('-recommended_date')
 
     # 추천된 콘텐츠 ID 리스트 추출
     content_ids = recommendations.values_list("content_id", flat=True)
@@ -42,8 +44,15 @@ def wishlist_total_view(request):
         if rec.content_id in content_map
     ]
 
+    # 2) Paginator로 아이템 개수 설정(예: 한 페이지당 15개)
+    paginator = Paginator(recommendation_data, 15)
+    
+    # 3) GET 파라미터로 들어온 'page' 값을 기반으로 페이지 객체 생성
+    page_number = request.GET.get('page')
+    recommendations_paged = paginator.get_page(page_number)
+
     return render(
-        request, "wishlist/wishlist.html", {"recommendations": recommendation_data}
+        request, "wishlist/wishlist.html", {"recommendations": recommendations_paged}
     )
 
 
@@ -138,7 +147,7 @@ def analyze_and_store_user_preferences(request):
                 model_preferences[model] = "분석되지 않음"
 
     UserPreference.objects.update_or_create(
-        account_id=user,
+        account_user=user,
         defaults={
             "basic_preference": model_preferences.get("basic", "분석 결과 없음"),
             "romance_preference": model_preferences.get("romance", "분석 결과 없음"),
@@ -194,3 +203,6 @@ def feedback_update_view(request):
     else:
         logger.warning("잘못된 요청: POST가 아님")
         return HttpResponseBadRequest("잘못된 요청입니다.")
+
+
+
