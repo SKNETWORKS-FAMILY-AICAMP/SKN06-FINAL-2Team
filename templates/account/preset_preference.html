@@ -1,77 +1,28 @@
-
-{% block title %}취향 선택{% endblock title %}
-
 {% block content %}
-<h2>좋아하는 작품을 선택하세요!</h2>
+<div class="overlay"></div>
+<div class="notification-box">
+    <img src="/static/img/icon/robot.png" alt="환영 아이콘" class="notification-image">
+    <p>재미있게 봤던 작품 혹은 보고 싶은 작품을 선택해주시면 앞으로 PIXARY가 꼭 맞는 작품을 추천해드려요!</p>
+</div>
+
+<h2 class="title">PIXARY</h2>
 
 <form id="preference-form">
     {% csrf_token %}
     <div class="grid-container">
         {% for work in works %}
-            <label class="grid-item">
-                <input type="checkbox" name="works" value="{{ work.content_id}}">
-                <img src="{{ work.thumbnail }}" alt="작품 이미지">
-                {{work.title}}
+            <label class="grid-item" onclick="toggleSelection(this, '{{ work.content_id }}')">
+                <img src="{{ work.thumbnail }}" alt="작품 이미지" class="thumbnail">
+                <span class="heart">❤️</span>
+                <input type="checkbox" name="works" value="{{ work.content_id }}" class="hidden-checkbox">
+                {{ work.title }}
             </label>
         {% endfor %}
     </div>
     <button type="submit">저장</button>
 </form>
 
-<script>
-    document.getElementById("preference-form").onsubmit = function(event) {
-        event.preventDefault();
-
-        let selectedWorks = [...document.querySelectorAll("input[name='works']:checked")]
-            .map(input => input.value.trim())
-            .filter(value => value !== "");
-
-        if (selectedWorks.length === 0) {
-            alert("최소한 하나의 작품을 선택해주세요!");
-            return;
-        }
-
-        let formData = new FormData();
-        selectedWorks.forEach(work => formData.append("works", work));
-
-        fetch("{% url 'account:preset_preference' %}", {
-            method: "POST",
-            body: formData,
-            headers: {
-                "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("서버 응답:", data);
-            if (data.redirect) {
-                window.location.href = data.redirect;
-            } else if (data.error) {
-                alert(data.error);
-            }
-        })
-        .catch(error => console.error("Error:", error));
-    };
-
-
-</script>
-
-<style>
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 10px;
-    }
-    .grid-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .grid-item img {
-        width: 100px;
-        height: 150px;
-        object-fit: cover;
-        cursor: pointer;
-    }
-</style>
+<script src="/static/js/preset_preference.js"></script>
+<link rel="stylesheet" href="/static/css/preset_preference.css">
 {% endblock %}
+
