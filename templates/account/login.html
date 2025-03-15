@@ -18,7 +18,7 @@
         {% endif %}
 
         <form method="POST" action="{% url 'account:login' %}">
-            {% csrf_token %}  <!-- ✅ CSRF 토큰 추가 -->
+            {% csrf_token %}  
 
             <div class="input-group">
                 <input type="text" id="username_or_email" name="username_or_email" placeholder="이메일 혹은 닉네임" required>
