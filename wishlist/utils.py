@@ -1,4 +1,3 @@
-from django.db import connection
 from .models import RecommendedWork
 import re
 import logging

@@ -1,7 +1,6 @@
 import logging
 import openai
 from django.conf import settings
-from sympy import content
 from .models import PresetContents
 
 # OpenAI API 키 설정
