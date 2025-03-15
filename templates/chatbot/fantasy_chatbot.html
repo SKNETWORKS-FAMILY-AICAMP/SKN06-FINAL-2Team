@@ -244,7 +244,10 @@
 
     <!-- 🔹 채팅과 이미지 컨테이너를 감싸는 래퍼 추가 -->
     <div class="chat-wrapper">
-        <div id="chat-container" class="chat-container">
+            <div id="chat-container" 
+            class="chat-container" 
+            data-user-profile="{% static 'img/fantasy/user_fantasy.png' %}" 
+            data-ai-profile="{% static 'img/fantasy/elf_profile.png' %}">
             <div id="chat-box" class="chat-box"></div>
             <div class="input-container">
                 <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">

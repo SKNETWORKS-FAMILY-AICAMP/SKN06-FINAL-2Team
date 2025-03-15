@@ -220,58 +220,15 @@
     </div>
 
     <!-- 🔹 기존 채팅창 (프롤로그 후 나타남) -->
-    <div id="chat-container" class="chat-container">
+    <div id="chat-container" 
+    class="chat-container" 
+    data-user-profile="{% static 'img/rofan/user_profile.png' %}" 
+    data-ai-profile="{% static 'img/rofan/ai_profile.png' %}">
         <div id="chat-box" class="chat-box"></div>
         <div class="input-container">
             <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
             <button onclick="askChatbot()">전송</button>
         </div>
     </div>
-
-    <script>
-        function startChat() {
-            let modal = document.getElementById("prologue-modal");
-            let chatContainer = document.getElementById("chat-container");
-
-            if (modal && chatContainer) {
-                modal.style.display = "none";  // 모달 숨김
-                chatContainer.style.display = "block";  // 채팅창 표시
-
-                // 🔹 채팅창 위치로 스크롤 이동 (부드러운 효과)
-                setTimeout(() => {
-                    chatContainer.scrollIntoView({ behavior: 'smooth' });
-                }, 200);
-            } else {
-                console.error("모달 또는 채팅창 요소를 찾을 수 없습니다.");
-            }
-        }
-
-        document.getElementById("start-chat-btn").addEventListener("click", startChat);
-        function askChatbot() {
-            const question = document.getElementById("question").value;
-            if (!question.trim()) return;
-
-            const chatBox = document.getElementById("chat-box");
-
-            const userMessage = `<div class="chat-message user-message">
-                <span class="message-text user-text">${question}</span>
-                <img src="/static/img/rofan/user_profile.png" alt="User" class="profile-pic">
-            </div>`;
-            chatBox.innerHTML += userMessage;
-            document.getElementById("question").value = "";
-
-            fetch(`?question=${encodeURIComponent(question)}`)
-                .then(response => response.text())
-                .then(data => {
-                    const aiMessage = `<div class="chat-message ai-message">
-                        <img src="/static/img/rofan/ai_profile.png" alt="AI" class="profile-pic">
-                        <span class="message-text ai-text">${data}</span>
-                    </div>`;
-                    chatBox.innerHTML += aiMessage;
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                })
-                .catch(error => console.error("오류 발생:", error));
-        }
-    </script>
 </body>
 {% endblock content %}
