@@ -7,6 +7,8 @@ from langchain.tools import Tool
 import logging
 
 logging.basicConfig(level=logging.INFO)
+logging.getLogger("chromadb.telemetry").setLevel(logging.WARNING)
+logging.getLogger("sentence_transformers.SentenceTransformer").setLevel(logging.WARNING)
 embedding_function = HuggingFaceEmbeddings(model_name="BAAI/bge-m3")
 
 
