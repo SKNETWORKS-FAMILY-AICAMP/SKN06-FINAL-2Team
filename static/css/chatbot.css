@@ -88,13 +88,13 @@ h1 {
 }
 
 .input-container {
-    display: flex;
     padding: 15px;
     border-top: 1px solid #ddd;
     background: white;
-    position: relative;
-    bottom: 0;
+    position: absolute;
     width: 100%;
+    display: flex;
+    bottom: 0px;
     box-sizing: border-box;
 }
 
