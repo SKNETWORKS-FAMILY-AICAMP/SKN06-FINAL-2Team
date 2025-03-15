@@ -1,0 +1,95 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #FFFFFF; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* 로그인 화면 전체 래퍼 */
+.login-wrapper {
+    text-align: center;
+    width: 100%;
+    max-width: 400px; 
+}
+
+/* 제목 스타일 */
+.login-title {
+    font-size: 2.5rem; /* 크기 증가 */
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+    position: relative;
+}
+
+/* 아래 보라색 줄*/
+.underline {
+    width: 70px;
+    height: 3px;
+    background-color: #7350F2;
+    margin: 0 auto 25px;
+}
+
+/* 입력 필드 */
+.input-group {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 85%;
+    padding: 15px; /* 크기 증가 */
+    font-size: 1.0rem; /* 글자 크기 증가 */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #F0F4FF; /* 연한 파란색 배경 */
+    outline: none;
+    margin: 0 auto;
+}
+
+/* 로그인 버튼 */
+.login-btn {
+    background-color: #7350F2; 
+    color: white;
+    border: none;
+    padding: 15px; /* 크기 증가 */
+    border-radius: 6px;
+    cursor: pointer;
+    width: 95%; /* 입력 필드와 동일한 크기로 설정 */
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin-top: 10px; /* 버튼과 입력창 간격 조정 */
+    margin: 0 auto;
+}
+
+.login-btn:hover {
+    background-color: #5A3ECF; /* 어두운 보라색 */
+}
+
+/* 에러 메시지 */
+.error {
+    color: black;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+
+/* 회원가입 안내 */
+.signup-text {
+    margin-top: 15px;
+    font-size: 0.85rem; 
+    color: #666; 
+}
+
+.signup-link {
+    color: #7350F2;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.85rem; 
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
