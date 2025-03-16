@@ -10,7 +10,7 @@ h1 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    min-height: 570px; /* 🔹 최소 높이 설정 */
+    min-height: 532px; /* 🔹 최소 높이 설정 */
     max-height: 80vh; /* 🔹 최대 높이 설정 */
     position: relative;
     overflow: hidden; /* 🔹 스크롤 차단 제거 */
