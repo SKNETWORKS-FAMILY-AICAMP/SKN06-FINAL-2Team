@@ -1,13 +1,9 @@
-from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from textwrap import dedent
 import logging
-import json
-from account.models import Preset
-from wishlist.models import RecommendedWork, Contents
 from .vector_store import (
     selfquery_tool,
     action_vector_store,
@@ -27,6 +23,11 @@ from .vector_store import (
     romance_vector_store,
     romance_metadata_field_info,
 )
+from .utils import (
+    get_user_preference,
+    get_user_recommended_works,
+    get_user_memory,
+)
 
 logging.basicConfig(level=logging.INFO)
 
@@ -34,23 +35,24 @@ logging.basicConfig(level=logging.INFO)
 MODEL_NAME = "gpt-4o"
 llm = ChatOpenAI(model_name=MODEL_NAME, temperature=0)
 
-# 사용자별 메모리 저장
-user_memory_dict = {}
-
-def get_user_memory(session_id):
-    if session_id not in user_memory_dict:
-        user_memory_dict[session_id] = ChatMessageHistory()
-    return user_memory_dict[session_id]
 
 # Tool 설정
 action_tool = selfquery_tool(action_vector_store, action_metadata_field_info, "action")
-cartoon_tool = selfquery_tool(cartoon_vector_store, cartoon_metadata_field_info, "cartoon")
+cartoon_tool = selfquery_tool(
+    cartoon_vector_store, cartoon_metadata_field_info, "cartoon"
+)
 drama_tool = selfquery_tool(drama_vector_store, drama_metadata_field_info, "drama")
-fantasy_tool = selfquery_tool(fantasy_vector_store, fantasy_metadata_field_info, "fantasy")
-historical_tool = selfquery_tool(historical_vector_store, historical_metadata_field_info, "historical")
+fantasy_tool = selfquery_tool(
+    fantasy_vector_store, fantasy_metadata_field_info, "fantasy"
+)
+historical_tool = selfquery_tool(
+    historical_vector_store, historical_metadata_field_info, "historical"
+)
 horror_tool = selfquery_tool(horror_vector_store, horror_metadata_field_info, "horror")
 rofan_tool = selfquery_tool(rofan_vector_store, rofan_metadata_field_info, "rofan")
-romance_tool = selfquery_tool(romance_vector_store, romance_metadata_field_info, "romance")
+romance_tool = selfquery_tool(
+    romance_vector_store, romance_metadata_field_info, "romance"
+)
 
 
 # 사용자의 의도를 분석하는 프롬프트
@@ -61,7 +63,7 @@ romance_tool = selfquery_tool(romance_vector_store, romance_metadata_field_info,
 #             dedent(
 #                 """
 #                 사용자 메세지의 의도를 다음과 같이 분석하세요.
-                
+
 
 #                 <output_format>
 #                 {{"query_intent": 추천 (recommend), 질문 (question), 기타 (other) 중 하나
@@ -76,27 +78,15 @@ romance_tool = selfquery_tool(romance_vector_store, romance_metadata_field_info,
 
 
 def process_basic_chatbot_request(question, session_id, user):
-    # 유저의 취향(persona_type) 불러오기
-    try:
-        preset = Preset.objects.get(account_id=user)
-        user_preference = preset.persona_type
-    except Preset.DoesNotExist:
-        user_preference = "사용자의 취향 정보가 등록되지 않았습니다."
-    # 유저의 추천작 리스트 불러오기
-    try:
-        recommended_works = RecommendedWork.objects.filter(
-            account_user=user, recommended_model="basic"
-        ).values_list("content_id", flat=True)
-
-        user_recommended_works = Contents.objects.filter(
-            id__in=recommended_works
-        ).values_list("title", flat=True)
-
-    except RecommendedWork.DoesNotExist:
-        user_recommended_works = ["사용자의 추천 작품 정보가 등록되지 않았습니다."]
-    logging.info(f"유저 취향 정보: {user_preference}")
-    logging.info(f"유저의 기존 추천작 정보: {user_recommended_works}")
-
+    # 유저 정보 로드
+    user_info = f"사용자의 이름은 '{user.name[-2:]}'이고, {user.real_age}세 {user.gender}입니다."
+    user_preference = get_user_preference(user, "romance")
+    user_feedback = get_user_preference(user, "romance")
+    user_recommended_works = get_user_recommended_works(user, "romance")
+    logging.info(
+        f"user_info: {user_info}, user_preference: {user_preference}, user_feedback: {user_feedback}, user_recommended_works: {user_recommended_works}"
+    )
+    # 프롬프트
     # **2. 최도균의 응답을 생성하는 프롬프트**
     total_prompt = ChatPromptTemplate.from_messages(
         [
@@ -129,7 +119,10 @@ def process_basic_chatbot_request(question, session_id, user):
         </user_information>
         
         <user_preference>
+        다음은 유저의 최초 취향 정보입니다.
         {user_preference}
+        그리고 이것은 유저의 추천작 피드백을 통한 취향 분석 정보입니다.
+        {user_feedback}
         </user_preference>
         
         <user_recommended_works>
@@ -205,7 +198,9 @@ def process_basic_chatbot_request(question, session_id, user):
     )
 
     response = agent_with_chat_history.stream(
-        {"input": question,},
+        {
+            "input": question,
+        },
         config={"configurable": {"session_id": session_id}},
     )
 
@@ -214,4 +209,4 @@ def process_basic_chatbot_request(question, session_id, user):
     #     config={"configurable": {"session_id": session_id}},
     # )
 
-    return response
+    return response, user
