@@ -50,53 +50,59 @@
     </nav>
   </aside>
 
-  <!-- (3) 메인 컨텐츠 영역 -->
-  <div class="w-full min-h-screen">
+  <!-- (3) 메인 컨텐츠 -->
+  <div id="mainContent" class="w-full min-h-screen transition-all duration-300">
     <section class="p-6">
       {% block content %}
       {% endblock content %}
     </section>
   </div>
-
+  
   <!-- (4) 토글 로직 -->
   <script>
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('sidebarToggle');
-
+    // 메인 컨텐츠(wishlist-container 등)를 감싸는 요소
+    const mainContent = document.getElementById('mainContent');
+    
     let isOpen = false;
-
-    // 사이드바 열기
+  
     function openSidebar() {
+      // 열림 상태 스타일
       sidebar.classList.remove('-translate-x-full');
+      mainContent.classList.add('pl-64');  // 내용 영역 왼쪽 패딩 추가
       toggleBtn.textContent = '닫기';
+  
       isOpen = true;
-      localStorage.setItem('sidebarOpen', 'true');
+      localStorage.setItem('sidebarOpen', 'true');  // localStorage에 저장
     }
-
-    // 사이드바 닫기
+  
     function closeSidebar() {
+      // 닫힘 상태 스타일
       sidebar.classList.add('-translate-x-full');
+      mainContent.classList.remove('pl-64');
       toggleBtn.textContent = '열기';
+  
       isOpen = false;
-      localStorage.setItem('sidebarOpen', 'false');
+      localStorage.setItem('sidebarOpen', 'false'); // localStorage에 저장
     }
-
-    // 페이지 로드 시, localStorage를 확인해서 사이드바 상태 복원
+  
+    // 버튼을 누르면 열림/닫힘 토글
+    toggleBtn.addEventListener('click', () => {
+      if (isOpen) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+  
+    // 페이지 로드 시, localStorage에 저장된 상태로 복원
     document.addEventListener('DOMContentLoaded', () => {
       const savedState = localStorage.getItem('sidebarOpen');
       if (savedState === 'true') {
         openSidebar();
       } else {
         closeSidebar();
-      }
-    });
-
-    // 버튼을 클릭하면 열림/닫힘을 토글
-    toggleBtn.addEventListener('click', () => {
-      if (isOpen) {
-        closeSidebar();
-      } else {
-        openSidebar();
       }
     });
   </script>
