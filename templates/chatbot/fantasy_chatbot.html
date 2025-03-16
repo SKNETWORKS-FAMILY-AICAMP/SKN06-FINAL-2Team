@@ -7,158 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/chatbot.css'%}">
     <script type="text/javascript" src="{% static 'js/chatbot.js' %}"></script>
     <style>
-        /* 🔹 모달 스타일 */
-        .modal {
-            display: flex;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .modal img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* 🔹 텍스트 오버레이 */
-        .modal-text {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-            color: white;
-            padding: 0px;
-            font-size: 16px;
-            line-height: 1.6;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeUp 2.5s ease-out forwards;
-        }
-
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(-64px);
-            }
-        }
-
-        /* 🔹 채팅 시작 버튼 */
-        .start-chat-btn {
-            width: 100%;
-            padding: 20px;
-            font-size: 20px;
-            background-color: #5e5f5f;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 0 0 5px 5px;
-        }
-
-        .start-chat-btn:hover {
-            background-color: #079bfd;
-        }
-
-
-        
-
-        .chat-message {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .user-message {
-            justify-content: flex-end;
-        }
-
-        .ai-message {
-            justify-content: flex-start;
-        }
-
-        .message-text {
-            padding: 12px;
-            border-radius: 12px;
-            max-width: 70%;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .user-text {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .ai-text {
-            background-color: #f1f1f1;
-            color: black;
-        }
-
-        .profile-pic {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .ai-message .profile-pic {
-            align-self: flex-start;
-        }
-
-        .input-container {
-            display: flex;
-            padding: 15px;
-            border-top: 1px solid #ddd;
-            background: white;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .input-container input {
-            flex-grow: 1;
-            padding: 12px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-        }
-
-        .input-container button {
-            padding: 12px 15px;
-            font-size: 14px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-left: 8px;
-            border-radius: 8px;
-        }
-
-        .input-container button:hover {
-            background-color: #0056b3;
-        }
-
         /* 🔹 채팅 영역 컨테이너 */
         .chat-wrapper {
             display: flex;
@@ -181,19 +29,6 @@
             flex-direction: column;
             overflow: hidden;
             position: relative;
-        }
-
-        /* 🔹 채팅 박스 (메시지 영역) */
-        .chat-box {
-            flex-grow: 1;
-            padding: 15px;
-            height: calc(100% - 95px); /* 🔹 높이 자동 조정 */
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 5px; /* 🔹 위아래 간격 조정 */
-            background-color: #f8f8f8;
-            scroll-behavior: smooth;
         }
         
         /* 🔹 오른쪽 이미지 영역 */
@@ -260,7 +95,7 @@
     </div>
 
     <script>
-        let images = [
+        var images = [
             "{% static 'img/fantasy/prologue.png' %}",
             "{% static 'img/fantasy/playing_harp.png' %}",
             ]
