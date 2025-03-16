@@ -23,12 +23,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        h1 {
+            margin-bottom: 24px; /* 🔹 제목과 입력 필드 사이 여백 */
+        }
         .profile-table {
             width: 100%;
             border-collapse: collapse;
         }
         .profile-table td {
-            padding: 12px 10px;
+            padding: 14px 10px;
             border-bottom: 1px solid #e5e7eb;
         }
         .profile-table tr:last-child td {
@@ -40,7 +43,7 @@
             width: 150px;
         }
         .profile-table input, .profile-table select {
-            width: 100%;
+            width: 110%;
             padding: 8px;
             border: 1px solid #d1d5db;
             border-radius: 4px;
@@ -64,8 +67,12 @@
     </style>
 </head>
 <!-- 회원정보 수정 폼 -->
-<main class="w-3/4 p-10 flex flex-col items-center">
-    <h1 class="text-2xl font-semibold mb-6">회원정보 수정</h1>
+<main class="max-w-md mx-auto p-10 flex flex-col items-center">
+    <div class="text-left w-full">
+        <h1 class="text-2xl text-center font-semibold mt-2">
+            회원정보 수정
+        </h1>
+    </div>
 
     <form action="{% url 'account:edit_information' %}" method="POST" enctype="multipart/form-data" class="w-full max-w-lg">
         {% csrf_token %}
