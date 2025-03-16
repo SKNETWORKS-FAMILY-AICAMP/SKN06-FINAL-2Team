@@ -2,12 +2,12 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.http import JsonResponse
 from django.contrib import messages
 import logging
 from .models import User, PresetContents, Preset
-from .forms import SignUpForm, EditInformationForm
+from .forms import SignUpForm, EditInformationForm, CustomPasswordChangeForm
 from .preset_preference import analyze_user_preference
 
 logger = logging.getLogger(__name__)
@@ -113,25 +113,24 @@ def edit_information(request):
     return render(request, "account/edit_information.html", {"form": form})
 
 # 비밀번호 변경
+
 @login_required
 def edit_pwd(request):
-    http_method = request.method
-    if http_method == "GET":
-        form = PasswordChangeForm(user=request.user)
-        return render(request, "account/edit_pwd.html", {"form": form})
-    elif http_method == "POST":
-        form = PasswordChangeForm(user=request.user, data=request.POST)
+    form = CustomPasswordChangeForm(user=request.user) 
+
+    if request.method == "POST":
+        form = CustomPasswordChangeForm(user=request.user, data=request.POST) 
         if form.is_valid():
             user = form.save()
-            update_session_auth_hash(request, user)
-            return redirect(reverse("account:detail"))
+            update_session_auth_hash(request, user)  
+            messages.success(request, "비밀번호가 성공적으로 변경되었습니다.")
+            return redirect("account:user_information")
         else:
-            return render(
-                request,
-                "account/edit_pwd.html",
-                {"form": form, "error_msg": "유효하지 않은 비밀번호입니다."},
-            )
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{form.fields[field].label}: {error}") 
 
+    return render(request, "account/edit_pwd.html", {"form": form}) 
 
 # 회원 탈퇴
 @login_required
