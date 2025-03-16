@@ -5,6 +5,10 @@ html, body {
     min-height: 100vh;
     overflow-x: hidden;
     background-color: white;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
 }
 
 .navbar {
@@ -102,6 +106,9 @@ html, body {
     height: 100%;
     flex-direction: row;
 }
+.main::-webkit-scrollbar {
+    display: none;
+}
 .container {
     position: relative;
     width: 100%;
@@ -110,11 +117,10 @@ html, body {
 .recommendation-section {
     flex-grow: 1;
     width: 80%;
-    max-width: 1050px;
+    max-width: 1110px;
     position: relative;
     display: flex;
     flex-direction: column;
-    left: 100px;
     align-items: center;
     overflow: hidden;
     transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
@@ -127,7 +133,7 @@ html, body {
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 1040px;
+    max-width: 1180px;
     padding: 0;
     overflow: hidden;
     display: flex;
@@ -176,7 +182,7 @@ html, body {
 }
 .toggle-btn {
     position: relative;
-    left: 50%;
+    left: 35%;
     bottom: -1px;
     cursor: pointer;
     height: 1px;

@@ -41,11 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const imgWidth = images[0].offsetWidth + 20;
 
     nextBtn.addEventListener("click", function () {
-        if (index < totalImages - 6) {
-            index++;
-            carousel.style.transform = `translateX(-${index * imgWidth}px)`;
-        }
-        else if (index === totalImages - 6) { // 마지막 이동 시 30px 추가
+        if (index < totalImages - 5) {
             index++;
             carousel.style.transform = `translateX(-${index * imgWidth}px)`;
         }
