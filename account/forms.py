@@ -109,12 +109,7 @@ class SignUpForm(UserCreationForm):
 
 # 회원 정보 수정 폼
 class EditInformationForm(UserChangeForm):
-    password = forms.CharField(
-        widget=forms.PasswordInput(attrs={"placeholder": "현재 비밀번호"}),
-        label="현재 비밀번호",
-        required=True,
-    )
-
+    
     GENDER_CHOICE = [("남성", "남성"), ("여성", "여성")]
     gender = forms.ChoiceField(choices=GENDER_CHOICE, widget=forms.Select, label="성별")
 

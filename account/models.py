@@ -6,9 +6,9 @@ from datetime import date
 # User 모델
 class User(AbstractUser):
 
-    name = models.CharField(verbose_name="이름", max_length=30, null=False)
+    name = models.CharField(verbose_name="닉네임", max_length=30, null=False)
     username = models.CharField(
-        verbose_name="닉네임", max_length=30, null=False, unique=True
+        verbose_name="아이디", max_length=30, null=False, unique=True
     )
     email = models.CharField(verbose_name="이메일", max_length=50, null=False)
     birthday = models.DateField(verbose_name="생년월일", null=False)

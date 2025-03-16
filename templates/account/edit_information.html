@@ -11,6 +11,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}alert-error{% else %}alert-success{% endif %}">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endif %}
+
     <title>회원정보 수정</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -37,7 +45,7 @@
             border: 1px solid #d1d5db;
             border-radius: 4px;
         }
-         .alert-success {
+        .alert-success {
             background-color: #d1e7dd;
             color: #0f5132;
             padding: 10px;
@@ -89,14 +97,6 @@
             <tr>
                 <td class="profile-label">성별</td>
                 <td>{{ form.gender }}</td>
-            </tr>
-            <tr>
-                <td class="profile-label">새 비밀번호</td>
-                <td><input type="password" name="password" placeholder="새 비밀번호"></td>
-            </tr>
-            <tr>
-                <td class="profile-label">비밀번호 확인</td>
-                <td><input type="password" name="password_confirm" placeholder="비밀번호 확인"></td>
             </tr>
         </table>
 

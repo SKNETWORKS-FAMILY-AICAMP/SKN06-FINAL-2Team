@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout, authenticate, update_session_auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.http import JsonResponse
-
+from django.contrib import messages
 import logging
 from .models import User, PresetContents, Preset
 from .forms import SignUpForm, EditInformationForm
@@ -85,21 +85,32 @@ def user_information(request):
 
 
 # 회원 정보 수정
-# @login_required
+
+@login_required
 def edit_information(request):
     if request.method == "POST":
         form = EditInformationForm(request.POST, instance=request.user)
+
         if form.is_valid():
-            # 이메일과 아이디는 기존 값 유지
-            form.instance.email = request.user.email
-            form.instance.username = request.user.username
-            form.save()
+            user = form.save(commit=False)
+            user.email = request.user.email  # 이메일 수정 방지
+            user.username = request.user.username  # 아이디 수정 방지
+            user.save()  # 변경사항 저장
+
+            messages.success(request, "회원정보가 성공적으로 수정되었습니다.")
             return redirect("account:user_information")
+
+        else:
+            # 🔹 에러 메시지 처리 (form.errors.items() 사용)
+            for field, errors in form.errors.items():
+                field_label = form.fields[field].label if field in form.fields else field
+                for error in errors:
+                    messages.error(request, f"{field_label}: {error}")
+
     else:
         form = EditInformationForm(instance=request.user)
 
     return render(request, "account/edit_information.html", {"form": form})
-
 
 # 비밀번호 변경
 @login_required
