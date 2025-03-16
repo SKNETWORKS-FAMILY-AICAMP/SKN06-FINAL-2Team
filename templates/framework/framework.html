@@ -5,20 +5,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/framework.css'%}">
-    <link rel="shortcut icon" href="">
-    <title>{% block title %}Chatbot{% endblock title %}</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/framework_1.css'%}?after">
+    <link rel="icon" href="{% static 'img/icon/favicon.ico' %}" type="image/x-icon">
+    <title>{% block title %}웹사이트 프레임워크{% endblock title %}</title>
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <div class="user-info">
+            <div class="logo">
+                <a href="{% if user.is_authenticated %}/chatbot/basic_chatbot/{% else %}/chatbot/basic_chatbo_na/{% endif %}">
+                    <img src="{% static 'img/icon/logo.png' %}" alt="웹사이트 로고">
+                </a>
+            </div>
+            <div class="auth-links">
                 {% if user.is_authenticated %}
-                    <span>{{ user.username }}님</span>
-                    <a href="{% url 'account:user_information' %}">회원 정보</a>
+                    <a href="{% url 'account:user_information' %}" class="username">{{ user.username }}님</a>
                     <a href="{% url 'account:logout' %}" class="nav-link">로그아웃</a>
                 {% else %}
                     <a href="{% url 'account:login' %}" class="btn btn-login">로그인</a>
@@ -26,68 +27,41 @@
             </div>
         </nav>
     </header>
-    <div class="chat-layout">
-        <div class="sidebar">
-            <div class="button-container">
-                <a href="/chatbot/basic_chatbot/" class="bot-card">
-                    <img src="{% static 'img/romance_user.png' %}" alt="기본 챗봇" class="bot-image">
-                    기본
-                </a>
-            </div>
-            
-            <div class="button-container">
+    <div class="container">
+        <div class="model-selection">
+            <div class="model-list">
+                <div class="model-item" data-name="기본" onclick="selectModel('/chatbot/basic_chatbot/')">
+                    <img src="{% static 'img/icon/robot.png' %}" alt="기본 챗봇">
+                </div>
                 {% if user.is_authenticated %}
-                <a href="/chatbot/romance_chatbot/" class="bot-card">
-                    <img src="{% static 'img/romance/ai_profile.png' %}" alt="로맨스 챗봇" class="bot-image">
-                    로맨스
-                </a>
+                    <div class="model-item" data-name="로맨스" onclick="selectModel('/chatbot/romance_chatbot/')">
                 {% else %}
-                <span class="bot-card" onclick="alert('더 많은 모델을 만나고 싶으시면 로그인을 해주세요.')">
-                    <img src="{% static 'img/romance/ai_profile.png' %}" alt="로맨스 챗봇" class="bot-image">
-                    로맨스
-                </span>
+                    <div class="model-item" data-name="로맨스" onclick="alertLogin()">
                 {% endif %}
-            </div>
-            <div class="button-container">
+                    <img src="{% static 'img/romance/ai_profile.png' %}" alt="로맨스 챗봇">
+                </div>
                 {% if user.is_authenticated %}
-                <a href="/chatbot/rofan_chatbot/" class="bot-card">
-                    <img src="{% static 'img/rofan/ai_profile.png' %}" alt="로판 챗봇" class="bot-image">
-                    로판
-                </a>
+                    <div class="model-item" data-name="로판" onclick="selectModel('/chatbot/rofan_chatbot/')">
                 {% else %}
-                <span class="bot-card" onclick="alert('더 많은 모델을 만나고 싶으시면 로그인을 해주세요.')">
-                    <img src="{% static 'img/rofan/ai_profile.png' %}" alt="로판 챗봇" class="bot-image">
-                    로판
-                </span>
+                    <div class="model-item" data-name="로판" onclick="alertLogin()">
                 {% endif %}
-            </div>
-            <div class="button-container">
+                    <img src="{% static 'img/rofan/ai_profile.png' %}" alt="로판 챗봇">
+                </div>
                 {% if user.is_authenticated %}
-                <a href="/chatbot/fantasy_chatbot/" class="bot-card">
-                    <img src="{% static 'img/fantasy/elf_profile.png' %}" alt="판타지 챗봇" class="bot-image">
-                    판타지
-                </a>
+                    <div class="model-item" data-name="판타지" onclick="selectModel('/chatbot/fantasy_chatbot/')">
                 {% else %}
-                <span class="bot-card" onclick="alert('더 많은 모델을 만나고 싶으시면 로그인을 해주세요.')">
-                    <img src="{% static 'img/fantasy/elf_profile.png' %}" alt="판타지 챗봇" class="bot-image">
-                    판타지
-                </span>
+                    <div class="model-item" data-name="판타지" onclick="alertLogin()">
                 {% endif %}
-            </div>
-            <div class="button-container">
+                    <img src="{% static 'img/fantasy/elf_profile.png' %}" alt="판타지 챗봇">
+                </div>
                 {% if user.is_authenticated %}
-                <a href="/chatbot/historical_chatbot/" class="bot-card">
-                    <img src="{% static 'img/historical/historical_ai.jpg' %}" alt="무협 챗봇" class="bot-image">
-                    무협
-                </a>
+                    <div class="model-item" data-name="무협" onclick="selectModel('/chatbot/historical_chatbot/')">
                 {% else %}
-                <span class="bot-card" onclick="alert('더 많은 모델을 만나고 싶으시면 로그인을 해주세요.')">
-                    <img src="{% static 'img/historical/historical_ai.jpg' %}" alt="무협 챗봇" class="bot-image">
-                    무협
-                </span>
+                    <div class="model-item" data-name="무협" onclick="alertLogin()">
                 {% endif %}
+                    <img src="{% static 'img/historical/historical_ai.jpg' %}" alt="무협 챗봇">
+                </div>
             </div>
-            
         </div>
 
         <div class="main">

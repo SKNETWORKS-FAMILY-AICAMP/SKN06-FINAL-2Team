@@ -1,3 +1,12 @@
+function selectModel(url) {
+    window.location.href = url;
+}
+
+function alertLogin() {
+    alert('pixary에 회원가입 하시면 더 많은 모델을 사용하실 수 있습니다.');
+}
+
+
 // 캐러셀 환경 설정
 const carousel = document.querySelector(".carousel");
 let scrollAmount = 0;
