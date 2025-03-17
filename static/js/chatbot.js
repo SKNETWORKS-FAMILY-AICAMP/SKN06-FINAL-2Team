@@ -3,12 +3,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let modal = document.getElementById("prologue-modal");
     let chatContainer = document.getElementById("chat-container");
     let startChatBtn = document.getElementById("start-chat-btn");
+    let sessionKey = `prologueShown_${chatModel}`; // 모델별로 개별 저장
+
+    // 해당 모델에 대한 프롤로그 모달이 처음 접속인지 확인
+    if (!sessionStorage.getItem(sessionKey)) {
+        modal.style.display = "flex";  // 첫 방문 시 모달 표시
+        chatContainer.style.display = "none";
+    } else {
+        modal.style.display = "none";  // 새로고침 시 모달 숨김
+        chatContainer.style.display = "block";
+    }
 
     if (startChatBtn) {
         startChatBtn.addEventListener("click", function () {
             if (modal && chatContainer) {
                 modal.style.display = "none";
                 chatContainer.style.display = "block";
+                sessionStorage.setItem(sessionKey, "true");
                 setTimeout(() => {
                     chatContainer.scrollIntoView({ behavior: 'smooth' });
                 }, 200);
