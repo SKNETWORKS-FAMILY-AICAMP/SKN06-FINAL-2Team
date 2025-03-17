@@ -54,40 +54,16 @@ romance_tool = selfquery_tool(
     romance_vector_store, romance_metadata_field_info, "romance"
 )
 
-
-# 사용자의 의도를 분석하는 프롬프트
-# query_intent_prompt = ChatPromptTemplate.from_messages(
-#     [
-#         (
-#             "system",
-#             dedent(
-#                 """
-#                 사용자 메세지의 의도를 다음과 같이 분석하세요.
-
-
-#                 <output_format>
-#                 {{"query_intent": 추천 (recommend), 질문 (question), 기타 (other) 중 하나
-#                 "genre": 사용자가 원하는 장르}}
-#                 </output_format>
-#         """
-#             ),
-#         ),
-#         ("human", "{input}"),
-#     ]
-# )
-
-
 def process_basic_chatbot_request(question, session_id, user):
     # 유저 정보 로드
-    user_info = f"사용자의 이름은 '{user.name[-2:]}'이고, {user.real_age}세 {user.gender}입니다."
-    user_preference = get_user_preference(user, "romance")
-    user_feedback = get_user_preference(user, "romance")
+    user_info = f"사용자의 이름은 '{user.name}'이고, {user.real_age}세 {user.gender}입니다."
+    user_preference = get_user_preference(user, "all")
+    user_feedback = get_user_preference(user, "-")
     user_recommended_works = get_user_recommended_works(user, "romance")
     logging.info(
         f"user_info: {user_info}, user_preference: {user_preference}, user_feedback: {user_feedback}, user_recommended_works: {user_recommended_works}"
     )
     # 프롬프트
-    # **2. 최도균의 응답을 생성하는 프롬프트**
     total_prompt = ChatPromptTemplate.from_messages(
         [
             (
@@ -95,17 +71,18 @@ def process_basic_chatbot_request(question, session_id, user):
                 dedent(
                     """
         <role>
-        사용자의 질문에 대답하거나 웹툰,웹소설 작품을 추천하는 역할을 합니다.
+        당신은 사용자의 질문에 대답하고 사용자의 취향을 분석해 웹툰,웹소설 작품을 추천하는 역할을 합니다.
         </role>
 
-        <intent_handling>
+        <analysis_intent>
         - query_intent이 "recommend"라면 사용자의 요구사항에 맞게 작품을 추천하십시오.
         - query_intent이 "question"이라면, 질문에 적절한 답변을 제공하십시오.
         - query_intent이 "other"라면 일반적인 대화를 진행하십시오.
-        </intent_handling>
+        </analysis_intent>
 
         <genre_handling>
-        - 반드시 원하는 장르에 맞게 추천하세요.
+        - 사용자가 원하는 장르를 입력한 경우 반드시 그 장르에 해당하는 tool을 이용해 추천하세요.
+
         </genre_handling>
     """
                 ),
@@ -135,10 +112,12 @@ def process_basic_chatbot_request(question, session_id, user):
         다음은 유저가 추천받은 작품들입니다. 이 작품은 제외하고 추천하십시오.
         {user_recommended_works}
         </user_recommended_works>
+
         <example>
         - “OO씨, 대답.”
         - “내가 원하는 답이 그런 게 아니라는 건 OO씨가 제일 잘 알잖아요.”
         </example>
+
         <recommendation>
         **추천작품 형식**
         - 줄바꿈을 사용하여 가독성 좋게 추천하십시오.
@@ -168,20 +147,6 @@ def process_basic_chatbot_request(question, session_id, user):
         ]
     )
 
-    # 1. 사용자의 의도 분석
-    # intent_response = llm.invoke(query_intent_prompt.format(input=question))
-
-    # content를 추출
-    # intent_text = intent_response.content  # AIMessage의 content를 추출
-    # try:
-    #     intent_data = json.loads(intent_text)  # JSON 변환
-    # except json.JSONDecodeError:
-    #     # LLM이 JSON이 아닌 일반 텍스트를 반환했을 경우 기본값 설정
-    #     intent_data = {"query_intent": "other", "genre": "모두"}
-
-    # query_intent = intent_data.get("query_intent", "other")  # 기본값: "other"
-    # genre = intent_data.get("genre", "모두")  # 기본값: 모두
-
     tools = [
         action_tool,
         cartoon_tool,
@@ -209,10 +174,5 @@ def process_basic_chatbot_request(question, session_id, user):
         },
         config={"configurable": {"session_id": session_id}},
     )
-
-    # response = agent_with_chat_history.stream(
-    #     {"input": question, "query_intent": query_intent, "genre": genre},
-    #     config={"configurable": {"session_id": session_id}},
-    # )
 
     return response, user
