@@ -26,7 +26,7 @@ def basic_chatbot_na_view(request):
         return render(
             request,
             "chatbot/basic_chatbot_na.html",
-            {"profile_image_url": profile_image_url},
+            {"profile_image_url": profile_image_url, "chat_model": "basic_na"},
         )
     return StreamingHttpResponse(
         event_stream(
@@ -52,7 +52,7 @@ def basic_chatbot_view(request):
         return render(
             request,
             "chatbot/basic_chatbot.html",
-            {"profile_image_url": profile_image_url},
+            {"profile_image_url": profile_image_url, "chat_model": "basic"},
         )
     return StreamingHttpResponse(
         event_stream(

@@ -21,4 +21,7 @@ data-ai-profile="{% static 'img/romance/ai_profile.png' %}">
         <button onclick="askChatbot()">전송</button>
     </div>
 </div>
+<script>
+    var chatModel = "{{ chat_model }}";
+</script>
 {% endblock content %}
