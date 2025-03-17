@@ -31,7 +31,7 @@ romance_tool = selfquery_tool(
 # 로맨스 챗봇의 로직
 def process_romance_chatbot_request(question, session_id, user):
     # 유저 정보 로드
-    user_info = f"사용자의 이름은 '{user.name}'이고, {user.real_age}세 {user.gender}입니다."
+    user_info = f"사용자의 이름은 '{user.username}'이고, {user.real_age}세 {user.gender}입니다."
     user_preference = get_user_preference(user, "romance")
     user_feedback = get_user_preference(user, "romance")
     user_recommended_works = get_user_recommended_works(user, "romance")

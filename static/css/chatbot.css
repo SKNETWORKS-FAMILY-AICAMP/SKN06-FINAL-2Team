@@ -7,21 +7,25 @@ h1 {
     max-width: 900px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
-    min-height: 532px; /* 🔹 최소 높이 설정 */
-    max-height: 80vh; /* 🔹 최대 높이 설정 */
+    min-height: 590px; /* 🔹 최소 높이 설정 */
+    max-height: 90vh; /* 🔹 최대 높이 설정 */
     position: relative;
     overflow: hidden; /* 🔹 스크롤 차단 제거 */
+    position: absolute;
+    top: 50%;
+    left: 47%;
+    transform: translate(-50%, -50%);
 }
 
 .chat-box {
     flex-grow: 1; /* 🔹 부모 요소의 남은 공간을 모두 차지 */
     padding: 20px;
     height: auto; /* 🔹 높이를 자동으로 조정하여 스크롤이 가능하도록 설정 */
-    min-height: 397px;
-    max-height: 60vh; /* 🔹 너무 커지지 않도록 최대 높이 설정 */
+    min-height: 450px;
+    max-height: 70vh; /* 🔹 너무 커지지 않도록 최대 높이 설정 */
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -30,7 +34,7 @@ h1 {
     scrollbar-width: none; /* Firefox에서 스크롤바 표시 */
     -ms-overflow-style: none; /* IE/Edge에서 스크롤바 숨기기 */
     scroll-behavior: smooth; /* 🚀 스크롤 애니메이션 활성화 */
-    background-color: #f8f8f8;
+    background-color: #ffffff;
 }
 
 .chat-box::-webkit-scrollbar {
@@ -110,7 +114,7 @@ h1 {
 .input-container button {
     padding: 12px 15px;
     font-size: 14px;
-    background-color: #007bff;
+    background-color: #7350F2;
     color: white;
     border: none;
     cursor: pointer;
