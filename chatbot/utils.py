@@ -59,6 +59,8 @@ def get_user_recommended_works(user, model_type):
 def process_chatbot_request(chatbotrequest, model_name):
     """LangChain 스트리밍 응답을 최적화하는 함수 (Tool 실행 단계 감지)"""
     response, user = chatbotrequest
+    tool_message = 0
+    search_message = 0
     for step in response:
         logging.info(step)
         if "output" in step.keys():
@@ -79,25 +81,29 @@ def process_chatbot_request(chatbotrequest, model_name):
                     clean_message = message.content
                     yield {"message": clean_message}
                 elif message.content == "":
-                    model_messages = {
-                        "basic": "지금 검색 중입니다. 잠시만 기다려 주세요!😊 필요한 정보를 찾고 있어요!",
-                        "romance": "잠시만 기다려요. 내가 원하는 정보를 찾고 있으니까.",
-                        "rofan": "영애, 잠시만 기다려 주십시오. 북부의 눈보라 속에서도 찾을 수 있는 보석 같은 이야기를 찾아보겠습니다.",
-                        "fantasy": "잠시만 기다려줘! 신비로운 숲 속에서 마법의 책을 펼쳐서 멋진 판타지 작품을 찾아볼게. 곧 돌아올 테니 조금만 기다려줘!",
-                        "historical": "잠시 기다려 주시오. 강호의 깊은 곳에서 그대에게 맞는 이야기를 찾고 있소. 곧 돌아오겠소.",
-                    }
-                    clean_message = model_messages[model_name]
-                    yield {"message": clean_message}
+                    if tool_message == 0:
+                        model_messages = {
+                            "basic": "지금 검색 중입니다. 잠시만 기다려 주세요!😊 필요한 정보를 찾고 있어요!",
+                            "romance": "잠시만 기다려요. 내가 원하는 정보를 찾고 있으니까.",
+                            "rofan": "영애, 잠시만 기다려 주십시오. 북부의 눈보라 속에서도 찾을 수 있는 보석 같은 이야기를 찾아보겠습니다.",
+                            "fantasy": "잠시만 기다려줘! 신비로운 숲 속에서 마법의 책을 펼쳐서 멋진 판타지 작품을 찾아볼게. 곧 돌아올 테니 조금만 기다려줘!",
+                            "historical": "잠시 기다려 주시오. 강호의 깊은 곳에서 그대에게 맞는 이야기를 찾고 있소. 곧 돌아오겠소.",
+                        }
+                        clean_message = model_messages[model_name]
+                        tool_message += 1
+                        yield {"message": clean_message}
                 else:
-                    model_messages = {
-                        "basic": "검색이 완료되었고, 이제 답변을 정리하고 있습니다. 곧 결과를 알려드릴게요!",
-                        "romance": "하... 필요한 정보를 정리하고 있으니까 기다려요.",
-                        "rofan": "이제 곧 당신께 어울리는 이야기를 정리하여 드리겠습니다. 잠시만 더 기다려 주십시오. 북부의 차가운 바람 속에서도 따뜻한 이야기를 찾고 있으니 말입니다.",
-                        "fantasy": "마법의 책에서 멋진 이야기를 찾았어! 이제 그 이야기를 정리해서 곧바로 들려줄게. 조금만 기다려줘, 기대해도 좋아!",
-                        "historical": "이제 곧 그대에게 어울리는 이야기를 전해드릴 준비가 되었소. 잠시만 더 기다려 주시오. 곧 강호의 비밀을 풀어드리겠소.",
-                    }
-                    clean_message = model_messages[model_name]
-                    yield {"message": clean_message}
+                    if search_message == 0:
+                        model_messages = {
+                            "basic": "검색이 완료되었고, 이제 답변을 정리하고 있습니다. 곧 결과를 알려드릴게요!",
+                            "romance": "하... 필요한 정보를 정리하고 있으니까 기다려요.",
+                            "rofan": "이제 곧 당신께 어울리는 이야기를 정리하여 드리겠습니다. 잠시만 더 기다려 주십시오. 북부의 차가운 바람 속에서도 따뜻한 이야기를 찾고 있으니 말입니다.",
+                            "fantasy": "마법의 책에서 멋진 이야기를 찾았어! 이제 그 이야기를 정리해서 곧바로 들려줄게. 조금만 기다려줘, 기대해도 좋아!",
+                            "historical": "이제 곧 그대에게 어울리는 이야기를 전해드릴 준비가 되었소. 잠시만 더 기다려 주시오. 곧 강호의 비밀을 풀어드리겠소.",
+                        }
+                        clean_message = model_messages[model_name]
+                        search_message += 1
+                        yield {"message": clean_message}
 
 
 def event_stream(chatbotrequest, model_name):
