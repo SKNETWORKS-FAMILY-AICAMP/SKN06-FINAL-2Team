@@ -1,6 +1,11 @@
 function selectModel(url) {
-    window.location.href = url;
+    if (url === "/chatbot/basic_chatbot/") {
+        window.location.href = "/chatbot/basic_chatbot_na/";  // 기본 챗봇은 항상 비회원 버전으로 이동
+    } else {
+        window.location.href = url;
+    }
 }
+
 
 function alertLogin() {
     alert('pixary에 회원가입 하시면 더 많은 모델을 사용하실 수 있습니다.');
