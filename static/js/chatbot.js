@@ -7,7 +7,7 @@ function getChatHistoryKey() {
 function loadChatHistory() {
     const chatBox = document.getElementById("chat-box");
     if (!chatBox) {
-        console.error("채팅 박스를 찾을 수 없습니다.");
+        console.error("🚨 채팅 박스를 찾을 수 없습니다.");
         return;
     }
 
@@ -16,20 +16,23 @@ function loadChatHistory() {
 
     chatBox.innerHTML = "";
     chatHistory.forEach(msg => {
-        const messageClass = msg.startsWith("AI:") ? "ai-message" : "user-message";
-        const profileImg = msg.startsWith("AI:") 
+        const isAI = msg.startsWith("AI:");
+        const messageClass = isAI ? "ai-message" : "user-message";
+        const textClass = isAI ? "ai-text" : "user-text";  // 🔹 추가된 부분
+        const profileImg = isAI
             ? document.getElementById("chat-container").getAttribute("data-ai-profile") 
             : document.getElementById("chat-container").getAttribute("data-user-profile");
 
         chatBox.innerHTML += `
             <div class="chat-message ${messageClass}">
                 <img src="${profileImg}" class="profile-pic">
-                <span class="message-text">${msg.replace("AI:", "").replace("User:", "")}</span>
+                <span class="message-text ${textClass}">${msg.replace("AI:", "").replace("User:", "")}</span>
             </div>`;
     });
 
     chatBox.scrollTop = chatBox.scrollHeight;
 }
+
 
 function saveChatHistory(message, isAI = false) {
     const chatHistoryKey = getChatHistoryKey();
