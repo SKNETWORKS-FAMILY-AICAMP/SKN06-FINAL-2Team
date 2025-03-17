@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const imgWidth = images[0].offsetWidth + 20;
 
     nextBtn.addEventListener("click", function () {
-        if (index < totalImages - 5) {
+        if (index < totalImages - 8) {
             index++;
             carousel.style.transform = `translateX(-${index * imgWidth}px)`;
         }

@@ -120,7 +120,7 @@ html, body {
 .recommendation-section {
     flex-grow: 1;
     width: 80%;
-    max-width: 1110px;
+    max-width: 1400px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -136,7 +136,7 @@ html, body {
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 1180px;
+    max-width: 1380px;
     padding: 0;
     overflow: hidden;
     display: flex;
@@ -144,14 +144,14 @@ html, body {
 }
 .carousel {
     position: relative;
-    left: 57px;
+    left: 55px;
     flex-direction: row;
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
 .carousel img {
     width: 150px;
-    height: 225px;
+    height: 220x;
     border-radius: 5px;
     margin-right: 20px;
     object-fit: cover;
