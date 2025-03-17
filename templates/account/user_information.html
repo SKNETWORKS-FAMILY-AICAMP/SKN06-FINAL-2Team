@@ -15,12 +15,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        h1 {
+            margin-bottom: 24px; /* 🔹 제목과 입력 필드 사이 여백 */
+        }
         .profile-table {
             width: 100%;
             border-collapse: collapse;
         }
         .profile-table td {
-            padding: 12px 10px;
+            padding: 14px 10px;
             border-bottom: 1px solid #e5e7eb;
         }
         .profile-table tr:last-child td {
@@ -93,7 +96,7 @@
 
     <div class="text-center mt-6">
         <a href="{% url 'account:edit_information' %}"
-           class="bg-blue-500 text-white px-6 py-2 rounded inline-block">
+            class="bg-blue-500 text-white px-6 py-2 rounded inline-block">
             수정
         </a>
     </div>
