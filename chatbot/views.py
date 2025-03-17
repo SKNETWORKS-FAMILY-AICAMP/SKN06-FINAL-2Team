@@ -79,7 +79,7 @@ def romance_chatbot_view(request):
         return render(
             request,
             "chatbot/romance_chatbot.html",
-            {"profile_image_url": profile_image_url},
+            {"profile_image_url": profile_image_url, "chat_model": "romance"},
         )
     return StreamingHttpResponse(
         event_stream(
@@ -105,7 +105,7 @@ def rofan_chatbot_view(request):
         return render(
             request,
             "chatbot/rofan_chatbot.html",
-            {"profile_image_url": profile_image_url},
+            {"profile_image_url": profile_image_url, "chat_model": "rofan"},
         )
     return StreamingHttpResponse(
         event_stream(
@@ -131,7 +131,7 @@ def fantasy_chatbot_view(request):
         return render(
             request,
             "chatbot/fantasy_chatbot.html",
-            {"profile_image_url": profile_image_url},
+            {"profile_image_url": profile_image_url, "chat_model": "fantasy"},
         )
     return StreamingHttpResponse(
         event_stream(
@@ -157,7 +157,7 @@ def historical_chatbot_view(request):
         return render(
             request,
             "chatbot/historical_chatbot.html",
-            {"profile_image_url": profile_image_url},
+            {"profile_image_url": profile_image_url, "chat_model": "historical"},
         )
     return StreamingHttpResponse(
         event_stream(
