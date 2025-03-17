@@ -53,80 +53,17 @@ html, body {
     margin-right: 20px;
     margin-top: 10px; 
 }
-
-.model-selection {
-    position: fixed;
-    top: 100px;
-    left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.model-item {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.2s;
-    position: relative;
-    margin: 20px;
-    border: 1px solid #7350F2; /* 테두리 추가 */
-    box-shadow: 0 0 5px #7350F2; /* 부드러운 그림자 효과 */
-}
-
-.model-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.model-item:hover {
-    transform: scale(1.2);
-}
-
-.model-item:hover::after {
-    content: attr(data-name);
-    position: absolute;
-    bottom: -20px;
-    background: white;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 12px;
-    white-space: nowrap;
-}
-
-.main { /* 채팅창 영역 */
-    position: relative;
-    top: -3px;
-    left: 220px; /* 왼쪽으로 이동시키면서 크기 조정 */
-    width: 100%;
-    height: 100%;
-    flex-direction: row;
-}
-.main::-webkit-scrollbar {
-    display: none;
-}
-.container {
-    position: relative;
-    width: 100%;
-    padding: 2px 2px 2px 2px;
-}
 .recommendation-section {
+    top: 15px;
     flex-grow: 1;
-    width: 80%;
-    max-width: 1400px;
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
     transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
 .recommendation-section.collapsed {
     height: 0 !important;
@@ -136,7 +73,7 @@ html, body {
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 1380px;
+    max-width: 1450px;
     padding: 0;
     overflow: hidden;
     display: flex;
@@ -144,7 +81,7 @@ html, body {
 }
 .carousel {
     position: relative;
-    left: 55px;
+    left: 45px;
     flex-direction: row;
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -185,7 +122,7 @@ html, body {
 }
 .toggle-btn {
     position: relative;
-    left: 35%;
+    left: 50%;
     bottom: -1px;
     cursor: pointer;
     height: 1px;
@@ -204,4 +141,62 @@ html, body {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 150px;
+}
+.main { /* 채팅창, 모델 선택 영역 */
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+.main::-webkit-scrollbar {
+    display: none;
+}
+.model-selection {
+    position: relative;
+    width: 150px;
+}
+
+.model-item {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    margin: 20px;
+    border: 1px solid #7350F2; /* 테두리 추가 */
+    box-shadow: 0 0 5px #7350F2; /* 부드러운 그림자 효과 */
+}
+
+.model-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.model-item:hover {
+    transform: scale(1.2);
+}
+
+.model-item:hover::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: -20px;
+    background: white;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    padding: 2px 2px 2px 2px;
 }
