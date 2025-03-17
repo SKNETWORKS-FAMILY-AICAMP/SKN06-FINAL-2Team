@@ -107,9 +107,22 @@
             </tr>
         </table>
 
-        <div class="text-center mt-6">
+        <div class="flex justify-between mt-6">
+            <!-- 🔹 탈퇴 버튼 -->
+            <button type="button" class="bg-red-500 text-white px-6 py-2 rounded" onclick="confirmDelete()">탈퇴</button>
             <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded">저장</button>
-        </div>
+            </div>
+    </form>
+    <!-- 🔹 탈퇴 요청을 보내는 폼 (숨겨진 폼) -->
+    <form id="deleteForm" action="{% url 'account:delete' %}" method="POST" class="hidden">
+        {% csrf_token %}
     </form>
 </main>
+<script>
+    function confirmDelete() {
+        if (confirm("정말 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.")) {
+            document.getElementById("deleteForm").submit();
+        }
+    }
+</script>
 {% endblock content %}

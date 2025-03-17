@@ -137,8 +137,7 @@ def edit_pwd(request):
 def user_delete(request):
     request.user.delete()
     logout(request)
-    return redirect(reverse("basic_chatbot_na"))
-
+    return redirect(reverse("account:login"))
 
 def preset_preference(request):
     if request.method == "GET":
