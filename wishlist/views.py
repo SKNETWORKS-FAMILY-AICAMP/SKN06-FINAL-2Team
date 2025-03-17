@@ -43,21 +43,37 @@ def wishlist_total_view(request):
             "thumbnail": content_map[rec.content_id].thumbnail,
             "feedback": rec.feedback,
             "deleted": rec.recommended_date is None,
+            "stars": [5, 4, 3, 2, 1],
         }
         for rec in recommendations
         if rec.content_id in content_map
     ]
 
-    # 2) Paginator로 아이템 개수 설정(예: 한 페이지당 15개)
+    # 한 페이지당 15개씩 표시
     paginator = Paginator(recommendation_data, 15)
-
-    # 3) GET 파라미터로 들어온 'page' 값을 기반으로 페이지 객체 생성
     page_number = request.GET.get("page")
     recommendations_paged = paginator.get_page(page_number)
 
+    # 최대 5개의 페이지 링크만 표시하도록 페이지 범위 계산
+    total_pages = paginator.num_pages
+    current_page = recommendations_paged.number
+    num_links = 5  # 표시할 페이지 링크 수
+    half = num_links // 2
+
+    # 현재 페이지 기준 시작 페이지와 종료 페이지 계산
+    start_page = max(current_page - half, 1)
+    end_page = start_page + num_links - 1
+    if end_page > total_pages:
+        end_page = total_pages
+        start_page = max(end_page - num_links + 1, 1)
+    page_range = range(start_page, end_page + 1)
+
     return render(
-        request, "wishlist/wishlist.html", {"recommendations": recommendations_paged}
+        request,
+        "wishlist/wishlist.html",
+        {"recommendations": recommendations_paged, "page_range": page_range},
     )
+
 
 
 @login_required
