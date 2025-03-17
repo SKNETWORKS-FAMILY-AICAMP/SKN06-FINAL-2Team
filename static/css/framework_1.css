@@ -56,7 +56,7 @@ html, body {
 
 .model-selection {
     position: fixed;
-    top: 120px;
+    top: 100px;
     left: 20px;
     display: flex;
     flex-direction: column;
@@ -64,8 +64,8 @@ html, body {
 }
 
 .model-item {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
@@ -74,6 +74,9 @@ html, body {
     cursor: pointer;
     transition: transform 0.2s;
     position: relative;
+    margin: 20px;
+    border: 1px solid #7350F2; /* 테두리 추가 */
+    box-shadow: 0 0 5px #7350F2; /* 부드러운 그림자 효과 */
 }
 
 .model-item img {
@@ -90,7 +93,7 @@ html, body {
     content: attr(data-name);
     position: absolute;
     bottom: -20px;
-    background: rgba(0, 0, 0, 0.7);
+    background: white;
     color: white;
     padding: 5px;
     border-radius: 5px;
