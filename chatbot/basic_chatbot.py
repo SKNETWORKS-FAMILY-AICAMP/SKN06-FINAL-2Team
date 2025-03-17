@@ -54,9 +54,12 @@ romance_tool = selfquery_tool(
     romance_vector_store, romance_metadata_field_info, "romance"
 )
 
+
 def process_basic_chatbot_request(question, session_id, user):
     # 유저 정보 로드
-    user_info = f"사용자의 이름은 '{user.username}'이고, {user.real_age}세 {user.gender}입니다."
+    user_info = (
+        f"사용자의 이름은 '{user.username}'이고, {user.real_age}세 {user.gender}입니다."
+    )
     user_preference = get_user_preference(user, "all")
     user_feedback = get_user_preference(user, "-")
     user_recommended_works = get_user_recommended_works(user, "romance")
@@ -134,7 +137,7 @@ def process_basic_chatbot_request(question, session_id, user):
             - URL
 
         - 위 요소를 활용해서 목록화하십시오
-            - 제목, 플랫폼, 작품 소개, 썸네일, URL : 필수
+            - 제목, 타입, 플랫폼, 작품 소개, 썸네일, URL : 필수
             - 나머지 요소는 사용자의 요구사항에 해당되는 요소를 사용하십시오.
         - 추천하는 순서는 인기도가 높은 순서대로 추천하십시오.
         </recommendation>
