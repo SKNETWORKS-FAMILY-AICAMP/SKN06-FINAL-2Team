@@ -168,11 +168,13 @@ html, body {
 .model-selection {
     position: relative;
     width: 150px;
+    margin-left: 45px;
+    margin-top: 45px;
 }
 
 .model-item {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
@@ -183,7 +185,13 @@ html, body {
     position: relative;
     margin: 20px;
     border: 1px solid #7350F2; /* 테두리 추가 */
-    box-shadow: 0 0 5px #7350F2; /* 부드러운 그림자 효과 */
+    box-shadow: none; /* 부드러운 그림자 효과 */
+}
+
+.model-item.active {
+    width: 90px;  /* 🔹 선택된 원은 90px로 확대 */
+    height: 90px;
+    transition: all 0.3s ease-in-out;
 }
 
 .model-item img {
@@ -192,8 +200,10 @@ html, body {
     object-fit: cover;
 }
 
+
 .model-item:hover {
-    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    transform: none;
 }
 
 .model-item:hover::after {
