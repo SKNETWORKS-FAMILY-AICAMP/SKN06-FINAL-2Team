@@ -1,9 +1,5 @@
 function selectModel(url) {
-    if (url === "/chatbot/basic_chatbot/") {
-        window.location.href = "/chatbot/basic_chatbot_na/";  // 기본 챗봇은 항상 비회원 버전으로 이동
-    } else {
-        window.location.href = url;
-    }
+    window.location.href = url;
 }
 
 
@@ -70,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleBtn.addEventListener("click", function () {
         if (carouselContainer.style.height === "0px") {
-            carouselContainer.style.height = "265px";
+            carouselContainer.style.height = "280px";
             carouselContainer.style.padding = "10px 0px 0px 0px";
         } else {
             carouselContainer.style.height = "0px";

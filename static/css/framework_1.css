@@ -142,6 +142,19 @@ html, body {
     text-overflow: ellipsis;
     width: 150px;
 }
+.wishlist-btn {
+    position: relative;
+    top: 10px;
+    align-self: flex-end;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: black;
+    border-radius: 5px;
+    padding: auto;
+    cursor: pointer;
+    size: 20px;
+    height: auto;
+}
 .main { /* 채팅창, 모델 선택 영역 */
     position: relative;
     display: flex;
