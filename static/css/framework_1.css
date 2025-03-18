@@ -74,12 +74,14 @@ html, body {
     position: relative;
     width: 100%;
     max-width: 1450px;
-    padding: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 .carousel {
+    top: 0px;
     position: relative;
     left: 45px;
     flex-direction: row;
@@ -88,16 +90,62 @@ html, body {
 }
 .carousel img {
     width: 150px;
-    height: 220px;
+    height: 225px;
     border-radius: 5px;
     margin-right: 20px;
     object-fit: cover;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    transition: filter 0.3s ease-in-out;   
 }
-.carousel img:hover {
-    transform: scale(1.05);
+/* 🔹 캐러셀 이미지 오버레이 효과 */
+.carousel-item {
+    position: relative;
+    display: block;
 }
+.carousel-item img {
+    transition: opacity 0.3s ease-in-out;
+}
+/* 🔹 텍스트 오버레이 스타일 */
+.carousel-text {
+    position: absolute;
+    height: 100px;
+    left: 26px;
+    top:45px;
+    text-align: center;
+    color: white; 
+    opacity: 0;  
+    transition: opacity 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0);  
+    padding: 0px;
+    border-radius: 0px;
+}
+.carousel-title {
+    font-size: 16px; 
+    font-weight: bold;
+    font-family: 'Arial', sans-serif; 
+    color: #ffffff; 
+    margin-bottom: 8px; 
+    width: 100px;
+}
+.carousel-keywords {
+    font-size: 12px;  
+    font-weight: normal;
+    font-family: 'Arial', sans-serif; 
+    color: #dddddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100px;
+}
+.carousel-item:hover .carousel-text {
+    opacity: 1;
+}
+.carousel-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(24%);
+}
+
 .carousel-btn {
     position: absolute;
     top: 50%;

@@ -96,8 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleBtn.addEventListener("click", function () {
         if (carouselContainer.style.height === "0px") {
-            carouselContainer.style.height = "280px";
-            carouselContainer.style.padding = "10px 0px 0px 0px";
+            carouselContainer.style.height = "310px";
+            carouselContainer.style.padding = "5px 0px 0px 0px";
         } else {
             carouselContainer.style.height = "0px";
             carouselContainer.style.padding = "0";

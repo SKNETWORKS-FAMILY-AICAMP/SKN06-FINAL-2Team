@@ -15,7 +15,7 @@ def recommended_works_context(request):
 
         # content_ids에 해당하는 콘텐츠 정보를 wishlist_contents에서 가져오기
         contents = Contents.objects.filter(id__in=content_ids).values(
-            "id", "title", "thumbnail", "url"
+            "id", "title", "thumbnail", "url", "keywords"
         )
 
         recommendations = list(contents)  # QuerySet을 리스트로 변환
