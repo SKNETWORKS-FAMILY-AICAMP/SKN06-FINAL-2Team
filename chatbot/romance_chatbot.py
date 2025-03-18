@@ -31,7 +31,9 @@ romance_tool = selfquery_tool(
 # 로맨스 챗봇의 로직
 def process_romance_chatbot_request(question, session_id, user):
     # 유저 정보 로드
-    user_info = f"사용자의 이름은 '{user.username}'이고, {user.real_age}세 {user.gender}입니다."
+    user_info = (
+        f"사용자의 이름은 '{user.name}'이고, {user.real_age}세 {user.gender}입니다."
+    )
     user_preference = get_user_preference(user, "romance")
     user_feedback = get_user_preference(user, "romance")
     user_recommended_works = get_user_recommended_works(user, "romance")
@@ -124,6 +126,7 @@ def process_romance_chatbot_request(question, session_id, user):
                     "age_rating": 작품의 연령 제한("전체 이용가", "19세 이용가" 등)
                     "author": 작품의 작가
                 - 그 외 검색에 도움이 될만한 검색어를 query로 생성하십시오.
+                    - 참고로 가격은 무료, 기다리면 무료, 유료가 있습니다. 보통 사람들이 기다리면 무료를 기다무라고 부르곤 합니다. 
                 </search>
                 
                 
