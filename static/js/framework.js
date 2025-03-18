@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 모델 선택 및 캐러셀 폴드
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ JS 실행됨! (ChatModel:", ChatModel, ")");
     const modelItems = document.querySelectorAll(".model-item");
     const basicModel = document.querySelector(".model-item[data-name='기본']");
     const selectedModel = localStorage.getItem("selectedModel");

@@ -55,7 +55,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!sessionStorage.getItem(sessionKey)) {
             modal.style.display = "flex";
+            let index = 0; // 현재 이미지 인덱스
+            const modalImage = document.querySelector("#prologue-modal img");
+            if (images) {
+            console.log("이미지 찾음");
+            function changeImage() {
+                index = (index + 1) % images.length;
+                modalImage.src = images[index];
+            }
+
+            // 5초마다 이미지 변경
+            setInterval(changeImage, 3000);
             chatContainer.style.display = "none";
+            } else{
+                chatContainer.style.display = "none";
+            }
         } else {
             modal.style.display = "none";
             chatContainer.style.display = "block";
