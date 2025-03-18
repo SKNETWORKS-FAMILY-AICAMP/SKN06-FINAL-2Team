@@ -53,7 +53,7 @@ romance_tool = selfquery_tool(
 )
 
 
-def process_basic_chatbot_request(question, session_id, user):
+def process_basic_chatbot_na_request(question, session_id, user):
 
     # 프롬프트
     total_prompt = ChatPromptTemplate.from_messages(

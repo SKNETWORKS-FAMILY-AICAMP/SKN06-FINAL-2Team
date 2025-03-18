@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import StreamingHttpResponse
 import logging
+from chatbot.basic_cahtbot_na import process_basic_chatbot_na_request
 from chatbot.basic_chatbot import process_basic_chatbot_request
 from chatbot.romance_chatbot import process_romance_chatbot_request
 from chatbot.rofan_chatbot import process_rofan_chatbot_request
@@ -22,15 +23,14 @@ def basic_chatbot_na_view(request):
     logging.info(f"session_id: {session_id}")
 
     if not question:
-        profile_image_url = "/static/img/romance/default_user.png"
         return render(
             request,
             "chatbot/basic_chatbot_na.html",
-            {"profile_image_url": profile_image_url, "chat_model": "basic_na"},
+            {"chat_model": "basic_na"},
         )
     return StreamingHttpResponse(
         event_stream(
-            process_basic_chatbot_request(question, session_id, request.user),
+            process_basic_chatbot_na_request(question, session_id, request.user),
             "basic",
         ),
         content_type="text/event-stream",
