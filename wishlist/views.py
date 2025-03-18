@@ -44,6 +44,7 @@ def wishlist_total_view(request):
             "feedback": rec.feedback,
             "deleted": rec.recommended_date is None,
             "stars": [5, 4, 3, 2, 1],
+            "url": content_map[rec.content_id].url
         }
         for rec in recommendations
         if rec.content_id in content_map
