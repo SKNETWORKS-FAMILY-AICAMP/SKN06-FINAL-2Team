@@ -8,7 +8,6 @@ from .vector_store import (
     selfquery_tool,
     historical_vector_store,
     historical_metadata_field_info,
-    search_web,
 )
 from .utils import (
     get_user_preference,
@@ -232,7 +231,7 @@ def process_historical_chatbot_request(question, session_id, user):
         ]
     )
 
-    tools = [historical_tool, search_web]
+    tools = [historical_tool]
     agent = create_tool_calling_agent(llm, tools, total_prompt)
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 
