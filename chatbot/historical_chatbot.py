@@ -59,12 +59,12 @@ def process_historical_chatbot_request(question, session_id, user):
                 </instructions>
 
                 <search>
-                historical_tool과 wuxia_tool을 사용하여 검색하고, 검색을 기반합니다.
+                historical_tool을 사용하여 검색하고, 검색을 기반합니다.
                 무협, 무협/사극 검색하는 tool이며 검색어를 생성할 때 이에 맞는 장르를 필터로 적용하십시오.
                 사용자의 요구사항에 가장 맞는 검색어를 문자열로 생성하여 검색하십시오.
                 추천 시, 웹툰/웹소설을 구별하여 검색합니다.
                 네이버, 카카오 (네이버 시리즈, 카카오웹툰, 네이버 웹툰, 카카오페이지) 플랫폼을 명확하게 구분하여 찾습니다
-                context 내 정보가 부족할 경우, 직접 historical_tool과 wuxia_tool을 호출하여 데이터를 가져옵니다.
+                context 내 정보가 부족할 경우, 직접 historical_tool을 호출하여 데이터를 가져옵니다.
                 검색된 작품이 없을 경우, 인기 있는 무협 장르 작품 중에서 검색합니다.
                 일반적인 추천은 score 0.5 이상을 우선 추천하지만, 데이터가 부족할 경우 lower threshold를 0.2까지 낮추어 검색합니다.
                 연령 제한 작품을 추천할 때, 사용자의 연령 정보를 확인할 수 없는 경우 청소년 이용가의 일반적인 작품을 검색합니다.
@@ -144,7 +144,7 @@ def process_historical_chatbot_request(question, session_id, user):
 
                 context를 기반으로 사용자에게 이야기 해야한다.
                 context가 부족할 경우에도 사용자의 취향을 반영한 추천을 제공한다.
-                historical_tool과 wuxia_tool을 사용하여 검색하고, 검색을 기반한다.
+                historical_tool을 사용하여 검색하고, 검색을 기반한다.
 
                 검색된 작품이 없을 경우, 인기 있는 무협 장르 작품 중에서 추천한다.
                 작품이 5개 이하로 검색되면, 가장 유사한 작품을 추가 추천한다.
