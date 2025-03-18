@@ -275,7 +275,10 @@
                     alt="Delete Icon"
                     onclick="toggleDelete(this)" />
                 </div>
-                <div class="title">{{ recommendation.title }}</div>
+                <div class="title" >
+                    <a href="{{ recommendation.url }}" target="_blank" class="text-blue-500 hover:underline">
+                        {{ recommendation.title }}
+                    </a></div>
                 <div class="rating">
                     {% for star in recommendation.stars %}
                         <input type="radio" name="rating_{{ recommendation.work_id }}" value="{{ star }}" id="star{{ star }}_{{ recommendation.work_id }}" {% if recommendation.feedback == star %}checked{% endif %}>
