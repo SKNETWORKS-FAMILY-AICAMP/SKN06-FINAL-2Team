@@ -111,7 +111,7 @@ def process_romance_chatbot_request(question, session_id, user):
                 </user_recommended_works>
                 
                 <search>
-                당신에게 주어진 tool은 romance_bl_tool입니다.
+                당신에게 주어진 tool은 romance_tool입니다.
                 사용자의 요구사항에 가장 맞는 검색어 필터를 문자열로 생성하여 검색하십시오. 최대한 다양하게 추천할 수 있도록 검색하십시오.
                 - 로맨스와 BL을 검색하는 tool이며 검색어를 생성할 때 이에 맞는 장르를 필터로 적용하십시오.
                 - 그 외에 사용자의 요구사항에 맞는 필터를 생성하여 검색하십시오.
@@ -125,8 +125,10 @@ def process_romance_chatbot_request(question, session_id, user):
                         - 만일 매일 연재하는 작품의 경우: "월요일, 화요일, 수요일, 목요일, 금요일, 토요일, 일요일"
                     "age_rating": 작품의 연령 제한("전체 이용가", "19세 이용가" 등)
                     "author": 작품의 작가
+                    "episode": 작품의 총 회차
                 - 그 외 검색에 도움이 될만한 검색어를 query로 생성하십시오.
                     - 참고로 가격은 무료, 기다리면 무료, 유료가 있습니다. 보통 사람들이 기다리면 무료를 기다무라고 부르곤 합니다. 
+                    - 사람들이 정주행하기 좋은 작품이라 불리는 것에는 연재중이거나 완결된 작품 중 회차가 약 300회차 정도의 긴 것을 주로 말합니다.
                 </search>
                 
                 
