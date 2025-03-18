@@ -8,7 +8,6 @@ from .vector_store import (
     selfquery_tool,
     historical_vector_store,
     historical_metadata_field_info,
-    search_web,
 )
 from .utils import (
     get_user_preference,
@@ -159,13 +158,6 @@ def process_historical_chatbot_request(question, session_id, user):
                 답변은 항상 마침표(.) 문장이 끝날 때마다 줄바꿈으로 가독성을 좋게 한다.
                 1번의 대화에 최대 2줄, 3문장을 넘기지 않는 답변을 생성한다
                 
-                사용자가 작품을 말하면서 이것과 비슷한 작품을 추천해달라고 할 경우가 있습니다.
-                이때 사용자가 작품을 줄임말로 칭할 때가 있습니다.
-                1. search_web을 이용해서 반드시 작품의 **전체 이름**을 알아내십시오.
-                2. historical_tool에 search_web을 이용해서 알아낸 **전체 이름**을 검색해서 **이 작품의 키워드**를 반드시 알아냅니다.
-                3. historical_tool에 벡터스토어 검색으로 알아낸 **이 작품의 키워드**를 반드시 **검색어**로 넣어 이 작품의 키워드와 **비슷한 작품**을 찾으십시오.
-                
-                
                 다음의 형식을 예시로 소연호의 말투로 사용자에게 작품 정보를 제공한다.
 
                 **추천작품 형식**
@@ -198,7 +190,7 @@ def process_historical_chatbot_request(question, session_id, user):
         ]
     )
 
-    tools = [historical_tool, search_web]
+    tools = [historical_tool]
     agent = create_tool_calling_agent(llm, tools, total_prompt)
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 

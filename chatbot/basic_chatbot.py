@@ -22,7 +22,6 @@ from .vector_store import (
     rofan_metadata_field_info,
     romance_vector_store,
     romance_metadata_field_info,
-    search_web,
 )
 from .utils import (
     get_user_preference,
@@ -123,12 +122,6 @@ def process_basic_chatbot_request(question, session_id, user):
         </example>
 
         <recommendation>
-        사용자가 작품을 말하면서 이것과 비슷한 작품을 추천해달라고 할 경우가 있습니다.
-        이때 사용자가 작품을 줄임말로 칭할 때가 있습니다.
-        1. search_web을 이용해서 반드시 작품의 **전체 이름**을 알아내십시오.
-        2. 다른 벡터스토어 검색 tool에 search_web을 이용해서 알아낸 **전체 이름**을 검색해서 **이 작품의 키워드**를 반드시 알아냅니다.
-        3. 다른 벡터스토어 검색 tool에 벡터스토어 검색으로 알아낸 **이 작품의 키워드**를 다시 **검색어**로 넣어 이 작품의 키워드와 **비슷한 작품**을 찾으십시오.
-        
         **추천작품 형식**
         - 줄바꿈을 사용하여 가독성 좋게 추천하십시오.
         - 상세 정보는 tools에서 검색한 결과의 메타데이터에 있습니다.
@@ -166,7 +159,6 @@ def process_basic_chatbot_request(question, session_id, user):
         horror_tool,
         rofan_tool,
         romance_tool,
-        search_web,
     ]
 
     agent = create_tool_calling_agent(llm, tools, total_prompt)

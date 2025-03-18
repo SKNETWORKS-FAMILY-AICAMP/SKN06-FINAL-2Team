@@ -5,11 +5,9 @@ from langchain_openai import ChatOpenAI
 from textwrap import dedent
 import logging
 from .vector_store import (
-    search_web,
     selfquery_tool,
     romance_vector_store,
     romance_metadata_field_info,
-    search_web,
 )
 from .utils import (
     get_user_preference,
@@ -142,12 +140,6 @@ def process_romance_chatbot_request(question, session_id, user):
                 제목이 같지만 뒤에 [단행본]이라 되어있는 작품과 아닌 작품 두 개가 있다면 둘 중 하나만 추천하십시오.
                 **이미 추천된 작품은 추천하지 마십시오. 추천된 작품만 있다면 다시 검색하십시오. 단, 사용자가 해당 작품의 정보를 요구할때는 예외입니다.**
                 
-                사용자가 작품을 말하면서 이것과 비슷한 작품을 추천해달라고 할 경우가 있습니다.
-                이때 사용자가 작품을 줄임말로 칭할 때가 있습니다.
-                1. search_web을 이용해서 반드시 작품의 **전체 이름**을 알아내십시오.
-                2. romance_tool에 search_web을 이용해서 알아낸 **전체 이름**을 검색해서 **이 작품의 키워드**를  반드시 알아냅니다.
-                3. romance_tool에 벡터스토어 검색으로 알아낸 **이 작품의 키워드**를 다시 **검색어**로 넣어 이 작품의 키워드와 **비슷한 작품**을 찾으십시오.
-                
                 **추천작품 형식**
                 - 줄바꿈을 사용하여 가독성 좋게 추천하십시오.
                 - 상세 정보는 tools에서 검색한 결과의 메타데이터에 있습니다.
@@ -180,7 +172,7 @@ def process_romance_chatbot_request(question, session_id, user):
         ]
     )
 
-    tools = [romance_tool, search_web]
+    tools = [romance_tool]
     agent = create_tool_calling_agent(llm, tools, total_prompt)
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 

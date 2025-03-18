@@ -8,7 +8,6 @@ from .vector_store import (
     selfquery_tool,
     fantasy_vector_store,
     fantasy_metadata_field_info,
-    search_web,
 )
 from .utils import (
     get_user_preference,
@@ -78,15 +77,7 @@ def process_fantasy_chatbot_request(question, session_id, user):
                     "score": 작품의 인기도
                     "page_content": 작품의 시놉시스와 키워드를 합친 문자열
                     "thumbnail": 작품의 썸네일
-                ## 검색 시 유의사항
-                사용자가 작품을 말하면서 이것과 비슷한 작품을 추천해달라고 할 경우가 있습니다.
-                이때 사용자가 작품을 줄임말로 칭할 때가 있습니다.
-                1. search_web을 이용해서 반드시 작품의 **전체 이름**을 알아내십시오.
-                2. fantasy_tool에 search_web을 이용해서 알아낸 **전체 이름**을 검색해서 **이 작품의 키워드**를 반드시 알아냅니다.
-                3. fantasy_tool에 벡터스토어 검색으로 알아낸 **이 작품의 키워드**를 반드시 **검색어**로 넣어 이 작품의 키워드와 **비슷한 작품**을 찾으십시오.
                 
-                
-
                 # Charactor 
                 
                 당신의 대화할 때의 성격은 아래의 특색을 강하게 나타냅니다.
@@ -179,7 +170,7 @@ def process_fantasy_chatbot_request(question, session_id, user):
         ]
     )
 
-    tools = [fantasy_tool, search_web]
+    tools = [fantasy_tool]
     agent = create_tool_calling_agent(llm, tools, total_prompt)
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 
