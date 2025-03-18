@@ -16,15 +16,15 @@
             <button class="carousel-btn prev-btn">&lt;</button>
             <div class="carousel">
                 {% for work in recommendations %}
-                <div class="carousel-item">
-                    <div class="no-style-link" href="{{work.url}}" target="_blank" rel="noopener noreferrer">
+                <a class="carousel-item" href="{{work.url}}" target="_blank" rel="noopener noreferrer">
+                    <div class="no-style-link">
                         <img src="{{ work.thumbnail }}" alt="{{ work.title }}">
                     </div>
                     <div class="carousel-text">
                         <div class="carousel-title">{{ work.title }}</div>
                         <div class="carousel-keywords">{{ work.keywords }}</div>
                     </div>
-                </div>
+                </a>
                 {% empty %}
                 <p>최근 추천된 작품이 없습니다.</p>
                 {% endfor %}
