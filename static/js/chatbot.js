@@ -57,17 +57,18 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.style.display = "flex";
             let index = 0; // 현재 이미지 인덱스
             const modalImage = document.querySelector("#prologue-modal img");
-            if (images) {
-            console.log("이미지 찾음");
-            function changeImage() {
-                index = (index + 1) % images.length;
-                modalImage.src = images[index];
-            }
+            if (typeof images === "undefined") {
+                console.log("이미지 없음")
+                chatContainer.style.display = "none";
+            } else {
+                console.log("이미지 있음");
+                function changeImage() {
+                    index = (index + 1) % images.length;
+                    modalImage.src = images[index];
+                }
 
-            // 5초마다 이미지 변경
-            setInterval(changeImage, 3000);
-            chatContainer.style.display = "none";
-            } else{
+                // 5초마다 이미지 변경
+                setInterval(changeImage, 3000);
                 chatContainer.style.display = "none";
             }
         } else {
@@ -77,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (startChatBtn) {
+            console.log("대화 시작 버튼 있음")
             startChatBtn.addEventListener("click", function () {
                 modal.style.display = "none";
                 chatContainer.style.display = "block";
@@ -86,6 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 200);
                 loadChatHistory();
             });
+        } else {
+        loadChatHistory();
         }
     } else {
         loadChatHistory();
