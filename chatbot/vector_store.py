@@ -3,7 +3,9 @@ from langchain.chains.query_constructor.base import AttributeInfo
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
-from langchain.tools import Tool
+from langchain.tools import Tool, tool
+from langchain_community.tools import TavilySearchResults
+from langchain.schema import Document
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -64,6 +66,11 @@ def load_vector_store(GENRE, PERSIST_DIRECTORY):
             name="price",
             description="작품의 가격",
             type="string",
+        ),
+        AttributeInfo(
+            name="episode",
+            description="작품의 총 회차 수",
+            type="integer",
         ),
     ]
     return vector_store, metadata_field_info
@@ -127,4 +134,22 @@ def selfquery_tool(vector_store, metadata_field_info, tool_name):
         name=f"{tool_name}_retriever_tool",
         func=search,
         description=f"Use this tool to search {tool_name}.",
+    )
+
+
+@tool
+def search_web(query: str):
+    """
+    실시간 웹 검색 (추가 추천용)
+    """
+    logging.info(f"타빌리서치 쿼리: {query}")
+    tavily_search = TavilySearchResults(max_results=2)
+    search_result = tavily_search.invoke(query)
+
+    print(f"🔹 검색된 결과 (search_web): {len(search_result)}")
+
+    return (
+        search_result
+        if search_result
+        else [Document(page_content="관련 검색 결과가 없습니다.")]
     )

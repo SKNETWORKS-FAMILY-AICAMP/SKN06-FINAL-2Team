@@ -8,6 +8,7 @@ from .vector_store import (
     selfquery_tool,
     fantasy_vector_store,
     fantasy_metadata_field_info,
+    search_web,
 )
 from .utils import (
     get_user_preference,
@@ -57,9 +58,9 @@ def process_fantasy_chatbot_request(question, session_id, user):
 
 
                 # Search
-
-                당신에게 주어진 tool은 fantasy_tool 입니다.
-                사용자의 요구사항에 가장 맞는 검색어를 문자열로 생성하여 검색하십시오.
+                당신에게 주어진 tool은 fantasy_tool, search_web 입니다.
+                ## fantasy_tool
+                fantasy_tool을 이용해서 사용자의 요구사항에 가장 맞는 검색어를 문자열로 생성하여 검색하십시오.
                 - 각각 판타지와 현판 / 학원판타지 / 판타지 드라마을 검색하는 tool이며 검색어를 생성할 때 이에 맞는 장르를 필터로 적용하십시오.
                 - 그 외에 사용자의 요구사항에 맞는 필터를 생성하여 검색하십시오.
                 - 항상 **score가 0.6 이상**인 작품만 추천하십시오.
@@ -77,7 +78,13 @@ def process_fantasy_chatbot_request(question, session_id, user):
                     "score": 작품의 인기도
                     "page_content": 작품의 시놉시스와 키워드를 합친 문자열
                     "thumbnail": 작품의 썸네일
-     
+                ## 검색 시 유의사항
+                사용자가 작품을 말하면서 이것과 비슷한 작품을 추천해달라고 할 경우가 있습니다.
+                이때 사용자가 작품을 줄임말로 칭할 때가 있습니다.
+                1. search_web을 이용해서 반드시 작품의 **전체 이름**을 알아내십시오.
+                2. fantasy_tool에 search_web을 이용해서 알아낸 **전체 이름**을 검색해서 **이 작품의 키워드**를 반드시 알아냅니다.
+                3. fantasy_tool에 벡터스토어 검색으로 알아낸 **이 작품의 키워드**를 반드시 **검색어**로 넣어 이 작품의 키워드와 **비슷한 작품**을 찾으십시오.
+                
                 
 
                 # Charactor 
@@ -137,6 +144,8 @@ def process_fantasy_chatbot_request(question, session_id, user):
                 **없다면 없다고 말하십시오.**
                 **장르가 판타지인 작품만 추천하십시오, 만일 사용자가 로맨스를 지정했다면 로맨스만, 그 외 다른 장르를 지정하면 판타지 장르만 추천하십시오.**
                 제목이 같지만 뒤에 [단행본]이라 되어있는 작품과 아닌 작품 두 개가 있다면 둘 중 하나만 추천하십시오.
+                만일 사용자가 어떠한 작품과 비슷한 작품을 추천해달라고 하면 해당 작품을 검색해서 찾아본 뒤 이와 비슷한 작품을 다시 검색합니다.
+                    - 사용자가 작품의 제목을 줄여서 말할 수도 있습니다. 이를 감안하십시오.
                 
                 **추천작품 형식**
                 - 줄바꿈을 사용하여 가독성 좋게 추천하십시오.
@@ -170,7 +179,7 @@ def process_fantasy_chatbot_request(question, session_id, user):
         ]
     )
 
-    tools = [fantasy_tool]
+    tools = [fantasy_tool, search_web]
     agent = create_tool_calling_agent(llm, tools, total_prompt)
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 
