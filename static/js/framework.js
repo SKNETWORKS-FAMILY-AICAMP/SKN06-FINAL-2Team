@@ -10,21 +10,24 @@ function alertLogin() {
 
 // 캐러셀 환경 설정
 const carousel = document.querySelector(".carousel");
-let scrollAmount = 0;
-let scrollMax = carousel.scrollWidth - carousel.clientWidth;
+if (carousel) {
+    let scrollAmount = 0;
+    let scrollMax = carousel.scrollWidth - carousel.clientWidth;
 
-function scrollNext() {
-    if (scrollAmount < scrollMax) {
-        scrollAmount += 300;
-        carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
+    function scrollNext() {
+        if (scrollAmount < scrollMax) {
+            scrollAmount += 300;
+            carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
+        }
+    }
+    function scrollPrev() {
+        if (scrollAmount > 0) {
+            scrollAmount -= 300;
+            carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
+        }
     }
 }
-function scrollPrev() {
-    if (scrollAmount > 0) {
-        scrollAmount -= 300;
-        carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
-    }
-}
+
 
 // 움직이기
 document.addEventListener("DOMContentLoaded", function () {
@@ -56,38 +59,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// 모델 선택 및 캐러셀 폴드
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("✅ JS 실행됨! (ChatModel:", ChatModel, ")");
     const modelItems = document.querySelectorAll(".model-item");
-
-    // 🔹 로컬스토리지에서 마지막으로 선택한 모델 가져오기
+    const basicModel = document.querySelector(".model-item[data-name='기본']");
     const selectedModel = localStorage.getItem("selectedModel");
-
-    if (selectedModel) {
+    if (ChatModel === "basic_na") {
+        modelItems.forEach(item => item.classList.remove("active"));
+        if (basicModel) {
+            basicModel.classList.add("active");
+        }
+    }
+    else if (selectedModel) {
         modelItems.forEach(item => {
             if (item.dataset.name === selectedModel) {
                 item.classList.add("active");
             }
         });
     }
-
     modelItems.forEach(item => {
         item.addEventListener("click", function () {
-            // 모든 원에서 active 클래스 제거
+            if (ChatModel === "basic_na") {
+                return;
+            }
             modelItems.forEach(i => i.classList.remove("active"));
-
-            // 클릭한 원에 active 클래스 추가
             this.classList.add("active");
-
-            // 🔹 선택한 모델을 localStorage에 저장
             localStorage.setItem("selectedModel", this.dataset.name);
         });
     });
 
-    // 🔹 버튼 동작 (추천 캐러셀 토글 기능)
     const carouselContainer = document.querySelector(".recommendation-section");
     const toggleBtn = document.getElementById("toggleCarouselBtn");
-
-    carouselContainer.style.height = "0px";
+    if (carousel) {
+        carouselContainer.style.height = "0px";
 
     toggleBtn.addEventListener("click", function () {
         if (carouselContainer.style.height === "0px") {
@@ -98,4 +103,5 @@ document.addEventListener("DOMContentLoaded", function () {
             carouselContainer.style.padding = "0";
         }
     });
+    }
 });
