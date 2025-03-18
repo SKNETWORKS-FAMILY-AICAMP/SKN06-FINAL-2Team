@@ -56,25 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-// // 버튼
-// document.addEventListener("DOMContentLoaded", function () {
-//     const carouselContainer = document.querySelector(".recommendation-section");
-//     const toggleBtn = document.getElementById("toggleCarouselBtn");
-
-//     carouselContainer.style.height = "0px";
-
-//     toggleBtn.addEventListener("click", function () {
-//         if (carouselContainer.style.height === "0px") {
-//             carouselContainer.style.height = "280px";
-//             carouselContainer.style.padding = "10px 0px 0px 0px";
-//         } else {
-//             carouselContainer.style.height = "0px";
-//             carouselContainer.style.padding = "0";
-//         }
-//     });
-// });
-
 document.addEventListener("DOMContentLoaded", function () {
     const modelItems = document.querySelectorAll(".model-item");
 

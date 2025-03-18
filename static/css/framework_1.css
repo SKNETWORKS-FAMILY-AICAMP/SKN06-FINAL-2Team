@@ -172,11 +172,10 @@ html, body {
     margin-top: 45px;
 }
 
-.model-item {
+.model-item{
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -191,32 +190,56 @@ html, body {
 .model-item.active {
     width: 90px;  /* 🔹 선택된 원은 90px로 확대 */
     height: 90px;
-    transition: all 0.3s ease-in-out;
+
 }
 
 .model-item img {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
     object-fit: cover;
 }
 
-
-.model-item:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    transform: none;
-}
-
-.model-item:hover::after {
-    content: attr(data-name);
+.model-name {
     position: absolute;
-    bottom: -20px;
-    background: white;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 12px;
+    top: 0px;
+    left: 0px;
     white-space: nowrap;
+    display: none;
+    border: 1px solid #7350F2;
 }
+
+.name-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-right: 5px;
+    width:65px;
+    float: right;
+    text-align: center;
+}
+
+.model-item:hover .model-name{
+    display: block;
+    align-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    width:140px;
+    transform: translateX(50px) translateY(-1px);
+    height: 70px;
+    border-radius: 35px 35px 35px 35px;
+    left: -50px;
+}
+
+.model-item.active:hover .model-name { 
+    border-radius: 45px 45px 45px 45px;
+    width:170px;
+    height: 90px;
+}
+.model-item.active:hover .name-text {
+    width:70px;
+    font-size: 20px;
+}
+
 
 .container {
     position: relative;

@@ -55,22 +55,24 @@
                     <div class="model-item" data-name="기본" onclick="selectModel(
                     '{% if user.is_authenticated %}/chatbot/basic_chatbot/{% else %}/chatbot/basic_chatbot_na/{% endif %}')">
                         <img src="{% static 'img/icon/robot.png' %}" alt="기본 챗봇">
+                        <div class="model-name"><div class="name-text">기본</div></div>
                     </div>
-                        <div class="model-item" data-name="로맨스" onclick="{% if user.is_authenticated %}selectModel('/chatbot/romance_chatbot/'){% else %}alertLogin(){% endif %}">
+                    <div class="model-item" data-name="로맨스" onclick="{% if user.is_authenticated %}selectModel('/chatbot/romance_chatbot/'){% else %}alertLogin(){% endif %}">
                         <img src="{% static 'img/romance/ai_profile.png' %}" alt="로맨스 챗봇">
+                        <div class="model-name"><div class="name-text">로맨스</div></div>
                     </div>
                     <div class="model-item" data-name="로판" onclick="{% if user.is_authenticated %}selectModel('/chatbot/rofan_chatbot/'){% else %}alertLogin(){% endif %}">
                         <img src="{% static 'img/rofan/ai_profile.png' %}" alt="로판 챗봇">
+                        <div class="model-name"><div class="name-text">로판</div></div>
                     </div>
-
                     <div class="model-item" data-name="판타지" onclick="{% if user.is_authenticated %}selectModel('/chatbot/fantasy_chatbot/'){% else %}alertLogin(){% endif %}">
                         <img src="{% static 'img/fantasy/elf_profile.png' %}" alt="판타지 챗봇">
+                        <div class="model-name"><div class="name-text">판타지</div></div>
                     </div>
-
                     <div class="model-item" data-name="무협" onclick="{% if user.is_authenticated %}selectModel('/chatbot/historical_chatbot/'){% else %}alertLogin(){% endif %}">
                         <img src="{% static 'img/historical/historical_ai.png' %}" alt="무협 챗봇">
+                        <div class="model-name"><div class="name-text">무협</div></div>
                     </div>
-
                 </div>
             </div>
             <div class="container">
