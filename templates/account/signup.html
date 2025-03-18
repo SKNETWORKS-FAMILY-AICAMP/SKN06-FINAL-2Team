@@ -13,10 +13,10 @@
         <h2>회원가입</h2>
         <form method="post" action="">
             {% csrf_token %}
-            <label for="name">이름</label>
+            <label for="name">닉네임</label>
             <input type="text" id="name" name="name" required minlength="2">
 
-            <label for="username">닉네임</label>
+            <label for="username">아이디</label>
             <input type="text" id="username" name="username" required minlength="5" pattern='^[^!@#$%^&*(),.?\":{}|<>]+$' title="특수문자는 사용할 수 없습니다.">
 
             <label for="email">이메일</label>
