@@ -48,11 +48,10 @@ def basic_chatbot_view(request):
     logging.info(f"session_id: {session_id}")
 
     if not question:
-        profile_image_url = "/static/img/romance/default_user.png"
         return render(
             request,
             "chatbot/basic_chatbot.html",
-            {"profile_image_url": profile_image_url, "chat_model": "basic"},
+            {"chat_model": "basic"},
         )
     return StreamingHttpResponse(
         event_stream(
@@ -75,11 +74,10 @@ def romance_chatbot_view(request):
 
     logging.info(f"session_id: {session_id}")
     if not question:
-        profile_image_url = "/static/img/romance/default_user.png"
         return render(
             request,
             "chatbot/romance_chatbot.html",
-            {"profile_image_url": profile_image_url, "chat_model": "romance"},
+            {"chat_model": "romance"},
         )
     return StreamingHttpResponse(
         event_stream(
@@ -101,11 +99,10 @@ def rofan_chatbot_view(request):
     logging.info(f"session_id: {session_id}")
 
     if not question:
-        profile_image_url = "/static/img/rofan/user_profile.png"
         return render(
             request,
             "chatbot/rofan_chatbot.html",
-            {"profile_image_url": profile_image_url, "chat_model": "rofan"},
+            {"chat_model": "rofan"},
         )
     return StreamingHttpResponse(
         event_stream(
@@ -127,11 +124,10 @@ def fantasy_chatbot_view(request):
     logging.info(f"session_id: {session_id}")
 
     if not question:
-        profile_image_url = "/static/img/fantasy/user_fantasy.png"
         return render(
             request,
             "chatbot/fantasy_chatbot.html",
-            {"profile_image_url": profile_image_url, "chat_model": "fantasy"},
+            {"chat_model": "fantasy"},
         )
     return StreamingHttpResponse(
         event_stream(
@@ -153,11 +149,10 @@ def historical_chatbot_view(request):
     logging.info(f"session_id: {session_id}")
 
     if not question:
-        profile_image_url = "/static/img/historical/historical_user.png"
         return render(
             request,
             "chatbot/historical_chatbot.html",
-            {"profile_image_url": profile_image_url, "chat_model": "historical"},
+            {"chat_model": "historical"},
         )
     return StreamingHttpResponse(
         event_stream(
