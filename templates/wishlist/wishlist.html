@@ -48,11 +48,11 @@
                     <img class="thumbnail" src="{{ recommendation.thumbnail }}" alt="{{ recommendation.title }}">
                     <!-- 휴지통 아이콘 -->
                     <img class="delete-icon"
-                    src="{% if recommendation.deleted %}
-                            {% static 'img/icon/checkmark_red.png' %}
-                        {% else %}
-                            {% static 'img/icon/checkmark.png' %}
-                        {% endif %}"
+                    src="{% static 'img/icon/checkmark.png' %}"
+                    data-non-click="{% static 'img/icon/checkmark.png' %}"
+                    data-click="{% static 'img/icon/checkmark_red.png' %}"
+
+
                     alt="Delete Icon"
                     onclick="toggleDelete(this)" />
                 </div>
@@ -112,6 +112,6 @@
 </div>
 {% endif %}
 
-<script src="/static/js/wishlist.js"></script>
-<link rel="stylesheet" href="/static/css/wishlist.css">
+<script src="{% static 'js/wishlist.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
 {% endblock content %}

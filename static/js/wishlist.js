@@ -13,14 +13,16 @@ function toggleDelete(iconElement) {
     // 같은 wishlist-item 내부의 체크박스 찾기
     const parentItem = iconElement.closest('.wishlist-item');
     const checkbox = parentItem.querySelector('.delete-checkbox');
+    const nonclick = iconElement.getAttribute('data-non-click');
+    const click = iconElement.getAttribute('data-click');
 
     // 체크박스 상태 on/off 전환
     checkbox.checked = !checkbox.checked;
 
     // 체크박스가 켜지면 bin_checked, 꺼지면 bin
     if (checkbox.checked) {
-        iconElement.src = "{% static 'img/icon/checkmark_red.png' %}";
+        iconElement.src = click;
     } else {
-        iconElement.src = "{% static 'img/icon/checkmark.png' %}";
+        iconElement.src = nonclick;
     }
 }
