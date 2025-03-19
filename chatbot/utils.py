@@ -2,18 +2,8 @@ import logging
 import markdown2
 import time
 from wishlist.utils import extract_title_platform_pairs, save_recommended_works
-from langchain_community.chat_message_histories import ChatMessageHistory
 from account.models import Preset
 from wishlist.models import RecommendedWork, Contents, UserPreference
-
-# 사용자별 메모리 저장
-user_memory_dict = {}
-
-
-def get_user_memory(session_id):
-    if session_id not in user_memory_dict:
-        user_memory_dict[session_id] = ChatMessageHistory()
-    return user_memory_dict[session_id]
 
 
 def get_user_preset(user, model_type):

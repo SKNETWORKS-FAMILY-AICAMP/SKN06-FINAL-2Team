@@ -1,5 +1,6 @@
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from textwrap import dedent
@@ -12,11 +13,21 @@ from .vector_store import (
 from .utils import (
     get_user_preference,
     get_user_recommended_works,
-    get_user_memory,
 )
 
 
 logging.basicConfig(level=logging.INFO)
+
+
+# 사용자별 메모리 저장
+user_memory_dict = {}
+
+
+def get_user_memory(session_id):
+    if session_id not in user_memory_dict:
+        user_memory_dict[session_id] = ChatMessageHistory()
+    return user_memory_dict[session_id]
+
 
 # LLM 설정
 MODEL_NAME = "gpt-4o"
