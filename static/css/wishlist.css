@@ -32,7 +32,14 @@
     display: inline-block;       /* 이미지를 감싸는 컨테이너 */
     border-radius: 8px;          /* 이미지와 동일한 둥근 모서리 */
     overflow: hidden;            /* 가상 요소가 컨테이너 밖으로 삐져나오지 않도록 */
+    transition: filter 0.3s ease-in-out;  /* 부드러운 전환 효과 */
 }
+
+/* 체크박스 선택 시 어두워지도록 설정 */
+.delete-checkbox:checked + .thumbnail-wrapper {
+    filter: brightness(50%);  /* 어둡게 조절 */
+}
+
 /* 실제 이미지 스타일 */
 .thumbnail {
     width: 173px;
@@ -79,7 +86,7 @@
 
 .thumbnail-wrapper:hover::after {
     /* 호버 시 진한 검정 오버레이 */
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 .title {
     font-size: 14px;
