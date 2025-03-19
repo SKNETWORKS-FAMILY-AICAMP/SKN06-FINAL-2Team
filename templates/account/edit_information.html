@@ -2,122 +2,59 @@
 {% load static %}
 
 {% block title %}
-마이페이지
+회원정보 수정
 {% endblock title %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if messages %}
-    {% for message in messages %}
-        <div class="alert {% if message.tags == 'error' %}alert-error{% else %}alert-success{% endif %}">
-            {{ message }}
-        </div>
-    {% endfor %}
-    {% endif %}
-
-    <title>회원정보 수정</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-        h1 {
-            margin-bottom: 24px; /* 🔹 제목과 입력 필드 사이 여백 */
-        }
-        .profile-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .profile-table td {
-            padding: 14px 10px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .profile-table tr:last-child td {
-            border-bottom: none;
-        }
-        .profile-label {
-            font-weight: 600;
-            color: #374151;
-            width: 150px;
-        }
-        .profile-table input, .profile-table select {
-            width: 110%;
-            padding: 8px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-        }
-        .alert-success {
-            background-color: #d1e7dd;
-            color: #0f5132;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .alert-error {
-            background-color: #f8d7da;
-            color: #842029;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-    </style>
+    <!-- ✅ 회원정보 수정 페이지 전용 CSS 추가 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/edit_information.css' %}">
 </head>
-<!-- 회원정보 수정 폼 -->
-<main class="max-w-md mx-auto p-10 flex flex-col items-center">
-    <div class="text-left w-full">
-        <h1 class="text-2xl text-center font-semibold mt-2">
-            회원정보 수정
-        </h1>
-    </div>
 
-    <form action="{% url 'account:edit_information' %}" method="POST" enctype="multipart/form-data" class="w-full max-w-lg">
+<main class="edit-container">
+    <h1 class="page-title">회원정보 수정</h1>
+
+    <form action="{% url 'account:edit_information' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <table class="profile-table">
+        <table class="edit-table">
             <tr>
-                <td class="profile-label">이메일</td>
+                <td class="edit-label">이메일</td>
                 <td>
                     {{ form.email }}
-                    <!-- 만약 사용자가 직접 수정 못 하게 한다면, 아래처럼 hidden 처리 가능 -->
                     <input type="hidden" name="email" value="{{ user.email }}">
                 </td>
             </tr>
             <tr>
-                <td class="profile-label">아이디</td>
+                <td class="edit-label">아이디</td>
                 <td>{{ form.username }}</td>
             </tr>
             <tr>
-                <td class="profile-label">닉네임</td>
-                <td>
-                    {{ form.name }}
-                    <input type="hidden" name="username" value="{{ user.username }}">
-                </td>
+                <td class="edit-label">닉네임</td>
+                <td>{{ form.name }}</td>
             </tr>
             <tr>
-                <td class="profile-label">생년월일</td>
+                <td class="edit-label">생년월일</td>
                 <td>{{ form.birthday }}</td>
             </tr>
             <tr>
-                <td class="profile-label">성별</td>
+                <td class="edit-label">성별</td>
                 <td>{{ form.gender }}</td>
             </tr>
         </table>
 
-        <div class="flex justify-between mt-6">
-            <!-- 🔹 탈퇴 버튼 -->
-            <button type="button" class="bg-red-500 text-white px-6 py-2 rounded" onclick="confirmDelete()">탈퇴</button>
-            <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded">저장</button>
-            </div>
+        <div class="btn-container">
+            <button type="button" class="btn-danger" onclick="confirmDelete()">탈퇴</button>
+            <button type="submit" class="btn-primary">저장</button>
+        </div>
     </form>
-    <!-- 🔹 탈퇴 요청을 보내는 폼 (숨겨진 폼) -->
+
+    <!-- 🔹 탈퇴 요청을 보내는 폼 -->
     <form id="deleteForm" action="{% url 'account:delete' %}" method="POST" class="hidden">
         {% csrf_token %}
     </form>
 </main>
+
 <script>
     function confirmDelete() {
         if (confirm("정말 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.")) {
