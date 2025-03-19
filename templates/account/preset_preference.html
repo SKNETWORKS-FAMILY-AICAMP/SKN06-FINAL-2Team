@@ -1,3 +1,4 @@
+{% load django_bootstrap5 %}
 {% load static %}
 <head>
 <link rel="icon" href="{% static 'img/icon/favicon.ico' %}" type="image/x-icon">
@@ -10,21 +11,30 @@
 </div>
 
 <h2 class="title">PIXARY</h2>
-
-<form id="preference-form">
-    {% csrf_token %}
-    <div class="grid-container">
-        {% for work in works %}
-            <label class="grid-item" onclick="toggleSelection(this, '{{ work.content_id }}')">
-                <img src="{{ work.thumbnail }}" alt="작품 이미지" class="thumbnail">
-                <span class="heart">❤️</span>
-                <input type="checkbox" name="works" value="{{ work.content_id }}" class="hidden-checkbox">
-                {{ work.title }}
-            </label>
-        {% endfor %}
+<div class="preference-container">
+    <!-- 로딩 오버레이 -->
+    <div id="loadingOverlay" class="hidden">
+        <div class="loading-box">
+            <div class="spinner"></div>
+            <p class="loading-text">취향 분석중입니다...</p>
+        </div>
     </div>
-    <button type="submit">저장</button>
-</form>
+
+    <form id="preference-form">
+        {% csrf_token %}
+        <div class="grid-container">
+            {% for work in works %}
+                <label class="grid-item" onclick="toggleSelection(this, '{{ work.content_id }}')">
+                    <img src="{{ work.thumbnail }}" alt="작품 이미지" class="thumbnail">
+                    <span class="heart">❤️</span>
+                    <input type="checkbox" name="works" value="{{ work.content_id }}" class="hidden-checkbox">
+                    {{ work.title }}
+                </label>
+            {% endfor %}
+        </div>
+        <button type="submit">저장</button>
+    </form>
+</div>
 
 <script src="/static/js/preset_preference.js"></script>
 <link rel="stylesheet" href="/static/css/preset_preference.css">
