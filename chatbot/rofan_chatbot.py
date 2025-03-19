@@ -121,7 +121,7 @@ def process_rofan_chatbot_request(question, session_id, user):
                     "age_rating": 작품의 연령 제한("전체 연령가", "19세 연령가" 등)
                     "author": 작품의 작가
                     "score": 작품의 인기도
-                    
+                    "episode": 작품의 총 회차
                 </search>
                 
                 <user_information>

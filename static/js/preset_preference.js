@@ -26,16 +26,20 @@ function toggleSelection(element, contentId) {
 
 document.getElementById("preference-form").onsubmit = function(event) {
     event.preventDefault();
-
+    
     let selectedWorks = [...document.querySelectorAll("input[name='works']:checked")]
-        .map(input => input.value.trim())
-        .filter(value => value !== "");
-
+    .map(input => input.value.trim())
+    .filter(value => value !== "");
+    
     if (selectedWorks.length === 0) {
         alert("최소한 하나의 작품을 선택해주세요!");
         return;
     }
 
+    let loadingOverlay = document.getElementById("loadingOverlay");
+    if (loadingOverlay) {
+        loadingOverlay.style.display = "flex";
+    }
     let formData = new FormData();
     selectedWorks.forEach(work => formData.append("works", work));
 
@@ -51,8 +55,11 @@ document.getElementById("preference-form").onsubmit = function(event) {
         if (data.redirect) {
             window.location.href = data.redirect;
         } else if (data.error) {
+            document.getElementById("loadingOverlay").classList.add("hidden");
             alert(data.error);
         }
     })
-    .catch(error => console.error("Error:", error));
+    .catch(error => {
+        document.getElementById("loadingOverlay").classList.add("hidden");
+        console.error("Error:", error)});
 };
