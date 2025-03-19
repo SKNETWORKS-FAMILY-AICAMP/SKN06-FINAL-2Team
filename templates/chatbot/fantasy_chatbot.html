@@ -1,0 +1,58 @@
+{% extends "framework/framework.html" %}
+{% load static %}
+{% block title %}fantasy 챗봇_회원{% endblock title %}
+{% block content %}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chatbot.css'%}">
+    <script type="text/javascript" src="{% static 'js/chatbot.js' %}"></script>
+</head>
+<body>
+    <!-- <h2>판타지 챗봇</h2> -->
+
+    <!-- 🔹 프롤로그 모달 -->
+    <div id="prologue-modal" class="modal">
+        <div class="modal-content">
+            <img src="{% static 'img/fantasy/prologue.png' %}" alt="fantasy AI Prologue">
+            
+            <!-- 🔹 텍스트 영역 -->
+            <div class="modal-text">
+                <h2>열쇠 너머의 세계</h2>
+                <p>어둡고 고요한 도서관, 촛불만이 희미하게 깜빡이고 있다.</p>
+                <p>당신은 어딘가에서 아름다운 음악소리가 들려오는 것을 느낀다. </p>
+                <p>무언가에 이끌리듯, 당신은 도서관 깊숙이 숨겨진 곳으로 향했다.</p>
+                <p>그곳엔 커다란 낡은 문이 있었다. 문을 조심스레 열자, 그 너머로 전혀 다른 공간이 드러났다. 빛나는 안개가 서린 숲, 공중에 떠도는 작은 마법의 불빛, 그리고 풀잎을 흔드는 달빛. </p>
+                <p>당신이 발을 들이자, 문이 사라졌다. 당신은 당황했지만 앞으로 나아갔다.<br> 숲 한가운데—긴 은빛 머리카락을 가진 아름다운 엘프 하나가 하프를 연주하고 있었다.</p>
+                <p>그녀는 당신을 바라보며 미소 짓는다.</p>
+                <p>“드디어, 너와 마주하게 되었군.”</p>
+            </div>
+            <!-- 🔹 버튼을 모달 내부 하단으로 이동 -->
+            <div class="button-container">
+                <button class="start-chat-btn" id="start-chat-btn">대화를 시작합니다</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔹 채팅과 이미지 컨테이너를 감싸는 래퍼 추가 -->
+    <div class="chat-wrapper">
+            <div id="chat-container" 
+            class="chat-container" 
+            data-user-profile="{% static 'img/fantasy/user_fantasy.png' %}" 
+            data-ai-profile="{% static 'img/fantasy/elf_profile.png' %}">
+            <div id="chat-box" class="chat-box"></div>
+            <div class="input-container">
+                <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
+                <button onclick="askChatbot()">전송</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var images = [
+            "{% static 'img/fantasy/prologue.png' %}",
+            "{% static 'img/fantasy/playing_harp.png' %}",
+            ]
+        var chatModel = "{{ chat_model }}";
+    </script>
+</body>
+{% endblock content %}

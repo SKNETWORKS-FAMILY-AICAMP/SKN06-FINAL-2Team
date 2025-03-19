@@ -1,0 +1,28 @@
+
+{% extends "framework/framework.html" %}
+
+{% block title %} 기본 챗봇_비회원{% endblock title %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chatbot.css'%}">
+    <script type="text/javascript" src="{% static 'js/chatbot.js' %}"></script>
+</head>
+<!-- <h2>기본 챗봇</h2> -->
+<div id="chat-container" 
+class="chat-container" 
+data-user-profile="{% static 'img/icon/basic_user.png' %}" 
+data-ai-profile="{% static 'img/icon/robot.png' %}">
+    <div id="chat-box" class="chat-box"></div>
+
+    <div class="input-container">
+        <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
+        <button onclick="askChatbot()">전송</button>
+    </div>
+</div>
+<script>
+    var chatModel = "{{ chat_model }}";
+</script>
+{% endblock content %}
+

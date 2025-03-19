@@ -1,0 +1,53 @@
+{% extends "framework/framework_info.html" %}
+{% load static %}
+
+{% block title %}
+비밀번호 변경
+{% endblock title %}
+
+{% block content %}
+<head>
+    <!-- ✅ 별도로 저장한 CSS 파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/edit_pwd.css' %}">
+</head>
+
+<!-- 🔹 메시지 표시 -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %} alert-error {% else %} alert-success {% endif %}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<main class="max-w-md mx-auto p-10 flex flex-col items-center">
+    <div class="text-left w-full">
+        <h1 class="text-2xl text-center font-semibold mt-2">
+            비밀번호 변경
+        </h1>
+    </div>
+
+    <form action="{% url 'account:edit_pwd' %}" method="POST" class="w-full max-w-lg">
+        {% csrf_token %}
+
+        <table class="profile-table">
+            <tr>
+                <td class="profile-label">현재 비밀번호</td>
+                <td>{{ form.old_password }}</td>
+            </tr>
+            <tr>
+                <td class="profile-label">새 비밀번호</td>
+                <td>{{ form.new_password1 }}</td>
+            </tr>
+            <tr>
+                <td class="profile-label">새 비밀번호 확인</td>
+                <td>{{ form.new_password2 }}</td>
+            </tr>
+        </table>
+
+        <div class="text-center mt-6">
+            <button type="submit" class="btn-edit">완료</button>
+        </div>
+    </form>
+</main>
+{% endblock content %}

@@ -1,0 +1,296 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: white;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 0 40px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 15px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.username {
+    transition: all 0.3s ease;
+}
+
+.username:hover {
+    text-decoration: underline;
+    font-size: 1.1em;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.logo img {
+    height: 70px;
+    display: block;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-top: 10px; 
+}
+.recommendation-section {
+    top: 15px;
+    flex-grow: 1;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+.recommendation-section.collapsed {
+    height: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1450px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.carousel {
+    top: 0px;
+    position: relative;
+    left: 45px;
+    flex-direction: row;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.carousel img {
+    width: 150px;
+    height: 225px;
+    border-radius: 5px;
+    margin-right: 20px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+    transition: filter 0.3s ease-in-out;   
+}
+/* 🔹 캐러셀 이미지 오버레이 효과 */
+.carousel-item {
+    position: relative;
+    display: block;
+}
+.carousel-item img {
+    transition: opacity 0.3s ease-in-out;
+}
+/* 🔹 텍스트 오버레이 스타일 */
+.carousel-text {
+    position: absolute;
+    height: 100px;
+    left: 26px;
+    top:45px;
+    text-align: center;
+    color: white; 
+    opacity: 0;  
+    transition: opacity 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0);  
+    padding: 0px;
+    border-radius: 0px;
+}
+.carousel-title {
+    font-size: 16px; 
+    font-weight: bold;
+    font-family: 'Arial', sans-serif; 
+    color: #ffffff; 
+    margin-bottom: 8px; 
+    width: 100px;
+}
+.carousel-keywords {
+    font-size: 12px;  
+    font-weight: normal;
+    font-family: 'Arial', sans-serif; 
+    color: #dddddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100px;
+}
+.carousel-item:hover .carousel-text {
+    opacity: 1;
+}
+.carousel-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(24%);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 100;
+}
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.prev-btn {
+    left: 0;
+}
+.next-btn {
+    right: 0;
+}
+.toggle-btn {
+    position: relative;
+    left: 50%;
+    bottom: -1px;
+    cursor: pointer;
+    height: 1px;
+    width: 30px;
+    font-size: 30px;
+    line-height: 12px;
+    z-index: 100;
+}
+.no-style-link {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+.no-style-link div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 150px;
+}
+.wishlist-btn {
+    position: relative;
+    top: 10px;
+    align-self: flex-end;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: black;
+    border-radius: 5px;
+    padding: auto;
+    cursor: pointer;
+    size: 20px;
+    height: auto;
+}
+.main { /* 채팅창, 모델 선택 영역 */
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+.main::-webkit-scrollbar {
+    display: none;
+}
+.model-selection {
+    position: relative;
+    width: 150px;
+    margin-left: 45px;
+    margin-top: 45px;
+}
+
+.model-item{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    margin: 20px;
+    border: 1px solid #7350F2; /* 테두리 추가 */
+    box-shadow: none; /* 부드러운 그림자 효과 */
+}
+
+.model-item.active {
+    width: 90px;  /* 🔹 선택된 원은 90px로 확대 */
+    height: 90px;
+
+}
+
+.model-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.model-name {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    white-space: nowrap;
+    display: none;
+    border: 1px solid #7350F2;
+}
+
+.name-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-right: 5px;
+    width:65px;
+    float: right;
+    text-align: center;
+}
+
+.model-item:hover .model-name{
+    display: block;
+    align-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    width:140px;
+    transform: translateX(50px) translateY(-1px);
+    height: 70px;
+    border-radius: 35px 35px 35px 35px;
+    left: -50px;
+}
+
+.model-item.active:hover .model-name { 
+    border-radius: 45px 45px 45px 45px;
+    width:170px;
+    height: 90px;
+}
+.model-item.active:hover .name-text {
+    width:70px;
+    font-size: 20px;
+}
+
+
+.container {
+    position: relative;
+    width: 100%;
+    padding: 2px 2px 2px 2px;
+}

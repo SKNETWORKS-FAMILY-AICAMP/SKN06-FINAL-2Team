@@ -1,0 +1,42 @@
+{% load django_bootstrap5 %}
+{% load static %}
+<head>
+<link rel="icon" href="{% static 'img/icon/favicon.ico' %}" type="image/x-icon">
+</head>
+{% block content %}
+<div class="overlay"></div>
+<div class="notification-box">
+    <img src="/static/img/icon/robot.png" alt="환영 아이콘" class="notification-image">
+    <p>재미있게 봤던 작품 혹은 보고 싶은 작품을 선택해주시면 앞으로 PIXARY가 꼭 맞는 작품을 추천해드려요!</p>
+</div>
+
+<h2 class="title">PIXARY</h2>
+<div class="preference-container">
+    <!-- 로딩 오버레이 -->
+    <div id="loadingOverlay" class="hidden">
+        <div class="loading-box">
+            <div class="spinner"></div>
+            <p class="loading-text">취향 분석중입니다...</p>
+        </div>
+    </div>
+
+    <form id="preference-form">
+        {% csrf_token %}
+        <div class="grid-container">
+            {% for work in works %}
+                <label class="grid-item" onclick="toggleSelection(this, '{{ work.content_id }}')">
+                    <img src="{{ work.thumbnail }}" alt="작품 이미지" class="thumbnail">
+                    <span class="heart">❤️</span>
+                    <input type="checkbox" name="works" value="{{ work.content_id }}" class="hidden-checkbox">
+                    {{ work.title }}
+                </label>
+            {% endfor %}
+        </div>
+        <button type="submit">저장</button>
+    </form>
+</div>
+
+<script src="/static/js/preset_preference.js"></script>
+<link rel="stylesheet" href="/static/css/preset_preference.css">
+{% endblock %}
+

@@ -1,0 +1,93 @@
+{% load django_bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/framework_1.css'%}">
+    <link rel="icon" href="{% static 'img/icon/favicon.ico' %}" type="image/x-icon">
+    <title>{% block title %}웹사이트 프레임워크{% endblock title %}</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <section class="recommendation-section">
+        <div class="carousel-container" id="carouselContainer">   
+            <button class="carousel-btn prev-btn">&lt;</button>
+            <div class="carousel">
+                {% for work in recommendations %}
+                <a class="carousel-item" href="{{work.url}}" target="_blank" rel="noopener noreferrer">
+                    <div class="no-style-link">
+                        <img src="{{ work.thumbnail }}" alt="{{ work.title }}">
+                    </div>
+                    <div class="carousel-text">
+                        <div class="carousel-title">{{ work.title }}</div>
+                        <div class="carousel-keywords">{{ work.keywords }}</div>
+                    </div>
+                </a>
+                {% empty %}
+                <p>최근 추천된 작품이 없습니다.</p>
+                {% endfor %}
+            </div>
+            <button class="carousel-btn next-btn">&gt;</button> 
+        </div>
+        <div class="wishlist-btn" onclick="selectModel('/wishlist/')">더보기</div>
+    </section>
+    <div id="toggleCarouselBtn" class="toggle-btn">▽</div>
+    {% else %}
+    <div id="toggleCarouselBtn" class="toggle-btn" onclick="alertLogin()">▽</div>
+    {% endif %}
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% if user.is_authenticated %}/chatbot/basic_chatbot/{% else %}/chatbot/basic_chatbot_na/{% endif %}">
+                    <img src="{% static 'img/icon/logo.png' %}" alt="웹사이트 로고">
+                </a>
+            </div>
+            <div class="auth-links">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'account:user_information' %}" class="username">{{ user.username }}님</a>
+                    <a href="{% url 'account:logout' %}" class="nav-link">로그아웃</a>
+                {% else %}
+                    <a href="{% url 'account:login' %}" class="btn btn-login">로그인</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+        <div class="main">
+            <div class="model-selection">
+                <div class="model-list">
+                    <div class="model-item" data-name="기본" onclick="selectModel(
+                    '{% if user.is_authenticated %}/chatbot/basic_chatbot/{% else %}/chatbot/basic_chatbot_na/{% endif %}')">
+                        <img src="{% static 'img/icon/robot.png' %}" alt="기본 챗봇">
+                        <div class="model-name"><div class="name-text">기본</div></div>
+                    </div>
+                    <div class="model-item" data-name="로맨스" onclick="{% if user.is_authenticated %}selectModel('/chatbot/romance_chatbot/'){% else %}alertLogin(){% endif %}">
+                        <img src="{% static 'img/romance/ai_profile.png' %}" alt="로맨스 챗봇">
+                        <div class="model-name"><div class="name-text">로맨스</div></div>
+                    </div>
+                    <div class="model-item" data-name="로판" onclick="{% if user.is_authenticated %}selectModel('/chatbot/rofan_chatbot/'){% else %}alertLogin(){% endif %}">
+                        <img src="{% static 'img/rofan/ai_profile.png' %}" alt="로판 챗봇">
+                        <div class="model-name"><div class="name-text">로판</div></div>
+                    </div>
+                    <div class="model-item" data-name="판타지" onclick="{% if user.is_authenticated %}selectModel('/chatbot/fantasy_chatbot/'){% else %}alertLogin(){% endif %}">
+                        <img src="{% static 'img/fantasy/elf_profile.png' %}" alt="판타지 챗봇">
+                        <div class="model-name"><div class="name-text">판타지</div></div>
+                    </div>
+                    <div class="model-item" data-name="무협" onclick="{% if user.is_authenticated %}selectModel('/chatbot/historical_chatbot/'){% else %}alertLogin(){% endif %}">
+                        <img src="{% static 'img/historical/historical_ai.png' %}" alt="무협 챗봇">
+                        <div class="model-name"><div class="name-text">무협</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/framework.js' %}"></script>
+    <script>
+    var ChatModel = "{{ chat_model }}";
+    </script>
+</body>
+</html>

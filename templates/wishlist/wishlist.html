@@ -1,0 +1,113 @@
+{% extends "framework/framework_info.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block title %}Wishlist{% endblock title %}
+{% block content %}
+
+<!-- 상단 로봇 + 말풍선 영역 -->
+<div class="explanatory-container">
+    <img class="robot-icon" 
+         src="{% static 'img/icon/robot.png' %}" 
+         alt="Robot Icon">
+    
+    <div class="speech-bubble">
+        <p>
+            이 페이지는 추천받은 리스트를 관리하는 공간입니다. 
+            <br> 좋은 평점을 주시면 다음 번에 더 유사한 작품을 추천드려요!<br>(썸네일 위 체크버튼를 누르면 작품을 리스트에서 제거할 수 있습니다.)
+        </p>
+    </div>
+</div>
+
+<div class="wishlist-container">
+    <!-- (1) 로딩 오버레이 -->
+    <div 
+      id="loadingOverlay" 
+      class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
+    >
+        <!-- 오버레이 안에 나타날 흰색 박스 + 안내문 -->
+        <div class="bg-white p-6 rounded shadow text-center">
+            <!-- Tailwind를 이용한 간단한 로딩 스피너 -->
+            <div 
+              class="w-8 h-8 border-4 border-green-500 spinner-border rounded-full animate-spin mx-auto mb-3"
+            ></div>
+            <p class="font-semibold text-gray-700">피드백 반영 중입니다...</p>
+        </div>
+    </div>
+    <!-- /로딩 오버레이 -->
+    <form id="wishlistForm" method="post" action="{% url 'wishlist:feedback_update' %}">
+        {% csrf_token %}
+        <div class="wishlist-grid">
+            {% for recommendation in recommendations %}
+            <div class="wishlist-item">
+                <!-- 체크박스는 숨겨둠 -->
+                <input type="checkbox" name="delete_{{ recommendation.work_id }}" class="delete-checkbox"{% if recommendation.deleted %}checked{% endif %}>
+    
+                <!-- 썸네일 전용 컨테이너 생성 -->
+                <div class="thumbnail-wrapper">
+                    <img class="thumbnail" src="{{ recommendation.thumbnail }}" alt="{{ recommendation.title }}">
+                    <!-- 휴지통 아이콘 -->
+                    <img class="delete-icon"
+                    src="{% static 'img/icon/checkmark.png' %}"
+                    data-non-click="{% static 'img/icon/checkmark.png' %}"
+                    data-click="{% static 'img/icon/checkmark_red.png' %}"
+
+
+                    alt="Delete Icon"
+                    onclick="toggleDelete(this)" />
+                </div>
+                <div class="title" >
+                    <a href="{{ recommendation.url }}" target="_blank" class="text-blue-500 hover:underline">
+                        {{ recommendation.title }}
+                    </a></div>
+                <div class="rating">
+                    {% for star in recommendation.stars %}
+                        <input type="radio" name="rating_{{ recommendation.work_id }}" value="{{ star }}" id="star{{ star }}_{{ recommendation.work_id }}" {% if recommendation.feedback == star %}checked{% endif %}>
+                        <label for="star{{ star }}_{{ recommendation.work_id }}" class="star">&#9733;</label>
+                    {% endfor %}
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+        <!-- 버튼 영역 -->
+        <div class="button-container text-right mt-3">
+            <button
+            class="btn-edit" type="submit">
+            저장
+            </button>
+        </div>
+    </form>
+</div>
+<!-- 페이지네이션 영역 (하단) -->
+{% if recommendations.has_other_pages %}
+<div class="pagination-container">
+    <ul class="pagination">
+        {% if recommendations.has_previous %}
+        <li>
+            <a href="?page={{ recommendations.previous_page_number }}">이전</a>
+        </li>
+        {% endif %}
+
+        {% for num in page_range %}
+            {% if recommendations.number == num %}
+                <li class="current-page">{{ num }}</li>
+            {% else %}
+                <li>
+                    <a href="?page={{ num }}">{{ num }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if recommendations.has_next %}
+        <li>
+            <a href="?page={{ recommendations.next_page_number }}">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+
+<script src="{% static 'js/wishlist.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+{% endblock content %}

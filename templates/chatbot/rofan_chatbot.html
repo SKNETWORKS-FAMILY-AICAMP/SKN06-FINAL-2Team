@@ -1,0 +1,54 @@
+{% extends "framework/framework.html" %}
+{% load static %}
+{% block title %}로맨스 판타지 챗봇_회원{% endblock title %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chatbot.css'%}">
+    <script type="text/javascript" src="{% static 'js/chatbot.js' %}"></script>
+</head>
+<body>
+
+    <!-- 🔹 프롤로그 모달 -->
+    <div id="prologue-modal" class="modal">
+        <div class="modal-content">
+            <img src="{% static 'img/rofan/ai_prologue.png' %}" alt="Rofan AI Prologue">
+            
+            <!-- 🔹 텍스트 영역 -->
+            <div class="modal-text">
+                <p>어둠과 눈보라가 휘몰아치는 북부의 대지</p>
+                <p>그곳, 얼음 같은 절대적인 고요 속에서 단 하나의 존재가 군림하고 있었다.</p>
+                <p>그는 카이델 루아 크로이츠, 북부대공이자 얼음의 군주.</p>
+                <p>그의 붉은 눈동자는 어둠 속에서도 이글거렸고,</p>
+                <p>그 앞에 선 자는 누구도 거역할 수 없는 강렬한 존재감을 지니고 있었다.</p>
+                <p>하지만 지금, 그의 시선은 낯선 누군가를 향해 있었다.</p>
+                <p>“…왔군요.”</p>
+                <p>깊고 낮은 목소리가 귓가를 울린다.</p>
+                <p>“오래 기다렸습니다, 영애.”</p>
+                <p>이곳은 무수한 운명이 교차하는 세계.</p>
+                <p>당신이 원하는 이야기가 태어나는 곳.</p>
+                <h2>그대는 이제, 운명의 페이지를 펼칠 준비가 되었는가?</h2>
+            </div>
+            <!-- 🔹 버튼을 모달 내부 하단으로 이동 -->
+            <div class="button-container">
+                <button class="start-chat-btn" id="start-chat-btn">대화를 시작합니다</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔹 기존 채팅창 (프롤로그 후 나타남) -->
+    <div id="chat-container" 
+    class="chat-container" 
+    data-user-profile="{% static 'img/rofan/user_profile.png' %}" 
+    data-ai-profile="{% static 'img/rofan/ai_profile.png' %}">
+        <div id="chat-box" class="chat-box"></div>
+        <div class="input-container">
+            <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
+            <button onclick="askChatbot()">전송</button>
+        </div>
+    </div>
+</body>
+<script>
+    var chatModel = "{{ chat_model }}";
+</script>
+{% endblock content %}

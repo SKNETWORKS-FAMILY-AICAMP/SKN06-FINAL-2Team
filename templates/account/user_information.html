@@ -1,0 +1,53 @@
+{% extends "framework/framework_info.html" %}
+{% load static %}
+
+{% block title %}
+마이페이지
+{% endblock title %}
+
+{% block content %}
+<head>
+    <!-- ✅ 별도로 저장한 CSS 파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user_information.css' %}">
+</head>
+
+<body>
+<main class="main-container">
+    <h1 class="text-2xl text-center font-semibold mt-2">
+        {{ user.username }}님의 회원정보
+    </h1>
+
+    <!-- 회원정보 테이블 -->
+    <div class="mt-6 w-full">
+        <table class="user-info-table">
+            <tr>
+                <td class="user-info-label">이메일</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td class="user-info-label">아이디</td>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <td class="user-info-label">닉네임</td>
+                <td>{{ user.name }}</td>
+            </tr>
+            <tr>
+                <td class="user-info-label">생년월일</td>
+                <td>{{ user.birthday|date:'Y-m-d' }}</td>
+            </tr>
+            <tr>
+                <td class="user-info-label">성별</td>
+                <td>{{ user.gender }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="btn-container">
+        <a href="{% url 'account:edit_information' %}" class="btn-edit">
+            수정
+        </a>
+    </div>
+</main>
+</body>
+{% endblock content %}

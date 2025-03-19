@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="icon" href="{% static 'img/icon/favicon.ico' %}" type="image/x-icon">
+    <script defer src="{% static 'js/login.js' %}"></script>
+</head>
+<body>
+    <div class="login-wrapper">
+        <h2 class="login-title">PIXARY</h2>
+        <div class="underline"></div>
+        
+        {% if error_msg %}
+            <p class="error">{{ error_msg }}</p>
+        {% endif %}
+
+        <form method="POST" action="{% url 'account:login' %}">
+            {% csrf_token %}  
+
+            <div class="input-group">
+                <input type="text" id="username_or_email" name="username_or_email" placeholder="이메일 혹은 닉네임" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="비밀번호" required>
+            </div>
+            <button type="submit" class="login-btn">로그인</button>
+        </form>
+
+        <p class="signup-text">
+            아직 회원이 아니신가요? <a href="{% url 'account:signup' %}" class="signup-link">회원가입</a>
+        </p>
+    </div>
+
+    <!-- 로그인 실패 시 알림 팝업 -->
+    {% if error_msg %}
+    <script>
+        window.onload = function() {
+            alert("존재하지 않는 계정입니다.");
+        };
+    </script>
+    {% endif %}
+</body>
+</html>
+
+

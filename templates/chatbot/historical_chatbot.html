@@ -1,0 +1,65 @@
+{% extends "framework/framework.html" %}
+{% load static %}
+{% block title %}historical 챗봇_회원{% endblock title %}
+{% block content %}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chatbot.css'%}">
+    <script type="text/javascript" src="{% static 'js/chatbot.js' %}"></script>
+</head>
+
+
+<!-- 🔹 프롤로그 모달 -->
+<div id="prologue-modal" class="modal">
+    <div class="modal-content">
+        <!-- 이미지 여러개 변경시 아래 코드 수정 -->
+        <img id="modal-img" src="{% static 'img/historical/historical_ai_prologue_01.png' %}" alt="Historical AI Prologue"> 
+
+        <!-- 🔹 텍스트 영역 -->
+        <div class="modal-text">
+            <h2>강호의 연호</h2>
+            <p>겨울의 끝 무렵, 어스름이 깔린 하늘이 창밖으로 보인다.</p>
+            <p>살랑거리는 바람이 문풍지를 스치며 속삭이는 듯하다.</p>
+            <p>봄바람인가? 창문 너머 불어온 바람이 연호의 머리칼을 흩트려 놓는다.</p>
+            <p>...</p>  
+            <p>김이 피어오르는 찻잔 속에 그의 푸른 눈동자가 비추었다.</p>
+            <p>바람소리와 함께 문 밖의 인기척을 느낀 연호는 고개를 들어 당신을 바라보았다.</p>
+            <p>“어서 오시오.” 그의 목소리가 낮게 울린다. “그대는 무엇을 원하시오?”</p>
+            <p>그를 바라보는 순간,</p>
+            <p>당신은 마치 무림의 깊은 산중에 홀로 서 있는 듯한 느낌을 받게 되었다.</p>
+            <p>당신이 무엇을 찾고 있는지 이미 알고 있는 것 같은 표정을 지었다.</p>
+            <p>...</p>  
+            <p>“강호에는 수많은 이야기가 있다오.” 그는 말을 이어간다.</p>
+            <p>“그대가 원하는 것이 무엇인지 말해주시오."</p>
+            <p>"나는 그대에게 이야기를 들려줄 준비가 되어 있소.”</p> 
+        </div>
+        <!-- 🔹 버튼을 모달 내부 하단으로 이동 -->
+        <div class="button-container">
+            <button class="start-chat-btn" id="start-chat-btn">대화를 시작합니다</button>
+        </div>
+    </div>
+</div>
+
+<!-- 🔹 채팅창 -->
+<div id="chat-container" 
+    class="chat-container" 
+    data-user-profile="{% static 'img/historical/historical_user.png' %}" 
+    data-ai-profile="{% static 'img/historical/historical_ai.jpg' %}">
+    <div id="chat-box" class="chat-box"></div>
+    <div class="input-container">
+        <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
+        <button onclick="askChatbot()">전송</button>
+    </div>
+</div>
+
+<script>
+    var images = [
+            "{% static 'img/historical/historical_ai_prologue_01.png' %}",
+            "{% static 'img/historical/historical_ai_prologue_02.png' %}",
+            "{% static 'img/historical/historical_ai_prologue_03.png' %}",
+            "{% static 'img/historical/historical_ai_prologue_04.png' %}"
+        ];
+    var chatModel = "{{ chat_model }}";
+</script>
+
+{% endblock content %}

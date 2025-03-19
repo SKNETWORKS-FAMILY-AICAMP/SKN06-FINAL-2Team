@@ -1,0 +1,65 @@
+{% extends "framework/framework_info.html" %}
+{% load static %}
+
+{% block title %}
+회원정보 수정
+{% endblock title %}
+
+{% block content %}
+<head>
+    <!-- ✅ 회원정보 수정 페이지 전용 CSS 추가 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/edit_information.css' %}">
+</head>
+
+<main class="edit-container">
+    <h1 class="page-title">회원정보 수정</h1>
+
+    <form action="{% url 'account:edit_information' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <table class="edit-table">
+            <tr>
+                <td class="edit-label">이메일</td>
+                <td>
+                    {{ form.email }}
+                    <input type="hidden" name="email" value="{{ user.email }}">
+                </td>
+            </tr>
+            <tr>
+                <td class="edit-label">아이디</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td class="edit-label">닉네임</td>
+                <td>{{ form.name }}</td>
+            </tr>
+            <tr>
+                <td class="edit-label">생년월일</td>
+                <td>{{ form.birthday }}</td>
+            </tr>
+            <tr>
+                <td class="edit-label">성별</td>
+                <td>{{ form.gender }}</td>
+            </tr>
+        </table>
+
+        <div class="btn-container">
+            <button type="button" class="btn-danger" onclick="confirmDelete()">탈퇴</button>
+            <button type="submit" class="btn-primary">저장</button>
+        </div>
+    </form>
+
+    <!-- 🔹 탈퇴 요청을 보내는 폼 -->
+    <form id="deleteForm" action="{% url 'account:delete' %}" method="POST" class="hidden">
+        {% csrf_token %}
+    </form>
+</main>
+
+<script>
+    function confirmDelete() {
+        if (confirm("정말 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.")) {
+            document.getElementById("deleteForm").submit();
+        }
+    }
+</script>
+{% endblock content %}

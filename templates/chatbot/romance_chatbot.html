@@ -1,0 +1,48 @@
+
+{% extends "framework/framework.html" %}
+{% load django_bootstrap5 %}
+{% block title %} romance_chatbot {% endblock title %}
+{% load static %}
+{% block content %}
+</head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/chatbot.css'%}">
+<script type="text/javascript" src="{% static 'js/chatbot.js' %}"></script>
+
+<!-- 🔹 프롤로그 모달 -->
+<div id="prologue-modal" class="modal">
+    <div class="modal-content">
+        <img src="{% static 'img/romance/prologue.png' %}" alt="Romance AI Prologue">
+        <div class="modal-text">
+            <p>도시의 화려한 불빛이 내려다보이는 고급스러운 펜트하우스.<br>
+            차가운 대리석 바닥 위로 은은한 달빛이 비친다. 그 아래 앉아있는 한 남자.</p>
+            <p>"당신, 대체 누구지? 내 허락 없이 여기까지 온 이유가 있을 텐데."</p>
+            <p>그의 차갑던 눈동자에 미묘한 흔들림과 호기심이 번진다.<br>
+            그는 당신을 천천히 위아래로 훑어보며, 싸늘하지만 어딘가 매혹적인 미소를 짓는다.</p>
+            <h2>"이왕 온 거, 취향 정도는 제대로 밝히시죠. <br> 지루한 건 딱 질색이니까."</h2>
+            <br>
+        </div>
+        <div class="button-container">
+            <button class="start-chat-btn" id="start-chat-btn">대화를 시작합니다</button>
+        </div>
+    </div>
+</div>
+
+<!-- 🔹 채팅창 -->
+<div id="chat-container" 
+    class="chat-container" 
+    data-user-profile="{% static 'img/romance/default_user.png' %}" 
+    data-ai-profile="{% static 'img/romance/ai_profile.png' %}">
+    
+    <div id="chat-box" class="chat-box"></div>
+    
+    <div class="input-container">
+        <input type="text" id="question" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) askChatbot()">
+        <button onclick="askChatbot()">전송</button>
+    </div>
+</div>
+<script>
+    var chatModel = "{{ chat_model }}";
+</script>
+{% endblock content %}
+
+
