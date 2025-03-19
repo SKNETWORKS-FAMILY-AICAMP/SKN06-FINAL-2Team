@@ -10,13 +10,11 @@
 </head>
 <body class="bg-gray-50">
 
-  <!-- (1) 토글 버튼 -->
-  <button
-  id="sidebarToggle"
-  class="fixed top-4 left-4 z-50 p-2 bg-gray-800 text-white rounded"
-  >
-  열기
+  <!-- (1) 사이드바 토글 버튼 -->
+  <button id="sidebarToggle" class="fixed top-4 left-4 z-50 bg-gray-100 text-white rounded">
+    <img id="sidebarIcon" src="{% static 'img/icon/sidebar.png' %}" alt="Toggle Sidebar" class="w-8 h-8">
   </button>
+
 
 
   <!-- (1-1) Exit 아이콘 -->
@@ -86,16 +84,14 @@
   <script>
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('sidebarToggle');
-    // 메인 컨텐츠(wishlist-container 등)를 감싸는 요소
     const mainContent = document.getElementById('mainContent');
-    
-    let isOpen = false;
+
+    let isOpen = true;
   
     function openSidebar() {
       // 열림 상태 스타일
       sidebar.classList.remove('-translate-x-full');
       mainContent.classList.add('pl-64');  // 내용 영역 왼쪽 패딩 추가
-      toggleBtn.textContent = '닫기';
   
       isOpen = true;
       localStorage.setItem('sidebarOpen', 'true');  // localStorage에 저장
@@ -105,7 +101,6 @@
       // 닫힘 상태 스타일
       sidebar.classList.add('-translate-x-full');
       mainContent.classList.remove('pl-64');
-      toggleBtn.textContent = '열기';
   
       isOpen = false;
       localStorage.setItem('sidebarOpen', 'false'); // localStorage에 저장
