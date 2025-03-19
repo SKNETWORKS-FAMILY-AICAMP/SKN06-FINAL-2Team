@@ -67,7 +67,7 @@ h1 {
     margin-top: 20px;
 }
 .btn-edit {
-    background-color: #3b82f6;
+    background-color: #7350F2;
     color: white;
     padding: 8px 16px;
     border-radius: 4px;
@@ -75,5 +75,5 @@ h1 {
     display: inline-block;
 }
 .btn-edit:hover {
-    background-color: #2563eb;
+    background-color: #5E3DEB ;
 }

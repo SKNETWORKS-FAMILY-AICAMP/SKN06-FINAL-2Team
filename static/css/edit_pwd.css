@@ -39,3 +39,16 @@ h1 {
     margin-bottom: 10px;
     text-align: center;
 }
+.btn-edit {
+    background-color: #7350F2;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-edit:hover {
+    background-color: #5E3DEB;
+}
