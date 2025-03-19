@@ -38,9 +38,29 @@ function saveChatHistory(message, isAI = false) {
     const chatHistoryKey = getChatHistoryKey();
     let chatHistory = JSON.parse(localStorage.getItem(chatHistoryKey)) || [];
     const prefix = isAI ? "AI: " : "User: ";
-    chatHistory.push(prefix + message);
+
+    // DOMParser를 사용하여 HTML 문서로 변환
+    const parser = new DOMParser();
+    const parsedHtml = parser.parseFromString(message, "text/html");
+
+    // 1. <img> 태그 크기 조정
+    parsedHtml.querySelectorAll("img").forEach(img => {
+        img.style.width = "150px";
+        img.style.height = "auto";
+    });
+
+    // 2. <a> 태그 새 탭에서 열리도록 설정
+    parsedHtml.querySelectorAll("a").forEach(link => {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+    });
+
+    // 3. 변환된 HTML을 저장
+    const formattedMessage = parsedHtml.body.innerHTML.trim();
+    chatHistory.push(prefix + formattedMessage);
     localStorage.setItem(chatHistoryKey, JSON.stringify(chatHistory));
 }
+
 
 function hasPrologueModal() {
     return document.getElementById("prologue-modal") !== null;
