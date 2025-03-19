@@ -153,7 +153,7 @@
 .pagination .current-page {
     font-weight: bold;
     padding: 8px 12px;
-    background-color: #007bff;
+    background-color: #7350F2;
     color: white;
     border-radius: 5px;
 }
@@ -171,6 +171,21 @@
 .button-container {
     text-align: right; /* 자식 요소(=버튼)가 오른쪽에 위치 */
     margin-top: 20px; /* 위쪽 여백 조금 */
+}
+.btn-edit {
+    background-color: #7350F2;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid #5E3DEB;  /* 기존의 테두리 스타일 유지 */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn-edit:hover {
+    background-color: #5E3DEB;
+    border-color: #4A2DD1;
 }
 .custom-outline {
     border-width: 2px !important;  /* 테두리 두께 */
