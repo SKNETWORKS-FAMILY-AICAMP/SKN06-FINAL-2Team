@@ -1,55 +1,16 @@
 {% extends "framework/framework_info.html" %}
 {% load static %}
+
 {% block title %}
 비밀번호 변경
 {% endblock title %}
-{% block content %}
 
+{% block content %}
 <head>
-    <style>
-        h1 {
-            margin-bottom: 24px; /* 🔹 제목과 입력 필드 사이 여백 */
-        }
-        .profile-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .profile-table td {
-            padding: 14px 10px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .profile-table tr:last-child td {
-            border-bottom: none;
-        }
-        .profile-label {
-            font-weight: 600;
-            color: #374151;
-            width: 150px;
-        }
-        .profile-table input, .profile-table select {
-            width: 110%;
-            padding: 8px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-        }
-        .alert-success {
-            background-color: #d1e7dd;
-            color: #0f5132;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .alert-error {
-            background-color: #f8d7da;
-            color: #842029;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-    </style>
+    <!-- ✅ 별도로 저장한 CSS 파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/edit_pwd.css' %}">
 </head>
+
 <!-- 🔹 메시지 표시 -->
 {% if messages %}
     {% for message in messages %}
@@ -65,7 +26,6 @@
             비밀번호 변경
         </h1>
     </div>
-
 
     <form action="{% url 'account:edit_pwd' %}" method="POST" class="w-full max-w-lg">
         {% csrf_token %}
