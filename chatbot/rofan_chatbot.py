@@ -1,6 +1,5 @@
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from textwrap import dedent
@@ -13,20 +12,11 @@ from .vector_store import (
 from .utils import (
     get_user_preference,
     get_user_recommended_works,
+    get_user_memory,
 )
 
 
 logging.basicConfig(level=logging.INFO)
-
-# 사용자별 메모리 저장
-user_memory_dict = {}
-
-
-def get_user_memory(session_id):
-    if session_id not in user_memory_dict:
-        user_memory_dict[session_id] = ChatMessageHistory()
-    return user_memory_dict[session_id]
-
 
 # LLM 설정
 MODEL_NAME = "gpt-4o"
@@ -120,11 +110,15 @@ def process_rofan_chatbot_request(question, session_id, user):
                 - 각각 로판을 검색하는 tool이며 검색어를 생성할 때 이에 맞는 장르를 필터로 적용하십시오.
                 - 그 외에 사용자의 요구사항에 맞는 필터를 생성하여 검색하십시오.
                 - "인기 많은", "인기", "유명", "재미" 등과 같이 인기와 관련된 키워드가 들어오면 score가 0.9 **이상**인 작품만 추천하십시오.
+                - 별다른 조건없이 작품을 추천해달라고 할 시, score가 0.7 이상인 작품만 추천하십시오.
+                - 그 외 검색에 도움이 될만한 검색어를 query로 생성하십시오.
+                - 참고로 가격은 무료, 기다리면 무료, 유료가 있습니다. 보통 사람들이 기다리면 무료를 기다무라고 부르곤 합니다. 
+                - 사람들이 정주행하기 좋은 작품이라 불리는 것에는 연재중이거나 완결된 작품 중 회차가 긴 것을 주로 말합니다. 최소 100회 이상 된 작품을 추천하십시오.
                 - 한 번 대답할 때 제목이 같은 웹툰은 추천하지 마십시오.
                 - 필터로 검색할 수 있는 항목은 다음과 같습니다.
                     "title": 작품의 제목
                     "type": 작품의 타입(웹툰/웹소설)
-                    "platform": 작품의 연재처(네이버시리즈, 카카오웹툰, 네이버 웹툰, 카카오페이지)
+                    "platform": 작품의 연재처(네이버시리즈, 카카오웹툰, 네이버웹툰, 카카오페이지)
                     "genre": 작품의 장르(당신은 로판만 검색할 수 있습니다.)
                     "status": 작품의 연재 상태("연재", "완결", "휴재")
                     "update_days": 작품의 연재일("월요일", "월요일, 화요일" 등)
@@ -142,9 +136,7 @@ def process_rofan_chatbot_request(question, session_id, user):
                     - 12세 이용가: 12세 이상
                     - 15세 이용가: 15세 이상
                     - 19세 이용가: 19세 이상
-                    사용자의 성별에 맞는 호칭을 사용하십시오.
-                    - 성별이 남자라면 OO백작
-                    - 성별이 여자라면 OO영애
+
                 </user_information>
                 
                 <user_preference>
